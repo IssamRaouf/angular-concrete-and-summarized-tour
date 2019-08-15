@@ -38,3 +38,31 @@ exemple:
 </body>
 ```
 
+### Style
+```
+@Component({
+  selector: "magie",
+  templateUrl: "magie-component.html",
+  styleUrls: ["magie-component.css"]
+  // encapsulation: ViewEncapsulation.Emulated
+  // encapsulation: ViewEncapsulation.Native
+  // encapsulation: ViewEncapsulation.None
+})
+magie-component.css
+ p {
+    color:red;
+ }
+```
+* <strong>ViewEncapsulation.Emulated</strong> is default : 
+Les autres composants de la page n'ont pas ces attributs générés automatiquement, 
+il  MagieComponent s'agit uniquement du seul composant pour lequel nous avons spécifié des style
+(_ngcontent-lo_3) comme ca le style appliquer juste pour le component MagieComponent 
+
+* <strong>ViewEncapsulation.Native</strong>  :
+il s'appel dom fontome ignore tout le style de notre application par exemple bootsrap 
+ou material design qu'on va integrer sur notre appliocation
+come ca notre component est isolé des styles globaux définis pour notre application
+
+* <strong>ViewEncapsulation.None</strong> exactement c'est le contraire de Emulated , 
+comme ca ,il va appliquer le style de component par tout sur notre application.
+
