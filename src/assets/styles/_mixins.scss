@@ -1,0 +1,23 @@
+@import "variables";
+@mixin vBox($alignItems:center, $flex-wrap : nowrap) {
+  display: flex;
+  flex-flow: column;
+  flex-wrap: $flex-wrap;
+  align-items: $alignItems;
+}
+
+@mixin hBox($justifyContent: flex-start,$placeContent:center, $alignItems : center, $flex-wrap : nowrap) {
+  display: flex;
+  flex-flow: row;
+  flex-wrap: $flex-wrap;
+  justify-content: $justifyContent;
+  align-items: $alignItems;
+  place-content: $placeContent;
+}
+@mixin container($flex-wrap : wrap) {
+  display: flex;
+  flex-wrap: $flex-wrap;
+}
+@mixin childWidth($flex : 25%) {
+  flex: 1 1 $flex;
+}

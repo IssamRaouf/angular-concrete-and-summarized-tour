@@ -1,0 +1,9 @@
+
+@import '../../../assets/styles/_mixins';
+.container-todo {
+@include container();
+  .mat-card {
+   max-width: 250px;
+    margin: 5px;
+  }
+}

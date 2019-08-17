@@ -1,0 +1,8 @@
+@import '../assets/styles/_mixins';
+@import "../assets/styles/_variables";
+
+div.container-root {
+  max-width: $max-screen-container-app;
+  margin: auto;
+
+}

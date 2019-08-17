@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { TodoComponent } from './1-content-projection/todo/todo.component';
 import { TodoListComponent } from './1-content-projection/todo-list/todo-list.component';
 import { TodoFormComponent } from './1-content-projection/todo-form/todo-form.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MaterialModule} from './material.module';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { TodoFormComponent } from './1-content-projection/todo-form/todo-form.co
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
