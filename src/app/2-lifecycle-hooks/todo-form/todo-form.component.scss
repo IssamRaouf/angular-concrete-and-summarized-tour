@@ -1,0 +1,8 @@
+@import "../../../assets/styles/_mixins";
+
+div.container-todo-form{
+  background: white;
+  margin: 10px 0px 10px 0px;
+  @include formHorizontal();
+}
+
