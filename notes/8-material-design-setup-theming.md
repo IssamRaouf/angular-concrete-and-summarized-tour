@@ -7,5 +7,9 @@
 * set up manual ... https://material.angular.io/guide/getting-started
 
 3) custom theme : `src/app/assets/styles/_theme.scss;`
-                  
-    
+4) create matreial.module.ts and import export modules .. as you wish , then import it in app.module.ts ..        
+
+
+#### NB: for grid we can use flexbox with (mixins sass..) ,
+ but i prefer use bootstrap grid
+1) install  bootstrap   `npm install -S bootstrap`
