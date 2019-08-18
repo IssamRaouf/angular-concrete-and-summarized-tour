@@ -8,7 +8,7 @@ import {TicketTypeEnum} from '../enum/ticket-type.enum';
     styleUrls: ['./todo.component.scss']
 })
 export class TodoComponent implements OnInit {
-    public  ticketListMook: Array<Ticket> = [];
+    public ticketListMook: Array<Ticket> = [];
     private descriptionMook = 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut';
 
     constructor() {
@@ -24,4 +24,7 @@ export class TodoComponent implements OnInit {
     ngOnInit() {
     }
 
+    public addTicket(ticket: Ticket): void {
+        this.ticketListMook.unshift(ticket);
+    }
 }
