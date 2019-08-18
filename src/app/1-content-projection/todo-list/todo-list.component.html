@@ -1,13 +1,17 @@
 <div class="container-todo-list">
+    <!--BEGIN  projection de contenu by element tag-->
+    <ng-content select="h3"></ng-content>
+    <!--END  projection de contenu by element tag-->
     <div class="row">
+
 
         <ng-template *ngIf="ticketList.length == 0; else ticketsShow;">
             <div class="alert alert-info"> aucune Ticket n'existe, pouvez-vous l'ajouter !</div>
         </ng-template>
 
-
-
         <ng-template #ticketsShow>
+
+
             <div class="col-lg-4" *ngFor="let ticket of ticketList">
                 <mat-card>
                     <mat-card-header>
@@ -26,9 +30,13 @@
                     </mat-card-actions>
                 </mat-card>
             </div>
+
         </ng-template>
 
     </div>
 
+    <!--BEGIN  projection de contenu by class-->
+    <ng-content select=".hello-world"></ng-content>
+    <!--END  projection de contenu by class -->
 
 </div>

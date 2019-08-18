@@ -1,4 +1,9 @@
 <div class="container container-todo-form">
+
+    <!--BEGIN  projection de contenu.-->
+     <ng-content></ng-content>
+    <!--END  projection de contenu.-->
+
     <form [formGroup]="formTicket" class="form-container" novalidate>
         <mat-form-field>
             <input matInput placeholder="Le nom de ticket" formControlName="name">
