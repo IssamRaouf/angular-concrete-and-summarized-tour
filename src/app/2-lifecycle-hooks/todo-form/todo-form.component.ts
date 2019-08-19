@@ -1,5 +1,5 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormControl, FormGroup, Validators, FormArray} from '@angular/forms';
 import {TicketTypeEnum} from '../enum/ticket-type.enum';
 import {Ticket} from '../models/ticket.model';
 
@@ -11,7 +11,7 @@ import {Ticket} from '../models/ticket.model';
 export class TodoFormComponent implements OnInit {
     public formTicket: FormGroup;
     public typesAsSelect: Array<object>;
-   @Output() public sendTicket: EventEmitter<Ticket> = new EventEmitter<Ticket>();
+    @Output() public sendTicket: EventEmitter<Ticket> = new EventEmitter<Ticket>();
 
     constructor() {
         this.formTicket = new FormGroup({

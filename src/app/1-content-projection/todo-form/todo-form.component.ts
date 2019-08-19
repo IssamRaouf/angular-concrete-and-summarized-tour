@@ -1,5 +1,5 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormControl, FormGroup, Validators,FormArray} from '@angular/forms';
 import {TicketTypeEnum} from '../enum/ticket-type.enum';
 import {Ticket} from '../models/ticket.model';
 

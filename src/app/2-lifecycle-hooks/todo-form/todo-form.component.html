@@ -1,7 +1,7 @@
 <div class="container container-todo-form">
 
 
-    <form [formGroup]="formTicket" class="form-container" novalidate>
+    <form [formGroup]="formTicket" class="form-container"  #myForm="ngForm" novalidate>
         <mat-form-field>
             <input matInput placeholder="Le nom de ticket" formControlName="name">
             <mat-error *ngIf="controls.name.hasError('required')">Champ obligatoire</mat-error>
