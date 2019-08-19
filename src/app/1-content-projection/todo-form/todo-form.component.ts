@@ -11,7 +11,7 @@ import {Ticket} from '../models/ticket.model';
 export class TodoFormComponent implements OnInit {
     public formTicket: FormGroup;
     public typesAsSelect: Array<object>;
-   @Output() public sendTicket: EventEmitter<Ticket> = new EventEmitter<Ticket>();
+    @Output() public sendTicket: EventEmitter<Ticket> = new EventEmitter<Ticket>();
 
     constructor() {
         this.formTicket = new FormGroup({
@@ -28,6 +28,7 @@ export class TodoFormComponent implements OnInit {
     public onSubmit(): void {
         this.markFormAsTouched(this.formTicket);
         if (this.formTicket.valid) {
+            console.log('formTicket', this.formTicket);
             this.sendTicket.emit(new Ticket(this.formTicket.value));
         }
     }
