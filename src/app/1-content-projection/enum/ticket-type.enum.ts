@@ -3,5 +3,5 @@ export enum TicketTypeEnum {
     INTE = 'Integration',
     DESIGN = 'Design',
     CONCEPTION = 'Conception',
-    'MANAGEMENT' = 'Gestion',
+    MANAGEMENT = 'Gestion',
 }
