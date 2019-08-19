@@ -2,14 +2,22 @@
 
 1) install :`npm install --save @angular/material @angular/cdk @angular/animations`
 
-2) set up theme 
-* with cli  `ng add @angular/material` (install & import {hammerjs, BrowserAnimationsModule},config {angular.json, main.ts , ...},Add Material Icons)
-* set up manual ... https://material.angular.io/guide/getting-started
+2) mettre en place le theme
+* avec cli  `ng add @angular/material` (install & import {hammerjs, BrowserAnimationsModule},config {angular.json, main.ts , ...},Add Material Icons)
+* manual ... https://material.angular.io/guide/getting-started
 
-3) custom theme : `src/app/assets/styles/_theme.scss;`
-4) create matreial.module.ts and import export modules .. as you wish , then import it in app.module.ts ..        
+3) personnalisé theme : `src/app/assets/styles/_theme.scss;`
+
+4) create matrail.module.ts and import export modules exp (MatButtonModule)`.. comme vous le souhaitez
+ , puis importez-le dans app.module.ts ..
 
 
-#### NB: for grid we can use flexbox with (mixins sass..) ,
- but i prefer use bootstrap grid
-1) install  bootstrap   `npm install -S bootstrap`
+5)  pour grid nous pouvons utiliser flexbox avec (mixins sass ..), 
+     mais on a pas besoin de ca sur ce petit projet (sans casser la tete avec responsive =D)
+    ,On va utiliser la grille de bootstrap<br>
+    * installer bootstrap `npm install -S bootstrap` 
+    * import grid & reboot
+    ```
+          @import '~bootstrap/scss/bootstrap-reboot';
+          @import '~bootstrap/scss/bootstrap-grid';`
+    ```

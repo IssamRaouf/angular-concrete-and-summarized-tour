@@ -4,12 +4,12 @@
 Passer des données d'un parent à un enfant avec une liaison d'entrée
 exemple
 ```
-export class HeroChildComponent {
-  @Input() hero: Hero;
+export class MagieChildComponent {
+  @Input() magie: Magie;
   @Input('master') masterName: string;
 }
 in component father 
-<hero [hero]='heroIn' [master]="masterIn">
+<magie [magie]='magieIn' [master]="masterIn">
 ```
 * <strong>@Output</strong><br>
 Passer des données d'un enfant à un parent avec une liaison de sortie
@@ -18,13 +18,13 @@ Passer des données d'un enfant à un parent avec une liaison de sortie
 
 exemple:
 ```
-export class HeroChildComponent {
-  @Input() hero: Hero;
+export class MagieChildComponent {
+  @Input() magie: Magie;
   @Input('master') masterName: string;
   
-  @Output() remove:EventEmitter<Hero> = new EventEmitter<Hero>();
-  removeMe(hero): void {
-   this.remove.emit(hero);
+  @Output() remove:EventEmitter<Magie> = new EventEmitter<Magie>();
+  removeMe(magie): void {
+   this.remove.emit(magie);
   }
 }
 ```
