@@ -1,27 +1,77 @@
 # Revision
+### Motivation
+Aprés avoir cumulé quelques années sur le développement sur le framwork angular , et par exprience , j'avais vu qu'il faut créer ce petit projet pour que je puisse rappler et voir le fonctionement des choses de maniere vite avec lire et tester le truc,
+parce que au moment de developpement on n'oublie quelque choses et comme ca nous allons prendre un peu de temps pour les rappler (doc ,debug etc ) , 
+exctement si nous partons au doc et nous sommes curieux et nous aimons beaucoup ce que nous faisons , nous nous trouvons lire des choses loin de ce que nous avons besoin..
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.9.
+### Le contenu de ce petit projet
+* Documentations et codes
+c'est la resume d'expérience , documentation officiel , 
+et beaucoup des cours que j'avais suivi ,lors de lapprentisage d"angular
 
-## Development server
+### Project requirements
+- NodeJS 
+_ @angular-cli
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+### Guide
+1) git clone projet 
+2) npm install 
+3) Enjoy
+```
 
-## Code scaffolding
+├── src
+│   ├── app
+* premier exemple
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+│   │   ├── 1-content-projection
+│   │   │   ├── enum
+│   │   │   ├── models
+│   │   │   ├── todo
+│   │   │   ├── todo-form
+│   │   │   ├── todo-list
+│   │   │   ├── todo-list
+│   │   │   ├── index.ts
+│   │   │   └── ...
+            ...
+            
+* deuxieme exemple
 
-## Build
+│   │   ├── 2-lifecycle-hooks
+│   │   │   ├── enum
+│   │   │   ├── models
+│   │   │   ├── todo
+│   │   │   ├── todo-form
+│   │   │   ├── todo-list
+│   │   │   ├── todo-list
+│   │   │   ├── index.ts
+│   │   │   └── ...
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+* etc.. 
+```
+<br>
 
-## Running unit tests
+Nous partons a `/src/app/index.ts` 
+et on va changer ce qu'on veut voir 
+par exemple : on veux voir `Content-projection` ,on met tout en commentaire ,on laisse juste exports de `Content-projection` 
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```
+/src/app/index.ts
 
-## Running end-to-end tests
+// 1 - Projection Content
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+ export {TodoComponent, TodoListComponent, TodoFormComponent} from './1-content-projection/index';
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+/* 2 - Lifecycle Hooks
+
+export {TodoComponent, TodoListComponent, TodoFormComponent} from './2-lifecycle-hooks/index';
+* /
+```
+<br>
+
+* <strong>NB :</strong>  pour chaque partie on va jouer avec les memes components {TodoComponent, TodoListComponent, TodoFormComponent} , mais chaque partie a ses propres fonctionalité etc ..
+Sur le AppModule nous allons importer juste ce qu'on a expoter sur `/src/app/index.ts,
+aussi on peut ajouter des nouvelles components sur autres parties si on aurait besoin.
+
+* <strong>NB :</strong>  aprés je vais integer Routing & dashboard & lazyloading (chaque partie est un module)
+
