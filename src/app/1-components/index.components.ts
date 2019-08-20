@@ -12,6 +12,5 @@ export * from './1-content-projection/index';
 
 /*
  * 3) viewChildren  & contentChildren
-
  */
 export * from './3-view_children-content_children/index';
