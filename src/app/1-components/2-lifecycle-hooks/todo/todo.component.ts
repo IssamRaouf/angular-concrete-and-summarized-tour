@@ -25,7 +25,7 @@ export class TodoComponent implements OnInit {
     }
 
     public addTicket(ticket: Ticket): void {
-        // réaffecter la liste pour le hooks (ngOnChanges detected)
+        // réaffecter la liste pour le hooks (sur le child (ngOnChanges detected))
         this.ticketListMook = [ticket, ...this.ticketListMook];
 
         // cette ligne la ajouter à la liste mais ne declanche pas le (ngOnchanges);
