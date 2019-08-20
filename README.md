@@ -30,7 +30,7 @@ _ @angular-cli
 │   │   │   ├── todo-form
 │   │   │   ├── todo-list
 │   │   │   ├── todo-list
-│   │   │   ├── index.ts
+│   │   │   ├── exports.index.ts
 │   │   │   └── ...
             ...
             
@@ -43,19 +43,19 @@ _ @angular-cli
 │   │   │   ├── todo-form
 │   │   │   ├── todo-list
 │   │   │   ├── todo-list
-│   │   │   ├── index.ts
+│   │   │   ├── exports.index.ts
 │   │   │   └── ...
 
 * etc.. 
 ```
 <br>
 
-Nous partons a `/src/app/index.ts` 
+Nous partons a `/src/app/exports.index.ts` 
 et on va changer ce qu'on veut voir 
 par exemple : on veux voir `Content-projection` ,on met tout en commentaire ,on laisse juste exports de `Content-projection` 
 
 ```
-/src/app/index.ts
+/src/app/exports.index.ts
 
 // 1 - Projection Content
 
@@ -70,7 +70,7 @@ export {TodoComponent, TodoListComponent, TodoFormComponent} from './2-lifecycle
 <br>
 
 * <strong>NB :</strong>  pour chaque partie on va jouer avec les memes components {TodoComponent, TodoListComponent, TodoFormComponent} , mais chaque partie a ses propres fonctionalité etc ..
-Sur le AppModule nous allons importer juste ce qu'on a expoter sur `/src/app/index.ts,
+Sur le AppModule nous allons importer juste ce qu'on a expoter sur `/src/app/exports.index.ts,
 aussi on peut ajouter des nouvelles components sur autres parties si on aurait besoin.
 
 * <strong>NB :</strong>  aprés je vais integer Routing & dashboard & lazyloading (chaque partie est un module)
