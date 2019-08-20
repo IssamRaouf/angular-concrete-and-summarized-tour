@@ -8,6 +8,7 @@ import {Ticket} from '../models/ticket.model';
 })
 export class TicketComponent implements OnInit {
     @Input() ticket: Ticket;
+    @Input() name: number;
 
     constructor() {
     }
