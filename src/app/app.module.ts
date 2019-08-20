@@ -4,7 +4,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 
-import {TodoComponent, TodoListComponent, TodoFormComponent} from './index';
+import {TodoComponent, TodoListComponent, TodoFormComponent, TicketComponent} from './index';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MaterialModule} from './material.module';
 
@@ -13,7 +13,8 @@ import {MaterialModule} from './material.module';
         AppComponent,
         TodoComponent,
         TodoListComponent,
-        TodoFormComponent
+        TodoFormComponent,
+        TicketComponent
     ],
     imports: [
         BrowserModule,
