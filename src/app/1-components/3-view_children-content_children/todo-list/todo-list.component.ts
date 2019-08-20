@@ -1,4 +1,15 @@
-import {Component, OnInit, Input, ViewChild, ViewChildren, AfterViewInit, QueryList, ElementRef} from '@angular/core';
+import {
+    Component,
+    OnInit,
+    Input,
+    ViewChild,
+    ViewChildren,
+    AfterViewInit,
+    QueryList,
+    ElementRef,
+    ContentChild,
+    ContentChildren, AfterContentInit
+} from '@angular/core';
 import {Ticket} from '../models/ticket.model';
 import {TicketComponent} from '../ticket/ticket.component';
 
@@ -7,7 +18,7 @@ import {TicketComponent} from '../ticket/ticket.component';
     templateUrl: './todo-list.component.html',
     styleUrls: ['./todo-list.component.scss']
 })
-export class TodoListComponent implements OnInit, AfterViewInit {
+export class TodoListComponent implements OnInit, AfterViewInit, AfterContentInit {
 
     @Input() ticketList: Array<Ticket>;
 
@@ -45,6 +56,16 @@ export class TodoListComponent implements OnInit, AfterViewInit {
      */
     @ViewChild('header', {static: false}) headerRefElem: ElementRef;
 
+    /**
+     * meme que @ViewChild mais il nous donne juste les components projecté par le component hote ici (TodoComponent)
+     */
+    @ContentChild(TicketComponent, {static: false}) ticketContentChild: TicketComponent;
+
+    /**
+     * meme que @ViewChildren mais il nous donne juste les components projecté par le component hote ici (TodoComponent)
+     */
+    @ContentChildren(TicketComponent) ticketContentChildren: QueryList<TicketComponent>;
+
     constructor() {
         // @viewChild
         // ici lorsqu'un composant parent est construit, cela signifie que les enfants ne sont pas encore créés.
@@ -60,6 +81,13 @@ export class TodoListComponent implements OnInit, AfterViewInit {
         // ..
         // comme ca on recoit undefined
         console.log(`constructor - headerRefElem is ${this.headerRefElem}`);
+
+
+        // @ContentChild ticketContentChild
+        console.log(`constructor - ticketViewChild is ${this.ticketContentChild}`);
+
+        // @ContentChildren content childrenb
+        console.log(`constructor - ticketContentChildren is ${this.ticketContentChildren}`);
     }
 
     ngOnInit(): void {
@@ -69,17 +97,29 @@ export class TodoListComponent implements OnInit, AfterViewInit {
         // @ViewChild
         // ici le ticketViewChild été initialisée , cela signifie que les enfants sont créés.
         // ici vous pouvez voir name (index actuel en ngFor) voir l'html ,comme ca on recoit le premier enfant
-        console.log('ngAfterContentInit - ticketViewChild', this.ticketViewChild);
+        console.log('ngAfterViewInit - ticketViewChild', this.ticketViewChild);
 
 
         // @ViewChildren
         // on peut obtenir result(Array<ticketComponent>) comme array avec toArray
         // voir @QueryList class..
-        console.log('ngAfterContentInit - ticketViewChildren', this.ticketViewChildren.toArray());
+        console.log('ngAfterViewInit - ticketViewChildren', this.ticketViewChildren.toArray());
 
         // interagir avec le dom direct
-        console.log('ngAfterContentInit - headerRefElem is', this.headerRefElem);
+        console.log('ngAfterViewInit - headerRefElem is', this.headerRefElem);
         this.headerRefElem.nativeElement.innerHTML = 'hello form native Element';
+
+
+    }
+
+    ngAfterContentInit(): void {
+
+        // @ContentChild ticketContentChild
+        console.log('ngAfterContentInit - ticketViewChild is ', this.ticketContentChild);
+
+
+        // @ContentChildren content childrenb
+        console.log('ngAfterContentInit - ticketContentChildren is ', this.ticketContentChildren);
     }
 
 }

@@ -8,6 +8,8 @@ import {TicketTypeEnum} from '../enum/ticket-type.enum';
     styleUrls: ['./todo.component.scss']
 })
 export class TodoComponent implements OnInit {
+
+
     public ticketListMook: Array<Ticket>;
     private descriptionMook = 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut';
     /**
@@ -23,7 +25,7 @@ export class TodoComponent implements OnInit {
             new Ticket({name: 'Gestion utilisateur', description: this.descriptionMook, type: TicketTypeEnum.CONCEPTION}),
             new Ticket({name: 'Gestion utilisateur', description: this.descriptionMook, type: TicketTypeEnum.DESIGN}),
         ];
-        this.ticketProjectToList =  new Ticket({
+        this.ticketProjectToList = new Ticket({
             name: 'ticket Projecté a partir de compnent hot (TodoComponent) ',
             description: this.descriptionMook,
             type: TicketTypeEnum.DEV
