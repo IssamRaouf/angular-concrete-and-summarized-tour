@@ -9,3 +9,5 @@ Dans l'architecture Angular, les directives sont finalement partout. Les Compone
 * Les attribute directives : Elles ont pour but de modifier l'apparence ou le comportement d'un élément.
 
 
+
+
