@@ -13,3 +13,5 @@ Ils peuvent également imbriquer en tant qu'enfants de contenu (content children
 * Les enfants de vue (view children) ne sont initialisés qu'au moment où la  AfterViewInit phase de cycle de vie a été exécutée.
 
 * Les enfants de contenu ne sont initialisés qu'au moment où la  AfterContentInit phase de cycle de vie a été exécutée.
+### Exemples
+* Voir todo-list & todo component

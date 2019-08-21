@@ -1,0 +1,43 @@
+.container-todo-list {
+  app-ticket {
+    margin: 5px;
+  }
+
+  .back-red {
+    ::ng-deep .mat-card {
+      color: white;
+      background: red;
+    }
+
+  }
+
+  .back-green {
+    ::ng-deep .mat-card {
+      color: white;
+      background: green;
+    }
+  }
+
+  .back-yellow {
+    ::ng-deep .mat-card {
+      background: yellow;
+      color: black;
+    }
+  }
+
+  .back-gray {
+    ::ng-deep .mat-card {
+      background: gray;
+      color: white;
+    }
+
+  }
+
+  .back-black {
+    ::ng-deep .mat-card {
+      background: black;
+      color: white;
+    }
+  }
+
+}
