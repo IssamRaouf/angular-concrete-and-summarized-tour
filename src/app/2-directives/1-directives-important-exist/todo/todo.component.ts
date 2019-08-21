@@ -25,6 +25,6 @@ export class TodoComponent implements OnInit {
     }
 
     public addTicket(ticket: Ticket): void {
-        this.ticketListMook.unshift(ticket);
+        this.ticketListMook = [ticket, ...this.ticketListMook];
     }
 }

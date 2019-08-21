@@ -8,6 +8,11 @@ Dans l'architecture Angular, les directives sont finalement partout. Les Compone
 
 * Les attribute directives : Elles ont pour but de modifier l'apparence ou le comportement d'un élément.
 
+Exemples :
 
+* Pour *ngFor , *ngIf , *ngSwitch voir todo-list (html)
+
+* NgStyle & ngCLass
+NgStyle vous donne un contrôle fin sur les propriétés individuelles. Mais si vous souhaitez modifier plusieurs propriétés à la fois, il NgClass est plus judicieux de créer une classe qui regroupe ces propriétés et d'ajouter la classe .
 
 
