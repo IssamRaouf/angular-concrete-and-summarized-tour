@@ -3,26 +3,22 @@ import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-
-import {TodoComponent, TodoListComponent, TodoFormComponent, TicketComponent} from './exports.index';
+import {RouterModule} from '@angular/router';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MaterialModule} from './material.module';
 
 @NgModule({
     declarations: [
         AppComponent,
-        TodoComponent,
-        TodoListComponent,
-        TodoFormComponent,
-        TicketComponent
     ],
     imports: [
         BrowserModule,
-        AppRoutingModule,
+        RouterModule,
         BrowserAnimationsModule,
         FormsModule,
         ReactiveFormsModule,
-        MaterialModule
+        MaterialModule,
+        AppRoutingModule,
     ],
     providers: [],
     bootstrap: [AppComponent]

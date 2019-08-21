@@ -12,6 +12,7 @@ export class TodoComponent implements OnInit {
     private descriptionMook = 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut';
 
     constructor() {
+        alert(1);
         this.ticketListMook = [
             new Ticket({name: 'Content projection', description: this.descriptionMook, type: TicketTypeEnum.DEV}),
             new Ticket({name: 'Filtre ticket', description: this.descriptionMook, type: TicketTypeEnum.DEV}),
