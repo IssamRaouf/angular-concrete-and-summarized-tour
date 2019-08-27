@@ -2,10 +2,10 @@
 
     <mat-toolbar color="primary">
         <mat-toolbar-row>
-            <button mat-icon-button (click)="sidenav.toggle()">
-                <mat-icon>menu</mat-icon>
+            <button mat-icon-button class="icon-menu" (click)="sidenav.toggle()">
+                <mat-icon >{{ sidenav.opened ? 'close' : 'menu'}}</mat-icon>
             </button>
-            <h1 class="example-app-name">Responsive App</h1>
+            <h1>Angular Revision</h1>
         </mat-toolbar-row>
     </mat-toolbar>
 
@@ -30,7 +30,22 @@
                     </mat-list>
 
                 </mat-expansion-panel>
-                <!-- END expansion-panel for components -->
+                <!-- END expansion-panel  components -->
+
+                <!-- BEGIN expansion-panel Directives -->
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        Directives
+                    </mat-expansion-panel-header>
+
+
+                    <mat-list role="list">
+                        <mat-list-item role="listitem"><a routerLink="./directives-important-exist" routerLinkActive="active" (click)="sidenav.toggle()">Directives importantes existent</a> </mat-list-item>
+                        <mat-list-item role="listitem"><a routerLink="./directives-custom" routerLinkActive="active" (click)="sidenav.toggle()">Directives personnalisées</a> </mat-list-item>
+                    </mat-list>
+
+                </mat-expansion-panel>
+                <!-- END expansion-panel  Directives -->
 
             </mat-accordion>
         </mat-sidenav>
