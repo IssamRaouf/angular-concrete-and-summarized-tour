@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'revision';
+  title = 'angular-revision';
+  public opened: boolean;
 }

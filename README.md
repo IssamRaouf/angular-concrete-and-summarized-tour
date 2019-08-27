@@ -74,4 +74,3 @@ Sur le AppModule nous allons importer juste ce qu'on a expoter sur `/src/app/exp
 aussi on peut ajouter des nouvelles components sur autres parties si on aurait besoin.
 
 * <strong>NB :</strong>  aprés je vais integer Routing & dashboard & lazyloading (chaque partie est un module)
-
