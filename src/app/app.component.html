@@ -1,5 +1,48 @@
+<div class="app-container">
 
-<div class="container-fuild">
-    <app-todo></app-todo>
-    <router-outlet></router-outlet>
+    <mat-toolbar color="primary">
+        <mat-toolbar-row>
+            <button mat-icon-button (click)="sidenav.toggle()">
+                <mat-icon>menu</mat-icon>
+            </button>
+            <h1 class="example-app-name">Responsive App</h1>
+        </mat-toolbar-row>
+    </mat-toolbar>
+
+
+    <!-- BEGIN sidenav-container -->
+    <mat-sidenav-container>
+
+        <!-- BEGIN sidenav -->
+        <mat-sidenav class="side-nav" #sidenav [mode]="side">
+            <mat-accordion>
+
+                <!-- BEGIN expansion-panel components -->
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        Components
+                    </mat-expansion-panel-header>
+
+                    <mat-list role="list">
+                        <mat-list-item role="listitem"><a routerLink="./content-projection" routerLinkActive="active" (click)="sidenav.toggle()">Content Projection</a> </mat-list-item>
+                        <mat-list-item role="listitem"><a routerLink="./lifecycle-hooks" routerLinkActive="active" (click)="sidenav.toggle()">Lifecycle (hooks)</a> </mat-list-item>
+                        <mat-list-item role="listitem"><a routerLink="./view-content-child-children" routerLinkActive="active" (click)="sidenav.toggle()">ViewChild & CententChild..</a></mat-list-item>
+                    </mat-list>
+
+                </mat-expansion-panel>
+                <!-- END expansion-panel for components -->
+
+            </mat-accordion>
+        </mat-sidenav>
+        <!-- END sidenav -->
+
+        <!-- BEGIN sidenav content -->
+        <mat-sidenav-content>
+            <router-outlet></router-outlet>
+        </mat-sidenav-content>
+        <!-- END sidenav content -->
+
+    </mat-sidenav-container>
+    <!-- END sidenav-container -->
+
 </div>
