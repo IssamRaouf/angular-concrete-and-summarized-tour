@@ -1,7 +1,6 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 
-
 const routes: Routes = [
     {
         path: 'content-projection',
@@ -15,6 +14,17 @@ const routes: Routes = [
         path: 'view-content-child-children',
         loadChildren: () => import('./1-components/3-view_children-content_children/view-content-child-children.module')
             .then(mod => mod.ViewContentChildChildrenModule)
+    },
+
+    {
+        path: 'directives-important-exist',
+        loadChildren: () => import('./2-directives/1-directives-important-exist/directives-important-exist.module')
+            .then(mod => mod.DirectivesImportantExistModule)
+    },
+
+    {
+        path: 'directives-custom',
+        loadChildren: () => import('./2-directives/2-custom-directives/custom-directives.module').then(mod => mod.CustomDirectivesModule)
     },
     {
         path: '',

@@ -8,25 +8,32 @@
   bottom: 0;
   left: 0;
   right: 0;
-  .side-nav,.mat-expansion-panel {
-    min-width: 300px;
+
+  .icon-menu {
+    margin-right: 10px;
+  }
+
+  .side-nav {
+    width: 300px;
 
   }
 
-    .mat-list-item {
+  .mat-list-item {
 
-      a{
-        display: block;
-        text-decoration: none;
-        color: rgba(0,0,0,.87);
-        &.active {
-          color: $color-primary;
-        }
+    a {
+      display: block;
+      text-decoration: none;
+      color: rgba(0, 0, 0, .87);
+
+      &.active {
+        color: $color-primary;
       }
-      &:hover{
-        cursor: pointer;
-        background: #f2f2f2;
-      }
+    }
+
+    &:hover {
+      cursor: pointer;
+      background: #f2f2f2;
+    }
 
 
   }
