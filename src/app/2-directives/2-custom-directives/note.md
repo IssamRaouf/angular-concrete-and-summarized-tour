@@ -42,3 +42,14 @@ export class TicketCssEffet {
     }
 }
 ````
+
+
+* @HostListener<br>
+Nous décorons une méthode de classe par @HostListener pour appeler la fonction à chaque événement.
+* @HostBinding<br>
+Le @HostBinding décorateur prend un paramètre, le nom de la propriété sur l'élément hôte auquel nous voulons nous lier.
+
+* <strong>Exemple 1</strong> sur directives/ticket-Interactive-element.directive.ts && ticket.component.html
+* <strong>Exemple 2</strong> sur directives/caractere-only.directive.ts && todo.form.component.html
+
+
