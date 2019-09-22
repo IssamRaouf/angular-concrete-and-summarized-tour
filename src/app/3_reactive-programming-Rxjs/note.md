@@ -23,13 +23,6 @@ la propagation automatique des données modifiées. flux (stream).
   
 * Apprendre à utiliser RxJS implique de comprendre tous les opérateurs disponibles et comment les utiliser ensemble.
   
-* Les observables sont un modèle pour créer des flux et  de plomberie ensemble avec les opérateurs de créer des chaînes observables .
-  
-* RxJS est une bibliothèque qui nous permet de créer et de travailler avec des observables.
-  
-* Nous pouvons nous abonner à une chaîne observable et recevoir un rappel chaque fois que quelque chose est poussé dans le  dernier flux.
-  
-* Par défaut, les éléments observables sont froids et ne deviennent chauds que lorsqu'ils obtiennent leur premier abonné.
 
 
 
@@ -61,7 +54,6 @@ myObservable.subscribre(
 );
 ```
 
-``
 
 
 
