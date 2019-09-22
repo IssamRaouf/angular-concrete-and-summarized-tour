@@ -27,6 +27,10 @@ const routes: Routes = [
         loadChildren: () => import('./2-directives/2-custom-directives/custom-directives.module').then(mod => mod.CustomDirectivesModule)
     },
     {
+        path: 'reactive-programming',
+        loadChildren: () => import('./3_reactive-programming-Rxjs/rp-rxjs.module').then(mod => mod.RpRxjsModule)
+    },
+    {
         path: '',
         redirectTo: 'content-projection',
         pathMatch: 'full'

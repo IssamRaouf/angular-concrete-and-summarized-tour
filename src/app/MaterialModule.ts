@@ -9,7 +9,7 @@ import {
     MatIconModule,
     MatSidenavModule,
     MatListModule,
-    MatExpansionModule
+    MatExpansionModule,
 } from '@angular/material';
 
 @NgModule({
