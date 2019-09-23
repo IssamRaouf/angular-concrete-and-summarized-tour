@@ -28,7 +28,7 @@ const routes: Routes = [
     },
     {
         path: 'reactive-programming',
-        loadChildren: () => import('./3_reactive-programming-Rxjs/creation/rp-rxjs.module').then(mod => mod.RpRxjsModule)
+        loadChildren: () => import('./3_reactive-programming-Rxjs/rp-rxjs.module').then(mod => mod.RpRxjsModule)
     },
     {
         path: '',
