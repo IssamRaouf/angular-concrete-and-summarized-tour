@@ -2,6 +2,35 @@
     Pipe est une méthode sur Observable utilisée pour la composition des opérateurs. <br>
     pipe a été introduit dans RxJS dans la v5.5 .
 </p>
+<mat-divider></mat-divider>
+<div class="row">
+    <div class="col-6">
+        <h4>Sans la méthode pipe</h4>
+        <p>of(1,2,3,4,5)<br>.map(value => value *2 )<br>.filter(value => value > 4)</p>
+    </div>
+    <div class="col-6">
+        <h4>Avec la méthode pipe</h4>
+        <p>
+            of(1,2,3,4,5).pipe(<br>
+            map(value => value *2 ),<br>
+            filter(value => value > 4)<br>
+            );<br>
+        </p>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="col-12">
+        <p>
+            Même résultat, même concept (opérateurs de composition), syntaxe différente.<br><br>
+            pipe offre beaucoup des avantages ,et voila quelques avantages :<br><br>
+
+            * Il nettoie Observable.prototype en supprimant des opérateurs<br><br>
+            * Cela rend la bibliothèque RxJS plus puissant ...,<br><br>
+            * Cela facilite l’écriture et l’utilisation d’opérateurs tiers<br><br>
+            (puisque vous n’aurez plus à vous soucier de patcher Observable.prototype).<br><br>
+
+        </p>
+    </div>
+</div>
 
 
 <div class="row">
