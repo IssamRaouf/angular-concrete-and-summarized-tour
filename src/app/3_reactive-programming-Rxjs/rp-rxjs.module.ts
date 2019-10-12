@@ -8,10 +8,15 @@ import {CreationComponent} from './creation/creation.component';
 import {PipeComponent} from './pipe/pipe.component';
 import {OperatorMixedComponent} from './operator-mixed/operator-mixed.component';
 import {ServiceMockDataService} from './mock/service-mock-data.service';
+import {CombinationComponent} from './operator-mixed/combination/combination.component';
+import {CombinelatestComponent} from './operator-mixed/combination/combinelatest/combinelatest.component';
+import {ConcatComponent} from './operator-mixed/combination/concat/concat.component';
+import {EndwithComponent} from './operator-mixed/combination/endwith/endwith.component';
 
 @NgModule({
     imports: [CommonModule, MaterialModule, FormsModule, ReactiveFormsModule, RpRxjsRoutingModule],
-    declarations: [TodoComponent, CreationComponent, PipeComponent, OperatorMixedComponent],
+    declarations: [TodoComponent, CreationComponent, PipeComponent, OperatorMixedComponent,
+        CombinationComponent, CombinelatestComponent, ConcatComponent, EndwithComponent],
     providers: [ServiceMockDataService]
 })
 export class RpRxjsModule {

@@ -1,6 +1,7 @@
-
-
 export interface PostInterface {
-    uuid:number;
-
+    uuid: string;
+    author: string;
+    title: string;
+    content: string;
+    category: string;
 }

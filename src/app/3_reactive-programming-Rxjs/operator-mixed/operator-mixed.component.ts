@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ServiceMockDataService} from '../mock/service-mock-data.service';
+
 
 @Component({
     selector: 'app-operator-mixed',
@@ -8,11 +8,10 @@ import {ServiceMockDataService} from '../mock/service-mock-data.service';
 })
 export class OperatorMixedComponent implements OnInit {
 
-    constructor(private serviceMockData: ServiceMockDataService) {
+    constructor() {
     }
 
     ngOnInit() {
-        this.serviceMockData.getPosts();
     }
 
 }
