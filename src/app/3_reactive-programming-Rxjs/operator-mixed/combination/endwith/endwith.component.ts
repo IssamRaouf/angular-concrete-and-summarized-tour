@@ -13,7 +13,7 @@ export class EndwithComponent implements OnInit {
     }
 
     ngOnInit() {
-        const obser = of(1, 2, 3);
+        const obser = of('Issam', 'Raouf','Hello');
         obser.pipe(endWith('Goodbye')).subscribe( res => console.log('res endWith', res));
     }
 
