@@ -1,0 +1,45 @@
+<h1>Concat</h1>
+<p>
+    Abonnez-vous aux observables afin que les précédents soient terminés
+</p>
+<h3>Exemple balabla :</h3>
+<p>
+    <strong> observable1</strong> va émettre : 1 ,puis 2 , puis 3 et lance complete <br><br>
+    <strong> observable2</strong> va émettre : 8 ,puis 13 , puis 19 et lance complete <br><br>
+    <strong> observable3</strong> va émettre : 33 ,puis 44 , puis 99 et lance complete <br><br>
+    <strong>concat(observable1,observable2,observable3).subscribe(res => console.log('res',res))</strong> => result<br>
+    1<br>
+    2<br>
+    3<br>
+    8<br>
+    13<br>
+    19<br>
+    33<br>
+    44<br>
+    99<br>
+</p>
+<h3>Exemple code</h3>
+<div class="row">
+    <div class="col">
+        <p>
+            <code>
+                {{"const obser1 = of(11, 22, 'Issam'); "}}<br>
+                {{"const obser2 = of(33, 77, 'Raouf');"}}<br>
+                {{"const obser3 = of(99, 88, 'Issam Raouf');"}}<br>
+                {{"concat(obser1, obser2, obser3).subscribe(res => console.log('res concat', res));"}}
+            </code>
+        </p>
+    </div>
+    <mat-divider [vertical]="true"></mat-divider>
+    <div class="col">
+        11 <br>
+        22 <br>
+        Issam <br>
+        33 <br>
+        77 <br>
+        Raouf <br>
+        99 <br>
+        88 <br>
+        Issam Raouf <strong> Résultat final aprés les 'observables' ont fini</strong>
+    </div>
+</div>

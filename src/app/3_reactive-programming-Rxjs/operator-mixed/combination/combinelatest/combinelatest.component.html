@@ -1,0 +1,43 @@
+<h1>combineLatest</h1>
+<p>
+    Quand un observable émet une valeur, émet la dernière valeur émise par chacun.<br><br>
+</p>
+<h3>Exemple balabla :</h3>
+<p>
+    <strong>observable1</strong> va émettre => <strong>'1'</strong> , aprés 1 seconde va émettre
+    <strong>'8'</strong> <br>
+    <strong>observable2</strong> va émettre => <strong>'11'</strong> , aprés 3 secondes va émettre <strong>'13'</strong>
+    , encore
+    aprés 3 secondes va émettre <strong>'18</strong><br><br>
+    <strong>combineLatest(observable1,observable2).subscribe(result => console.log(result))</strong>, result
+    =><br><br>
+    seconde 0 => <strong>[1,11]</strong><br>
+    seconde 1 => <strong>[8,11]</strong><br>
+    secondes 3 => <strong>[8,13]</strong><br>
+    secondes 6 => <strong>[8,18] Résultat final aprés les deux 'observable' ont fini (observable émet complete func)</strong>
+
+</p>
+<h3>Exemple code</h3>
+<div class="row">
+    <div class="col">
+        <p>
+            <code>
+                {{" const Observable1 = timer(1000, 1000).pipe(take(3), map(res => `Observable One Val: ${res}`))"}}<br><br>
+                {{"const Observable2 = timer(1000, 3000).pipe(take(5), map(res => `Observable Tow Val: ${res}`)) "}}<br><br>
+                {{"combineLatest(Observable1, Observable2).subscribe(result => console.log(result));"}}
+
+            </code>
+
+        </p>
+    </div>
+    <mat-divider [vertical]="true"></mat-divider>
+    <div class="col">
+        ["Observable One Val: 0", "Observable Tow Val: 0"]<br><br>
+        ["Observable One Val: 1", "Observable Tow Val: 0"]<br><br>
+        ["Observable One Val: 2", "Observable Tow Val: 0"]<br><br>
+        ["Observable One Val: 2", "Observable Tow Val: 1"]<br><br>
+        ["Observable One Val: 2", "Observable Tow Val: 2"]<br><br>
+        ["Observable One Val: 2", "Observable Tow Val: 3"]<br><br>
+        ["Observable One Val: 2", "Observable Tow Val: 4"] <strong>Résultat final aprés les deux 'observable' ont fini (observable émet complete func)</strong>
+    </div>
+</div>
