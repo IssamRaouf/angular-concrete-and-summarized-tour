@@ -19,7 +19,8 @@ export class PairwiseComponent implements OnInit {
         ).pipe(
             pairwise()
         );
-        observ.subscribe(res => console.log('pairwise res is ', res));
+       //  enlever le commentaire et voir résultat sur la console
+      //  observ.subscribe(res => console.log('pairwise res is ', res));
     }
 
 }
