@@ -13,12 +13,14 @@ import {CombinelatestComponent} from './operator-mixed/combination/combinelatest
 import {ConcatComponent} from './operator-mixed/combination/concat/concat.component';
 import {EndwithComponent} from './operator-mixed/combination/endwith/endwith.component';
 import {StartwithComponent} from './operator-mixed/combination/startwith/startwith.component';
+import {MergeComponent} from './operator-mixed/combination/merge/merge.component';
+import {PairwiseComponent} from './operator-mixed/combination/pairwise/pairwise.component';
 
 @NgModule({
     imports: [CommonModule, MaterialModule, FormsModule, ReactiveFormsModule, RpRxjsRoutingModule],
     declarations: [TodoComponent, CreationComponent, PipeComponent, OperatorMixedComponent,
         CombinationComponent, CombinelatestComponent, ConcatComponent, StartwithComponent
-        , EndwithComponent],
+        , EndwithComponent, MergeComponent, PairwiseComponent],
     providers: [ServiceMockDataService]
 })
 export class RpRxjsModule {

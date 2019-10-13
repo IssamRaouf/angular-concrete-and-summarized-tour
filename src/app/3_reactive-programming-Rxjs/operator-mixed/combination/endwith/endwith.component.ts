@@ -14,7 +14,8 @@ export class EndwithComponent implements OnInit {
 
     ngOnInit() {
         const obser = of('Issam', 'Raouf','Hello');
-        obser.pipe(endWith('Goodbye')).subscribe( res => console.log('res endWith', res));
+        // enlever le commentaire et voir résultat sur la console
+        // obser.pipe(endWith('Goodbye')).subscribe( res => console.log('res endWith', res));
     }
 
 }

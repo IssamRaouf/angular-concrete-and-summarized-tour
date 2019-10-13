@@ -12,12 +12,11 @@ export class ConcatComponent implements OnInit {
     }
 
     ngOnInit() {
-
         const obser1 = of(11, 22, 'Issam');
         const obser2 = of(33, 77, 'Raouf');
         const obser3 = of(99, 88, 'Issam Raouf');
-
-        const concatObsers = concat(obser1, obser2, obser3).subscribe(res => console.log('res concat', res));
+        // enlever le commentaire et voir résultat sur la console
+        //const concatObsers = concat(obser1, obser2, obser3).subscribe(res => console.log('res concat', res));
     }
 
 }

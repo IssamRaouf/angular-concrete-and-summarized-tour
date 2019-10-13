@@ -13,7 +13,8 @@ export class StartwithComponent implements OnInit {
 
   ngOnInit() {
     const obser = of('Issam', 'Raouf');
-    obser.pipe(startWith('Hello')).subscribe( res => console.log('res startWith', res));
+    // enlever le commentaire et voir résultat sur la console
+    // obser.pipe(startWith('Hello')).subscribe( res => console.log('res startWith', res));
   }
 
 }
