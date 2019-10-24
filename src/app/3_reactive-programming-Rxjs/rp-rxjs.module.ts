@@ -17,12 +17,17 @@ import {MergeComponent} from './operator-mixed/combination/merge/merge.component
 import {PairwiseComponent} from './operator-mixed/combination/pairwise/pairwise.component';
 import {RaceComponent} from './operator-mixed/combination/race/race.component';
 import {ForkjoinComponent} from './operator-mixed/combination/forkjoin/forkjoin.component';
+import {MergeallComponent} from './operator-mixed/combination/mergeall/mergeall.component';
+import {ZipComponent} from './operator-mixed/combination/zip/zip.component';
+import {ConditionalComponent} from './operator-mixed/conditional/conditional.component';
+import {DefaultifemptyComponent} from './operator-mixed/conditional/defaultifempty/defaultifempty.component';
 
 @NgModule({
     imports: [CommonModule, MaterialModule, FormsModule, ReactiveFormsModule, RpRxjsRoutingModule],
     declarations: [TodoComponent, CreationComponent, PipeComponent, OperatorMixedComponent,
         CombinationComponent, CombinelatestComponent, ConcatComponent, StartwithComponent
-        , EndwithComponent, MergeComponent, PairwiseComponent, RaceComponent,ForkjoinComponent],
+        , EndwithComponent, MergeComponent, PairwiseComponent, RaceComponent, ForkjoinComponent, MergeallComponent, ZipComponent,
+        ConditionalComponent, DefaultifemptyComponent],
     providers: [ServiceMockDataService]
 })
 export class RpRxjsModule {
