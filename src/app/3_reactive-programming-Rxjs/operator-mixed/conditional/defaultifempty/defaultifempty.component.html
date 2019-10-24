@@ -1,0 +1,20 @@
+<h1>defaultIfEmpty</h1>
+<p>
+    Émettre une valeur donnée si rien n'est émis avant la fin.
+</p>
+
+<h3>Exemple code</h3>
+<div class="row">
+    <div class="col">
+        <p>
+            <code>
+                {{"const observ = of().pipe(defaultIfEmpty('Hello world'));"}}
+                {{"observ.subscribe(res => console.log('Result is :', res));"}}
+            </code>
+        </p>
+    </div>
+    <mat-divider [vertical]="true"></mat-divider>
+    <div class="col">
+        Result is : Hello world
+    </div>
+</div>
