@@ -16,7 +16,7 @@ export class DefaultifemptyComponent implements OnInit {
 
     ngOnInit() {
         const observ = of().pipe(defaultIfEmpty('hello world'));
-        observ.subscribe(res => console.log('Result is :', res));
+       // observ.subscribe(res => console.log('Result is :', res));
     }
 
 }
