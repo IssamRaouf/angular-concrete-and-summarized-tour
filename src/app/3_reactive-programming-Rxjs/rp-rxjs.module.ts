@@ -21,13 +21,17 @@ import {MergeallComponent} from './operator-mixed/combination/mergeall/mergeall.
 import {ZipComponent} from './operator-mixed/combination/zip/zip.component';
 import {ConditionalComponent} from './operator-mixed/conditional/conditional.component';
 import {DefaultifemptyComponent} from './operator-mixed/conditional/defaultifempty/defaultifempty.component';
+import {EveryComponent} from './operator-mixed/conditional/every/every.component';
+import {SequenceEqualComponent} from './operator-mixed/conditional/sequence-equal/sequence-equal.component';
+import {ErrorHandlingComponent} from './operator-mixed/error-handling/error-handling.component';
+import {CatchErrorComponent} from './operator-mixed/error-handling/catch-error/catch-error.component';
 
 @NgModule({
     imports: [CommonModule, MaterialModule, FormsModule, ReactiveFormsModule, RpRxjsRoutingModule],
     declarations: [TodoComponent, CreationComponent, PipeComponent, OperatorMixedComponent,
         CombinationComponent, CombinelatestComponent, ConcatComponent, StartwithComponent
         , EndwithComponent, MergeComponent, PairwiseComponent, RaceComponent, ForkjoinComponent, MergeallComponent, ZipComponent,
-        ConditionalComponent, DefaultifemptyComponent],
+        ConditionalComponent, DefaultifemptyComponent, EveryComponent, SequenceEqualComponent, ErrorHandlingComponent, CatchErrorComponent],
     providers: [ServiceMockDataService]
 })
 export class RpRxjsModule {
