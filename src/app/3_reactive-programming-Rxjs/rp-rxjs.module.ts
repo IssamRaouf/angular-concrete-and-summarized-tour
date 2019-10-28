@@ -25,13 +25,15 @@ import {EveryComponent} from './operator-mixed/conditional/every/every.component
 import {SequenceEqualComponent} from './operator-mixed/conditional/sequence-equal/sequence-equal.component';
 import {ErrorHandlingComponent} from './operator-mixed/error-handling/error-handling.component';
 import {CatchErrorComponent} from './operator-mixed/error-handling/catch-error/catch-error.component';
+import {RetryComponent} from './operator-mixed/error-handling/retry/retry.component';
 
 @NgModule({
     imports: [CommonModule, MaterialModule, FormsModule, ReactiveFormsModule, RpRxjsRoutingModule],
     declarations: [TodoComponent, CreationComponent, PipeComponent, OperatorMixedComponent,
         CombinationComponent, CombinelatestComponent, ConcatComponent, StartwithComponent
         , EndwithComponent, MergeComponent, PairwiseComponent, RaceComponent, ForkjoinComponent, MergeallComponent, ZipComponent,
-        ConditionalComponent, DefaultifemptyComponent, EveryComponent, SequenceEqualComponent, ErrorHandlingComponent, CatchErrorComponent],
+        ConditionalComponent, DefaultifemptyComponent, EveryComponent, SequenceEqualComponent,
+        ErrorHandlingComponent, CatchErrorComponent, RetryComponent],
     providers: [ServiceMockDataService]
 })
 export class RpRxjsModule {
