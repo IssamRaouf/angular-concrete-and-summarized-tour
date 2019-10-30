@@ -29,6 +29,8 @@ import {RetryComponent} from './operator-mixed/error-handling/retry/retry.compon
 import {MulticastingComponent} from './operator-mixed/multicasting/multicasting.component';
 import {PublishComponent} from './operator-mixed/multicasting/publish/publish.component';
 import {ShareComponent} from './operator-mixed/multicasting/share/share.component';
+import {FilteringComponent} from './operator-mixed/filtering/filtering.component';
+import {AuditComponent} from './operator-mixed/filtering/audit/audit.component';
 
 
 @NgModule({
@@ -37,7 +39,8 @@ import {ShareComponent} from './operator-mixed/multicasting/share/share.componen
         CombinationComponent, CombinelatestComponent, ConcatComponent, StartwithComponent
         , EndwithComponent, MergeComponent, PairwiseComponent, RaceComponent, ForkjoinComponent, MergeallComponent, ZipComponent,
         ConditionalComponent, DefaultifemptyComponent, EveryComponent, SequenceEqualComponent,
-        ErrorHandlingComponent, CatchErrorComponent, RetryComponent, MulticastingComponent, PublishComponent, ShareComponent],
+        ErrorHandlingComponent, CatchErrorComponent, RetryComponent, MulticastingComponent, PublishComponent,
+        ShareComponent, FilteringComponent, AuditComponent],
     providers: [ServiceMockDataService]
 })
 export class RpRxjsModule {

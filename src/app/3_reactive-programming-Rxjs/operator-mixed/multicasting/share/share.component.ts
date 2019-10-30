@@ -23,8 +23,8 @@ export class ShareComponent implements OnInit {
         );
         const sharedObserv = observ.pipe(share());
 
-        const subscribeOne = sharedObserv.subscribe(val => console.log('subscribeOne ', val));
-        const subscribeTow = sharedObserv.subscribe(val => console.log('subscribeTow ', val));
+      //  const subscribeOne = sharedObserv.subscribe(val => console.log('subscribeOne ', val));
+       // const subscribeTow = sharedObserv.subscribe(val => console.log('subscribeTow ', val));
 
     }
 
