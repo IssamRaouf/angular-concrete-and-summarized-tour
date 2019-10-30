@@ -28,6 +28,8 @@ import {CatchErrorComponent} from './operator-mixed/error-handling/catch-error/c
 import {RetryComponent} from './operator-mixed/error-handling/retry/retry.component';
 import {MulticastingComponent} from './operator-mixed/multicasting/multicasting.component';
 import {PublishComponent} from './operator-mixed/multicasting/publish/publish.component';
+import {ShareComponent} from './operator-mixed/multicasting/share/share.component';
+
 
 @NgModule({
     imports: [CommonModule, MaterialModule, FormsModule, ReactiveFormsModule, RpRxjsRoutingModule],
@@ -35,7 +37,7 @@ import {PublishComponent} from './operator-mixed/multicasting/publish/publish.co
         CombinationComponent, CombinelatestComponent, ConcatComponent, StartwithComponent
         , EndwithComponent, MergeComponent, PairwiseComponent, RaceComponent, ForkjoinComponent, MergeallComponent, ZipComponent,
         ConditionalComponent, DefaultifemptyComponent, EveryComponent, SequenceEqualComponent,
-        ErrorHandlingComponent, CatchErrorComponent, RetryComponent, MulticastingComponent, PublishComponent],
+        ErrorHandlingComponent, CatchErrorComponent, RetryComponent, MulticastingComponent, PublishComponent, ShareComponent],
     providers: [ServiceMockDataService]
 })
 export class RpRxjsModule {
