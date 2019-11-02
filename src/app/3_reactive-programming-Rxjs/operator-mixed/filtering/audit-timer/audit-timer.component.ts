@@ -15,7 +15,7 @@ export class AuditTimerComponent implements OnInit {
     ngOnInit() {
         const source = fromEvent(document, 'click');
         const result = source.pipe(auditTime(1000));
-        result.subscribe(res => console.log('Result : ', res));
+      //  result.subscribe(res => console.log('Result : ', res));
     }
 
 }
