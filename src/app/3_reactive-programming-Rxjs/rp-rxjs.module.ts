@@ -31,6 +31,7 @@ import {PublishComponent} from './operator-mixed/multicasting/publish/publish.co
 import {ShareComponent} from './operator-mixed/multicasting/share/share.component';
 import {FilteringComponent} from './operator-mixed/filtering/filtering.component';
 import {AuditComponent} from './operator-mixed/filtering/audit/audit.component';
+import {AuditTimerComponent} from './operator-mixed/filtering/audit-timer/audit-timer.component';
 
 
 @NgModule({
@@ -40,7 +41,7 @@ import {AuditComponent} from './operator-mixed/filtering/audit/audit.component';
         , EndwithComponent, MergeComponent, PairwiseComponent, RaceComponent, ForkjoinComponent, MergeallComponent, ZipComponent,
         ConditionalComponent, DefaultifemptyComponent, EveryComponent, SequenceEqualComponent,
         ErrorHandlingComponent, CatchErrorComponent, RetryComponent, MulticastingComponent, PublishComponent,
-        ShareComponent, FilteringComponent, AuditComponent],
+        ShareComponent, FilteringComponent, AuditComponent, AuditTimerComponent],
     providers: [ServiceMockDataService]
 })
 export class RpRxjsModule {

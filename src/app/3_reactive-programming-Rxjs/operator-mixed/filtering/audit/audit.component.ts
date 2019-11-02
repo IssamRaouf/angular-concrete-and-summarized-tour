@@ -17,9 +17,9 @@ export class AuditComponent implements OnInit {
 
         const source = fromEvent(document, 'click');
         const result = source.pipe(audit(ev => interval(3000)));
-        result.subscribe(element => {
+      /*  result.subscribe(element => {
             console.log(element);
-        });
+        });*/
     }
 
 }
