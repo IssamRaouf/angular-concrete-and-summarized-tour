@@ -1,0 +1,20 @@
+<h1>First</h1>
+<p>N'émet que la première valeur (ou la première qui remplit certaines conditions) émise par la source Observable..</p>
+
+<h3>Exemple code</h3>
+
+<div class="row">
+    <div class="col">
+        <p>
+            <code>
+                {{"   const source = of(1, 2, 3, 4, 5, 6);"}}<br>
+                {{"  const result = source.pipe(first(num => num  === 7, 'nothing'));"}}<br>
+                {{"  result.subscribe(res => console.log('Result : ', res));"}}<br>
+            </code>
+        </p>
+    </div>
+    <mat-divider [vertical]="true"></mat-divider>
+    <div class="col">
+        Result : nothing (aucun item egale 7 , default)<br>
+    </div>
+</div>
