@@ -25,13 +25,35 @@ import {EveryComponent} from './operator-mixed/conditional/every/every.component
 import {SequenceEqualComponent} from './operator-mixed/conditional/sequence-equal/sequence-equal.component';
 import {ErrorHandlingComponent} from './operator-mixed/error-handling/error-handling.component';
 import {CatchErrorComponent} from './operator-mixed/error-handling/catch-error/catch-error.component';
+import {RetryComponent} from './operator-mixed/error-handling/retry/retry.component';
+import {MulticastingComponent} from './operator-mixed/multicasting/multicasting.component';
+import {PublishComponent} from './operator-mixed/multicasting/publish/publish.component';
+import {ShareComponent} from './operator-mixed/multicasting/share/share.component';
+import {FilteringComponent} from './operator-mixed/filtering/filtering.component';
+import {AuditComponent} from './operator-mixed/filtering/audit/audit.component';
+import {AuditTimerComponent} from './operator-mixed/filtering/audit-timer/audit-timer.component';
+import {DebounceComponent} from './operator-mixed/filtering/debounce/debounce.component';
+import {DebounceTimeComponent} from './operator-mixed/filtering/debounce-time/debounce-time.component';
+import {DistinctComponent} from './operator-mixed/filtering/distinct/distinct.component';
+import {DistinctUntilChangedComponent} from './operator-mixed/filtering/distinct-until-changed/distinct-until-changed.component';
+import {DistinctUntilKeyChangedComponent} from './operator-mixed/filtering/distinct-until-key-changed/distinct-until-key-changed.component';
+import {FilterComponent} from './operator-mixed/filtering/filter/filter.component';
+import {FindComponent} from './operator-mixed/filtering/find/find.component';
+import {FirstComponent} from './operator-mixed/filtering/first/first.component';
+import {LastComponent} from './operator-mixed/filtering/last/last.component';
+import {SampleComponent} from './operator-mixed/filtering/sample/sample.component';
+
 
 @NgModule({
     imports: [CommonModule, MaterialModule, FormsModule, ReactiveFormsModule, RpRxjsRoutingModule],
     declarations: [TodoComponent, CreationComponent, PipeComponent, OperatorMixedComponent,
         CombinationComponent, CombinelatestComponent, ConcatComponent, StartwithComponent
         , EndwithComponent, MergeComponent, PairwiseComponent, RaceComponent, ForkjoinComponent, MergeallComponent, ZipComponent,
-        ConditionalComponent, DefaultifemptyComponent, EveryComponent, SequenceEqualComponent, ErrorHandlingComponent, CatchErrorComponent],
+        ConditionalComponent, DefaultifemptyComponent, EveryComponent, SequenceEqualComponent,
+        ErrorHandlingComponent, CatchErrorComponent, RetryComponent, MulticastingComponent, PublishComponent,
+        ShareComponent, FilteringComponent, AuditComponent, AuditTimerComponent, DebounceComponent,
+        DebounceTimeComponent, DistinctComponent, DistinctUntilChangedComponent, DistinctUntilKeyChangedComponent,
+        FilterComponent, FindComponent, FirstComponent, LastComponent, SampleComponent],
     providers: [ServiceMockDataService]
 })
 export class RpRxjsModule {

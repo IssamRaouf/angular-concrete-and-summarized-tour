@@ -1,0 +1,21 @@
+<h1>Last</h1>
+<p>Émettez la dernière valeur émise par la source à la fin, en fonction de l'expression fournie.</p>
+
+<h3>Exemple code</h3>
+
+<div class="row">
+    <div class="col">
+        <p>
+            <code>
+                {{"const source = of(1, 2, 3, 4, 5, 6);"}}<br>
+                {{"const result = source.pipe(last(num => num % 2 === 0));"}}<br>
+
+                {{"result.subscribe(res => console.log('Result : ', res));"}}<br>
+            </code>
+        </p>
+    </div>
+    <mat-divider [vertical]="true"></mat-divider>
+    <div class="col">
+        Result : 6 <br>
+    </div>
+</div>

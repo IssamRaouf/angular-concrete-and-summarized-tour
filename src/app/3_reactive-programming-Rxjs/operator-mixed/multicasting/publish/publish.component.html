@@ -1,0 +1,44 @@
+<h1>Publish</h1>
+<p>
+    Partager la source et faire chaud en appelant connect.
+</p>
+
+<h3>Exemple code</h3>
+<div class="row">
+    <div class="col">
+        <p>
+            <button mat-raised-button (click)="connect()">Ouvrir console & Connect</button>
+            <br>
+            <code>
+                {{"const source = interval(1000).pipe(take(5));"}}<br>
+                {{"this.observ = source.pipe("}}<br>
+                {{"map(val => `Result : ${val}`),"}}<br>
+                {{"publish() ConnectableObservable<'string'>;"}}<br>
+                {{"console.log('observ',this.observ);"}}<br>
+                {{"const subscribeOne = this.observ.subscribe(val =>"}}<br>
+                {{"console.log(`subscribeOne , ${val}`)"}}<br>
+                {{");"}}<br>
+                {{"const subscribeTwo = this.observ.subscribe(val =>"}}<br>
+                {{"console.log(`subscribeTwo , ${val}`)"}}<br>
+                {{");"}}<br>
+
+            </code>
+        </p>
+    </div>
+    <mat-divider [vertical]="true"></mat-divider>
+    <div class="col">
+        subscribeOne , Result : 0<br>
+        subscribeTwo , Result : 0<br>
+        subscribeOne , Result : 1<br>
+        subscribeTwo , Result : 1<br>
+        subscribeOne , Result : 2<br>
+        subscribeTwo , Result : 2<br>
+        subscribeOne , Result : 3<br>
+        subscribeTwo , Result : 3<br>
+        subscribeOne , Result : 4<br>
+        subscribeTwo , Result : 4<br>
+
+
+    </div>
+</div>
+

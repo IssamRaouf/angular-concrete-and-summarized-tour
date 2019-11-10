@@ -1,0 +1,22 @@
+<h1>Find</h1>
+<p>N'émet que la première valeur émise par la source Observable qui remplit certaines conditions.</p>
+
+<h3>Exemple code</h3>
+
+<div class="row">
+    <div class="col">
+        <p>
+            <code>
+                {{" const source = of(1, 2, 3, 4, 5, 6);"}}<br>
+                {{" const result = source.pipe(find(num => num % 2 === 0));"}}<br>
+
+                {{" result.subscribe(res => console.log('Result : ', res));"}}<br>
+
+            </code>
+        </p>
+    </div>
+    <mat-divider [vertical]="true"></mat-divider>
+    <div class="col">
+        Result : 2<br>
+    </div>
+</div>

@@ -15,7 +15,7 @@ export class CatchErrorComponent implements OnInit {
   ngOnInit() {
     const errorTh = throwError('ERROR 404!');
     const obser = errorTh.pipe(catchError(error => of(`Error, ${error}`)));
-    obser.subscribe( res => console.log('Result : ', res));
+   // obser.subscribe( res => console.log('Result : ', res));
   }
 
 }

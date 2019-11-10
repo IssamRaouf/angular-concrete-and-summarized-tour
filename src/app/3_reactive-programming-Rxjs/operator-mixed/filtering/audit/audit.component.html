@@ -1,0 +1,26 @@
+<h1>Audit</h1>
+<p>
+    Ignore les valeurs source pour une durée déterminée par un autre observable,
+    puis émet la valeur la plus récente de l'observateur source, puis répète ce processus.
+</p>
+
+<h3>Exemple code</h3>
+<div class="row">
+    <div class="col">
+        <p>
+            <code>
+                {{"const source = fromEvent(document, 'click');"}}<br>
+                {{"const result = source.pipe(audit(ev => interval(3000)));"}}<br>
+                {{"result.subscribe(x => {"}}<br>
+                {{"console.log(x);"}}<br>
+                {{"this.resultIn = x;"}}<br>
+                {{"});"}}<br>
+                {{"result.subscribe(x => console.log(x));"}}<br>
+            </code>
+        </p>
+    </div>
+    <mat-divider [vertical]="true"></mat-divider>
+    <div class="col">
+        Result (enlever le commentaire et voir résultat sur la console)
+    </div>
+</div>
