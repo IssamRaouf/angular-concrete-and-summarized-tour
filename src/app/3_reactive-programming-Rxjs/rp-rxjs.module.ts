@@ -40,6 +40,7 @@ import {DistinctUntilKeyChangedComponent} from './operator-mixed/filtering/disti
 import {FilterComponent} from './operator-mixed/filtering/filter/filter.component';
 import {FindComponent} from './operator-mixed/filtering/find/find.component';
 import {FirstComponent} from './operator-mixed/filtering/first/first.component';
+import {LastComponent} from './operator-mixed/filtering/last/last.component';
 
 
 @NgModule({
@@ -51,7 +52,7 @@ import {FirstComponent} from './operator-mixed/filtering/first/first.component';
         ErrorHandlingComponent, CatchErrorComponent, RetryComponent, MulticastingComponent, PublishComponent,
         ShareComponent, FilteringComponent, AuditComponent, AuditTimerComponent, DebounceComponent,
         DebounceTimeComponent, DistinctComponent, DistinctUntilChangedComponent, DistinctUntilKeyChangedComponent,
-        FilterComponent, FindComponent, FirstComponent],
+        FilterComponent, FindComponent, FirstComponent, LastComponent],
     providers: [ServiceMockDataService]
 })
 export class RpRxjsModule {
