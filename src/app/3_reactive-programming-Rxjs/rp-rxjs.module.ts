@@ -42,6 +42,12 @@ import {FindComponent} from './operator-mixed/filtering/find/find.component';
 import {FirstComponent} from './operator-mixed/filtering/first/first.component';
 import {LastComponent} from './operator-mixed/filtering/last/last.component';
 import {SampleComponent} from './operator-mixed/filtering/sample/sample.component';
+import {SkipComponent} from './operator-mixed/filtering/skip/skip.component';
+import {SkipUntilComponent} from './operator-mixed/filtering/skip-until/skip-until.component';
+import {SkipWhileComponent} from './operator-mixed/filtering/skip-while/skip-while.component';
+import {TakeComponent} from './operator-mixed/filtering/take/take.component';
+import {TakeLastComponent} from './operator-mixed/filtering/take-last/take-last.component';
+import {TakeUntilComponent} from './operator-mixed/filtering/take-until/take-until.component';
 
 
 @NgModule({
@@ -53,7 +59,8 @@ import {SampleComponent} from './operator-mixed/filtering/sample/sample.componen
         ErrorHandlingComponent, CatchErrorComponent, RetryComponent, MulticastingComponent, PublishComponent,
         ShareComponent, FilteringComponent, AuditComponent, AuditTimerComponent, DebounceComponent,
         DebounceTimeComponent, DistinctComponent, DistinctUntilChangedComponent, DistinctUntilKeyChangedComponent,
-        FilterComponent, FindComponent, FirstComponent, LastComponent, SampleComponent],
+        FilterComponent, FindComponent, FirstComponent, LastComponent, SampleComponent,
+        SkipComponent, SkipUntilComponent, SkipWhileComponent, TakeComponent, TakeLastComponent, TakeUntilComponent],
     providers: [ServiceMockDataService]
 })
 export class RpRxjsModule {
