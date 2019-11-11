@@ -1,0 +1,26 @@
+<h1>SkipUntil</h1>
+
+<p>Renvoie un observable qui ignore les éléments émis par la source Observable jusqu'à ce qu'un deuxième Observable
+    émette un élément.</p>
+
+<h3>Exemple code</h3>
+
+<div class="row">
+    <div class="col">
+        <p>
+            <code>
+                {{" const source = interval(1000).pipe(take(10));"}}<br>
+                {{" const result = source.pipe(skipUntil(timer(6000)));"}}<br>
+                {{"result.subscribe(res => console.log('Result : ', res));"}}<br>
+            </code>
+        </p>
+    </div>
+    <mat-divider [vertical]="true"></mat-divider>
+    <div class="col">
+        Result : 5<br>
+        Result : 6<br>
+        Result : 7<br>
+        Result : 8<br>
+        Result : 9<br>
+    </div>
+</div>

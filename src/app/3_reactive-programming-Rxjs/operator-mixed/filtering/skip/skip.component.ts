@@ -15,7 +15,7 @@ export class SkipComponent implements OnInit {
     ngOnInit() {
         const source = interval(1000).pipe(take(5));
         const result = source.pipe(skip(3));
-        result.subscribe(result => console.log('Result : ', result));
+    //    result.subscribe(result => console.log('Result : ', result));
     }
 
 }
