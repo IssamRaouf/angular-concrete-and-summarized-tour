@@ -1,0 +1,23 @@
+<h1>TakeUntil</h1>
+
+<p>Émet les valeurs émises par la source Observable jusqu'à ce qu'un notifiant Observable émette une valeur.</p>
+
+<h3>Exemple code</h3>
+
+<div class="row">
+    <div class="col">
+        <p>
+            <code>
+                {{"const source = interval(1000).pipe(takeUntil(timer(5000)));"}}<br>
+                {{"source.subscribe(res => console.log('Result : ', res));"}}<br>
+            </code>
+        </p>
+    </div>
+    <mat-divider [vertical]="true"></mat-divider>
+    <div class="col">
+        Result : 0<br>
+        Result : 1<br>
+        Result : 2<br>
+        Result : 3<br>
+    </div>
+</div>
