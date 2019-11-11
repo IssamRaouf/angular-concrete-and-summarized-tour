@@ -16,7 +16,7 @@ export class SkipWhileComponent implements OnInit {
 
         const source = interval(1000).pipe(take(10));
         const result = source.pipe(skipWhile(item => item < 8));
-        result.subscribe(res => console.log('Result : ', res));
+     //   result.subscribe(res => console.log('Result : ', res));
 
     }
 
