@@ -1,0 +1,22 @@
+<h1>TakeLast</h1>
+
+<p>N'émet que les dernières valeurs de comptage émises par la source Observable.</p>
+
+<h3>Exemple code</h3>
+
+<div class="row">
+    <div class="col">
+        <p>
+            <code>
+                {{"const source = of('Issam', 'Soufiane', 'Raouf', 'Ramouda');"}}<br>
+                {{"const result = source.pipe(takeLast(2));"}}<br>
+                {{"result.subscribe(res => console.log('Result : ', res));"}}<br>
+            </code>
+        </p>
+    </div>
+    <mat-divider [vertical]="true"></mat-divider>
+    <div class="col">
+        Result : Raouf<br>
+        Result : Ramouda<br>
+    </div>
+</div>
