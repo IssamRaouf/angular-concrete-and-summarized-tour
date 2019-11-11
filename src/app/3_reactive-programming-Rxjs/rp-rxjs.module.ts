@@ -44,6 +44,7 @@ import {LastComponent} from './operator-mixed/filtering/last/last.component';
 import {SampleComponent} from './operator-mixed/filtering/sample/sample.component';
 import {SkipComponent} from './operator-mixed/filtering/skip/skip.component';
 import {SkipUntilComponent} from './operator-mixed/filtering/skip-until/skip-until.component';
+import {SkipWhileComponent} from './operator-mixed/filtering/skip-while/skip-while.component';
 
 
 @NgModule({
@@ -55,7 +56,8 @@ import {SkipUntilComponent} from './operator-mixed/filtering/skip-until/skip-unt
         ErrorHandlingComponent, CatchErrorComponent, RetryComponent, MulticastingComponent, PublishComponent,
         ShareComponent, FilteringComponent, AuditComponent, AuditTimerComponent, DebounceComponent,
         DebounceTimeComponent, DistinctComponent, DistinctUntilChangedComponent, DistinctUntilKeyChangedComponent,
-        FilterComponent, FindComponent, FirstComponent, LastComponent, SampleComponent, SkipComponent, SkipUntilComponent],
+        FilterComponent, FindComponent, FirstComponent, LastComponent, SampleComponent,
+        SkipComponent, SkipUntilComponent, SkipWhileComponent],
     providers: [ServiceMockDataService]
 })
 export class RpRxjsModule {

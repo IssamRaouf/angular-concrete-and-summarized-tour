@@ -15,7 +15,7 @@ export class SkipUntilComponent implements OnInit {
     ngOnInit() {
         const source = interval(1000).pipe(take(10));
         const result = source.pipe(skipUntil(timer(6000)));
-        result.subscribe(res => console.log('Result : ', res));
+     //   result.subscribe(res => console.log('Result : ', res));
     }
 
 }

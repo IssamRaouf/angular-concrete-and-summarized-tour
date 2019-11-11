@@ -1,0 +1,23 @@
+<h1>SkipWhile</h1>
+
+<p>Renvoie un observable qui ignore tous les éléments émis par la source Observable tant qu'une condition spécifiée
+    reste vraie, mais émet tous les autres éléments source dès que la condition devient fausse.</p>
+
+<h3>Exemple code</h3>
+
+<div class="row">
+    <div class="col">
+        <p>
+            <code>
+                {{" const source = interval(1000).pipe(take(10));"}}<br>
+                {{"const result = source.pipe(skipWhile(item => item < 8));"}}<br>
+                {{"result.subscribe(res => console.log('Result : ', res));"}}<br>
+            </code>
+        </p>
+    </div>
+    <mat-divider [vertical]="true"></mat-divider>
+    <div class="col">
+        Result : 8<br>
+        Result : 9<br>
+    </div>
+</div>
