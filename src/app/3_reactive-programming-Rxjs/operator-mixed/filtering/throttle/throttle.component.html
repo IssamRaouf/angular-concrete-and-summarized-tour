@@ -1,0 +1,24 @@
+<h1>Throttle</h1>
+
+<p>Émet une valeur à partir de l'observable source, puis ignore les valeurs source suivantes pour une durée déterminée par un autre observable, puis répète ce processus.</p>
+<h3>Exemple code</h3>
+
+<div class="row">
+    <div class="col">
+        <p>
+            <code>
+                {{"const source = interval(1000).pipe(take(10));"}}<br>
+                {{"const result = source.pipe(throttle((val) => interval(2000)));"}}<br>
+                {{"result.subscribe(res => console.log('Result :', res));"}}<br>
+            </code>
+        </p>
+    </div>
+    <mat-divider [vertical]="true"></mat-divider>
+    <div class="col">
+        Result : 0<br>
+        Result : 1<br>
+        Result : 3<br>
+        Result : 6<br>
+        Result : 9<br>
+    </div>
+</div>

@@ -49,6 +49,7 @@ import {TakeComponent} from './operator-mixed/filtering/take/take.component';
 import {TakeLastComponent} from './operator-mixed/filtering/take-last/take-last.component';
 import {TakeUntilComponent} from './operator-mixed/filtering/take-until/take-until.component';
 import {TakeWhileComponent} from './operator-mixed/filtering/take-while/take-while.component';
+import {ThrottleComponent} from './operator-mixed/filtering/throttle/throttle.component';
 
 
 @NgModule({
@@ -62,7 +63,7 @@ import {TakeWhileComponent} from './operator-mixed/filtering/take-while/take-whi
         DebounceTimeComponent, DistinctComponent, DistinctUntilChangedComponent, DistinctUntilKeyChangedComponent,
         FilterComponent, FindComponent, FirstComponent, LastComponent, SampleComponent,
         SkipComponent, SkipUntilComponent, SkipWhileComponent, TakeComponent, TakeLastComponent, TakeUntilComponent,
-        TakeWhileComponent],
+        TakeWhileComponent, ThrottleComponent],
     providers: [ServiceMockDataService]
 })
 export class RpRxjsModule {
