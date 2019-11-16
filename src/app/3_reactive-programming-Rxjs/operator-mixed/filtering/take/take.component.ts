@@ -14,7 +14,7 @@ export class TakeComponent implements OnInit {
 
     ngOnInit() {
         const source = interval(1000).pipe(take(2));
-        source.subscribe(res => console.log('Result :', res));
+      //  source.subscribe(res => console.log('Result :', res));
 
     }
 

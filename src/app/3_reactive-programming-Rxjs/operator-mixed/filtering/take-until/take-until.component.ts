@@ -14,7 +14,7 @@ export class TakeUntilComponent implements OnInit {
 
     ngOnInit() {
         const source = interval(1000).pipe(takeUntil(timer(5000)));
-        source.subscribe(res => console.log('Result : ', res));
+      //  source.subscribe(res => console.log('Result : ', res));
 
     }
 
