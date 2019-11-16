@@ -15,7 +15,7 @@ export class BufferCountComponent implements OnInit {
     ngOnInit() {
         const source = interval(1000).pipe(take(10));
         const result = source.pipe(bufferCount(2));
-        result.subscribe(res => console.log('Result : ', res));
+        //result.subscribe(res => console.log('Result : ', res));
     }
 
 }

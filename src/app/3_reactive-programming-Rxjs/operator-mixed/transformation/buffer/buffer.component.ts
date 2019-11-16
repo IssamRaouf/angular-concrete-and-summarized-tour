@@ -16,7 +16,7 @@ export class BufferComponent implements OnInit {
         const fermetureNotifier = fromEvent(document, 'click');
         const source = interval(1000);
         const result = source.pipe(buffer(fermetureNotifier));
-        result.subscribe(res => console.log('Result :', res));
+      //  result.subscribe(res => console.log('Result :', res));
 
 
     }
