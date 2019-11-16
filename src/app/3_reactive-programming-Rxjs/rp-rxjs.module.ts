@@ -53,6 +53,7 @@ import {ThrottleComponent} from './operator-mixed/filtering/throttle/throttle.co
 import {ThrottleTimeComponent} from './operator-mixed/filtering/throttle-time/throttle-time.component';
 import {TransformationComponent} from './operator-mixed/transformation/transformation.component';
 import {BufferComponent} from './operator-mixed/transformation/buffer/buffer.component';
+import {BufferCountComponent} from './operator-mixed/transformation/buffer-count/buffer-count.component';
 
 
 @NgModule({
@@ -66,7 +67,8 @@ import {BufferComponent} from './operator-mixed/transformation/buffer/buffer.com
         DebounceTimeComponent, DistinctComponent, DistinctUntilChangedComponent, DistinctUntilKeyChangedComponent,
         FilterComponent, FindComponent, FirstComponent, LastComponent, SampleComponent,
         SkipComponent, SkipUntilComponent, SkipWhileComponent, TakeComponent, TakeLastComponent, TakeUntilComponent,
-        TakeWhileComponent, ThrottleComponent, ThrottleTimeComponent, TransformationComponent, BufferComponent],
+        TakeWhileComponent, ThrottleComponent, ThrottleTimeComponent, TransformationComponent, BufferComponent,
+        BufferCountComponent],
     providers: [ServiceMockDataService]
 })
 export class RpRxjsModule {
