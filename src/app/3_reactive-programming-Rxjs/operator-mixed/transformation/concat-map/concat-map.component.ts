@@ -15,7 +15,7 @@ export class ConcatMapComponent implements OnInit {
     ngOnInit() {
         const source = of(2000, 4000, 6000);
         const result = source.pipe(concatMap(val => of(`Delay of : ${val}`).pipe(delay(val))));
-        result.subscribe(res => console.log('Result', res));
+       // result.subscribe(res => console.log('Result', res));
     }
 
 }

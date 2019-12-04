@@ -56,6 +56,7 @@ import {BufferComponent} from './operator-mixed/transformation/buffer/buffer.com
 import {BufferCountComponent} from './operator-mixed/transformation/buffer-count/buffer-count.component';
 import {BufferTimeComponent} from './operator-mixed/transformation/buffer-time/buffer-time.component';
 import {ConcatMapComponent} from './operator-mixed/transformation/concat-map/concat-map.component';
+import {GroupByComponent} from './operator-mixed/transformation/group-by/group-by.component';
 
 
 @NgModule({
@@ -70,7 +71,7 @@ import {ConcatMapComponent} from './operator-mixed/transformation/concat-map/con
         FilterComponent, FindComponent, FirstComponent, LastComponent, SampleComponent,
         SkipComponent, SkipUntilComponent, SkipWhileComponent, TakeComponent, TakeLastComponent, TakeUntilComponent,
         TakeWhileComponent, ThrottleComponent, ThrottleTimeComponent, TransformationComponent, BufferComponent,
-        BufferCountComponent, BufferTimeComponent, ConcatMapComponent],
+        BufferCountComponent, BufferTimeComponent, ConcatMapComponent, GroupByComponent],
     providers: [ServiceMockDataService]
 })
 export class RpRxjsModule {
