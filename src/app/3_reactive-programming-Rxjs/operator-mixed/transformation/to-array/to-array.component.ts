@@ -15,7 +15,7 @@ export class ToArrayComponent implements OnInit {
     ngOnInit() {
         const source = of(2, 4, 6, 8, 10);
         const result = source.pipe(toArray());
-        result.subscribe(res => console.log('Result :', res));
+       // result.subscribe(res => console.log('Result :', res));
     }
 
 }

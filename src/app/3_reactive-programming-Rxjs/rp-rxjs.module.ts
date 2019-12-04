@@ -68,6 +68,7 @@ import {SwitchMapComponent} from './operator-mixed/transformation/switch-map/swi
 import {ToArrayComponent} from './operator-mixed/transformation/to-array/to-array.component';
 import {UtilComponent} from './operator-mixed/util/util.component';
 import {TapComponent} from './operator-mixed/util/tap/tap.component';
+import { DelayComponent } from './operator-mixed/util/delay/delay.component';
 
 
 @NgModule({
@@ -84,7 +85,7 @@ import {TapComponent} from './operator-mixed/util/tap/tap.component';
         TakeWhileComponent, ThrottleComponent, ThrottleTimeComponent, TransformationComponent, BufferComponent,
         BufferCountComponent, BufferTimeComponent, ConcatMapComponent, GroupByComponent, MapComponent, MapToComponent, MergeMapComponent,
         PartitionComponent, PulckComponent, ReduceComponent, ScanComponent, SwitchMapComponent,
-        ToArrayComponent, UtilComponent, TapComponent],
+        ToArrayComponent, UtilComponent, TapComponent, DelayComponent],
     providers: [ServiceMockDataService]
 })
 export class RpRxjsModule {
