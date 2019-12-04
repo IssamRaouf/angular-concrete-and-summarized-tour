@@ -20,7 +20,7 @@ export class DelayComponent implements OnInit {
             source.pipe(mapTo(' Goodbye'), delay(300)),
             source.pipe(mapTo(' World'), delay(400)),
         );
-        result.subscribe(res => console.log('Result', res));
+  //      result.subscribe(res => console.log('Result', res));
 
 
     }
