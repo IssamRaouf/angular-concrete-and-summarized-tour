@@ -1,0 +1,49 @@
+<h1>GroupBy</h1>
+<p>
+    Regroupe les éléments émis par un observable selon un critère spécifié et émet ces éléments groupés sous
+    la forme GroupedObservables, un groupe par groupe.
+</p>
+
+<h3>Exemple code</h3>
+<div class="row">
+    <div class="col">
+        <p>
+
+            <code>
+                {{"const persons = ["}}<br>
+                {{"{fullName: 'Issam Raouf', age: 26},"}}<br>
+                {{"{fullName: 'Soufiane Ramouda', age: 26},"}}<br>
+                {{"{fullName: 'Fouzi ben tounssi', age: 33},"}}<br>
+                {{"{fullName: 'khalil khalil', age: 33},"}}<br>
+                {{"{fullName: 'Mohamed Mohamed', age: 47}"}}<br>
+                {{"];"}}<br>
+
+                {{"const source = from(persons);"}}<br>
+                {{"const result = source.pipe("}}<br>
+                {{"groupBy(person => person.age, person => person.fullName),"}}<br>
+                {{"mergeMap(group => {"}}<br>
+                {{"return zip("}}<br>
+                {{"of(group.key),"}}<br>
+                {{"group.pipe(toArray())).pipe("}}<br>
+                {{"map(([keyIn, values]) => {"}}<br>
+                {{"return {key: keyIn, values};"}}<br>
+                {{"})"}}<br>
+                {{");"}}<br>
+                {{"})"}}<br>
+                {{");"}}<br>
+                {{"result.subscribe(res => console.log('Result :', res));"}}<br>
+
+            </code>
+        </p>
+    </div>
+    <mat-divider [vertical]="true"></mat-divider>
+    <div class="col">
+        Result  : {{"{key: 26, values: Array(2)}"}}<br>
+        Result  : {{"{key: 33, values: Array(2)}"}}<br>
+        Result  : {{"{key: 47, values: Array(1)}"}}<br>
+    </div>
+</div>
+
+
+
+

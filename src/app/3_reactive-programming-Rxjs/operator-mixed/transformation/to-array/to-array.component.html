@@ -1,0 +1,24 @@
+<h1>ToArray</h1>
+<p>
+    Collecte toutes les émissions sources et les émet sous forme de tableau lorsque la source est terminée.
+</p>
+<h3>Exemple code</h3>
+<div class="row">
+    <div class="col">
+        <p>
+            <code>
+                {{"const source = of(2, 4, 6, 8, 10);"}}<br>
+                {{"const result = source.pipe(toArray());"}}<br>
+                {{"result.subscribe(res => console.log('Result :', res));"}}<br>
+            </code>
+        </p>
+    </div>
+    <mat-divider [vertical]="true"></mat-divider>
+    <div class="col">
+        Result : [2, 4, 6, 8, 10]<br>
+    </div>
+</div>
+
+
+
+

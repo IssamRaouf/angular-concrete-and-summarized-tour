@@ -1,0 +1,31 @@
+<h1>ConcatMap</h1>
+<p>
+    Projette chaque valeur source dans un observable qui est fusionné dans l'observable de sortie, de manière
+    sérialisée,
+    en attendant que chacune d'elles se termine avant de fusionner la suivante.
+</p>
+
+<h3>Exemple code</h3>
+<div class="row">
+    <div class="col">
+        <p>
+
+            <code>
+                {{"const source = of(2000, 4000, 6000);"}}<br>
+                {{"const result = source.pipe(concatMap(val => of(`Delay of : ${val} ms`).pipe(delay(val))));"}}<br>
+                {{"result.subscribe(res => console.log('Result :', res));"}}<br>
+
+            </code>
+        </p>
+    </div>
+    <mat-divider [vertical]="true"></mat-divider>
+    <div class="col">
+        Result : Delay of : 2000 ms<br>
+        Result : Delay of : 4000 ms<br>
+        Result : Delay of : 6000 ms<br>
+    </div>
+</div>
+
+
+
+

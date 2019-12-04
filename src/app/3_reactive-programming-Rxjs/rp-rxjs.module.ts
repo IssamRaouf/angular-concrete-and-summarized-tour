@@ -55,6 +55,23 @@ import {TransformationComponent} from './operator-mixed/transformation/transform
 import {BufferComponent} from './operator-mixed/transformation/buffer/buffer.component';
 import {BufferCountComponent} from './operator-mixed/transformation/buffer-count/buffer-count.component';
 import {BufferTimeComponent} from './operator-mixed/transformation/buffer-time/buffer-time.component';
+import {ConcatMapComponent} from './operator-mixed/transformation/concat-map/concat-map.component';
+import {GroupByComponent} from './operator-mixed/transformation/group-by/group-by.component';
+import {MapComponent} from './operator-mixed/transformation/map/map.component';
+import {MapToComponent} from './operator-mixed/transformation/map-to/map-to.component';
+import {MergeMapComponent} from './operator-mixed/transformation/merge-map/merge-map.component';
+import {PartitionComponent} from './operator-mixed/transformation/partition/partition.component';
+import {PulckComponent} from './operator-mixed/transformation/pulck/pulck.component';
+import {ReduceComponent} from './operator-mixed/transformation/reduce/reduce.component';
+import {ScanComponent} from './operator-mixed/transformation/scan/scan.component';
+import {SwitchMapComponent} from './operator-mixed/transformation/switch-map/switch-map.component';
+import {ToArrayComponent} from './operator-mixed/transformation/to-array/to-array.component';
+import {UtilComponent} from './operator-mixed/util/util.component';
+import {TapComponent} from './operator-mixed/util/tap/tap.component';
+import { DelayComponent } from './operator-mixed/util/delay/delay.component';
+import { DelayWhenComponent } from './operator-mixed/util/delay-when/delay-when.component';
+import { FinalizeComponent } from './operator-mixed/util/finalize/finalize.component';
+import { RepeatComponent } from './operator-mixed/util/repeat/repeat.component';
 
 
 @NgModule({
@@ -69,7 +86,9 @@ import {BufferTimeComponent} from './operator-mixed/transformation/buffer-time/b
         FilterComponent, FindComponent, FirstComponent, LastComponent, SampleComponent,
         SkipComponent, SkipUntilComponent, SkipWhileComponent, TakeComponent, TakeLastComponent, TakeUntilComponent,
         TakeWhileComponent, ThrottleComponent, ThrottleTimeComponent, TransformationComponent, BufferComponent,
-        BufferCountComponent, BufferTimeComponent],
+        BufferCountComponent, BufferTimeComponent, ConcatMapComponent, GroupByComponent, MapComponent, MapToComponent, MergeMapComponent,
+        PartitionComponent, PulckComponent, ReduceComponent, ScanComponent, SwitchMapComponent,
+        ToArrayComponent, UtilComponent, TapComponent, DelayComponent, DelayWhenComponent, FinalizeComponent, RepeatComponent],
     providers: [ServiceMockDataService]
 })
 export class RpRxjsModule {

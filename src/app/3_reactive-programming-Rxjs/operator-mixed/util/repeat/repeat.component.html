@@ -1,0 +1,29 @@
+
+<h1>Repeat</h1>
+<p>
+    Renvoie un observable qui se réabonnera au flux source lorsque le flux source sera terminé, au plus des fois
+
+</p>
+<h3>Exemple code</h3>
+<div class="row">
+    <div class="col">
+        <p>
+            <code>
+                {{"const source = of('Issam', 'Raouf');"}}<br>
+                {{"const result = source.pipe(repeat(2));"}}<br>
+                {{"result.subscribe(res => console.log('Result :', res));"}}<br>
+            </code>
+        </p>
+    </div>
+    <mat-divider [vertical]="true"></mat-divider>
+    <div class="col">
+        Result : Issam<br>
+        Result : Raouf <br>
+        Result : Issam <br>
+        Result : Raouf <br>
+    </div>
+</div>
+
+
+
+
