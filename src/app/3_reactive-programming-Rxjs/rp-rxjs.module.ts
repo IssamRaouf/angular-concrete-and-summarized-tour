@@ -63,9 +63,11 @@ import {MergeMapComponent} from './operator-mixed/transformation/merge-map/merge
 import {PartitionComponent} from './operator-mixed/transformation/partition/partition.component';
 import {PulckComponent} from './operator-mixed/transformation/pulck/pulck.component';
 import {ReduceComponent} from './operator-mixed/transformation/reduce/reduce.component';
-import { ScanComponent } from './operator-mixed/transformation/scan/scan.component';
-import { SwitchMapComponent } from './operator-mixed/transformation/switch-map/switch-map.component';
-import { ToArrayComponent } from './operator-mixed/transformation/to-array/to-array.component';
+import {ScanComponent} from './operator-mixed/transformation/scan/scan.component';
+import {SwitchMapComponent} from './operator-mixed/transformation/switch-map/switch-map.component';
+import {ToArrayComponent} from './operator-mixed/transformation/to-array/to-array.component';
+import {UtilComponent} from './operator-mixed/util/util.component';
+import {TapComponent} from './operator-mixed/util/tap/tap.component';
 
 
 @NgModule({
@@ -81,7 +83,8 @@ import { ToArrayComponent } from './operator-mixed/transformation/to-array/to-ar
         SkipComponent, SkipUntilComponent, SkipWhileComponent, TakeComponent, TakeLastComponent, TakeUntilComponent,
         TakeWhileComponent, ThrottleComponent, ThrottleTimeComponent, TransformationComponent, BufferComponent,
         BufferCountComponent, BufferTimeComponent, ConcatMapComponent, GroupByComponent, MapComponent, MapToComponent, MergeMapComponent,
-        PartitionComponent, PulckComponent, ReduceComponent, ScanComponent, SwitchMapComponent, ToArrayComponent],
+        PartitionComponent, PulckComponent, ReduceComponent, ScanComponent, SwitchMapComponent,
+        ToArrayComponent, UtilComponent, TapComponent],
     providers: [ServiceMockDataService]
 })
 export class RpRxjsModule {
