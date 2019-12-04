@@ -59,6 +59,7 @@ import {ConcatMapComponent} from './operator-mixed/transformation/concat-map/con
 import {GroupByComponent} from './operator-mixed/transformation/group-by/group-by.component';
 import {MapComponent} from './operator-mixed/transformation/map/map.component';
 import {MapToComponent} from './operator-mixed/transformation/map-to/map-to.component';
+import {MergeMapComponent} from './operator-mixed/transformation/merge-map/merge-map.component';
 
 
 @NgModule({
@@ -73,7 +74,7 @@ import {MapToComponent} from './operator-mixed/transformation/map-to/map-to.comp
         FilterComponent, FindComponent, FirstComponent, LastComponent, SampleComponent,
         SkipComponent, SkipUntilComponent, SkipWhileComponent, TakeComponent, TakeLastComponent, TakeUntilComponent,
         TakeWhileComponent, ThrottleComponent, ThrottleTimeComponent, TransformationComponent, BufferComponent,
-        BufferCountComponent, BufferTimeComponent, ConcatMapComponent, GroupByComponent, MapComponent, MapToComponent],
+        BufferCountComponent, BufferTimeComponent, ConcatMapComponent, GroupByComponent, MapComponent, MapToComponent, MergeMapComponent],
     providers: [ServiceMockDataService]
 })
 export class RpRxjsModule {
