@@ -15,7 +15,7 @@ export class DelayWhenComponent implements OnInit {
     ngOnInit() {
         const source = interval(1000).pipe(take(5));
         const result = source.pipe(delayWhen(() => timer(5000)));
-        result.subscribe(val => console.log(val));
+      //  result.subscribe(val => console.log(val));
     }
 
 }
