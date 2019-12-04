@@ -65,6 +65,7 @@ import {PulckComponent} from './operator-mixed/transformation/pulck/pulck.compon
 import {ReduceComponent} from './operator-mixed/transformation/reduce/reduce.component';
 import { ScanComponent } from './operator-mixed/transformation/scan/scan.component';
 import { SwitchMapComponent } from './operator-mixed/transformation/switch-map/switch-map.component';
+import { ToArrayComponent } from './operator-mixed/transformation/to-array/to-array.component';
 
 
 @NgModule({
@@ -80,7 +81,7 @@ import { SwitchMapComponent } from './operator-mixed/transformation/switch-map/s
         SkipComponent, SkipUntilComponent, SkipWhileComponent, TakeComponent, TakeLastComponent, TakeUntilComponent,
         TakeWhileComponent, ThrottleComponent, ThrottleTimeComponent, TransformationComponent, BufferComponent,
         BufferCountComponent, BufferTimeComponent, ConcatMapComponent, GroupByComponent, MapComponent, MapToComponent, MergeMapComponent,
-        PartitionComponent, PulckComponent, ReduceComponent, ScanComponent, SwitchMapComponent],
+        PartitionComponent, PulckComponent, ReduceComponent, ScanComponent, SwitchMapComponent, ToArrayComponent],
     providers: [ServiceMockDataService]
 })
 export class RpRxjsModule {

@@ -15,7 +15,7 @@ export class SwitchMapComponent implements OnInit {
     ngOnInit() {
         const source = of(26, 44, 66);
         const result = source.pipe(switchMap(age => of({age})));
-        result.subscribe(res => console.log('Result :', res));
+     //  result.subscribe(res => console.log('Result :', res));
     }
 
 }
