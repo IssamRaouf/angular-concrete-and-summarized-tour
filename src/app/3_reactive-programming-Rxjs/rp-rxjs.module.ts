@@ -71,6 +71,7 @@ import {TapComponent} from './operator-mixed/util/tap/tap.component';
 import { DelayComponent } from './operator-mixed/util/delay/delay.component';
 import { DelayWhenComponent } from './operator-mixed/util/delay-when/delay-when.component';
 import { FinalizeComponent } from './operator-mixed/util/finalize/finalize.component';
+import { RepeatComponent } from './operator-mixed/util/repeat/repeat.component';
 
 
 @NgModule({
@@ -87,7 +88,7 @@ import { FinalizeComponent } from './operator-mixed/util/finalize/finalize.compo
         TakeWhileComponent, ThrottleComponent, ThrottleTimeComponent, TransformationComponent, BufferComponent,
         BufferCountComponent, BufferTimeComponent, ConcatMapComponent, GroupByComponent, MapComponent, MapToComponent, MergeMapComponent,
         PartitionComponent, PulckComponent, ReduceComponent, ScanComponent, SwitchMapComponent,
-        ToArrayComponent, UtilComponent, TapComponent, DelayComponent, DelayWhenComponent, FinalizeComponent],
+        ToArrayComponent, UtilComponent, TapComponent, DelayComponent, DelayWhenComponent, FinalizeComponent, RepeatComponent],
     providers: [ServiceMockDataService]
 })
 export class RpRxjsModule {
