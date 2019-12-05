@@ -1,0 +1,32 @@
+
+<h1>ReplaySubject</h1>
+<p>
+    Une variante de Subject qui "rejoue" ou émet d'anciennes valeurs à de nouveaux abonnés.
+    Il met en mémoire tampon un nombre défini de valeurs et émettra ces valeurs immédiatement à tous les nouveaux abonnés
+    en plus d'émettre de nouvelles valeurs aux abonnés existants.
+
+</p>
+<h3>Exemple code</h3>
+<div class="row">
+    <div class="col">
+        <p>
+            <code>
+                {{"const source = new ReplaySubject();"}}<br>
+                {{"source.next(1000);"}}<br>
+                {{"source.next(2000);"}}<br>
+                {{"source.subscribe(res => console.log('Result Subs 1:', res));"}}<br>
+            </code>
+        </p>
+    </div>
+    <mat-divider [vertical]="true"></mat-divider>
+    <div class="col">
+        Result subs 1: 123<br>
+        Result subs 2: 123<br>
+        Result subs 1: 333<br>
+        Result subs 2: 333<br>
+    </div>
+</div>
+
+
+
+

@@ -68,10 +68,15 @@ import {SwitchMapComponent} from './operator-mixed/transformation/switch-map/swi
 import {ToArrayComponent} from './operator-mixed/transformation/to-array/to-array.component';
 import {UtilComponent} from './operator-mixed/util/util.component';
 import {TapComponent} from './operator-mixed/util/tap/tap.component';
-import { DelayComponent } from './operator-mixed/util/delay/delay.component';
-import { DelayWhenComponent } from './operator-mixed/util/delay-when/delay-when.component';
-import { FinalizeComponent } from './operator-mixed/util/finalize/finalize.component';
-import { RepeatComponent } from './operator-mixed/util/repeat/repeat.component';
+import {DelayComponent} from './operator-mixed/util/delay/delay.component';
+import {DelayWhenComponent} from './operator-mixed/util/delay-when/delay-when.component';
+import {FinalizeComponent} from './operator-mixed/util/finalize/finalize.component';
+import {RepeatComponent} from './operator-mixed/util/repeat/repeat.component';
+import {SubjectsComponent} from './subjects/subjects.component';
+import {AsyncSubjectComponent} from './subjects/async-subject/async-subject.component';
+import {BehaviorSubjectComponent} from './subjects/behavior-subject/behavior-subject.component';
+import {ReplaySubjectComponent} from './subjects/replay-subject/replay-subject.component';
+import {SubjectComponent} from './subjects/subject/subject.component';
 
 
 @NgModule({
@@ -88,7 +93,11 @@ import { RepeatComponent } from './operator-mixed/util/repeat/repeat.component';
         TakeWhileComponent, ThrottleComponent, ThrottleTimeComponent, TransformationComponent, BufferComponent,
         BufferCountComponent, BufferTimeComponent, ConcatMapComponent, GroupByComponent, MapComponent, MapToComponent, MergeMapComponent,
         PartitionComponent, PulckComponent, ReduceComponent, ScanComponent, SwitchMapComponent,
-        ToArrayComponent, UtilComponent, TapComponent, DelayComponent, DelayWhenComponent, FinalizeComponent, RepeatComponent],
+        ToArrayComponent, UtilComponent, TapComponent, DelayComponent, DelayWhenComponent, FinalizeComponent, RepeatComponent,
+        SubjectsComponent,
+        AsyncSubjectComponent,
+        BehaviorSubjectComponent,
+        ReplaySubjectComponent, SubjectComponent],
     providers: [ServiceMockDataService]
 })
 export class RpRxjsModule {

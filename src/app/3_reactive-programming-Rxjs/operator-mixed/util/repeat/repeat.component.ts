@@ -15,7 +15,7 @@ export class RepeatComponent implements OnInit {
     ngOnInit() {
         const source = of('Issam', 'Raouf');
         const result = source.pipe(repeat(2));
-        result.subscribe(res => console.log('Result :', res));
+      //  result.subscribe(res => console.log('Result :', res));
     }
 
 }
