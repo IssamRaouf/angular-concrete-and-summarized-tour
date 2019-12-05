@@ -7,7 +7,6 @@ import {MaterialModule} from '../MaterialModule';
 import {CreationComponent} from './creation/creation.component';
 import {PipeComponent} from './pipe/pipe.component';
 import {OperatorMixedComponent} from './operator-mixed/operator-mixed.component';
-import {ServiceMockDataService} from './mock/service-mock-data.service';
 import {CombinationComponent} from './operator-mixed/combination/combination.component';
 import {CombinelatestComponent} from './operator-mixed/combination/combinelatest/combinelatest.component';
 import {ConcatComponent} from './operator-mixed/combination/concat/concat.component';
@@ -94,11 +93,7 @@ import {SubjectComponent} from './subjects/subject/subject.component';
         BufferCountComponent, BufferTimeComponent, ConcatMapComponent, GroupByComponent, MapComponent, MapToComponent, MergeMapComponent,
         PartitionComponent, PulckComponent, ReduceComponent, ScanComponent, SwitchMapComponent,
         ToArrayComponent, UtilComponent, TapComponent, DelayComponent, DelayWhenComponent, FinalizeComponent, RepeatComponent,
-        SubjectsComponent,
-        AsyncSubjectComponent,
-        BehaviorSubjectComponent,
-        ReplaySubjectComponent, SubjectComponent],
-    providers: [ServiceMockDataService]
+        SubjectsComponent, AsyncSubjectComponent, BehaviorSubjectComponent, ReplaySubjectComponent, SubjectComponent]
 })
 export class RpRxjsModule {
 
