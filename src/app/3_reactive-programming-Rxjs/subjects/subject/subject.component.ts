@@ -14,9 +14,9 @@ export class SubjectComponent implements OnInit {
     ngOnInit() {
         const sub = new Subject();
         sub.next(1);
-        sub.subscribe(res => console.log('Result sub 1;', res));
+      //  sub.subscribe(res => console.log('Result sub 1;', res));
         sub.next(2);
-        sub.subscribe(res => console.log('Result sub 2:', res));
+     //   sub.subscribe(res => console.log('Result sub 2:', res));
         sub.next(3);
 
     }

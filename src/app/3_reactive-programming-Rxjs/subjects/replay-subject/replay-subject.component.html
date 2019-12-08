@@ -15,15 +15,27 @@
                 {{"source.next(1000);"}}<br>
                 {{"source.next(2000);"}}<br>
                 {{"source.subscribe(res => console.log('Result Subs 1:', res));"}}<br>
+                {{"source.next(4000);"}}<br>
+                {{"source.subscribe(res => console.log('Result Subs 2:', res));"}}<br>
+                {{"source.next(8000);"}}<br>
+                {{"source.subscribe(res => console.log('Result Subs 3:', res));"}}<br>
             </code>
         </p>
     </div>
     <mat-divider [vertical]="true"></mat-divider>
     <div class="col">
-        Result subs 1: 123<br>
-        Result subs 2: 123<br>
-        Result subs 1: 333<br>
-        Result subs 2: 333<br>
+         Result Subs 1: 1000<br>
+         Result Subs 1: 2000<br>
+         Result Subs 1: 4000<br>
+         Result Subs 2: 1000<br>
+         Result Subs 2: 2000<br>
+         Result Subs 2: 4000<br>
+         Result Subs 1: 8000<br>
+         Result Subs 2: 8000<br>
+         Result Subs 3: 1000<br>
+         Result Subs 3: 2000<br>
+         Result Subs 3: 4000<br>
+         Result Subs 3: 8000<br>
     </div>
 </div>
 
