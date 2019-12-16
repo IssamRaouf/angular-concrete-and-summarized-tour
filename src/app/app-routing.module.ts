@@ -31,6 +31,11 @@ const routes: Routes = [
         loadChildren: () => import('./3_reactive-programming-Rxjs/rp-rxjs.module').then(mod => mod.RpRxjsModule)
     },
     {
+        path: 'pipes-important-exist',
+        loadChildren: () => import('./4_pipes/1-pipes-important-exist/pipe-important-exist.module')
+            .then(mod => mod.PipeImportantExistModule)
+    },
+    {
         path: '',
         redirectTo: 'content-projection',
         pathMatch: 'full'
