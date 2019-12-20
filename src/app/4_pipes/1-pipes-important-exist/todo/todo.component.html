@@ -18,5 +18,22 @@
                 </mat-list>
             </mat-card-content>
         </mat-card>
+
+        <mat-card class="col-3 m-auto">
+            <mat-card-header>
+                <mat-card-title>Upper case</mat-card-title>
+                <mat-card-subtitle>Transforme le texte en majuscule.</mat-card-subtitle>
+            </mat-card-header>
+            <mat-divider></mat-divider>
+            <mat-card-content>
+                <mat-list role="list">
+                    <mat-list-item role="listitem">
+                        <strong>{{upperCase}}</strong>
+                    </mat-list-item>
+                    <mat-list-item role="listitem">
+                        <strong>Result:</strong>&nbsp;&nbsp; {{'issam raouf' | uppercase}}</mat-list-item>
+                </mat-list>
+            </mat-card-content>
+        </mat-card>
     </div>
 </div>
