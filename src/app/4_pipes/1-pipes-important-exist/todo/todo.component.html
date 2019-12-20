@@ -89,5 +89,23 @@
                 </mat-list>
             </mat-card-content>
         </mat-card>
+
+        <mat-card class="col-3 m-auto">
+            <mat-card-header>
+                <mat-card-title>Json</mat-card-title>
+                <mat-card-subtitle>inverse une valeur dans sa représentation au format JSON. Utile pour le débogage.</mat-card-subtitle>
+            </mat-card-header>
+            <mat-divider></mat-divider>
+            <mat-card-content>
+                <mat-list role="list">
+                    <mat-list-item role="listitem">
+                        <strong>{{json}}</strong>
+                    </mat-list-item>
+                    <mat-list-item role="listitem">
+                        <strong>Result:</strong>{{inviteMap | json}}</mat-list-item>
+                </mat-list>
+            </mat-card-content>
+        </mat-card>
+
     </div>
 </div>
