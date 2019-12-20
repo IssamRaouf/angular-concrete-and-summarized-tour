@@ -1,5 +1,22 @@
 <div class="container container-todo">
-    <div class="row">
+    <h1>Pipe integré</h1>
+    <div class="row p-1">
 
+        <mat-card class="col-3 m-auto">
+            <mat-card-header>
+                <mat-card-title>Title case</mat-card-title>
+                <mat-card-subtitle>Transforme le texte en casse de titre. Met en majuscule la première lettre de chaque mot.</mat-card-subtitle>
+            </mat-card-header>
+            <mat-divider></mat-divider>
+            <mat-card-content>
+                <mat-list role="list">
+                    <mat-list-item role="listitem">
+                        <strong>{{titleCase}}</strong>
+                    </mat-list-item>
+                    <mat-list-item role="listitem">
+                        <strong>Result:</strong>&nbsp;&nbsp; {{'issam raouf' | titlecase}}</mat-list-item>
+                </mat-list>
+            </mat-card-content>
+        </mat-card>
     </div>
 </div>
