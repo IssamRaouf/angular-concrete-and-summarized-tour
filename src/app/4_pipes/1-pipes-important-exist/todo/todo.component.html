@@ -73,5 +73,21 @@
                 </mat-list>
             </mat-card-content>
         </mat-card>
+        <mat-card class="col-3 m-auto">
+            <mat-card-header>
+                <mat-card-title>I18nPluralPipe</mat-card-title>
+                <mat-card-subtitle>Mappe une valeur à une chaîne qui pluralise la valeur selon les règles locales.</mat-card-subtitle>
+            </mat-card-header>
+            <mat-divider></mat-divider>
+            <mat-card-content>
+                <mat-list role="list">
+                    <mat-list-item role="listitem">
+                        <strong>{{i18NPlural}}</strong>
+                    </mat-list-item>
+                    <mat-list-item role="listitem">
+                        <strong>Result:</strong>&nbsp; {{ '2' | i18nPlural: messageMapping }}</mat-list-item>
+                </mat-list>
+            </mat-card-content>
+        </mat-card>
     </div>
 </div>
