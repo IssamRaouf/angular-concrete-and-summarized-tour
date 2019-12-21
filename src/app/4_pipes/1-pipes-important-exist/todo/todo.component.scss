@@ -1,0 +1,7 @@
+
+@import '../../../../assets/styles/mixins';
+
+
+.mat-card:not([class*=card-lg]) {
+  height: 250px;
+}
