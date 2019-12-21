@@ -36,6 +36,10 @@ const routes: Routes = [
             .then(mod => mod.PipeImportantExistModule)
     },
     {
+        path: 'pipes-custom',
+        loadChildren: () => import('./4_pipes/2-pipes-custom/pipes-custom.module').then(mod => mod.PipesCustomModule)
+    },
+    {
         path: '',
         redirectTo: 'content-projection',
         pathMatch: 'full'
