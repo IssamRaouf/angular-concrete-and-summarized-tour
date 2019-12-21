@@ -111,7 +111,6 @@
             </mat-card-content>
         </mat-card>
     </div>
-
     <div class="row p-1">
 
         <mat-card class="col-3 m-auto">
@@ -158,7 +157,7 @@
                 <mat-card-title>Percent</mat-card-title>
                 <mat-card-subtitle>transforme un nombre en une chaîne, formatée selon les règles de paramètres régionaux
                     qui déterminent la taille et le séparateur du groupe.<br>
-                    <strong>aPer =  0.759;</strong>
+                    <strong>aPer = 0.759;</strong>
                 </mat-card-subtitle>
             </mat-card-header>
             <mat-divider></mat-divider>
@@ -174,5 +173,48 @@
         </mat-card>
 
     </div>
+    <div class="row p-1">
 
+        <mat-card class="col-6 m-auto card-lg">
+            <mat-card-header>
+                <mat-card-title>Date pipe</mat-card-title>
+                <mat-card-subtitle>Formate une valeur de date selon les règles locales..<br>
+                </mat-card-subtitle>
+            </mat-card-header>
+            <mat-divider></mat-divider>
+            <mat-card-content>
+                <mat-list role="list">
+                    <mat-list-item role="listitem">
+                        <strong>{{datePipeSimple}}</strong>
+                    </mat-list-item>
+                    <mat-list-item role="listitem">
+                        <strong>Result:</strong>&nbsp;&nbsp; {{dateNow |date}}
+                    </mat-list-item>
+
+                    <mat-list-item role="listitem">
+                        <strong>{{datePipeFullDate}}</strong>
+                    </mat-list-item>
+                    <mat-list-item role="listitem">
+                        <strong>Result:</strong>&nbsp;&nbsp; {{dateNow |date:'fullDate'}}
+                    </mat-list-item>
+
+
+                    <mat-list-item role="listitem">
+                        <strong>{{datePipeMedium}}</strong>
+                    </mat-list-item>
+                    <mat-list-item role="listitem">
+                        <strong>Result:</strong>&nbsp;&nbsp; {{dateNow |date:'medium'}}
+                    </mat-list-item>
+
+                    <mat-list-item role="listitem">
+                        <strong>{{datePipeFormat}}</strong>
+                    </mat-list-item>
+                    <mat-list-item role="listitem">
+                        <strong>Result:</strong>&nbsp;&nbsp; {{dateNow |date:'dd/M/y h:m:s'}}
+                    </mat-list-item>
+                </mat-list>
+            </mat-card-content>
+        </mat-card>
+
+    </div>
 </div>
