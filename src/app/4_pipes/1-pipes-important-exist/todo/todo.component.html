@@ -175,7 +175,7 @@
     </div>
     <div class="row p-1">
 
-        <mat-card class="col-6 m-auto card-lg">
+        <mat-card class="col-4 m-auto card-lg">
             <mat-card-header>
                 <mat-card-title>Date pipe</mat-card-title>
                 <mat-card-subtitle>Formate une valeur de date selon les règles locales..<br>
@@ -211,6 +211,31 @@
                     </mat-list-item>
                     <mat-list-item role="listitem">
                         <strong>Result:</strong>&nbsp;&nbsp; {{dateNow |date:'dd/M/y h:m:s'}}
+                    </mat-list-item>
+                </mat-list>
+            </mat-card-content>
+        </mat-card>
+
+
+        <mat-card class="col-3 m-auto card-lg">
+            <mat-card-header>
+                <mat-card-title>Asycn</mat-card-title>
+                <mat-card-subtitle>Décompresse une valeur d'une primitive asynchrone.</mat-card-subtitle>
+            </mat-card-header>
+            <mat-divider></mat-divider>
+            <mat-card-content>
+                <mat-list role="list">
+                    <mat-list-item role="listitem">
+                        <strong>{{AsyncPipeObserv}}</strong>
+                    </mat-list-item>
+                    <mat-list-item role="listitem">
+                        <strong>Result:</strong>&nbsp;&nbsp; {{sourceObserv| async}}
+                    </mat-list-item>
+                    <mat-list-item role="listitem">
+                        <strong>{{AsyncPipePromisse}}</strong>
+                    </mat-list-item>
+                    <mat-list-item role="listitem">
+                        <strong>Result:</strong>&nbsp;&nbsp; {{sourcePromi| async}}
                     </mat-list-item>
                 </mat-list>
             </mat-card-content>

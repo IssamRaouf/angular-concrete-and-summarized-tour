@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {from, of} from 'rxjs';
+import {reject} from 'q';
 
 @Component({
     selector: 'app-todo',
@@ -21,14 +23,17 @@ export class TodoComponent implements OnInit {
     public datePipeFullDate = '{{dateNow |date:\'fullDate\'}}';
     public datePipeMedium = '{{dateNow |date:\'medium\'}}';
     public datePipeFormat = '{{dateNow |date:\'dd/M/y h:m:s\'}}';
-
-
+    public AsyncPipeObserv = '{{sourceObserv| async}}';
+    public AsyncPipePromisse = '{{sourcePromi| async}}';
     // vars
     public numberFt = 8.718281828459045;
     public aPer = 0.759;
     public inviteMap: any = {male: 'Invite-le.', female: 'Invite-la.', other: 'Invite-les.'};
     public messageMapping: { [k: string]: string } = {'=0': 'No message.', '=1': 'One message', 'other': '# messages .'};
     public dateNow = Date.now();
+
+    public sourceObserv = of('Hello form observable of :D');
+    public sourcePromi = new Promise((resolve, reject) => resolve('Hello from promissse :D'));
 
     constructor() {
 
