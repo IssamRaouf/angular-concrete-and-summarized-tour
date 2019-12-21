@@ -116,7 +116,7 @@
 
         <mat-card class="col-3 m-auto">
             <mat-card-header>
-                <mat-card-title>number (DecimalPipe)</mat-card-title>
+                <mat-card-title>number</mat-card-title>
                 <mat-card-subtitle>transforme un nombre en une chaîne, formatée selon les règles de paramètres régionaux
                     qui déterminent la taille et le séparateur du groupe.<br>
                     <strong>numberFt = 8.718281828459045</strong>
@@ -130,6 +130,25 @@
                     </mat-list-item>
                     <mat-list-item role="listitem">
                         <strong>Result:</strong>&nbsp;&nbsp; {{numberFt | number:'1.1-6'}}</mat-list-item>
+                </mat-list>
+            </mat-card-content>
+        </mat-card>
+        <mat-card class="col-3 m-auto">
+            <mat-card-header>
+                <mat-card-title>Currency</mat-card-title>
+                <mat-card-subtitle>transforme un nombre en une chaîne, formatée selon les règles de paramètres régionaux
+                    qui déterminent la taille et le séparateur du groupe.<br>
+                    <strong>numberFt = 8.718281828459045</strong>
+                </mat-card-subtitle>
+            </mat-card-header>
+            <mat-divider></mat-divider>
+            <mat-card-content>
+                <mat-list role="list">
+                    <mat-list-item role="listitem">
+                        <strong>{{currencyPipe}}</strong>
+                    </mat-list-item>
+                    <mat-list-item role="listitem">
+                        <strong>Result:</strong>&nbsp;&nbsp; {{numberFt | currency:'EUR'}}</mat-list-item>
                 </mat-list>
             </mat-card-content>
         </mat-card>
