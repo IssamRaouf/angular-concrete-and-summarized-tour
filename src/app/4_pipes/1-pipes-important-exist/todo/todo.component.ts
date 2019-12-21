@@ -31,9 +31,10 @@ export class TodoComponent implements OnInit {
     public inviteMap: any = {male: 'Invite-le.', female: 'Invite-la.', other: 'Invite-les.'};
     public messageMapping: { [k: string]: string } = {'=0': 'No message.', '=1': 'One message', 'other': '# messages .'};
     public dateNow = Date.now();
-
     public sourceObserv = of('Hello form observable of :D');
     public sourcePromi = new Promise((resolve, reject) => resolve('Hello from promissse :D'));
+    public obj = {2: 'foo', 1: 'bar'};
+    public map = new Map([[2, 'foo'], [1, 'bar']]);
 
     constructor() {
 
