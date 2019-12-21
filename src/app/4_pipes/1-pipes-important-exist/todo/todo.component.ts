@@ -16,7 +16,7 @@ export class TodoComponent implements OnInit {
     public json = '{{inviteMap | json}}';
     public decimalPipe = '{{numberFt | number:\'1.1-6\'}}';
     public currencyPipe = '{{numberFt | currency:\'EUR\'}}';
-
+    public percentPipe = '{{aPer | percent}}';
     // vars
     public numberFt = 8.718281828459045;
     public aPer = 0.759;
