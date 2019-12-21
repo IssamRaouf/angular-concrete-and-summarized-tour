@@ -5,7 +5,9 @@
         <mat-card class="col-3 m-auto">
             <mat-card-header>
                 <mat-card-title>Title case</mat-card-title>
-                <mat-card-subtitle>Transforme le texte en casse de titre. Met en majuscule la première lettre de chaque mot.</mat-card-subtitle>
+                <mat-card-subtitle>Transforme le texte en casse de titre. Met en majuscule la première lettre de chaque
+                    mot.
+                </mat-card-subtitle>
             </mat-card-header>
             <mat-divider></mat-divider>
             <mat-card-content>
@@ -76,7 +78,8 @@
         <mat-card class="col-3 m-auto">
             <mat-card-header>
                 <mat-card-title>I18nPluralPipe</mat-card-title>
-                <mat-card-subtitle>Mappe une valeur à une chaîne qui pluralise la valeur selon les règles locales.</mat-card-subtitle>
+                <mat-card-subtitle>Mappe une valeur à une chaîne qui pluralise la valeur selon les règles locales.
+                </mat-card-subtitle>
             </mat-card-header>
             <mat-divider></mat-divider>
             <mat-card-content>
@@ -93,7 +96,8 @@
         <mat-card class="col-3 m-auto">
             <mat-card-header>
                 <mat-card-title>Json</mat-card-title>
-                <mat-card-subtitle>inverse une valeur dans sa représentation au format JSON. Utile pour le débogage.</mat-card-subtitle>
+                <mat-card-subtitle>inverse une valeur dans sa représentation au format JSON. Utile pour le débogage.
+                </mat-card-subtitle>
             </mat-card-header>
             <mat-divider></mat-divider>
             <mat-card-content>
@@ -106,6 +110,30 @@
                 </mat-list>
             </mat-card-content>
         </mat-card>
+    </div>
+
+    <div class="row p-1">
+
+        <mat-card class="col-3 m-auto">
+            <mat-card-header>
+                <mat-card-title>number (DecimalPipe)</mat-card-title>
+                <mat-card-subtitle>transforme un nombre en une chaîne, formatée selon les règles de paramètres régionaux
+                    qui déterminent la taille et le séparateur du groupe.<br>
+                    <strong>numberFt = 8.718281828459045</strong>
+                </mat-card-subtitle>
+            </mat-card-header>
+            <mat-divider></mat-divider>
+            <mat-card-content>
+                <mat-list role="list">
+                    <mat-list-item role="listitem">
+                        <strong>{{decimalPipe}}</strong>
+                    </mat-list-item>
+                    <mat-list-item role="listitem">
+                        <strong>Result:</strong>&nbsp;&nbsp; {{numberFt | number:'1.1-6'}}</mat-list-item>
+                </mat-list>
+            </mat-card-content>
+        </mat-card>
 
     </div>
+
 </div>
