@@ -201,28 +201,52 @@
         <mat-card class="col-3 m-auto card-lg">
             <mat-card-header>
                 <mat-card-title>keyvalue</mat-card-title>
-                <mat-card-subtitle>Transforme l'objet ou Map en un tableau de paires de valeurs clés. </mat-card-subtitle>
+                <mat-card-subtitle>Transforme l'objet ou Map en un tableau de paires de valeurs clés.
+                </mat-card-subtitle>
             </mat-card-header>
             <mat-divider></mat-divider>
             <mat-card-content>
                 <mat-list role="list">
                     <mat-list-item role="listitem">
-                        <strong>{{AsyncPipeObserv}}</strong>
+                        <strong>{{keyValuePipeObj}}</strong>
                     </mat-list-item>
                     <mat-list-item role="listitem">
                         <strong>Result:</strong>&nbsp;&nbsp;<br>
                         <div *ngFor="let item of obj | keyvalue">
                             {{item.key}}:{{item.value}}
-                        </div><br>
+                        </div>
+                        <br>
                     </mat-list-item>
                     <mat-list-item role="listitem">
-                        <strong>{{AsyncPipePromisse}}</strong>
+                        <strong>{{keyValuePipeMap}}</strong>
                     </mat-list-item>
                     <mat-list-item role="listitem">
                         <strong>Result:</strong>&nbsp;&nbsp; <br>
                         <div *ngFor="let item of map | keyvalue">
                             {{item.key}}:{{item.value}}
-                        </div><br>
+                        </div>
+                        <br>
+                    </mat-list-item>
+                </mat-list>
+            </mat-card-content>
+        </mat-card>
+
+        <mat-card class="col-3 m-auto card-lg">
+            <mat-card-header>
+                <mat-card-title>slice</mat-card-title>
+                <mat-card-subtitle>Crée un nouveau tableau ou chaîne contenant un sous-ensemble (tranche) des
+                    éléments.
+                </mat-card-subtitle>
+            </mat-card-header>
+            <mat-divider></mat-divider>
+            <mat-card-content>
+                <mat-list role="list">
+                    <mat-list-item role="listitem">
+                        <strong>{{slicePipe}}</strong>
+                    </mat-list-item>
+                    <mat-list-item role="listitem" *ngFor="let item of collection | slice:0:3">
+                        <strong>Result:</strong>&nbsp;&nbsp;{{item}}
+
                     </mat-list-item>
                 </mat-list>
             </mat-card-content>
@@ -232,7 +256,7 @@
 
     <div class="row p-1">
 
-        <mat-card class="col-4 m-auto card-lg">
+        <mat-card class="col-8 m-auto card-lg">
             <mat-card-header>
                 <mat-card-title>Date pipe</mat-card-title>
                 <mat-card-subtitle>Formate une valeur de date selon les règles locales..<br>

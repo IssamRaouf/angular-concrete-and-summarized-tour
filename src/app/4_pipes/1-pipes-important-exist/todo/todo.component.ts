@@ -25,6 +25,9 @@ export class TodoComponent implements OnInit {
     public datePipeFormat = '{{dateNow |date:\'dd/M/y h:m:s\'}}';
     public AsyncPipeObserv = '{{sourceObserv| async}}';
     public AsyncPipePromisse = '{{sourcePromi| async}}';
+    public keyValuePipeObj = '{{let item of obj | keyvalue}}';
+    public keyValuePipeMap = '{{let item of map | keyvalue}}';
+    public slicePipe = '{{let item of collection | slice:0:3}}'
     // vars
     public numberFt = 8.718281828459045;
     public aPer = 0.759;
@@ -35,6 +38,9 @@ export class TodoComponent implements OnInit {
     public sourcePromi = new Promise((resolve, reject) => resolve('Hello from promissse :D'));
     public obj = {2: 'foo', 1: 'bar'};
     public map = new Map([[2, 'foo'], [1, 'bar']]);
+    public collection = ['Symfony', 'Angular', 'Drupal8', 'Java'];
+
+
 
     constructor() {
 
