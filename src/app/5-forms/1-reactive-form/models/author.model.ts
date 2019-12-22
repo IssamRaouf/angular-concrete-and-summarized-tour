@@ -23,7 +23,7 @@ export class Author {
                 this.email = json.email as string;
             }
             if (json.hasOwnProperty('grade')) {
-                this.grade = json.grade as boolean;
+                this.grade = json.grade as GradeEnum;
             }
         }
     }

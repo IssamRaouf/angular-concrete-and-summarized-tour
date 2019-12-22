@@ -2,6 +2,7 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup, Validators, FormArray} from '@angular/forms';
 import {TicketTypeEnum} from '../enum/ticket-type.enum';
 import {Ticket} from '../models/ticket.model';
+import {GradeEnum} from '../enum/grade.enum';
 
 @Component({
     selector: 'app-todo-form',
@@ -11,19 +12,34 @@ import {Ticket} from '../models/ticket.model';
 export class TodoFormComponent implements OnInit {
     public formTicket: FormGroup;
     public typesAsSelect: Array<object>;
+    public gradeAsSelect: Array<object>;
+
     @Output() public sendTicket: EventEmitter<Ticket> = new EventEmitter<Ticket>();
 
 
     constructor() {
+
+
+    }
+
+    private constructForm(): void {
         this.formTicket = new FormGroup({
             name: new FormControl('', Validators.required),
             type: new FormControl('', Validators.required),
             description: new FormControl('', Validators.required),
+            author: new FormGroup({
+                firstName: new FormControl('', [Validators.required, Validators.minLength(10)]),
+                lastName: new FormControl('', Validators.required),
+                email: new FormControl('', [Validators.required, Validators.pattern('[^ @]*@[^ @]*')]),
+                grade: new FormControl('', Validators.required),
+            })
         });
-        this.typesAsSelect = this.enumToSelectList(TicketTypeEnum);
     }
 
     ngOnInit() {
+        this.constructForm();
+        this.typesAsSelect = this.enumToSelectList(TicketTypeEnum);
+        this.gradeAsSelect = this.enumToSelectList(GradeEnum);
     }
 
     public onSubmit(): void {
