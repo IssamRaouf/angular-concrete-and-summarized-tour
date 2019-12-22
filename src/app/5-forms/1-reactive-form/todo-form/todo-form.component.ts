@@ -43,7 +43,7 @@ export class TodoFormComponent implements OnInit {
     }
 
     public onSubmit(): void {
-        this.formTicket.markAsTouched();
+        this.markFormAsTouched(this.formTicket);
         if (this.formTicket.valid) {
             console.log('formTicket', this.formTicket);
             this.sendTicket.emit(new Ticket(this.formTicket.value));
@@ -79,5 +79,17 @@ export class TodoFormComponent implements OnInit {
         return Object.keys(definition).map(key => ({val: definition[key], text: definition[key]}));
     }
 
+    /**
+     * Marks all controls in a form group as touched
+     */
+    public markFormAsTouched(formGroup: FormGroup | FormArray): void {
+        (Object as any).values(formGroup.controls).forEach(control => {
+            if (control.controls) {
+                this.markFormAsTouched(control);
+            } else {
+                control.markAsTouched();
+            }
+        });
+    }
 
 }
