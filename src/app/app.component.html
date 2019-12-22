@@ -3,7 +3,7 @@
     <mat-toolbar color="primary">
         <mat-toolbar-row>
             <button mat-icon-button class="icon-menu" (click)="sidenav.toggle()">
-                <mat-icon >{{ sidenav.opened ? 'close' : 'menu'}}</mat-icon>
+                <mat-icon>{{ sidenav.opened ? 'close' : 'menu'}}</mat-icon>
             </button>
             <h1>Angular Revision</h1>
         </mat-toolbar-row>
@@ -24,9 +24,15 @@
                     </mat-expansion-panel-header>
 
                     <mat-list role="list">
-                        <mat-list-item role="listitem"><a routerLink="./content-projection" routerLinkActive="active" (click)="sidenav.toggle()">Content Projection</a> </mat-list-item>
-                        <mat-list-item role="listitem"><a routerLink="./lifecycle-hooks" routerLinkActive="active" (click)="sidenav.toggle()">Lifecycle (hooks)</a> </mat-list-item>
-                        <mat-list-item role="listitem"><a routerLink="./view-content-child-children" routerLinkActive="active" (click)="sidenav.toggle()">ViewChild & CententChild..</a></mat-list-item>
+                        <mat-list-item role="listitem"><a routerLink="./content-projection" routerLinkActive="active"
+                                                          (click)="sidenav.toggle()">Content Projection</a>
+                        </mat-list-item>
+                        <mat-list-item role="listitem"><a routerLink="./lifecycle-hooks" routerLinkActive="active"
+                                                          (click)="sidenav.toggle()">Lifecycle (hooks)</a>
+                        </mat-list-item>
+                        <mat-list-item role="listitem"><a routerLink="./view-content-child-children"
+                                                          routerLinkActive="active" (click)="sidenav.toggle()">ViewChild
+                            & CententChild..</a></mat-list-item>
                     </mat-list>
 
                 </mat-expansion-panel>
@@ -40,8 +46,12 @@
 
 
                     <mat-list role="list">
-                        <mat-list-item role="listitem"><a routerLink="./directives-important-exist" routerLinkActive="active" (click)="sidenav.toggle()">Directives importantes existent</a> </mat-list-item>
-                        <mat-list-item role="listitem"><a routerLink="./directives-custom" routerLinkActive="active" (click)="sidenav.toggle()">Directives personnalisées</a> </mat-list-item>
+                        <mat-list-item role="listitem"><a routerLink="./directives-important-exist"
+                                                          routerLinkActive="active" (click)="sidenav.toggle()">Directives
+                            importantes existent</a></mat-list-item>
+                        <mat-list-item role="listitem"><a routerLink="./directives-custom" routerLinkActive="active"
+                                                          (click)="sidenav.toggle()">Directives personnalisées</a>
+                        </mat-list-item>
                     </mat-list>
 
                 </mat-expansion-panel>
@@ -55,7 +65,9 @@
 
 
                     <mat-list role="list">
-                        <mat-list-item role="listitem"><a routerLink="./reactive-programming" routerLinkActive="active" (click)="sidenav.toggle()">Reactive programming</a> </mat-list-item>
+                        <mat-list-item role="listitem"><a routerLink="./reactive-programming" routerLinkActive="active"
+                                                          (click)="sidenav.toggle()">Reactive programming</a>
+                        </mat-list-item>
                     </mat-list>
 
                 </mat-expansion-panel>
@@ -68,13 +80,34 @@
                     </mat-expansion-panel-header>
 
                     <mat-list role="list">
-                        <mat-list-item role="listitem"><a routerLink="./pipes-important-exist" routerLinkActive="active" (click)="sidenav.toggle()">Pipes importantes existent</a> </mat-list-item>
-                        <mat-list-item role="listitem"><a routerLink="./pipes-custom" routerLinkActive="active" (click)="sidenav.toggle()">Pipes custom</a> </mat-list-item>
+                        <mat-list-item role="listitem"><a routerLink="./pipes-important-exist" routerLinkActive="active"
+                                                          (click)="sidenav.toggle()">Pipes importantes existent</a>
+                        </mat-list-item>
+                        <mat-list-item role="listitem"><a routerLink="./pipes-custom" routerLinkActive="active"
+                                                          (click)="sidenav.toggle()">Pipes custom</a></mat-list-item>
 
                     </mat-list>
 
                 </mat-expansion-panel>
                 <!-- END expansion-panel  Pipes -->
+
+
+                <!-- BEGIN expansion-panel Forms -->
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        Forms
+                    </mat-expansion-panel-header>
+
+                    <mat-list role="list">
+                        <mat-list-item role="listitem">
+                            <a routerLink="./reactive-forms" routerLinkActive="active" (click)="sidenav.toggle()">Reactive
+                                forms</a>
+                        </mat-list-item>
+
+                    </mat-list>
+
+                </mat-expansion-panel>
+                <!-- END expansion-panel  Forms -->
 
             </mat-accordion>
         </mat-sidenav>
