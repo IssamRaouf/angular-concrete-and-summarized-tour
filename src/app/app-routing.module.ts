@@ -43,6 +43,10 @@ const routes: Routes = [
         loadChildren: () => import('./5-forms/1-reactive-form/reactive-form.module').then(mod => mod.ReactiveFormModule)
     },
     {
+        path: 'template-driven-form',
+        loadChildren: () => import('./5-forms/2-template-driven-form/template-driven-form.module').then(mod => mod.TemplateDrivenFormModule)
+    },
+    {
         path: '',
         redirectTo: 'content-projection',
         pathMatch: 'full'
