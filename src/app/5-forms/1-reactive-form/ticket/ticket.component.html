@@ -1,0 +1,23 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>{{ticket.name |titlecase}}</mat-card-title>
+        <mat-card-subtitle color="primary">{{ticket.type | titlecase}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <p>
+            <strong>Auteur</strong><br>
+            <small>{{ticket.author.firstName}} {{ticket.author.firstName}}</small><br>
+            <small>{{ticket.author.email}}</small><br>
+            <small>{{ticket.author.grade}}</small><br>
+        </p>
+        <p [hidden]="ticket.hideDesc">
+            {{ticket.description}}
+        </p>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-raised-button color="primary"
+                (click)="ticket.toggleDesc()">{{ ticket.hideDesc ? 'Afficher' : 'Cacher'}} description
+        </button>
+    </mat-card-actions>
+</mat-card>
+

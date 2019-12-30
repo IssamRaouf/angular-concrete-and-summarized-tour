@@ -21,7 +21,6 @@ const routes: Routes = [
         loadChildren: () => import('./2-directives/1-directives-important-exist/directives-important-exist.module')
             .then(mod => mod.DirectivesImportantExistModule)
     },
-
     {
         path: 'directives-custom',
         loadChildren: () => import('./2-directives/2-custom-directives/custom-directives.module').then(mod => mod.CustomDirectivesModule)
@@ -38,6 +37,14 @@ const routes: Routes = [
     {
         path: 'pipes-custom',
         loadChildren: () => import('./4_pipes/2-pipes-custom/pipes-custom.module').then(mod => mod.PipesCustomModule)
+    },
+    {
+        path: 'reactive-forms',
+        loadChildren: () => import('./5-forms/1-reactive-form/reactive-form.module').then(mod => mod.ReactiveFormModule)
+    },
+    {
+        path: 'template-driven-form',
+        loadChildren: () => import('./5-forms/2-template-driven-form/template-driven-form.module').then(mod => mod.TemplateDrivenFormModule)
     },
     {
         path: '',
