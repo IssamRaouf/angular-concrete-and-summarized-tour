@@ -42,7 +42,16 @@
                 <input matInput placeholder="First name" formControlName="firstName">
                 <mat-error *ngIf="formTicket.controls.author.controls.firstName.invalid &&
             (formTicket.controls.author.controls.firstName.dirty || formTicket.controls.author.controls.firstName.touched)">
-                    Champ obligatoire
+                    <ng-container
+                            *ngIf="formTicket.controls.author.controls.firstName.errors && formTicket.controls.author.controls.firstName.errors.required">
+                        Champ
+                        obligatoire
+                    </ng-container>
+                    <ng-container
+                            *ngIf="formTicket.controls.author.controls.firstName.errors && formTicket.controls.author.controls.firstName.errors.minlength">
+                        10 caractére
+                        au minimum
+                    </ng-container>
                 </mat-error>
                 <mat-hint *ngIf="formTicket.controls.author.controls.firstName.errors &&
              formTicket.controls.author.controls.firstName.errors.required">required
@@ -66,7 +75,14 @@
                 <input matInput placeholder="Email" formControlName="email">
                 <mat-error *ngIf="formTicket.controls.author.controls.email.invalid &&
             (formTicket.controls.author.controls.email.dirty || formTicket.controls.author.controls.email.touched)">
-                    Champ obligatoire
+                    <ng-container
+                            *ngIf="formTicket.controls.author.controls.email.errors && formTicket.controls.author.controls.email.errors.required">
+                        Champ obligatoire
+                    </ng-container>
+                    <ng-container
+                            *ngIf="formTicket.controls.author.controls.email.errors && formTicket.controls.author.controls.email.errors.pattern">
+                        Email est invalide
+                    </ng-container>
                 </mat-error>
                 <mat-hint *ngIf="formTicket.controls.author.controls.email.errors &&
              formTicket.controls.author.controls.email.errors.required">required
