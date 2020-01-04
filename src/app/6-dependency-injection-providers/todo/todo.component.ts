@@ -1,7 +1,4 @@
-import {Component, Injector, OnInit} from '@angular/core';
-
-
-
+import {Component, OnInit} from '@angular/core';
 
 @Component({
     selector: 'app-todo',

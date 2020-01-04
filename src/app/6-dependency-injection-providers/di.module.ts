@@ -4,13 +4,13 @@ import {TodoComponent} from './todo/todo.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MaterialModule} from '../MaterialModule';
 import {DIRoutingModule} from './di.routing.module';
-import {ApplicationService} from './services/application.service';
+
+
 
 
 @NgModule({
     imports: [CommonModule, MaterialModule, FormsModule, ReactiveFormsModule, DIRoutingModule],
-    declarations: [TodoComponent],
-    providers:[ApplicationService]
+    declarations: [TodoComponent]
 })
 export class DIModule {
 

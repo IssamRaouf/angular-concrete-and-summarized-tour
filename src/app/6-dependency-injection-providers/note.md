@@ -271,6 +271,136 @@ class AppModule { }
 La propriété viewProviders nous permet de rendre les providers disponibles uniquement pour la vue du composant,
  par contre la propriété de providers met les providers à la disposition de ses contenrChildren and viewChildren.
 ```
+### Exemples:
+
+1) Configuration des providers sur NgModule de notre Module DI (n'oubliez pas j'utilise lazy loading ...)
+
+```
+@NgModule({
+    imports: [CommonModule, MaterialModule, FormsModule, ReactiveFormsModule, DIRoutingModule],
+    declarations: [TodoComponent],
+    providers:[ApplicationService, MailerProviderService]
+})
+export class DIModule {
+}
+
+import {MailerProviderService} from './mailer-provider.service';
+export class ApplicationService {
+    constructor(mailerProv: MailerProviderService) {
+        console.log('Hello from ApplicationService');
+    }
+}
+
+export class MailerProviderService {
+    constructor() {
+        console.log('Hello from MailerProviderService');
+    }
+}
+
+import {ApplicationService} from './application.service';
+export class TodoComponent implements OnInit {
+    constructor(private appServ: ApplicationService) {
+    }
+    ngOnInit() {
+    }
+}
+```
+
+2) Configuration un provider sur NgModule  et l'autre avec @Inject décorateur
+
+```
+@NgModule({
+    imports: [CommonModule, MaterialModule, FormsModule, ReactiveFormsModule, DIRoutingModule],
+    declarations: [TodoComponent],
+    // on supprime MailerProviderService de list des providers de NgModule
+    providers:[ApplicationService]
+})
+export class DIModule {
+}
+
+import {MailerProviderService} from './mailer-provider.service';
+export class ApplicationService {
+    //Nous utilisons le  @Inject décorateur de paramètres pour indiquer à Angular que nous voulons résoudre un jeton et injecter une dépendance dans un constructeur.
+    // @Inject(MailerProviderService) ici MailerProviderService est token de type class
+    constructor(@Inject(MailerProviderService)  mailerProv: MailerProviderService) {
+        console.log('Hello from ApplicationService');
+    }
+}
+
+export class MailerProviderService {
+    constructor() {
+        console.log('Hello from MailerProviderService');
+    }
+}
+
+import {ApplicationService} from './application.service';
+export class TodoComponent implements OnInit {
+    constructor(private appServ: ApplicationService) {
+    }
+    ngOnInit() {
+    }
+}
+```
+
+3) Configuration un provider sur NgModule et sa depandce avec @Injectable decorator
+//Injectable :  Décorateur qui marque une classe comme disponible pour être fournie et injectée comme dépendance.
+
+````
+@NgModule({
+    imports: [CommonModule, MaterialModule, FormsModule, ReactiveFormsModule, DIRoutingModule],
+    declarations: [TodoComponent],
+    providers:[ApplicationService]
+})
+export class DIModule {
+}
+
+import {MailerProviderService} from './mailer-provider.service';
+export class ApplicationService {
+    constructor(mailerProv: MailerProviderService) {
+        console.log('Hello from ApplicationService');
+    }
+}
+@Injectable()
+export class MailerProviderService {
+    constructor() {
+        console.log('Hello from MailerProviderService');
+    }
+}
+
+import {ApplicationService} from './application.service';
+export class TodoComponent implements OnInit {
+    constructor(private appServ: ApplicationService) {
+    }
+    ngOnInit() {
+    }
+}
+
+Nb: Nous pouvons utiliser @Injectable() sans configurer prividers de NgModule
+//en spécifiant que cet injectable doit être fourni dans l'injecteur racine, qui sera l'injecteur de niveau application dans la plupart des applications.
+@Injectable({
+    providedIn: 'root'
+})
+
+//en spécifiant que cet injectable doit être fourni dans l'injecteur de module ...
+@Injectable({
+    providedIn: DIModule
+})
+
+```
+#### Resume
+* Nous pouvons configurer le framework DI dans Angular de trois manières principales.
+
+* Nous pouvons configurer un fournisseur sur le NgModule, sur une providerspropriété de composant ou de directives et sur une viewProviderspropriété de composants .
+
+* Décider où configurer votre fournisseur et comprendre les différents est essentiel pour comprendre comment concevoir une application angulaire.
+
+* Si nous voulons qu'une instance d'une dépendance soit partagée globalement et partage l' état dans l'application, nous la configurons sur NgModule.
+
+* Si nous voulons qu'une instance distincte d'une dépendance soit partagée entre chaque instance d'un composant et ses enfants, nous la configurons sur la providerspropriété des composants .
+
+* Si nous voulons qu'une instance distincte d'une dépendance soit partagée entre chaque instance d'un composant et seulement ses enfants de vue, nous la configurons sur la viewProviderspropriété des composants 
+
+
 
 
 
