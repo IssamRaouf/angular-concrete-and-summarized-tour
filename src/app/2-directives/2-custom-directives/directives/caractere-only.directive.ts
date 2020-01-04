@@ -4,7 +4,7 @@ import {Directive, ElementRef, HostListener} from '@angular/core';
  * Only Caractere Directive
  */
 @Directive({
-    selector: '[appCaractereOnly]'
+    selector: '[appCaractereOnly]',
 })
 export class CaractereOnlyDirective {
     /**
