@@ -47,6 +47,10 @@ const routes: Routes = [
         loadChildren: () => import('./5-forms/2-template-driven-form/template-driven-form.module').then(mod => mod.TemplateDrivenFormModule)
     },
     {
+        path: 'dependency-injection',
+        loadChildren: () => import('./6-dependency-injection-providers/di.module').then(mod => mod.DIModule)
+    },
+    {
         path: '',
         redirectTo: 'content-projection',
         pathMatch: 'full'
