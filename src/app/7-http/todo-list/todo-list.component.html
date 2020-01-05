@@ -1,0 +1,13 @@
+<div class="container-todo-list">
+
+    <div class="row">
+        <ng-template *ngIf="ticketList.length == 0; else ticketsShow;">
+            <div class="alert alert-info"> aucune Ticket n'existe, pouvez-vous l'ajouter !</div>
+        </ng-template>
+        <ng-template #ticketsShow>
+            <div class="col-lg-4" *ngFor="let ticket of ticketList">
+                <app-ticket [ticket]="ticket"></app-ticket>
+            </div>
+        </ng-template>
+    </div>
+</div>
