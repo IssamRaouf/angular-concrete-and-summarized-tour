@@ -1,24 +1,33 @@
 <div class="container container-todo-form">
     <form [formGroup]="formTicket" class="form-container" novalidate>
-        <mat-form-field>
-            <input matInput placeholder="Le nom de ticket" formControlName="name">
-            <mat-error *ngIf="controls.name.hasError('required')">Champ obligatoire</mat-error>
-            <mat-hint *ngIf="isRequired(controls.name)">required</mat-hint>
-        </mat-form-field>
 
         <mat-form-field>
-            <mat-select placeholder="type de ticket" formControlName="type">
-                <mat-option *ngFor="let option of typesAsSelect" [value]="option.val">{{option.text}}</mat-option>
+            <mat-select placeholder="User" formControlName="userId">
+                <mat-option *ngFor="let user of usersList" [value]="user.id">{{user.username}}</mat-option>
             </mat-select>
-            <mat-error *ngIf="controls.type.hasError('required')">Champ obligatoire</mat-error>
-            <mat-hint *ngIf="isRequired(controls.type)">required</mat-hint>
+            <mat-error *ngIf="controls.userId.hasError('required')">Champ obligatoire</mat-error>
+            <mat-hint *ngIf="isRequired(controls.userId)">required</mat-hint>
         </mat-form-field>
 
         <mat-form-field>
-            <textarea matInput placeholder="Description du ticket" formControlName="description"></textarea>
-            <mat-error *ngIf="controls.description.hasError('required')">Champ obligatoire</mat-error>
-            <mat-hint *ngIf="isRequired(controls.description)">required</mat-hint>
+            <input matInput placeholder="Le nom de ticket" formControlName="title">
+            <mat-error *ngIf="controls.title.hasError('required')">Champ obligatoire</mat-error>
+            <mat-hint *ngIf="isRequired(controls.title)">required</mat-hint>
         </mat-form-field>
+
+
+        <mat-form-field>
+            <textarea matInput placeholder="Id  de ticket" formControlName="id"></textarea>
+            <mat-error *ngIf="controls.id.hasError('required')">Champ obligatoire</mat-error>
+            <mat-hint *ngIf="isRequired(controls.id)">required</mat-hint>
+        </mat-form-field>
+
+            <mat-checkbox
+            [indeterminate]="'true'"
+            [labelPosition]="'after'"
+            formControlName="completed">
+            Terminé
+            </mat-checkbox>
 
         <button type="submit" mat-raised-button color="primary" (click)="onSubmit()">Envoyer</button>
     </form>

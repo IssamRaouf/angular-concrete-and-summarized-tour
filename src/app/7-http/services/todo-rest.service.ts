@@ -8,6 +8,7 @@ import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
 import {Observable, of} from 'rxjs';
 import {Ticket} from '../models/ticket.model';
 import {catchError, map, tap} from 'rxjs/operators';
+import {UserModel} from '../models/user.model';
 
 
 @Injectable()
@@ -54,5 +55,24 @@ export class TodoRestService {
         );
     }
 
+    public getListUsers(): Observable<Array<UserModel>> {
+        const url = this.webServiceUrl + '/users';
+
+        return this.httpClient.get<Array<UserModel>>(url, {
+            headers: this.headers,
+            responseType: 'json',
+            withCredentials: false,
+            observe: 'response'
+
+        }).pipe(
+            tap(() => console.log('HTTP GET - ' + url)),
+            map((response: HttpResponse<Array<UserModel>>) => response.body.map(item => new UserModel(item))),
+            catchError((error) => {
+                console.log(`Error on call HTTP GET -   ${url}`, error);
+                // Laissez l'application continuer à fonctionner en renvoyant un array vide.
+                return of([]);
+            })
+        );
+    }
 
 }

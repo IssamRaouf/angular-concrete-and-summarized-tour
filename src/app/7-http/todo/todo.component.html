@@ -1,10 +1,11 @@
 <div class="container container-todo">
 
-    <!--app-todo-form (sendTicket)="addTicket($event)"></app-todo-form-->
     <div class="row py-5 my-5" *ngIf='isLoading ;  else list'>
-       <h1> veuillez patienter, la liste est en cours de chargement..</h1>
+        <h1> veuillez patienter, la liste est en cours de chargement..</h1>
     </div>
     <ng-template #list>
-        <app-todo-list [ticketList]="ticketListMook"></app-todo-list>
+
+        <app-todo-form (sendTicket)="addTicket($event)" [usersList]="usersListMook"></app-todo-form>
+        <app-todo-list [usersList]="usersListMook" [ticketList]="ticketListMook"></app-todo-list>
     </ng-template>
 </div>

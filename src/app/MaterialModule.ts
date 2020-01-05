@@ -10,7 +10,8 @@ import {
     MatSidenavModule,
     MatListModule,
     MatExpansionModule,
-    MatTabsModule
+    MatTabsModule,
+    MatCheckboxModule
 } from '@angular/material';
 
 @NgModule({
@@ -26,8 +27,8 @@ import {
         MatSidenavModule,
         MatListModule,
         MatExpansionModule,
-        MatTabsModule
-
+        MatTabsModule,
+        MatCheckboxModule
     ]
 })
 export class MaterialModule {

@@ -4,7 +4,7 @@
  * this model is view object for ticket (https://jsonplaceholder.typicode.com/todos)
  */
 export class Ticket {
-    public userId: string;
+    public userId: number;
     public id: string;
     public title: string;
     public completed: boolean;
@@ -12,7 +12,7 @@ export class Ticket {
     constructor(json?: any) {
         if (json !== undefined && json !== null) {
             if (json.hasOwnProperty('userId')) {
-                this.userId = json.userId as string;
+                this.userId = json.userId as number;
             }
             if (json.hasOwnProperty('id')) {
                 this.id = json.id as string;

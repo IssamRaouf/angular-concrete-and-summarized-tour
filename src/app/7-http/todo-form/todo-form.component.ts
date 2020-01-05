@@ -1,6 +1,7 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormArray, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Ticket} from '../models/ticket.model';
+import {UserModel} from '../models/user.model';
 
 @Component({
     selector: 'app-todo-form',
@@ -12,11 +13,14 @@ export class TodoFormComponent implements OnInit {
     public typesAsSelect: Array<object>;
     @Output() public sendTicket: EventEmitter<Ticket> = new EventEmitter<Ticket>();
 
+    @Input() usersList: Array<UserModel> = [];
+
     constructor() {
         this.formTicket = new FormGroup({
-            name: new FormControl('', Validators.required),
-            type: new FormControl('', Validators.required),
-            description: new FormControl('', Validators.required),
+            userId: new FormControl('', Validators.required),
+            id: new FormControl('', Validators.required),
+            title: new FormControl('', Validators.required),
+            completed: new FormControl(false),
         });
     }
 
