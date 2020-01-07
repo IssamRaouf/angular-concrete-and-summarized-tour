@@ -1,5 +1,5 @@
 /**
- * pour le debutant je vais ecrire un simple code..
+ * pour le debutant je vais ecrire un simple code..(no refactoring no ...)
  * j'utilise fake https://jsonplaceholder.typicode.com
  */
 
@@ -73,6 +73,26 @@ export class TodoRestService {
                 return of([]);
             })
         );
+    }
+
+    public addTodo(todo: Ticket): Observable<Ticket | any> {
+
+        const url = this.webServiceUrl + '/todos';
+        return this.httpClient.post<number>(url, JSON.stringify(todo), {
+            headers: this.headers,
+            responseType: 'json',
+            withCredentials: false,
+            observe: 'response'
+        }).pipe(
+            tap(() => console.log('HTTP POST - ' + url)),
+            map(response => new Ticket(response.body)),
+            catchError((error) => {
+                console.log(`Error on call HTTP post -   ${url}`, error);
+                // Laissez l'application continuer à fonctionner en renvoyant un array vide.
+                return of([]);
+            })
+        );
+
     }
 
 }

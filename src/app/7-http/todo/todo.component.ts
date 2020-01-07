@@ -43,7 +43,7 @@ export class TodoComponent implements OnInit {
     }
 
     public addTicket(ticket: Ticket): void {
-        // @Todo
+        this.ticketListMook = [ticket, ...this.ticketListMook];
     }
 
     public editTicket(ticket: Ticket): void {

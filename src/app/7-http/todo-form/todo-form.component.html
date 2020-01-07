@@ -16,12 +16,6 @@
         </mat-form-field>
 
 
-        <mat-form-field>
-            <textarea matInput placeholder="Id  de ticket" formControlName="id"></textarea>
-            <mat-error *ngIf="controls.id.hasError('required')">Champ obligatoire</mat-error>
-            <mat-hint *ngIf="isRequired(controls.id)">required</mat-hint>
-        </mat-form-field>
-
             <mat-checkbox
             [indeterminate]="'true'"
             [labelPosition]="'after'"

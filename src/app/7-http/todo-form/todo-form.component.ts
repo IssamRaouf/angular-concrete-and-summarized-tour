@@ -2,6 +2,8 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormArray, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Ticket} from '../models/ticket.model';
 import {UserModel} from '../models/user.model';
+import {TodoRestService} from '../services/todo-rest.service';
+import {tick} from '@angular/core/testing';
 
 @Component({
     selector: 'app-todo-form',
@@ -15,10 +17,9 @@ export class TodoFormComponent implements OnInit {
 
     @Input() usersList: Array<UserModel> = [];
 
-    constructor() {
+    constructor(private todoRestServ: TodoRestService) {
         this.formTicket = new FormGroup({
             userId: new FormControl('', Validators.required),
-            id: new FormControl('', Validators.required),
             title: new FormControl('', Validators.required),
             completed: new FormControl(false),
         });
@@ -30,8 +31,18 @@ export class TodoFormComponent implements OnInit {
     public onSubmit(): void {
         this.markFormAsTouched(this.formTicket);
         if (this.formTicket.valid) {
-            console.log('formTicket', this.formTicket);
-            this.sendTicket.emit(new Ticket(this.formTicket.value));
+            const todo = new Ticket(this.formTicket.value);
+            this.todoRestServ.addTodo(todo).subscribe((newTicket: Ticket) => {
+                alert(newTicket.id);
+                if (newTicket) {
+                    todo.id = newTicket.id;
+                    this.sendTicket.emit(todo);
+                } else {
+                    // on va faire les notifications avec le component de material design snackbar aprés..
+                    alert('Error , see console');
+                }
+            });
+
         }
     }
 
