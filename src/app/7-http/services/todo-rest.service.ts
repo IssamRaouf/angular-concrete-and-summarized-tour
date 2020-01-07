@@ -76,9 +76,9 @@ export class TodoRestService {
     }
 
     public addTodo(todo: Ticket): Observable<Ticket | any> {
-
         const url = this.webServiceUrl + '/todos';
-        return this.httpClient.post<number>(url, JSON.stringify(todo), {
+
+        return this.httpClient.post<Ticket>(url, JSON.stringify(todo), {
             headers: this.headers,
             responseType: 'json',
             withCredentials: false,
