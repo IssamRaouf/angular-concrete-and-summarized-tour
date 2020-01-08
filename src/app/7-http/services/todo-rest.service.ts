@@ -73,5 +73,26 @@ export class TodoRestService {
 
     }
 
+    public deleteTodo(todo: Ticket): Observable<any> {
+        const url = this.webServiceUrl + '/todos';
+        return this.httpClient.delete<Ticket>(url, {
+            headers: this.headers,
+            responseType: 'json',
+            observe: 'body'
+        });
+    }
+
+    public putTodo(todo: Ticket): Observable<Ticket | any> {
+        const url = this.webServiceUrl + '/todos';
+        return this.httpClient.put<Ticket>(url, JSON.stringify(todo), {
+            headers: this.headers,
+            responseType: 'json',
+            observe: 'response'
+        }).pipe(
+            map(response => new Ticket(response.body)),
+        );
+
+    }
+
 
 }
