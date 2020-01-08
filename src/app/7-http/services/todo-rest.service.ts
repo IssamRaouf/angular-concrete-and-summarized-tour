@@ -41,17 +41,9 @@ export class TodoRestService {
         return this.httpClient.get<Array<Ticket>>(url, {
             headers: this.headers,
             responseType: 'json',
-            withCredentials: false,
             observe: 'response'
-
         }).pipe(
-            tap(() => console.log('HTTP GET - ' + url)),
             map((response: HttpResponse<Array<Ticket>>) => response.body.map(item => new Ticket(item))),
-            catchError((error) => {
-                console.log(`Error on call HTTP GET -   ${url}`, error);
-                // Laissez l'application continuer à fonctionner en renvoyant un array vide.
-                return of([]);
-            })
         );
     }
 
@@ -61,17 +53,10 @@ export class TodoRestService {
         return this.httpClient.get<Array<UserModel>>(url, {
             headers: this.headers,
             responseType: 'json',
-            withCredentials: false,
             observe: 'response'
 
         }).pipe(
-            tap(() => console.log('HTTP GET - ' + url)),
             map((response: HttpResponse<Array<UserModel>>) => response.body.map(item => new UserModel(item))),
-            catchError((error) => {
-                console.log(`Error on call HTTP GET -   ${url}`, error);
-                // Laissez l'application continuer à fonctionner en renvoyant un array vide.
-                return of([]);
-            })
         );
     }
 
@@ -81,16 +66,9 @@ export class TodoRestService {
         return this.httpClient.post<Ticket>(url, JSON.stringify(todo), {
             headers: this.headers,
             responseType: 'json',
-            withCredentials: false,
             observe: 'response'
         }).pipe(
-            tap(() => console.log('HTTP POST - ' + url)),
             map(response => new Ticket(response.body)),
-            catchError((error) => {
-                console.log(`Error on call HTTP post -   ${url}`, error);
-                // Laissez l'application continuer à fonctionner en renvoyant un array vide.
-                return of([]);
-            })
         );
 
     }
