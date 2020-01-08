@@ -74,7 +74,7 @@ export class TodoRestService {
     }
 
     public deleteTodo(todo: Ticket): Observable<any> {
-        const url = this.webServiceUrl + '/todos';
+        const url = this.webServiceUrl + `/todos/${todo.id}`;
         return this.httpClient.delete<Ticket>(url, {
             headers: this.headers,
             responseType: 'json',

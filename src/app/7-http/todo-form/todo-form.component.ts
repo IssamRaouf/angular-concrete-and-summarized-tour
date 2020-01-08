@@ -33,7 +33,7 @@ export class TodoFormComponent implements OnInit {
         if (this.formTicket.valid) {
             const todo = new Ticket(this.formTicket.value);
             this.todoRestServ.addTodo(todo).subscribe((newTicket: Ticket) => {
-                alert(newTicket.id);
+
                 if (newTicket) {
                     todo.id = newTicket.id;
                     this.sendTicket.emit(todo);

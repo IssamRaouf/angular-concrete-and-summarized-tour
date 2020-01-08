@@ -50,7 +50,5 @@ export class TodoComponent implements OnInit {
         // @Todo
     }
 
-    public deleteTicket(ticket: Ticket): void {
-        // @Todo
-    }
+
 }
