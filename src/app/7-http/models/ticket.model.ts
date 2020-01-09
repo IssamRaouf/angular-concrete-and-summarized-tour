@@ -7,7 +7,7 @@ export class Ticket {
     public userId: number;
     public id: number;
     public title: string;
-    public completed: boolean;
+    public completed: boolean ;
 
     constructor(json?: any) {
         if (json !== undefined && json !== null) {

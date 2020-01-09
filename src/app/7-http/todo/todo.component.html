@@ -5,7 +5,9 @@
     </div>
     <ng-template #list>
 
-        <app-todo-form (sendTicket)="addTicket($event)" [usersList]="usersListMook"></app-todo-form>
-        <app-todo-list [usersList]="usersListMook" [ticketList]="ticketListMook"></app-todo-list>
+        <app-todo-form (sendTicket)="addTicket($event)" [usersList]="usersListMook"
+                       [editTicket]="ticketToEdit"></app-todo-form>
+        <app-todo-list [usersList]="usersListMook" [ticketList]="ticketListMook"
+                       (editTicketSend)="editTicket($event)"></app-todo-list>
     </ng-template>
 </div>

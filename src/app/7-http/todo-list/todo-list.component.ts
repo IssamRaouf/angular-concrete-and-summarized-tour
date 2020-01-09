@@ -1,7 +1,8 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {Ticket} from '../models/ticket.model';
 import {UserModel} from '../models/user.model';
 import {TodoRestService} from '../services/todo-rest.service';
+import {tick} from '@angular/core/testing';
 
 @Component({
     selector: 'app-todo-list',
@@ -11,6 +12,7 @@ import {TodoRestService} from '../services/todo-rest.service';
 export class TodoListComponent implements OnInit {
     @Input() ticketList: Array<Ticket>;
     @Input() usersList: Array<UserModel> = [];
+    @Output() editTicketSend: EventEmitter<Ticket> = new EventEmitter<Ticket>();
 
     constructor(private todoRestServ: TodoRestService) {
 
@@ -33,7 +35,7 @@ export class TodoListComponent implements OnInit {
     }
 
     public onEditTicket(ticket: Ticket): void {
-        // @Todo
+        this.editTicketSend.emit(ticket);
     }
 
 }

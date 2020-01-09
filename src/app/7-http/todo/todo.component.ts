@@ -12,6 +12,7 @@ export class TodoComponent implements OnInit {
     public ticketListMook: Array<Ticket> = [];
     public isLoading: boolean;
     public usersListMook: Array<UserModel> = [];
+    public ticketToEdit: Ticket;
 
     constructor(private todoRestServ: TodoRestService) {
 
@@ -47,7 +48,7 @@ export class TodoComponent implements OnInit {
     }
 
     public editTicket(ticket: Ticket): void {
-        // @Todo
+        this.ticketToEdit = ticket;
     }
 
 

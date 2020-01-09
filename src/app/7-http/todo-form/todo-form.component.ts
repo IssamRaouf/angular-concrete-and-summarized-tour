@@ -1,48 +1,63 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angular/core';
 import {FormArray, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Ticket} from '../models/ticket.model';
 import {UserModel} from '../models/user.model';
 import {TodoRestService} from '../services/todo-rest.service';
-import {tick} from '@angular/core/testing';
 
 @Component({
     selector: 'app-todo-form',
     templateUrl: './todo-form.component.html',
     styleUrls: ['./todo-form.component.scss']
 })
-export class TodoFormComponent implements OnInit {
+export class TodoFormComponent implements OnInit, OnChanges {
     public formTicket: FormGroup;
     public typesAsSelect: Array<object>;
     @Output() public sendTicket: EventEmitter<Ticket> = new EventEmitter<Ticket>();
-
     @Input() usersList: Array<UserModel> = [];
+    @Input() editTicket: Ticket;
+    public isAdd: boolean = true;
 
     constructor(private todoRestServ: TodoRestService) {
-        this.formTicket = new FormGroup({
-            userId: new FormControl('', Validators.required),
-            title: new FormControl('', Validators.required),
-            completed: new FormControl(false),
-        });
+
     }
 
     ngOnInit() {
+
+    }
+
+    public ngOnChanges(): void {
+        if (!this.editTicket) {
+            this.isAdd = true;
+            this.editTicket = new Ticket({title: null, userId: null, completed: false});
+        } else {
+            this.isAdd = false;
+        }
+        this.createAndInitForm();
+    }
+
+    public createAndInitForm(): void {
+        this.formTicket = new FormGroup({
+            userId: new FormControl(this.editTicket.userId, Validators.required),
+            title: new FormControl(this.editTicket.title, Validators.required),
+            completed: new FormControl(this.editTicket.completed),
+        });
     }
 
     public onSubmit(): void {
         this.markFormAsTouched(this.formTicket);
         if (this.formTicket.valid) {
             const todo = new Ticket(this.formTicket.value);
-            this.todoRestServ.addTodo(todo).subscribe((newTicket: Ticket) => {
 
-                if (newTicket) {
-                    todo.id = newTicket.id;
-                    this.sendTicket.emit(todo);
-                } else {
-                    // on va faire les notifications avec le component de material design snackbar aprés..
-                    alert('Error , see console');
-                }
-            });
+            if (this.isAdd) {
+                this.todoRestServ.addTodo(todo).subscribe((newTicket: Ticket) => {
+                    if (newTicket) {
+                        todo.id = newTicket.id;
+                        this.sendTicket.emit(todo);
+                    }
+                });
+            } else {
 
+            }
         }
     }
 
