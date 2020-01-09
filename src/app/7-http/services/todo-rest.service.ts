@@ -83,7 +83,7 @@ export class TodoRestService {
     }
 
     public putTodo(todo: Ticket): Observable<Ticket | any> {
-        const url = this.webServiceUrl + '/todos';
+        const url = this.webServiceUrl + `/todos/${todo.id}`;
         return this.httpClient.put<Ticket>(url, JSON.stringify(todo), {
             headers: this.headers,
             responseType: 'json',

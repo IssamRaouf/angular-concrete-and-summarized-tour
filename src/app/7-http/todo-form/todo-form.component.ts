@@ -10,29 +10,27 @@ import {TodoRestService} from '../services/todo-rest.service';
     styleUrls: ['./todo-form.component.scss']
 })
 export class TodoFormComponent implements OnInit, OnChanges {
+
     public formTicket: FormGroup;
     public typesAsSelect: Array<object>;
-    @Output() public sendTicket: EventEmitter<Ticket> = new EventEmitter<Ticket>();
+    public isAdd: boolean;
+
     @Input() usersList: Array<UserModel> = [];
     @Input() editTicket: Ticket;
-    public isAdd: boolean = true;
+    @Output() public sendTicket: EventEmitter<Ticket> = new EventEmitter<Ticket>();
 
     constructor(private todoRestServ: TodoRestService) {
-
     }
 
     ngOnInit() {
-
+        this.isAdd = true;
+        this.editTicket = new Ticket({title: null, userId: null, completed: false});
+        this.createAndInitForm();
     }
 
     public ngOnChanges(): void {
-        if (!this.editTicket) {
-            this.isAdd = true;
-            this.editTicket = new Ticket({title: null, userId: null, completed: false});
-        } else {
-            this.isAdd = false;
-        }
         this.createAndInitForm();
+
     }
 
     public createAndInitForm(): void {
@@ -43,23 +41,24 @@ export class TodoFormComponent implements OnInit, OnChanges {
         });
     }
 
+    public get titleOperation(): string {
+        return this.isAdd ? 'Ajouter ticket' : 'Modifier Ticket';
+    }
+
     public onSubmit(): void {
         this.markFormAsTouched(this.formTicket);
         if (this.formTicket.valid) {
             const todo = new Ticket(this.formTicket.value);
-
-            if (this.isAdd) {
-                this.todoRestServ.addTodo(todo).subscribe((newTicket: Ticket) => {
-                    if (newTicket) {
-                        todo.id = newTicket.id;
-                        this.sendTicket.emit(todo);
-                    }
-                });
-            } else {
-
-            }
+            (this.isAdd ? this.addTodo(todo) : this.editTodo(todo));
         }
     }
+
+    public onClean(): void {
+        this.isAdd = true;
+        this.editTicket = Object.assign(new Ticket({title: null, userId: null, completed: false}));
+        this.createAndInitForm();
+    }
+
 
     /**
      *  Template's sugar syntax
@@ -80,15 +79,6 @@ export class TodoFormComponent implements OnInit, OnChanges {
     }
 
     /**
-     * Enum to select objs
-     * @param definition
-     * @return Array<object>
-     */
-    private enumToSelectList(definition): Array<object> {
-        return Object.keys(definition).map(key => ({val: definition[key], text: definition[key]}));
-    }
-
-    /**
      * Marks all controls in a form group as touched
      */
     public markFormAsTouched(formGroup: FormGroup | FormArray): void {
@@ -99,6 +89,34 @@ export class TodoFormComponent implements OnInit, OnChanges {
                 control.markAsTouched();
             }
         });
+    }
+
+    private addTodo(todo: Ticket): void {
+        this.todoRestServ.addTodo(todo).subscribe((newTicket: Ticket) => {
+            if (newTicket) {
+                todo.id = newTicket.id;
+                this.sendTicket.emit(todo);
+            }
+        });
+    }
+
+    private editTodo(todo: Ticket): void {
+        this.todoRestServ.putTodo(todo).subscribe((newTicket: Ticket) => {
+            if (newTicket) {
+                todo.id = newTicket.id;
+                this.sendTicket.emit(todo);
+            }
+        });
+    }
+
+
+    /**
+     * Enum to select objs
+     * @param definition
+     * @return Array<object>
+     */
+    private enumToSelectList(definition): Array<object> {
+        return Object.keys(definition).map(key => ({val: definition[key], text: definition[key]}));
     }
 
 

@@ -1,5 +1,6 @@
 <div class="container container-todo-form">
-    <form [formGroup]="formTicket" class="form-container" novalidate>
+    <h2>{{titleOperation}}</h2>
+    <form [formGroup]="formTicket"  class="form-container" novalidate>
 
         <mat-form-field>
             <mat-select placeholder="User" formControlName="userId">
@@ -16,13 +17,13 @@
         </mat-form-field>
 
 
-            <mat-checkbox
-            [indeterminate]="'true'"
-            [labelPosition]="'after'"
-            formControlName="completed">
+        <mat-checkbox
+                [indeterminate]="'true'"
+                [labelPosition]="'after'"
+                formControlName="completed">
             Terminé
-            </mat-checkbox>
-
-        <button type="submit" mat-raised-button color="primary" (click)="onSubmit()">Envoyer</button>
+        </mat-checkbox>
+        <button mat-raised-button color="primary" (click)="onClean()">Clean</button>
+        <button mat-raised-button color="primary" (click)="onSubmit()">Envoyer</button>
     </form>
 </div>
