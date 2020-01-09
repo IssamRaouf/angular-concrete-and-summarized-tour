@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Ticket} from '../models/ticket.model';
 import {TodoRestService} from '../services/todo-rest.service';
 import {UserModel} from '../models/user.model';
+import {tick} from '@angular/core/testing';
 
 @Component({
     selector: 'app-todo',
@@ -9,6 +10,7 @@ import {UserModel} from '../models/user.model';
     styleUrls: ['./todo.component.scss']
 })
 export class TodoComponent implements OnInit {
+    
     public ticketListMook: Array<Ticket> = [];
     public isLoading: boolean;
     public usersListMook: Array<UserModel> = [];
@@ -49,6 +51,11 @@ export class TodoComponent implements OnInit {
 
     public editTicket(ticket: Ticket): void {
         this.ticketToEdit = ticket;
+    }
+
+    public onEdit(ticket: Ticket): void {
+        const indexTicketEdited = this.ticketListMook.findIndex(tk => tk.id === ticket.id);
+        this.ticketListMook[indexTicketEdited] = ticket;
     }
 
 

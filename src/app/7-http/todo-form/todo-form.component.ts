@@ -17,20 +17,26 @@ export class TodoFormComponent implements OnInit, OnChanges {
 
     @Input() usersList: Array<UserModel> = [];
     @Input() editTicket: Ticket;
+
     @Output() public sendTicket: EventEmitter<Ticket> = new EventEmitter<Ticket>();
+    @Output() public sendEditedTicket: EventEmitter<Ticket> = new EventEmitter<Ticket>();
 
     constructor(private todoRestServ: TodoRestService) {
     }
 
     ngOnInit() {
-        this.isAdd = true;
-        this.editTicket = new Ticket({title: null, userId: null, completed: false});
-        this.createAndInitForm();
+
     }
 
     public ngOnChanges(): void {
-        this.createAndInitForm();
+        if (!this.editTicket) {
+            this.isAdd = true;
+            this.editTicket = new Ticket({id: null, title: null, userId: null, completed: false});
 
+        } else {
+            this.isAdd = false;
+        }
+        this.createAndInitForm();
     }
 
     public createAndInitForm(): void {
@@ -38,6 +44,7 @@ export class TodoFormComponent implements OnInit, OnChanges {
             userId: new FormControl(this.editTicket.userId, Validators.required),
             title: new FormControl(this.editTicket.title, Validators.required),
             completed: new FormControl(this.editTicket.completed),
+            id: new FormControl(this.editTicket.id),
         });
     }
 
@@ -55,7 +62,7 @@ export class TodoFormComponent implements OnInit, OnChanges {
 
     public onClean(): void {
         this.isAdd = true;
-        this.editTicket = Object.assign(new Ticket({title: null, userId: null, completed: false}));
+        this.editTicket = Object.assign(new Ticket({id: null, title: null, userId: null, completed: false}));
         this.createAndInitForm();
     }
 
@@ -104,7 +111,7 @@ export class TodoFormComponent implements OnInit, OnChanges {
         this.todoRestServ.putTodo(todo).subscribe((newTicket: Ticket) => {
             if (newTicket) {
                 todo.id = newTicket.id;
-                this.sendTicket.emit(todo);
+                this.sendEditedTicket.emit(todo);
             }
         });
     }
