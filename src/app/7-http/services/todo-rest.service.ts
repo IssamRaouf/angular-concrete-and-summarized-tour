@@ -31,22 +31,43 @@ export class TodoRestService {
         return headers;
     }
 
-    /**
-     * voir details sur note.md
-     */
 
+    /**
+     * Envoyer au server demande de type get<Array<ticket>> (Array<ticket> type de http response , est optionnelle)
+     * url des resources demandées et les options
+     * {
+     *          headers: this.headers, (headers de requests)
+     *           responseType: 'json', type de result
+     *           observe: 'response' , observe response complete, on peut observer juste le body de response
+     *       }
+     * NB:tout les methodes de HttpClient basés sur les observables (rxjs qu'on a dejà vu..)
+     * comme ca ,on a fait un pipe et map le result, list des objects de type any à list des objects de type ticket
+     */
     public getListTodo(): Observable<Array<Ticket>> {
         const url = this.webServiceUrl + '/todos';
 
-        return this.httpClient.get<Array<Ticket>>(url, {
-            headers: this.headers,
-            responseType: 'json',
-            observe: 'response'
-        }).pipe(
+        return this.httpClient.get<Array<Ticket>>(url,
+            {
+                headers: this.headers,
+                responseType: 'json',
+                observe: 'response'
+            }).pipe(
+            // map result
             map((response: HttpResponse<Array<Ticket>>) => response.body.map(item => new Ticket(item))),
         );
     }
 
+    /**
+     * Envoyer au server demande de type get<Array<UserModel>> (Array<UserModel> type de http response , est optionnelle)
+     * url des resources demandées et les options
+     * {
+     *          headers: this.headers, (headers de requests)
+     *           responseType: 'json', type de result
+     *           observe: 'response' , observe response complete, on peut observer juste le body de response
+     *       }
+     * NB:tout les methodes de HttpClient basés sur les observables (rxjs qu'on a dejà vu..)
+     * comme ca ,on a fait un pipe et map le result, list des objects de type any à list des objects de type UserModel
+     */
     public getListUsers(): Observable<Array<UserModel>> {
         const url = this.webServiceUrl + '/users';
 
@@ -60,6 +81,19 @@ export class TodoRestService {
         );
     }
 
+    /**
+     *
+     * @param todo
+     * Envoyer au server demande de post post<ticket> (<ticket> type de http response , est optionnelle)
+     * url de resource et les options
+     * {
+     *          headers: this.headers, (headers de requests)
+     *           responseType: 'json', type de result
+     *           observe: 'response' , observe response complete, on peut observer juste le body de response
+     *       }
+     * NB:tout les methodes de HttpClient basés sur les observables (rxjs qu'on a dejà vu..)
+     * comme ca ,on a fait un pipe et map le result, object de type any à object de type ticket
+     */
     public addTodo(todo: Ticket): Observable<Ticket | any> {
         const url = this.webServiceUrl + '/todos';
 
@@ -73,6 +107,18 @@ export class TodoRestService {
 
     }
 
+    /**
+     *
+     * @param todo
+     * Envoyer au server demande de delete delete<ticket> (<ticket> type de http response , est optionnelle)
+     * url de resource et les options
+     * {
+     *          headers: this.headers, (headers de requests)
+     *           responseType: 'json', type de result
+     *           observe: 'response' , observe response complete, on peut observer juste le body de response
+     *       }
+     * NB:tout les methodes de HttpClient basés sur les observables (rxjs qu'on a dejà vu..)
+     */
     public deleteTodo(todo: Ticket): Observable<any> {
         const url = this.webServiceUrl + `/todos/${todo.id}`;
         return this.httpClient.delete<Ticket>(url, {
@@ -82,6 +128,19 @@ export class TodoRestService {
         });
     }
 
+    /**
+     *
+     * @param todo
+     * Envoyer au server demande de put put<ticket> (<ticket> type de http response , est optionnelle)
+     * url de resource et les options
+     * {
+     *          headers: this.headers, (headers de requests)
+     *           responseType: 'json', type de result
+     *           observe: 'response' , observe response complete, on peut observer juste le body de response
+     *       }
+     * NB:tout les methodes de HttpClient basés sur les observables (rxjs qu'on a dejà vu..)
+     * comme ca ,on a fait un pipe et map le result, object de type any à object de type ticket
+     */
     public putTodo(todo: Ticket): Observable<Ticket | any> {
         const url = this.webServiceUrl + `/todos/${todo.id}`;
         return this.httpClient.put<Ticket>(url, JSON.stringify(todo), {
