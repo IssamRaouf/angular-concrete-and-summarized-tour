@@ -55,10 +55,15 @@ const routes: Routes = [
         loadChildren: () => import('./7-http/http-example.module').then(mod => mod.HttpExampleModule)
     },
     {
+        path: 'routing',
+        loadChildren: () => import('./8-routing/routing.module').then(mod => mod.RoutingModule)
+    },
+    {
         path: '',
         redirectTo: 'content-projection',
         pathMatch: 'full'
-    }
+    },
+
 ];
 
 @NgModule({
