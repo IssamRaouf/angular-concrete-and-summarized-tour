@@ -51,6 +51,10 @@ const routes: Routes = [
         loadChildren: () => import('./6-dependency-injection-providers/di.module').then(mod => mod.DIModule)
     },
     {
+        path: 'http-module',
+        loadChildren: () => import('./7-http/http-example.module').then(mod => mod.HttpExampleModule)
+    },
+    {
         path: '',
         redirectTo: 'content-projection',
         pathMatch: 'full'
