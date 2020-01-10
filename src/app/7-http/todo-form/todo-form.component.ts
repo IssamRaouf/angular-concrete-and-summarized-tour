@@ -28,6 +28,12 @@ export class TodoFormComponent implements OnInit, OnChanges {
 
     }
 
+    /**
+     * Ecouter les changement de données s'il
+     * le editTicket est vide c'est l'ajout sinon c'est la modification
+     * edit ticket , envoyer a partir de todo-component (input)
+     * puis creér et initailiser la form avec l'object editTicket
+     */
     public ngOnChanges(): void {
         if (!this.editTicket) {
             this.isAdd = true;
@@ -39,6 +45,9 @@ export class TodoFormComponent implements OnInit, OnChanges {
         this.createAndInitForm();
     }
 
+    /**
+     * creation et initialisation de form avec l'object editTicket
+     */
     public createAndInitForm(): void {
         this.formTicket = new FormGroup({
             userId: new FormControl(this.editTicket.userId, Validators.required),
@@ -48,18 +57,28 @@ export class TodoFormComponent implements OnInit, OnChanges {
         });
     }
 
+    /**
+     * titre de l'operation courant
+     */
     public get titleOperation(): string {
         return this.isAdd ? 'Ajouter ticket' : 'Modifier Ticket';
     }
 
+    /**
+     *  submission de données (edit & add)
+     */
     public onSubmit(): void {
         this.markFormAsTouched(this.formTicket);
         if (this.formTicket.valid) {
             const todo = new Ticket(this.formTicket.value);
+
             (this.isAdd ? this.addTodo(todo) : this.editTodo(todo));
         }
     }
 
+    /**
+     * clean and init form
+     */
     public onClean(): void {
         this.isAdd = true;
         this.editTicket = Object.assign(new Ticket({id: null, title: null, userId: null, completed: false}));
@@ -98,6 +117,12 @@ export class TodoFormComponent implements OnInit, OnChanges {
         });
     }
 
+    /**
+     * traitement de l'ajout , appele au service todoRestService la mathode addTodo
+     * aprés l'ajout a passé avec succes envoyer le todo item à todo-component pour
+     * l'inserer dans la liste via (output sendTicket)
+     * @param todo
+     */
     private addTodo(todo: Ticket): void {
         this.todoRestServ.addTodo(todo).subscribe((newTicket: Ticket) => {
             if (newTicket) {
@@ -107,6 +132,12 @@ export class TodoFormComponent implements OnInit, OnChanges {
         });
     }
 
+    /**
+     * traitement de la modification , appel au service todoRestService la mathode addTodo
+     * aprés la modification a passé avec succes envoyer le todo item à todo-component pour
+     * la mise a jour de la liste via (output sendEditedTicket)
+     * @param todo
+     */
     private editTodo(todo: Ticket): void {
         this.todoRestServ.putTodo(todo).subscribe((newTicket: Ticket) => {
             if (newTicket) {

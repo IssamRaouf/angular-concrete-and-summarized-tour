@@ -21,10 +21,27 @@ export class TicketComponent implements OnInit {
     ngOnInit() {
     }
 
+    /**
+     * enovoye au list-todo-component pour la traiter ,via (output deleteTicketSend)
+     * @param ticket
+     *
+     * NB:On peut faire simple service avec simple subject<{operation:'EDIT'|'DELETE':'ADD',ticket:ticket}>
+     * etc pour la cominication entre les components de multi niveaux (child, parent ...)
+     * mais C'est le temps de voir le fonctionnement de input output par sur multi niveaux (child, parent ...)
+     */
     public deleteTicket(ticket: Ticket): void {
         this.deleteTicketSend.emit(ticket);
     }
 
+    /**
+     * Envoye au list-todo-component qu'il va l'envoyer au todo-component , qu'il va l'envoyer au todo-form
+     * pour la traiter ,via (output deleteTicketSend)
+     * @param ticket
+     *
+     * NB:On peut faire simple service avec simple subject<{operation:'EDIT'|'DELETE':'ADD',ticket:ticket}>
+     * etc pour la cominication entre les components de multi niveaux (child, parent ...)
+     * mais C'est le temps de voir le fonctionnement de input output par sur multi niveaux (child, parent ...)
+     */
     public editTicket(ticket: Ticket): void {
         this.editTicketSend.emit(ticket);
     }

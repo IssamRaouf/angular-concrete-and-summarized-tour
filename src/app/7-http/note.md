@@ -14,4 +14,9 @@
   * On peut utiliser des promesses .
   * On peut utiliser des observables . 
   
- 
+* Exemples sur le components et le service.
+#### NB:On peut faire simple service avec simple subject<{operation:'EDIT'|'DELETE':'ADD',ticket:ticket}>
+#### etc pour la cominication entre les components de multi niveaux (child, parent ...)
+#### mais C'est le temps de voir le fonctionnement de input output par sur multi niveaux (child, parent ...) 
+
+
