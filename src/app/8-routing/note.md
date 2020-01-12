@@ -35,7 +35,7 @@ Tout composant qui est mis en correspondance par le routeur le rendra comme un f
 * Le chemin peut prendre une chaîne générique (**), Le routeur sélectionnera cette route si l'URL demandée ne correspond à aucun chemin pour les routes définies. 
   Cela peut être utilisé pour afficher une vue «Introuvable» ou rediriger vers une vue spécifique si aucune correspondance n'est trouvée.
 
-1) Pour Application complete (RouterModule.forRoot(routes)) 
+1) Pour Application, (Module de routage racine (RouterModule.forRoot(routes)) )
 ````
 // app-routing.module.ts
     
@@ -209,9 +209,15 @@ const routes: Array<Route> = [
 
 
 
+#### Lazy Loading (chargement paresseux) Route
 
+Par défaut, les NgModules sont chargés avec impatience, ce qui signifie que dès que l'application se charge,
+il en va de même pour tous les NgModules, qu'ils soient ou non immédiatement nécessaires.
+Pour les grandes applications avec de nombreux Routes, envisagez le chargement paresseux, un modèle de conception qui charge les NgModules selon les besoins. 
+Le chargement paresseux permet de réduire la taille initiale des Bundles, ce qui contribue à réduire les temps de chargement.
+...
 
-
-
-
+<h3>J'ai appliqué ca sur ce projet :D enjoy</h3>
+par exemple Exemple: voir 1-component/content-projection/content-projection.module , content-projection.routing.mdoule.ts
+et app-routing.module.ts
 
