@@ -300,7 +300,52 @@ Nous le faisons généralement dans ngOnInit (Life cycle hook)
 
 * Une autre façon de résoudre ce problème est d'utiliser le Resolve. Le Resolve récupère les données avant de naviguer vers la route. 
 et comme ca le composant est rendu avec les données.
+Exemple :
+````
+// Service todo-list.resolve.ts 
+@Injectable()
+export class todoListResolve implements Resolve<Array<Ticket> {
 
+    // todoRestService notre propre service pour les appel au webService ;) 
+    constructor(private todoRestService: TodoRestService) { }
+
+    public resolve(): Observable<Array<Ticket>> {
+        return this.todoRestService.getListTodos();
+    }
+}
+
+
+// app.routing.ts
+
+const routes: Array<Route> = [
+             {
+                  path: 'dashboard',
+                  component: DashboardTodosComponent,
+                  
+          
+              },
+              {
+                      path: 'list-todos',
+                      component: ListTodosComponent,
+                      resolve: { listTodo: todoListResolve }
+              
+              },
+]
+// list-todos.component.ts (ListTodosComponent)
+
+export class ListTodosComponent implements OnInit {
+       public listTodo:Array<Ticket> = [];
+     constructor(private _route: ActivatedRoute) {
+     }
+     
+     public ngOnInit(): void {
+       this.listTodo = this._route.snapshot.data.listTodo;
+     }
+    ...
+}
+
+
+````
 
 
 #### Lazy Loading (chargement paresseux) Route
