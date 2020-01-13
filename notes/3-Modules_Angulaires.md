@@ -18,13 +18,13 @@ Les autres modules angulaires qui exportent le matériel dont nous avons besoin 
 Le module racine de presque toutes les applications doit importer le BrowserModule.
 
 * <strong>déclarations</strong>:<br>
-La liste des composants ou des directives appartenant à  ce module.
+La liste des composants ou des directives appartenant à ce module.
 
 * <strong>bootstrap</strong>:<br>
 Identifie le composant racine que Angular devrait bootsraping au démarrage de l'application.
 
-Nous savons NgModule que BrowserModulele module angulaire contient tous les éléments angulaires nécessaires à l’exécution de notre application dans le navigateur.
+Nous savons NgModule que BrowserModule le module angulaire contient tous les éléments angulaires nécessaires à l’exécution de notre application dans le navigateur.
 
 Angular lui-même est divisé en modules angulaires distincts. Nous n'avons donc besoin d'importer que ceux que nous utilisons réellement. 
 
-D'autres modules communs que vous verrez à l'avenir sont  FormsModule, RouterModuleet  HttpModule.
+D'autres modules communs que vous verrez à l'avenir sont  FormsModule, RouterModule et HttpModule.

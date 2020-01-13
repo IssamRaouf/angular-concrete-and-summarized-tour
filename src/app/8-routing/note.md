@@ -300,6 +300,7 @@ Nous le faisons généralement dans ngOnInit (Life cycle hook)
 
 * Une autre façon de résoudre ce problème est d'utiliser le Resolve. Le Resolve récupère les données avant de naviguer vers la route. 
 et comme ca le composant est rendu avec les données.
+
 Exemple :
 ````
 // Service todo-list.resolve.ts 
