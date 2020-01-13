@@ -229,17 +229,42 @@ const routes: Routes = [
 * Un garde-route est une fonctionnalité du routeur angulaire qui nous permet  d'exécuter une certaine logique lorsqu'un Route est demandé, 
 et sur la base de cette logique, il autorise ou refuse à l'utilisateur l'accès à l'Route. 
 * Il est couramment utilisé pour vérifier si un utilisateur est connecté et dispose de l'autorisation avant d'accéder à une page.
-* On peut ajouter un garde-route en implémentant l'interface CanActivate disponible à partir du package @angular/router`:
+* On peut ajouter un garde-route en implémentant l'interface CanActivate ou... disponible à partir du package @angular/router`:
 
+1) CanActivate: 
+Interface qu'une classe peut implémenter pour être un gardien décidant si une <strong>Route</strong> peut être activée. 
+Si tous les gardes on dit tous les gardes car chaque route peut avoir multi garde ) retournent vrai, la navigation continuera.
+Si un garde retourne faux, la navigation sera annulée,et on peut redirect vers ce qu'on veut.
+
+1) CanActivate: 
+Interface qu'une classe peut implémenter pour être un gardien décidant si une <strong>Route ENFANT</strong> peut être activée. 
+Si tous les gardes (on dit tous les gardes car chaque route peut avoir multi garde ) retournent vrai, la navigation continuera. 
+Si un garde retourne faux, la navigation sera annulée,et on peut redirect vers ce qu'on veut.
+
+
+3) CanDeactive:
+Interface qu'une classe peut implémenter pour être un gardien décidant si une route peut être désactivée. 
+Si tous les gardes retournent vrai, la navigation continuera. 
+Si un garde retourne faux, la navigation sera annulée. 
+utilisateur peut avoir rempli une forme et tente de quitter ce composant sans enregistrer son travail. 
+Le gardien CanDeactivate nous donne la possibilité d'avertir l'utilisateur qu'il n'a pas enregistré son travail et lui donne la possibilité d'annuler la navigation.
+
+4) CanLoad:
+
+Le CanLoad Guard empêche le chargement du module (lazy-loading).
+on utilise généralement cette garde lorsque nous ne voulons pas qu'un utilisateur non autorisé navigue vers l'une des routes du module
+il l'arrête ,meme il empeche le telechargement de code source de ce module.
+
+Exemple : (CanActivate) (on va voir les autres sur le code de cette chapitre)
 ````
-// only-super-admin.guard.ts
+// service only-super-admin.guard.ts
 class OnlySuperAdminGuard implements CanActivate {
     // appState c'est notre propre service 
    construct(private router:Router,private appState: AppStateService)
 
   canActivate() {
       if(!this.appState.currentUser.isSuperAdmin()) {
-        this.router.navigate(['/Dashboard']); // exmp
+        this.router.navigate(['/dashboard']); // exmp
         return false;
       }
       return true;
@@ -249,7 +274,7 @@ class OnlySuperAdminGuard implements CanActivate {
 
 const routes: Array<Route> = [
              {
-                  path: '',
+                  path: 'dashboard',
                   component: DashboardTodosComponent,
                   
           
@@ -265,8 +290,8 @@ const routes: Array<Route> = [
 
 
 ##### 
-// @Todo NB: à voir aprés , CanActivateChild, CanLoad..
-// and route children
+
+
 
 #### Lazy Loading (chargement paresseux) Route
 
