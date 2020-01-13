@@ -162,6 +162,66 @@ public goToListUsers() : void {
 }
 
 ````
+#### Route child
+* Lorsque certains Routes peuvent uniquement être accessibles et affichés dans d'autres Routes,
+il peut être approprié de les créer en tant qu'Routes enfants (route childs)
+
+* children => Contient tous les routes enfants activés sous la route actuel.
+
+* <h5> Où les composants de ces routes enfants seront-ils affichés? </h5>
+Tout comme on a une `<router-outlet> </router-outlet>` pour le composant d'application racine (app.component.html) 
+on va mettre une `<router-outlet> </router-outlet>` à l'intérieur du composant DashboardTodosComponent.
+Les composants correspondant aux routes enfants de 'dashboard' route seront placés au 
+au dessous de `<router-outlet> </router-outlet>` qui se trouve dans DashboardTodosComponent.
+
+Exemple : 
+
+
+```
+// todo-routing.module.ts
+
+const routes: Routes = [
+    {
+        path: 'dashboard',
+        component: DashboardTodosComponent,
+        children: [
+            // url ==> localhost:4200/dashboard
+            // si la route contient juste 'dashboard'
+            // redirect vers la list todos 
+            {
+              path:'',
+              redirectTo:'list-todos'
+              path: 'full'
+            },
+            // url ==> localhost:4200/dashboard/list-todos
+            {
+               path: 'list-todos',
+               component: ListTodoComponent,
+             },
+             // url ==> localhost:4200/dashboard/todo-details
+             {
+               path: 'todo-details',
+               component: TodoDetailsComponent,
+              },
+              // url ==> localhost:4200/dashboard/todo-form
+              {
+                path: 'todo-form',
+                component: TodoFormComponent,
+               }
+        ]
+    },
+    
+    
+    ...
+];
+
+// dashboard-todos.component.html
+ <h1>Dashboard</h1> 
+ ... blabla
+ <router-outlet></router-outlet> // ;)
+
+
+```
 
 
 ### Guard Route
@@ -204,10 +264,9 @@ const routes: Array<Route> = [
 ````
 
 
-##### NB: à voir aprés , CanActivateChild,CanLoad..
-
-
-
+##### 
+// @Todo NB: à voir aprés , CanActivateChild, CanLoad..
+// and route children
 
 #### Lazy Loading (chargement paresseux) Route
 
