@@ -289,7 +289,17 @@ const routes: Array<Route> = [
 ````
 
 
-##### 
+#### Route Resolve
+
+* L'angulaire rend le composant angulaire lorsque nous naviguons vers un route.
+Le composant envoie alors une requête HTTP au serveur principal pour récupérer les données afin de les afficher à l'utilisateur.
+Nous le faisons généralement dans ngOnInit (Life cycle hook)
+
+* Le problème avec l'approche ci-dessus est que, l'utilisation verra un composant vide. Le composant affiche les données après leur arrivée,
+ La seule façon de résoudre ce problème est d'afficher un indicateur de chargement(loading bar ...)
+
+* Une autre façon de résoudre ce problème est d'utiliser le Resolve. Le Resolve récupère les données avant de naviguer vers la route. 
+et comme ca le composant est rendu avec les données.
 
 
 
