@@ -26,7 +26,7 @@ const routes: Routes = [
                 component: TodoFormComponent
             },
             {
-                path: 'todo-details',
+                path: 'todo-details/:id',
                 component: DetailsTodoComponent
             },
             {

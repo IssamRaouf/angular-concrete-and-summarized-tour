@@ -4,6 +4,7 @@ import {TicketTypeEnum} from '../enum/ticket-type.enum';
  * this model is view object for ticket
  */
 export class Ticket {
+    public id:number;
     public name: string;
     public description: string;
     public type: TicketTypeEnum;
@@ -14,6 +15,9 @@ export class Ticket {
         if (json !== undefined && json !== null) {
             if (json.hasOwnProperty('name')) {
                 this.name = json.name as string;
+            }
+            if (json.hasOwnProperty('id')) {
+                this.id = json.id as number;
             }
             if (json.hasOwnProperty('description')) {
                 this.description = json.description as string;
