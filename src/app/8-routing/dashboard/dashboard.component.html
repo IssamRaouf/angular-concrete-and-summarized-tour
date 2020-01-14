@@ -1,3 +1,22 @@
 <div class="container container-todo">
-    <h1>Hello!</h1>
+    <h1>Hello Dashboard!</h1>
+    <p class="lead">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+        labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
+        rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit
+        amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+        erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no
+        sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
+        sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos
+        et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
+        dolor sit amet.</p>
+
+    <nav mat-tab-nav-bar>
+        <a mat-tab-link #todoList="routerLinkActive" [active]="todoList.isActive" [routerLink]="'./todo-list'"
+           routerLinkActive>Todos List</a>
+        <a #todoForm="routerLinkActive" [active]="todoForm.isActive" [routerLink]="'./todo-form'" mat-tab-link
+           routerLinkActive>Todo Form</a>
+    </nav>
+    <div>
+        <router-outlet></router-outlet>
+    </div>
 </div>
