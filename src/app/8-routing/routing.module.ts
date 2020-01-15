@@ -10,11 +10,17 @@ import {TodoFormComponent} from './todo-form/todo-form.component';
 import {DetailsTodoComponent} from './details-todo/details-todo.component';
 import {NotFoundComponent} from './not-found/not-found.component';
 import {TicketComponent} from './ticket/ticket.component';
+import {TodoRestService} from './services/todoRest.service';
+import {DetailsTodoResolve} from './resolve/details-todo.resolve';
+import {OnlyAdminGuard} from './guard/only-admin.guard';
+import {UserRightsService} from './services/user-rights.service';
 
 
 @NgModule({
     imports: [CommonModule, FormsModule, ReactiveFormsModule, MaterialModule, HttpClientModule, RoutingRoutingModule],
-    declarations: [DashboardComponent, TodoListComponent, TodoFormComponent, DetailsTodoComponent, NotFoundComponent, TicketComponent]
+    declarations: [DashboardComponent, TodoListComponent, TodoFormComponent, DetailsTodoComponent, NotFoundComponent, TicketComponent],
+    providers: [TodoRestService, DetailsTodoResolve, UserRightsService, OnlyAdminGuard]
+
 })
 
 export class RoutingModule {

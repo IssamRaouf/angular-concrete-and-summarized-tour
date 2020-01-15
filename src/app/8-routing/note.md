@@ -236,7 +236,7 @@ Interface qu'une classe peut implémenter pour être un gardien décidant si une
 Si tous les gardes on dit tous les gardes car chaque route peut avoir multi garde ) retournent vrai, la navigation continuera.
 Si un garde retourne faux, la navigation sera annulée,et on peut redirect vers ce qu'on veut.
 
-1) CanActivate: 
+1) CanActivateChild: 
 Interface qu'une classe peut implémenter pour être un gardien décidant si une <strong>Route ENFANT</strong> peut être activée. 
 Si tous les gardes (on dit tous les gardes car chaque route peut avoir multi garde ) retournent vrai, la navigation continuera. 
 Si un garde retourne faux, la navigation sera annulée,et on peut redirect vers ce qu'on veut.
@@ -361,3 +361,6 @@ Le chargement paresseux permet de réduire la taille initiale des Bundles, ce qu
 par exemple Exemple: voir 1-component/content-projection/content-projection.module , content-projection.routing.mdoule.ts
 et app-routing.module.ts
 
+
+
+### Exemple all module routing (routing-routing.module.ts , todo-form ...)

@@ -5,6 +5,8 @@ import {TodoListComponent} from './todo-list/todo-list.component';
 import {TodoFormComponent} from './todo-form/todo-form.component';
 import {DetailsTodoComponent} from './details-todo/details-todo.component';
 import {NotFoundComponent} from './not-found/not-found.component';
+import {DetailsTodoResolve} from './resolve/details-todo.resolve';
+import {OnlyAdminGuard} from './guard/only-admin.guard';
 
 
 const routes: Routes = [
@@ -27,7 +29,9 @@ const routes: Routes = [
             },
             {
                 path: 'todo-details/:id',
-                component: DetailsTodoComponent
+                component: DetailsTodoComponent,
+                resolve: {detailsTodo: DetailsTodoResolve},
+                canActivate: [OnlyAdminGuard]
             },
             {
                 path: '**',
