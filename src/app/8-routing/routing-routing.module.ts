@@ -7,12 +7,14 @@ import {DetailsTodoComponent} from './details-todo/details-todo.component';
 import {NotFoundComponent} from './not-found/not-found.component';
 import {DetailsTodoResolve} from './resolve/details-todo.resolve';
 import {OnlyAdminGuard} from './guard/only-admin.guard';
+import {DashboardGuard} from './guard/dashboard.guard';
 
 
 const routes: Routes = [
     {
         path: '',
         component: DashboardComponent,
+        canActivateChild: [DashboardGuard],
         children: [
             {
                 path: '',

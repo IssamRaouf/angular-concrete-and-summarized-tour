@@ -15,4 +15,10 @@ export class UserRightsService {
         return this.user.isAdmin;
     }
 
+    public get isAuth(): boolean {
+        // and token is valid and .. votre propre logique
+        //  return   false;
+      return  this.user instanceof UserModel;
+    }
+
 }
