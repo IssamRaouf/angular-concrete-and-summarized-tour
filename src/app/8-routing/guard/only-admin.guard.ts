@@ -13,7 +13,7 @@ export class OnlyAdminGuard implements CanActivate {
 
         if (!this.userRightsService.isAdmin) {
             this.router.navigate(['routing']);
-            console.log("Impossible d'accéder à cette page");
+            alert("Impossible d'accéder à cette page , FROM GUARD OnlyAdminGuard");
             return false;
         }
 

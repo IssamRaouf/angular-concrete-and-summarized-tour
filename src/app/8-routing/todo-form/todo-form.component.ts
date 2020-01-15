@@ -2,6 +2,7 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormArray, FormControl, FormGroup, Validators} from '@angular/forms';
 import {TicketTypeEnum} from '../enum/ticket-type.enum';
 import {Ticket} from '../models/ticket.model';
+import {Observable} from 'rxjs';
 
 
 @Component({
@@ -14,6 +15,7 @@ export class TodoFormComponent implements OnInit {
     public formTicket: FormGroup;
     public typesAsSelect: Array<object>;
     @Output() public sendTicket: EventEmitter<Ticket> = new EventEmitter<Ticket>();
+    public isFormSubmitted: boolean;
 
     constructor() {
         this.formTicket = new FormGroup({
@@ -25,12 +27,20 @@ export class TodoFormComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.isFormSubmitted = false;
+    }
+
+    public canExit(): boolean {
+        if (!this.isFormSubmitted && this.formTicket.dirty && this.formTicket.touched) {
+            return window.confirm('Etes-vous sur?');
+        }
+        return true;
     }
 
     public onSubmit(): void {
         this.markFormAsTouched(this.formTicket);
         if (this.formTicket.valid) {
-            console.log('formTicket', this.formTicket);
+            this.isFormSubmitted = true;
             this.sendTicket.emit(new Ticket(this.formTicket.value));
         }
     }

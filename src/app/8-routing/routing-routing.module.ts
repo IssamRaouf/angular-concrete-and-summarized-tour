@@ -8,6 +8,7 @@ import {NotFoundComponent} from './not-found/not-found.component';
 import {DetailsTodoResolve} from './resolve/details-todo.resolve';
 import {OnlyAdminGuard} from './guard/only-admin.guard';
 import {DashboardGuard} from './guard/dashboard.guard';
+import {FormTodoGuard} from './guard/form-todo.guard';
 
 
 const routes: Routes = [
@@ -27,7 +28,8 @@ const routes: Routes = [
             },
             {
                 path: 'todo-form',
-                component: TodoFormComponent
+                component: TodoFormComponent,
+                canDeactivate: [FormTodoGuard]
             },
             {
                 path: 'todo-details/:id',

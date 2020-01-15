@@ -15,12 +15,13 @@ import {DetailsTodoResolve} from './resolve/details-todo.resolve';
 import {OnlyAdminGuard} from './guard/only-admin.guard';
 import {UserRightsService} from './services/user-rights.service';
 import {DashboardGuard} from './guard/dashboard.guard';
+import {FormTodoGuard} from './guard/form-todo.guard';
 
 
 @NgModule({
     imports: [CommonModule, FormsModule, ReactiveFormsModule, MaterialModule, HttpClientModule, RoutingRoutingModule],
     declarations: [DashboardComponent, TodoListComponent, TodoFormComponent, DetailsTodoComponent, NotFoundComponent, TicketComponent],
-    providers: [TodoRestService, DetailsTodoResolve, UserRightsService, OnlyAdminGuard, DashboardGuard]
+    providers: [TodoRestService, DetailsTodoResolve, UserRightsService, OnlyAdminGuard, DashboardGuard,FormTodoGuard]
 
 })
 

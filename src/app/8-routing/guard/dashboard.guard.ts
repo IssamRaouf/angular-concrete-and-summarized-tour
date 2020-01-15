@@ -13,7 +13,7 @@ export class DashboardGuard implements CanActivateChild {
 
         if (!this.userRightsService.isAuth) {
             this.router.navigate(['content-projection']);
-            console.log("Impossible d'accéder à cette page");
+            console.log("Impossible d'accéder à cette page, FORM GUARD DashboardGuard");
             return false;
         }
 
