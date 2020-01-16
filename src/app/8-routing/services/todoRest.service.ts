@@ -6,7 +6,7 @@ import {TicketTypeEnum} from '../enum/ticket-type.enum';
 @Injectable()
 export class TodoRestService {
 
-    public getDetailsTodoMook(idTodo: number): Observable<Ticket> {
+    public getDetailsTodoMock(idTodo: number): Observable<Ticket> {
         return of(new Ticket({
                 id: idTodo,
                 name: 'Filtre ticket',

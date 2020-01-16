@@ -13,7 +13,7 @@ export class DetailsTodoResolve implements Resolve<Ticket> {
 
     public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Ticket> {
         const todoId = +route.paramMap.get('id');
-        return this.todoRest.getDetailsTodoMook(todoId);
+        return this.todoRest.getDetailsTodoMock(todoId);
 
     }
 
