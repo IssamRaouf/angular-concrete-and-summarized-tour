@@ -16,3 +16,11 @@ Nous pouvons tester nos applications angulaires à partir de zéro en écrivant 
 Mais il existe un certain nombre de bibliothèques et de frameworks de test que nous pouvons utiliser, 
 ce qui réduit le temps nécessaire pour écrire des tests.
 Deux de ces outils et framworks qui sont utilisés lors du test d'Angular sont Jasmine et Karma.
+
+
+### Jasmine
+
+* Jasmine est un cadre de test JavaScript qui prend en charge une pratique de développement logiciel appelée Behavior-Driven Development, ou BDD.
+* Le BDD combine les techniques et principes des (TDD,DDD,OOP) .
+* Jasmine, et BDD en général, tente de décrire les tests dans un format lisible par l'homme afin que les personnes non techniques puissent comprendre ce qui est testé.
+même pour nous lecture les tests au format BDD, il est beaucoup plus facile de comprendre ce qui se passe sur les projets
