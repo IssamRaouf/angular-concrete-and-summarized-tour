@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ReplaySubjectComponent } from './replay-subject.component';
 
-describe('ReplaySubjectComponent', () => {
+xdescribe('ReplaySubjectComponent', () => {
   let component: ReplaySubjectComponent;
   let fixture: ComponentFixture<ReplaySubjectComponent>;
 

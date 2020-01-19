@@ -232,7 +232,126 @@ Cela exécute tous les tests de notre projet à Jasmine via Karma.
 Il surveille les modifications apportées à nos fichiers de développement, regroupe tous les fichiers de développement et réexécute automatiquement les tests.
 
 <h4>Voila exemple , j'execute ng test sur la racine de notre app complet :D , on a beaucoup des problemes , c'est normale car j'ai pas creer les scenarios .. juste des tests basic qu'ils sont generer au moment de la creation des components , services , pipes.. avec angular cli..</4>
-![alt text](./ng-test-exp.png)
+![alt text](img/ng-test-exp.png)
 
 
-###Exemple sur le module 9-testing
+
+
+###Exemples sur le module 9-testing:
+
+<h3>NB</h3>
+ ng test execute tout les tests sur notre app.
+ ng test --main ./notre.spec.ts execute juste les tests de ce fichier.
+ 
+#### les option de ng test: https://angular.io/cli/test
+
+
+#### test simple class services/user-rights.service.ts
+````
+// user-rights.service.ts
+export class UserRightsService {
+    public get isAuthenticated(): boolean {
+        const token = localStorage.getItem('token');
+        return !!token;
+    }
+}
+
+// user-rights.service.spec.ts
+
+import {UserRightsService} from './user-rights.service';
+
+describe('Service UserRights', () => {
+    let userRights = null;
+    beforeEach(() => {
+        userRights = new UserRightsService();
+    });
+    afterEach(() => {
+        userRights = null;
+        localStorage.clear();
+    });
+
+    it('Should create ', () => {
+        expect(userRights).toBeTruthy();
+
+    });
+    it('should return false from IsAuthenticated when there is no token ', () => {
+        expect(userRights.isAuthenticated).toBeFalsy();
+    });
+    it('should return true form isAuthenticated when there is a token', () => {
+        localStorage.setItem('token', 'ABCVG9890');
+        expect(userRights.isAuthenticated).toBeTruthy();
+    });
+
+});
+
+````
+
+* run `ng test --codeCoverage=true --main ./src/app/9-testing/services/user-rights.service.spec.ts`
+
+![alt text](img/browser-simple-class.png)
+
+![alt text](img/cli-simple-class.png)
+
+
+#### test pipe  pipe/currency-to-kmb.pipe.ts
+
+
+````
+// currency-to-kmb.pipe.ts
+import {Pipe, PipeTransform} from '@angular/core';
+
+@Pipe({
+    name: 'appCurrencyToKMB'
+})
+
+
+export class CurrencyToKMBPipe implements PipeTransform {
+
+    transform(value: number): any {
+        if (value < 1e3) {
+            return value;
+        } else if (value > 1e3 && value < 1e6) {
+            return (value / 1e3).toFixed(1) + 'K';
+        } else if (value > 1e6 && value < 1e9) {
+            return (value / 1e6).toFixed(1) + 'M';
+        } else {
+            return (value / 1e9).toFixed(1) + 'B';
+        }
+    }
+
+}
+// currency-to-kmb.pipe.spec.ts
+
+import {CurrencyToKMBPipe} from './currreny-to-kmb.pipe';
+
+describe('Pipe CurrencyToKMB', () => {
+    let currencyPipe: CurrencyToKMBPipe;
+
+    beforeEach(() => {
+        currencyPipe = new CurrencyToKMBPipe();
+    });
+
+    it('Should create', () => {
+        expect(currencyPipe).toBeTruthy();
+    });
+
+    it('Should return the input number 999 without transforme', () => {
+        expect(currencyPipe.transform(999)).toEqual(999);
+    });
+    it('Should convert the value 9000 into suffix K', () => {
+        expect(currencyPipe.transform(9000)).toEqual('9.0K');
+    });
+    it('Should convert the value 9000000 into suffix M', () => {
+        expect(currencyPipe.transform(9000000)).toEqual('9.0M');
+    });
+    it('Should convert the value  9000000000 into suffix B', () => {
+        expect(currencyPipe.transform(9000000000)).toEqual('9.0B');
+    });
+});
+
+
+````
+
+![alt text](img/browser-pipe.png)
+
+![alt text](img/cli-pipe.png)

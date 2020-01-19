@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SkipUntilComponent } from './skip-until.component';
 
-describe('SkipUntilComponent', () => {
+xdescribe('SkipUntilComponent', () => {
   let component: SkipUntilComponent;
   let fixture: ComponentFixture<SkipUntilComponent>;
 

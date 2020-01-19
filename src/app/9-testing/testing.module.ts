@@ -4,11 +4,12 @@ import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {TestingRoutingModule} from './testing-routing.module';
+import {CurrencyToKMBPipe} from './pipes/currreny-to-kmb.pipe';
 
 
 @NgModule({
     imports: [CommonModule, HttpClientModule, FormsModule, ReactiveFormsModule, TestingRoutingModule],
-    declarations: [DashboardComponent],
+    declarations: [DashboardComponent, CurrencyToKMBPipe],
     providers: []
 })
 

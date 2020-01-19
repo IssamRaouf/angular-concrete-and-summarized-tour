@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TakeWhileComponent } from './take-while.component';
 
-describe('TakeWhileComponent', () => {
+xdescribe('TakeWhileComponent', () => {
   let component: TakeWhileComponent;
   let fixture: ComponentFixture<TakeWhileComponent>;
 

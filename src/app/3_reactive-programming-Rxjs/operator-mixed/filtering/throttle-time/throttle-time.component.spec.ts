@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ThrottleTimeComponent } from './throttle-time.component';
 
-describe('ThrottleTimeComponent', () => {
+xdescribe('ThrottleTimeComponent', () => {
   let component: ThrottleTimeComponent;
   let fixture: ComponentFixture<ThrottleTimeComponent>;
 

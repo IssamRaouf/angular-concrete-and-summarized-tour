@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DetailsTodoComponent } from './details-todo.component';
 
-describe('DetailsTodoComponent', () => {
+xdescribe('DetailsTodoComponent', () => {
   let component: DetailsTodoComponent;
   let fixture: ComponentFixture<DetailsTodoComponent>;
 

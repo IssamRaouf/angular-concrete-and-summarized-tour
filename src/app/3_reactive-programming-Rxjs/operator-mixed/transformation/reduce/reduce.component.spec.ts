@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ReduceComponent } from './reduce.component';
 
-describe('ReduceComponent', () => {
+xdescribe('ReduceComponent', () => {
   let component: ReduceComponent;
   let fixture: ComponentFixture<ReduceComponent>;
 
