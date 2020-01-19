@@ -237,7 +237,7 @@ Il surveille les modifications apportées à nos fichiers de développement, reg
 
 
 
-###Exemples sur le module 9-testing:
+### test only Jasmine and karma
 
 <h3>NB</h3>
  ng test execute tout les tests sur notre app.
@@ -355,3 +355,13 @@ describe('Pipe CurrencyToKMB', () => {
 ![alt text](img/browser-pipe.png)
 
 ![alt text](img/cli-pipe.png)
+
+
+###Teste avec mooks and spies
+
+
+
+
+
+
+###Test avec test bed 
