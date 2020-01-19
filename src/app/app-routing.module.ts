@@ -59,6 +59,10 @@ const routes: Routes = [
         loadChildren: () => import('./8-routing/routing.module').then(mod => mod.RoutingModule)
     },
     {
+        path: 'testing',
+        loadChildren: () => import('./9-testing/testing.module').then(mod => mod.TestingModule)
+    },
+    {
         path: '',
         redirectTo: 'content-projection',
         pathMatch: 'full'

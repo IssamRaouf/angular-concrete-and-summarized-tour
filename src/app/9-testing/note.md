@@ -104,6 +104,14 @@ describe('Counter',() => {
 
    Chaque Matcher implémente une comparaison booléenne entre la valeur réelle et la valeur expected. Il est responsable de signaler à Jasmine si expect est vraie ou fausse. Jasmine réussira ou échouera la spécification.
    
+<strong>Nb<strong>: 
+1) Désactiver sans commenter
+* on peut désactiver une list de spécifications de test sans les commenter on ajoute juste x au départ `xdescribe(String, Function)`
+* on peut désactiver une spécification de test sans les commenter on ajoute juste x au départ `xit(String, Function)`
+
+1) se concentrer sur des tests et ignore les autres
+* on peut se concentrer sur une list de spécifications et ignore les autre on ajoute juste f au départ `fdescribe(String, Function)`
+* on peut se concentrer sur une spécification et ignore les autre on ajoute juste f au départ`fit(String, Function)`
 
 (2) Setup and Teardown (Configuration et démontage)
 
@@ -201,3 +209,30 @@ declare namespace jasmine {
 }
 
 ```
+
+### Karma
+
+* L'exécution manuelle de tests Jasmine en actualisant un onglet de navigateur à plusieurs reprises dans différents navigateurs chaque fois que nous modifions du code peut devenir fastidieuse.
+
+* Karma est un outil qui nous permet de générer des navigateurs et d'exécuter des tests Jasmine à l'intérieur de tous à partir de la ligne de commande. Les résultats des tests sont également affichés sur la ligne de commande.
+
+* Karma peut également surveiller les modifications apportées à vos fichiers de développement et réexécuter les tests automatiquement.
+
+* Karma nous permet d'exécuter des tests Jasmine dans le cadre d'une chaîne d'outils de développement qui nécessite que les tests soient exécutables et les résultats inspectables via la ligne de commande.
+
+* Il n'est pas nécessaire de connaître les mécanismes internes du fonctionnement du Karma. Lorsque vous utilisez la CLI angulaire, elle gère la configuration pour nous, nous allons exécuter les tests en utilisant uniquement Jasmine.
+
+### Angular cli
+
+Lors de la création de projets Angular à l'aide de la CLI Angular, la création par défaut et l'exécution de tests unitaires à l'aide de Jasmine et Karma sont effectuées par défaut. 
+Chaque fois que nous créons des fichiers à l'aide de l'interface CLI, ainsi que la création du fichier de code principal, il crée également un fichier de spécifications Jasmine simple nommé de la même manière que le fichier de code principal mais se terminant par .spec.ts.
+
+Pour exécuter tous les tests dans notre application, nous tapons simplement `ng test` dans la racine de notre projet. 
+Cela exécute tous les tests de notre projet à Jasmine via Karma. 
+Il surveille les modifications apportées à nos fichiers de développement, regroupe tous les fichiers de développement et réexécute automatiquement les tests.
+
+<h4>Voila exemple , j'execute ng test sur la racine de notre app complet :D , on a beaucoup des problemes , c'est normale car j'ai pas creer les scenarios .. juste des tests basic qu'ils sont generer au moment de la creation des components , services , pipes.. avec angular cli..</4>
+![alt text](./ng-test-exp.png)
+
+
+###Exemple sur le module 9-testing
