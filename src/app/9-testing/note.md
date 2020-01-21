@@ -362,41 +362,25 @@ describe('Pipe CurrencyToKMB', () => {
   On suppose qu'on a  un todo item avec multi actions, 
   il y a des actions pour tout les utilisateurs authentifiés sur notre application et d'autre actions pour le super Admin ou global admin.
 
-  
+#### test avec le real AppStateService
 ````
 //  Apérs la login on va stocker notre utilisateur corrant sur localStorage pour la suite des interactions avec l'application
-// Note Application State service
 
+//  
 export class AppStateService 
 {
-   private _currentUser: BehaviorSubject<UserModel> = new BehaviorSubject<UserModel>(null);
-   ...
-   public construct() {
-      try {
-       this.currentUser = new UserModel(localstrorage.get('currentUser'));
-       } catch(e) {
-        console.log('User parsing failed ,',e);
-       }
-      
-   }
+  
+   // On peut le faire mieux que ca 1000 fois , mais on veut le probleme pour l'expliquer.. :D
+   
    public get currentUser(): UserModel {
-       retrun this._currentUser.getValue();
+       retrun new UserModal(localStorage.getItem('currentUser');
    }
-   public set currentUser(user:UserModel): UserModel {
-        localStorage.setItem('currentUser',JSON.stringify(user));
-        this._currentUser.next(user);
-   }
-   public currentUserObservable() : Observable<UserModel> {
-     return this._currentUser.asObservable();
-   }
-   
-   
    // on peut créer autre service pour UserRights mais on le laisse simple a ce stade là
-   public userIsSuperAdmin(): boolean {
+   public get userIsSuperAdmin(): boolean {
     return this.currentUser.role === 'ROLE_SUPER_ADMIN';
    }
    // on peut créer autre service pour UserRights mais on le laisse simple a ce stade là
-   public userIsGlobalAdmin(): boolean {
+   public get userIsGlobalAdmin(): boolean {
     return this.currentUser.role === 'ROLE_GLOBAL_ADMIN';
    }
    
@@ -414,17 +398,17 @@ export class TodoItemComponent {
     
     }
     
-    public canDisplayAddComment() : boolean {
+    public get canDisplayAddComment() : boolean {
        return this.appStateServ.userIsSuperAdmin ||  this.appStateServ.userIsGlobalAdmin;
     }
   
-    public canDisplayEditAction() : boolean {
+    public get canDisplayEditAction() : boolean {
        return this.appStateServ.userIsSuperAdmin ||  this.appStateServ.userIsGlobalAdmin;
     }
-    public canDisplayArchiveAcion() : boolean {
+    public get canDisplayArchiveAcion() : boolean {
         return this.appStateServ.userIsGlobalAdmin;
      }
-    public canDisplayCloseAction() : boolean {
+    public get canDisplayCloseAction() : boolean {
        return this.appStateServ.userIsGlobalAdmin;
     }
 
@@ -444,10 +428,84 @@ describe('TodoComponent',() => {
     // le TodoItemComponent a besoin du AppStateService service pour fonctionner (Dependence).
     // on inject la dependence de notre component
     component = new todoItemComponent(appStateServ);
+
   });
   
   afterEach(() => {
     appStateServ = null;
+    todoItemComponent = null;
+    localStorage.clean();
+  });
+  
+  it('Should create',() => {
+   expect(component).toBeTruthy();
+  });
+  
+  it('Should display the add comment action for user has role Global admin', () => {
+    const user = new UserModel({'fullName':'Issam Raouf' , role:'ROLE_GLOBAL_ADMIN'});
+    localStorage.setItem('currentUser',JSON.stringify(user));
+   
+    expect(component.canDisplayAddComment).toBeTruthy();
+  });
+  
+  it('Should display the add comment action for user has role Super admin', () => {
+    const user = new UserModel({'fullName':'Issam Raouf' , role:'ROLE_SUPER_ADMIN'});
+    localStorage.setItem('currentUser',JSON.stringify(user));
+   
+    expect(component.canDisplayAddComment).toBeTruthy();
+  });
+  
+    
+  it('Should only display the add comment action for users with the role global or super admin' , () => {
+   const user = new UserModel({'fullName':'Issam Raouf' , role:'ROLE_USER'});
+   localStorage.setItem('currentUser',JSON.stringify(user));
+  
+   expect(component.canDisplayAddComment).toBeFalsy();
+  });
+  
+  .... Notre objectif est de voir comment et pourquoi le Mock et spies
+  // pas de faire tout les specs
+  
+});
+
+
+````
+
+* Pour tester todoItemComponent, on a besoin de connaitre le fonctionnement interne du AppStateService.
+* Ce n'est pas trés isolé , il s'agit d'un couplage serré et nos tests sont tres fragiles.
+* On suppose que demain on change la facon de stockage de notre currentUser , on va le mettre sur IndexDB ou bien sur un cookie ,comme ca notre test de todoItemComponent serait interrompu et tout notres specs sont échouees :),
+* Alors comment on va resoudre ca ?!
+ 1) On ne doit pas avoir des soucis par rapport AppStateService (autrement on s'en fout , c'est le role de son class de test app-state.serice.spec ...)
+ 2) On utilise des mocks and spies :D  
+// show me the code :D
+
+````
+// todo-item.component.spec.ts
+
+class MockAppStateService {
+     public isSuperAdmin:boolean = false;
+     public isGloablAdmin:boolean = false;
+     
+    public get userIsSuperAdmin(): boolean {
+     return this.isGloablAdmin;
+    }
+    public get userIsGlobalAdmin(): boolean {
+     return this.isSuperAdmin;
+    }
+}
+
+describe('TodoComponent',() => {
+  
+  let mockAppStateService; 
+  let component;
+  
+  beforeEach(() => {
+    mockAppStateService = new MockAppStateService();
+    component = new todoItemComponent(mockAppStateService);
+  });
+  
+  afterEach(() => {
+    mockAppStateService = null;
     todoItemComponent = null;
   });
   
@@ -455,23 +513,27 @@ describe('TodoComponent',() => {
    expect(component).toBeTruthy();
   });
   
+  it('Should display the add comment action for user has role Global admin', () => {
+    mockAppStateService.isGloablAdmin = true;
+    expect(component.canDisplayAddComment).toBeTruthy();
+  });
   
+  it('Should display the add comment action for user has role Super admin', () => {
+    mockAppStateService.isSuperAdmin = true;
+    expect(component.canDisplayAddComment).toBeTruthy();
+  });
   
-   
-   
-   
-   
-
+    
+  it('Should only display the add comment action for users with the role global or super admin' , () => {
+   // on fait rien par default super et global sur le mock sont false 
+   expect(component.canDisplayAddComment).toBeFalsy();
+  });
+  ...
 });
 
-
-
-
-
-
-
 ````
-
+* Comme ca notre test de component TodoItem ne depend pas au vrai AppStateService,
+* Notre code de test est moins fragile, meme si le service AppStateService est cassé..,notre test sera toujours valide et fonctione come prévu.. 
 
 
 
