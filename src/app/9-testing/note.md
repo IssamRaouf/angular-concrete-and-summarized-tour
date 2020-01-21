@@ -357,11 +357,127 @@ describe('Pipe CurrencyToKMB', () => {
 ![alt text](img/cli-pipe.png)
 
 
-###Teste avec mooks and spies
+### Teste avec mooks and spies
+<h4>On prend un exemple au départ pour bien expliquer </h4>
+  On suppose qu'on a  un todo item avec multi actions, 
+  il y a des actions pour tout les utilisateurs authentifiés sur notre application et d'autre actions pour le super Admin ou global admin.
+
+  
+````
+//  Apérs la login on va stocker notre utilisateur corrant sur localStorage pour la suite des interactions avec l'application
+// Note Application State service
+
+export class AppStateService 
+{
+   private _currentUser: BehaviorSubject<UserModel> = new BehaviorSubject<UserModel>(null);
+   ...
+   public construct() {
+      try {
+       this.currentUser = new UserModel(localstrorage.get('currentUser'));
+       } catch(e) {
+        console.log('User parsing failed ,',e);
+       }
+      
+   }
+   public get currentUser(): UserModel {
+       retrun this._currentUser.getValue();
+   }
+   public set currentUser(user:UserModel): UserModel {
+        localStorage.setItem('currentUser',JSON.stringify(user));
+        this._currentUser.next(user);
+   }
+   public currentUserObservable() : Observable<UserModel> {
+     return this._currentUser.asObservable();
+   }
+   
+   
+   // on peut créer autre service pour UserRights mais on le laisse simple a ce stade là
+   public userIsSuperAdmin(): boolean {
+    return this.currentUser.role === 'ROLE_SUPER_ADMIN';
+   }
+   // on peut créer autre service pour UserRights mais on le laisse simple a ce stade là
+   public userIsGlobalAdmin(): boolean {
+    return this.currentUser.role === 'ROLE_GLOBAL_ADMIN';
+   }
+   
+   ...
+}
+
+
+// Notre todo item component
+
+export class TodoItemComponent {
+
+    ...
+    
+    public construct(private appStateServ:AppStateService) {
+    
+    }
+    
+    public canDisplayAddComment() : boolean {
+       return this.appStateServ.userIsSuperAdmin ||  this.appStateServ.userIsGlobalAdmin;
+    }
+  
+    public canDisplayEditAction() : boolean {
+       return this.appStateServ.userIsSuperAdmin ||  this.appStateServ.userIsGlobalAdmin;
+    }
+    public canDisplayArchiveAcion() : boolean {
+        return this.appStateServ.userIsGlobalAdmin;
+     }
+    public canDisplayCloseAction() : boolean {
+       return this.appStateServ.userIsGlobalAdmin;
+    }
+
+
+}
+
+// todo-item.component.spec.ts
+
+
+describe('TodoComponent',() => {
+  
+  let appStateServ; 
+  let component;
+  
+  beforeEach(() => {
+    appStateServ = new AppStateService();
+    // le TodoItemComponent a besoin du AppStateService service pour fonctionner (Dependence).
+    // on inject la dependence de notre component
+    component = new todoItemComponent(appStateServ);
+  });
+  
+  afterEach(() => {
+    appStateServ = null;
+    todoItemComponent = null;
+  });
+  
+  it('Should create',() => {
+   expect(component).toBeTruthy();
+  });
+  
+  
+  
+   
+   
+   
+   
+
+});
 
 
 
 
 
 
-###Test avec test bed 
+
+````
+
+
+
+
+
+
+
+
+
+### Test avec test bed 

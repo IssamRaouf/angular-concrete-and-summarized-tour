@@ -4,7 +4,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {TestingRoutingModule} from './testing-routing.module';
-import {CurrencyToKMBPipe} from './pipes/currreny-to-kmb.pipe';
+import {CurrencyToKMBPipe} from './simple-class-pipe/pipes/currreny-to-kmb.pipe';
 
 
 @NgModule({
