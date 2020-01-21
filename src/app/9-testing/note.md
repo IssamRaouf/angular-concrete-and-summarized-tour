@@ -418,7 +418,7 @@ export class TodoItemComponent {
 // todo-item.component.spec.ts
 
 
-describe('TodoComponent',() => {
+describe('TodoItemComponent',() => {
   
   let appStateServ; 
   let component;
@@ -478,7 +478,7 @@ describe('TodoComponent',() => {
  1) On ne doit pas avoir des soucis par rapport AppStateService (autrement on s'en fout , c'est le role de son class de test app-state.serice.spec ...)
  2) On utilise des mocks and spies :D  
 // show me the code :D
-
+#### test avec Mock AppStateService
 ````
 // todo-item.component.spec.ts
 
@@ -494,7 +494,9 @@ class MockAppStateService {
     }
 }
 
-describe('TodoComponent',() => {
+// NB ou on peut extends le service AppStateService et Overriding les functions qu'on a besoin pour notre test de component TodoItem ..
+
+describe('TodoItemComponent',() => {
   
   let mockAppStateService; 
   let component;
@@ -533,12 +535,7 @@ describe('TodoComponent',() => {
 
 ````
 * Comme ca notre test de component TodoItem ne depend pas au vrai AppStateService,
-* Notre code de test est moins fragile, meme si le service AppStateService est cassé..,notre test sera toujours valide et fonctione come prévu.. 
-
-
-
-
-
+* Notre code de test est moins fragile, et sera toujours valide et fonctione come prévu.. 
 
 
 
