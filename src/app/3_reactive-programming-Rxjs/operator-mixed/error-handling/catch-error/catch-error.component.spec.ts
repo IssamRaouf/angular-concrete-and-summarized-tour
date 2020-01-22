@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CatchErrorComponent } from './catch-error.component';
 
-describe('CatchErrorComponent', () => {
+xdescribe('CatchErrorComponent', () => {
   let component: CatchErrorComponent;
   let fixture: ComponentFixture<CatchErrorComponent>;
 

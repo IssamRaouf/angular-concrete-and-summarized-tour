@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SequenceEqualComponent } from './sequence-equal.component';
 
-describe('SequenceEqualComponent', () => {
+xdescribe('SequenceEqualComponent', () => {
   let component: SequenceEqualComponent;
   let fixture: ComponentFixture<SequenceEqualComponent>;
 

@@ -1,10 +1,10 @@
 <div class="container-todo-list">
     <div class="row">
-        <ng-template *ngIf="ticketListMook.length == 0; else ticketsShow;">
+        <ng-template *ngIf="ticketListMock.length == 0; else ticketsShow;">
             <div class="alert alert-info"> aucune Ticket n'existe, pouvez-vous l'ajouter !</div>
         </ng-template>
         <ng-template #ticketsShow>
-            <div class="col-lg-4 p-3" *ngFor="let ticket of ticketListMook">
+            <div class="col-lg-4 p-3" *ngFor="let ticket of ticketListMock">
                 <app-ticket [ticket]="ticket"></app-ticket>
             </div>
         </ng-template>

@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { StartwithComponent } from './startwith.component';
 
-describe('StartwithComponent', () => {
+xdescribe('StartwithComponent', () => {
   let component: StartwithComponent;
   let fixture: ComponentFixture<StartwithComponent>;
 

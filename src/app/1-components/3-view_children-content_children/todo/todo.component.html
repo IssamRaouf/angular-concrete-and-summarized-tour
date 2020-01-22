@@ -1,7 +1,7 @@
 <div class="container container-todo">
 
     <app-todo-form (sendTicket)="addTicket($event)"></app-todo-form>
-    <app-todo-list [ticketList]="ticketListMook">
+    <app-todo-list [ticketList]="ticketListMock">
         <app-ticket [ticket]="ticketProjectToList" [name]="11111111"></app-ticket>
     </app-todo-list>
 </div>

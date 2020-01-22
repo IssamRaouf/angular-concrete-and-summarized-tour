@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SwitchMapComponent } from './switch-map.component';
 
-describe('SwitchMapComponent', () => {
+xdescribe('SwitchMapComponent', () => {
   let component: SwitchMapComponent;
   let fixture: ComponentFixture<SwitchMapComponent>;
 

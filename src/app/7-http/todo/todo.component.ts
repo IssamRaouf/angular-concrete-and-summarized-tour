@@ -11,8 +11,8 @@ import {tick} from '@angular/core/testing';
 })
 export class TodoComponent implements OnInit {
 
-    public ticketListMook: Array<Ticket> = [];
-    public usersListMook: Array<UserModel> = [];
+    public ticketListMock: Array<Ticket> = [];
+    public usersListMock: Array<UserModel> = [];
 
     public isLoading: boolean;
 
@@ -35,7 +35,7 @@ export class TodoComponent implements OnInit {
         this.isLoading = true;
         this.todoRestServ.getListTodo().subscribe(
             (list: Array<Ticket>) => {
-                this.ticketListMook = list;
+                this.ticketListMock = list;
                 // juste pour voir loading :D
                 setTimeout(() => this.isLoading = false, 800);
             });
@@ -48,7 +48,7 @@ export class TodoComponent implements OnInit {
         this.isLoading = true;
         this.todoRestServ.getListUsers().subscribe(
             (list: Array<UserModel>) => {
-                this.usersListMook = list;
+                this.usersListMock = list;
                 setTimeout(() => this.isLoading = false, 800);
             });
     }
@@ -58,7 +58,7 @@ export class TodoComponent implements OnInit {
      * @param ticket
      */
     public addTicket(ticket: Ticket): void {
-        this.ticketListMook = [ticket, ...this.ticketListMook];
+        this.ticketListMock = [ticket, ...this.ticketListMock];
     }
 
     /**
@@ -83,8 +83,8 @@ export class TodoComponent implements OnInit {
      * mais C'est le temps de voir le fonctionnement de input output par sur multi niveaux (child, parent ...)
      */
     public onEdit(ticket: Ticket): void {
-        const indexTicketEdited = this.ticketListMook.findIndex(tk => tk.id === ticket.id);
-        this.ticketListMook[indexTicketEdited] = ticket;
+        const indexTicketEdited = this.ticketListMock.findIndex(tk => tk.id === ticket.id);
+        this.ticketListMock[indexTicketEdited] = ticket;
     }
 
 

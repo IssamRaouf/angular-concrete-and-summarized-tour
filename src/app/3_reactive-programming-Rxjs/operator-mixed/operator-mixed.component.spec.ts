@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { OperatorMixedComponent } from './operator-mixed.component';
 
-describe('OperatorMixedComponent', () => {
+xdescribe('OperatorMixedComponent', () => {
   let component: OperatorMixedComponent;
   let fixture: ComponentFixture<OperatorMixedComponent>;
 

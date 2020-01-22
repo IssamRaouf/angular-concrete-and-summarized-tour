@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ConcatMapComponent } from './concat-map.component';
 
-describe('ConcatMapComponent', () => {
+xdescribe('ConcatMapComponent', () => {
   let component: ConcatMapComponent;
   let fixture: ComponentFixture<ConcatMapComponent>;
 

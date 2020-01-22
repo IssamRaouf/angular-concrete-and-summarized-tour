@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ToArrayComponent } from './to-array.component';
 
-describe('ToArrayComponent', () => {
+xdescribe('ToArrayComponent', () => {
   let component: ToArrayComponent;
   let fixture: ComponentFixture<ToArrayComponent>;
 

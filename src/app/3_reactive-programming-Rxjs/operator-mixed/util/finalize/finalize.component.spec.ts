@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FinalizeComponent } from './finalize.component';
 
-describe('FinalizeComponent', () => {
+xdescribe('FinalizeComponent', () => {
   let component: FinalizeComponent;
   let fixture: ComponentFixture<FinalizeComponent>;
 

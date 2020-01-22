@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { BufferCountComponent } from './buffer-count.component';
 
-describe('BufferCountComponent', () => {
+xdescribe('BufferCountComponent', () => {
   let component: BufferCountComponent;
   let fixture: ComponentFixture<BufferCountComponent>;
 

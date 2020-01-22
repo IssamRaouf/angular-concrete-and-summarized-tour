@@ -5,11 +5,11 @@
     </div>
     <ng-template #list>
 
-        <app-todo-form (sendTicket)="addTicket($event)" [usersList]="usersListMook"
+        <app-todo-form (sendTicket)="addTicket($event)" [usersList]="usersListMock"
                        [editTicket]="ticketToEdit"
                        (sendEditedTicket)="onEdit($event)">
         </app-todo-form>
-        <app-todo-list [usersList]="usersListMook" [ticketList]="ticketListMook"
+        <app-todo-list [usersList]="usersListMock" [ticketList]="ticketListMock"
                        (editTicketSend)="editTicket($event)"></app-todo-list>
     </ng-template>
 </div>

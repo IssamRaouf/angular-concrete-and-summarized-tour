@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SkipWhileComponent } from './skip-while.component';
 
-describe('SkipWhileComponent', () => {
+xdescribe('SkipWhileComponent', () => {
   let component: SkipWhileComponent;
   let fixture: ComponentFixture<SkipWhileComponent>;
 
