@@ -290,7 +290,7 @@ describe('Service UserRights', () => {
 
 ````
 
-* run `ng test --codeCoverage=true --main ./src/app/9-testing/services/user-rights.service.spec.ts`
+* run `ng test --codeCoverage=true --main ./src/app/9-testing/simple-class-pipe/services/user-rights.service.spec.ts`
 
 ![alt text](img/browser-simple-class.png)
 
@@ -377,7 +377,7 @@ export class AppStateService
    // On peut le faire mieux que ca 1000 fois , mais on veut le probleme pour l'expliquer.. :D
    
    public get currentUser(): UserModel {
-       retrun new UserModal(localStorage.getItem('currentUser');
+       retrun new UserModel(JSON.parse(localStorage.getItem('currentUser'));
    }
    // on peut créer autre service pour UserRights mais on le laisse simple a ce stade là
    public get userIsSuperAdmin(): boolean {
@@ -398,7 +398,7 @@ export class TodoItemComponent {
 
     ...
     
-    public construct(private appStateServ:AppStateService) {
+    public constructor(private appStateServ:AppStateService) {
     
     }
     
@@ -438,7 +438,7 @@ describe('TodoItemComponent',() => {
   afterEach(() => {
     appStateServ = null;
     todoItemComponent = null;
-    localStorage.clean();
+    localStorage.removeItem('currentUser');
   });
   
   it('Should create',() => {
@@ -482,6 +482,7 @@ describe('TodoItemComponent',() => {
  1) On ne doit pas avoir des soucis par rapport AppStateService (autrement on s'en fout , c'est le role de son class de test app-state.serice.spec ...)
  2) On utilise des mocks and spies :D  
 // show me the code :D
+
 #### test avec Mock AppStateService
 ````
 // todo-item.component.spec.ts
@@ -598,6 +599,12 @@ describe('TodoItemComponent',() => {
 
 
 ````
+1) avec real service voir testing-with-moks-spies/with-real-service
+  run ng test --codeCoverage=true --main ./src/app/9-testing/testing-with-mocks-spies/with-real-service/with-real-service.component.spec.ts
+NB : à vous de continues tout les test de ce component..
+
+2) 
+
 
 
 
