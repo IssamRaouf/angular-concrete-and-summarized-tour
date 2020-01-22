@@ -1,6 +1,8 @@
 ### Intro
 
-#### General :(https://openclassrooms.com/fr/courses/5641591-testez-votre-application-c/5641598-pourquoi-tester-son-application)
+#### General  :
+(Description d'openclassrooms)
+
 Faire un test, c’est vérifier qu’une partie de son logiciel fonctionne comme attendu.
 Si vous avez déjà développé, vous savez que la transformation d’une idée ou d'un besoin en code informatique peut être complexe et sujette à erreur ou interprétation.
 
@@ -19,14 +21,16 @@ Lorsque nous parlons de tests dans Angular, nous parlons généralement de deux 
 
 * <strong>Tests unitaires</strong>
 
-   Ceci est parfois également appelé test isolé. C'est la pratique de tester de petits morceaux de code isolés. Si votre test utilise une ressource externe, comme le réseau ou une base de données, ce n'est pas un test unitaire.
+   Ceci est parfois également appelé test isolé. C'est la pratique de tester de petits morceaux de code isolés. Si votre test utilise une ressource externe.
 
 * <strong>Test fonctionel</strong>
-    Ceci est défini comme le test de la fonctionnalité complète d'une application. Dans la pratique avec les applications Web, cela signifie interagir avec votre application car elle s'exécute dans un navigateur comme un utilisateur interagirait avec elle dans la vie réelle, c'est-à-dire via des clics sur une page.
+    Ceci est défini comme le test de la fonctionnalité complète d'une application.
+    Dans la pratique avec les applications Web, cela signifie interagir avec votre application car elle s'exécute dans un navigateur comme un utilisateur interagirait avec elle dans la vie réelle, 
+    c'est-à-dire via des clics sur une page.
     Ceci est également appelé test de EndToEnd ou E2E.
 <hr/>
 
-Nous pouvons tester nos applications angulaires à partir de zéro en écrivant et en exécutant des fonctions JavaScript pures.
+Nous pouvons tester nos applications angulaires à partir de zéro en écrivant et en exécutant des fonctions JavaScript ou Typescript pures.
 Mais il existe un certain nombre de bibliothèques et de frameworks de test que nous pouvons utiliser, 
 ce qui réduit le temps nécessaire pour écrire des tests.
 Deux de ces outils et framworks qui sont utilisés lors du test d'Angular sont Jasmine et Karma.
@@ -536,6 +540,64 @@ describe('TodoItemComponent',() => {
 ````
 * Comme ca notre test de component TodoItem ne depend pas au vrai AppStateService,
 * Notre code de test est moins fragile, et sera toujours valide et fonctione come prévu.. 
+
+#### test with spies
+
+Spy est une fonctionnalité de Jasmine qui vous permet de prendre une classe, 
+une fonction ou un objet existant et de les mocking de manière à pouvoir contrôler ce qui est renvoyé par les appels de fonction.
+
+
+````
+
+
+describe('TodoItemComponent',() => {
+  
+  let appStateServ; 
+  let component;
+  
+  beforeEach(() => {
+    appStateServ = new AppStateService();
+    // le TodoItemComponent a besoin du AppStateService service pour fonctionner (Dependence).
+    // on inject la dependence de notre component
+    component = new todoItemComponent(appStateServ);
+
+  });
+  
+  afterEach(() => {
+    appStateServ = null;
+    todoItemComponent = null;
+  });
+  
+  it('Should create',() => {
+   expect(component).toBeTruthy();
+  });
+  
+  it('Should display the add comment action for user has role Global admin', () => {
+    //on crée un spy sur notre service appStateServ afin que si la fonction isGloablAdmin est appelée, elle retourne true.
+    spyOn(appStateServ,'isGloablAdmin').and.returnValue(true);
+    expect(component.canDisplayAddComment).toBeTruthy();
+  });
+  
+  it('Should display the add comment action for user has role Super admin', () => {
+   //on crée un spy sur notre service appStateServ afin que si la fonction IsSupperAdmin est appelée, elle retourne true.
+    spyOn(appStateServ,'IsSupperAdmin').and.returnValue(true);
+    expect(component.canDisplayAddComment).toBeTruthy();
+  });
+  
+    
+  it('Should only display the add comment action for users with the role global or super admin' , () => {
+   //on crée un spy sur notre service appStateServ afin que si la fonction isGloablAdmin est appelée, elle retourne false.
+   //on crée un spy sur notre service appStateServ afin que si la fonction IsSupperAdmin est appelée, elle retourne false.
+   spyOn(appStateServ,'IsSupperAdmin').and.returnValue(false);
+   spyOn(appStateServ,'isGloablAdmin').and.returnValue(false);
+   expect(component.canDisplayAddComment).toBeFalsy();
+  });
+  
+  
+});
+
+
+````
 
 
 
