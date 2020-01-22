@@ -544,9 +544,8 @@ describe('TodoItemComponent',() => {
 
 #### test with spies
 
-Spy est une fonctionnalité de Jasmine qui vous permet de prendre une classe, 
-une fonction ou un objet existant et de les mocking de manière à pouvoir contrôler ce qui est renvoyé par les appels de fonction.
-
+Spy est une fonctionnalité de Jasmine qui nous permet de prendre une classe, 
+une fonction ou un objet existant et de le mocking de manière à pouvoir contrôler ce qui est renvoyé par les appels de fonction.
 
 ````
 
@@ -574,24 +573,29 @@ describe('TodoItemComponent',() => {
   });
   
   it('Should display the add comment action for user has role Global admin', () => {
-    //on crée un spy sur notre service appStateServ afin que si la fonction isGloablAdmin est appelée, elle retourne true.
-    spyOn(appStateServ,'isGloablAdmin').and.returnValue(true);
+
+    
+    // on crée un spy sur notre service appStateServ afin que la propriete isGloablAdmin est appelée, elle retourne true.
+    // on utilise spyOnProperty parce que userIsSuperAdmin est un propriete de l'objet n'est pas une functione
+    spyOnProperty(AppStateSer, 'userIsSuperAdmin').and.returnValue(true);
+    
+    // si isGloablAdmin est un fonctionne 
+    // spyOn(appStateServ,'isGloablAdmin').and.returnValue(true);
     expect(component.canDisplayAddComment).toBeTruthy();
   });
   
   it('Should display the add comment action for user has role Super admin', () => {
-   //on crée un spy sur notre service appStateServ afin que si la fonction IsSupperAdmin est appelée, elle retourne true.
-    spyOn(appStateServ,'IsSupperAdmin').and.returnValue(true);
+      // on utilise spyOnProperty parce que userIsSuperAdmin est un propriete de l'objet... n'est pas une functione
+    spyOnProperty(AppStateSer, 'userIsSuperAdmin').and.returnValue(true);
     expect(component.canDisplayAddComment).toBeTruthy();
   });
   
     
   it('Should only display the add comment action for users with the role global or super admin' , () => {
-   //on crée un spy sur notre service appStateServ afin que si la fonction isGloablAdmin est appelée, elle retourne false.
-   //on crée un spy sur notre service appStateServ afin que si la fonction IsSupperAdmin est appelée, elle retourne false.
-   spyOn(appStateServ,'IsSupperAdmin').and.returnValue(false);
-   spyOn(appStateServ,'isGloablAdmin').and.returnValue(false);
-   expect(component.canDisplayAddComment).toBeFalsy();
+  
+    spyOnProperty(AppStateSer, 'userIsSuperAdmin').and.returnValue(true);
+    spyOnProperty(appStateServ,'isGloablAdmin').and.returnValue(true);
+    expect(component.canDisplayAddComment).toBeFalsy();
   });
   
   
@@ -599,12 +603,18 @@ describe('TodoItemComponent',() => {
 
 
 ````
-1) avec real service voir testing-with-moks-spies/with-real-service
+NB : à vous de continues tout les test de ces components..
+
+1) Avec real service voir testing-with-moks-spies/with-real-service<br>
   run ng test --codeCoverage=true --main ./src/app/9-testing/testing-with-mocks-spies/with-real-service/with-real-service.component.spec.ts
-NB : à vous de continues tout les test de ce component..
+ ![alt text](img/comp-with-real-service.png)
 
-2) 
-
+2) Avec mock service voir testing-with-moks-spies/with-mock-service<br>
+  run ng test --codeCoverage=true --main ./src/app/9-testing/testing-with-mocks-spies/with-mock-service/with-mock-service.component.spec.ts
+ ![alt text](img/comp-with-real-service.png)
+3) avec spie voir testing-with-moks-spies/with-spies<br>
+  run ng test --codeCoverage=true --main ./src/app/9-testing/testing-with-mocks-spies/with-spies/with-spies.component.spec.ts
+ ![alt text](img/comp-with-real-service.png)
 
 
 

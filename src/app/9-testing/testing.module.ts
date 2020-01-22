@@ -7,11 +7,13 @@ import {TestingRoutingModule} from './testing-routing.module';
 import {CurrencyToKMBPipe} from './simple-class-pipe/pipes/currreny-to-kmb.pipe';
 import { WithRealServiceComponent } from './testing-with-mocks-spies/with-real-service/with-real-service.component';
 import {AppStateService} from './testing-with-mocks-spies/services/app-state.service';
+import { WithMocksServiceComponent } from './testing-with-mocks-spies/with-mocks-service/with-mocks-service.component';
+import { WithSpiesComponent } from './testing-with-mocks-spies/with-spies/with-spies.component';
 
 
 @NgModule({
     imports: [CommonModule, HttpClientModule, FormsModule, ReactiveFormsModule, TestingRoutingModule],
-    declarations: [DashboardComponent, CurrencyToKMBPipe, WithRealServiceComponent],
+    declarations: [DashboardComponent, CurrencyToKMBPipe, WithRealServiceComponent, WithMocksServiceComponent, WithSpiesComponent],
     providers: [AppStateService]
 })
 
