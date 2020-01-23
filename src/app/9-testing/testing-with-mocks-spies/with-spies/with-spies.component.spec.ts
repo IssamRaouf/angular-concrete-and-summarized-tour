@@ -21,13 +21,11 @@ describe('WithSpiesComponent', () => {
     });
 
     it('Should display the add comment action for user has role Global admin', () => {
-        // spyOnProperty parce que userIsSuperAdmin est un propriete de l'objet n'est pas une functione
         spyOnProperty(AppStateSer, 'userIsSuperAdmin').and.returnValue(true);
 
         expect(component.canDisplayAddComment).toBeTruthy();
     });
     it('Should display the add comment action for user has role Super admin', () => {
-        // spyOnProperty parce que userIsSuperAdmin est un propriete de l'objet n'est pas une functione
         spyOnProperty(AppStateSer, 'userIsSuperAdmin').and.returnValue(true);
         expect(component.canDisplayAddComment).toBeTruthy();
     });

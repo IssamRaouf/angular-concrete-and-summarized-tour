@@ -15,7 +15,7 @@ En voici quelques raisons :
 * Vous avez fait des erreurs dans le code qui font que le logiciel plante, ou pire, qu’il ne fonctionne pas comme il faut ! Vous imaginez si le logiciel de votre banque vous retirait à chaque fois le double de ce que vous payez ?
 
 * Ou encore plus insidieux, tout fonctionne bien, sauf dans des cas limites du logiciel. Par exemple, vous développez une calculatrice, elle fonctionne bien, sauf dans le cas où vous tentez de diviser quelque chose par zéro. Et là, boum 
-
+  ...
 #### Angular
 Lorsque nous parlons de tests dans Angular, nous parlons généralement de deux types de tests différents:
 
@@ -30,7 +30,7 @@ Lorsque nous parlons de tests dans Angular, nous parlons généralement de deux 
     Ceci est également appelé test de EndToEnd ou E2E.
 <hr/>
 
-Nous pouvons tester nos applications angulaires à partir de zéro en écrivant et en exécutant des fonctions JavaScript ou Typescript pures.
+Nous pouvons tester nos applications angulars à partir de zéro en écrivant et en exécutant des fonctions JavaScript ou Typescript pures.
 Mais il existe un certain nombre de bibliothèques et de frameworks de test que nous pouvons utiliser, 
 ce qui réduit le temps nécessaire pour écrire des tests.
 Deux de ces outils et framworks qui sont utilisés lors du test d'Angular sont Jasmine et Karma.
@@ -38,7 +38,7 @@ Deux de ces outils et framworks qui sont utilisés lors du test d'Angular sont J
 
 ### Jasmine
 
-* Jasmine est un cadre de test JavaScript qui prend en charge une pratique de développement logiciel appelée Behavior-Driven Development, ou BDD.
+* Jasmine est un framework de test JavaScript qui prend en charge une pratique de développement logiciel appelée Behavior-Driven Development, ou BDD.
 * Le BDD combine les techniques et principes des (TDD,DDD,OOP) .
 * Jasmine, et BDD en général, tente de décrire les tests dans un format lisible par l'homme afin que les personnes non techniques puissent comprendre ce qui est testé.
 même pour nous lecture les tests au format BDD, il est beaucoup plus facile de comprendre ce qui se passe sur les projets..
@@ -222,9 +222,9 @@ declare namespace jasmine {
 
 * Karma peut également surveiller les modifications apportées à vos fichiers de développement et réexécuter les tests automatiquement.
 
-* Karma nous permet d'exécuter des tests Jasmine dans le cadre d'une chaîne d'outils de développement qui nécessite que les tests soient exécutables et les résultats inspectables via la ligne de commande.
+* Karma nous permet d'exécuter des tests Jasmine dans le framework d'une chaîne d'outils de développement qui nécessite que les tests soient exécutables et les résultats inspectables via la ligne de commande.
 
-* Il n'est pas nécessaire de connaître les mécanismes internes du fonctionnement du Karma. Lorsque vous utilisez la CLI angulaire, elle gère la configuration pour nous, nous allons exécuter les tests en utilisant uniquement Jasmine.
+* Il n'est pas nécessaire de connaître les mécanismes internes du fonctionnement du Karma. Lorsque vous utilisez la CLI angular, elle gère la configuration pour nous, nous allons exécuter les tests en utilisant uniquement Jasmine.
 
 ### Angular cli
 
@@ -601,8 +601,11 @@ describe('TodoItemComponent',() => {
   
 });
 
-
+à voir les mots clés de spies
 ````
+
+
+
 NB : à vous de continues tout les test de ces components..
 
 1) Avec real service voir testing-with-moks-spies/with-real-service<br>
@@ -619,3 +622,85 @@ NB : à vous de continues tout les test de ces components..
 
 
 ### Test avec test bed 
+
+ * Angular Test bed  (ATB) est un framework de test d'angular uniquement de niveau supérieur qui nous permet de tester facilement des comportements qui dépendent du framework angular.
+
+ * On écrit toujours nos tests dans Jasmine et exécutons à l'aide de Karma, mais on a maintenant un moyen un peu plus simple de créer des composants,
+ de gérer l'injection, de tester le comportement asynchrone et d'interagir avec notre application.
+ 
+ #### Maintenant on change un test qu'on a fait avec jasmine vanilla to ATB.
+ 
+```
+import {TestBed, ComponentFixture} from '@angular/core/testing';
+...
+describe('TodoItemComponent',() => {
+  
+  let appStateServ:AppstateService; 
+  let component:TodoItemComponent;
+  
+  // cette fixture est un wrapper pour le component (class et template)
+  let fixture: ComponentFixture<TodoItemComponent>;
+  
+  beforeEach(() => {
+  
+    // Dans la beforeEach fonction de notre suite de tests, on configure un module de test à l'aide de la TestBed classe.
+    // Cela crée un module angulaire de test qu'on peut l'utiliser pour instancier des composants, effectuer une injection de dépendance...
+    // on le configure exactement de la même manière qu'on a configuré un normal NgModule. 
+   
+    TestBed.configureTestingModule({
+          declarations: [TodoItemComponent],
+          providers: [AppstateService]
+    });
+    
+    // on crée un component fixture via le TestBed , cela va inject direct le service sur le constructeur de notre component
+    fixture = TestBed.createComponent(LoginComponent); 
+
+    // on recupére le reel component a partir de fixture par componentInstance
+    component = fixture.componentInstance; 
+
+    // on recupére notre dépandence à partir de TestBed par get(Type) , get(token Chaine de caractére ) ou get (InjectionToken) (chapitre DI)
+    appStateServ = TestBed.get(AppstateService); 
+
+  });
+  
+  afterEach(() => {
+    appStateServ = null;
+    todoItemComponent = null;
+  });
+  
+  it('Should create',() => {
+   expect(component).toBeTruthy();
+  });
+  
+  it('Should display the add comment action for user has role Global admin', () => {
+    spyOnProperty(AppStateSer, 'userIsSuperAdmin').and.returnValue(true);
+    expect(component.canDisplayAddComment).toBeTruthy();
+  });
+  
+  it('Should display the add comment action for user has role Super admin', () => {
+    spyOnProperty(AppStateSer, 'userIsSuperAdmin').and.returnValue(true);
+    expect(component.canDisplayAddComment).toBeTruthy();
+  });
+  
+    
+  it('Should only display the add comment action for users with the role global or super admin' , () => {
+    expect(component.canDisplayAddComment).toBeFalsy();
+  });
+  
+  
+});
+```
+<h2>On va souvent utiliser le TestBed d'angular , pourquoi ? </h2>
+
+* Il nous permet de tester l'interaction d'une directive ou d'un composant avec son template.
+
+* Il nous permet de tester facilement la détection des modifications.
+
+* Il nous permet de tester et d'utiliser le framework DI d'Angular.
+
+* Il nous permet de tester en utilisant la NgModule configuration qu'on utilise dans notre application.
+
+* Il nous permet de tester l'interaction des utilisateurs via des clics et des champs de saisie.
+
+
+ 
