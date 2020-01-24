@@ -9,11 +9,12 @@ import { WithRealServiceComponent } from './testing-with-mocks-spies/with-real-s
 import {AppStateService} from './testing-with-mocks-spies/services/app-state.service';
 import { WithMocksServiceComponent } from './testing-with-mocks-spies/with-mocks-service/with-mocks-service.component';
 import { WithSpiesComponent } from './testing-with-mocks-spies/with-spies/with-spies.component';
+import { TestBedComponent } from './test-bed/test-bed.component';
 
 
 @NgModule({
     imports: [CommonModule, HttpClientModule, FormsModule, ReactiveFormsModule, TestingRoutingModule],
-    declarations: [DashboardComponent, CurrencyToKMBPipe, WithRealServiceComponent, WithMocksServiceComponent, WithSpiesComponent],
+    declarations: [DashboardComponent, CurrencyToKMBPipe, WithRealServiceComponent, WithMocksServiceComponent, WithSpiesComponent, TestBedComponent],
     providers: [AppStateService]
 })
 

@@ -63,15 +63,14 @@ class Counter {
  
     counter.increaseItOnClick();
     if(counter.count === 1) {
-       return 'Test valid';
+       return true;
     } else {
-       return 'Test Fiald';
+       return false;
     }
  }
  
  const counter = new Counter();
- counter.increaseItOnClick();
- itIncreaseByOne(couner); // true : D
+ console.log('Should increase count by 1 after calling click',itIncreaseByOne(couner)); // Should increase count by 1 after calling click true :D
  
  
 // JASMINE spec , counter.spec.ts
@@ -290,7 +289,7 @@ describe('Service UserRights', () => {
 
 ````
 
-* run `ng test --codeCoverage=true --main ./src/app/9-testing/simple-class-pipe/services/user-rights.service.spec.ts`
+* run `ng test --code-coverage --main ./src/app/9-testing/simple-class-pipe/services/user-rights.service.spec.ts`
 
 ![alt text](img/browser-simple-class.png)
 
@@ -609,14 +608,14 @@ describe('TodoItemComponent',() => {
 NB : à vous de continues tout les test de ces components..
 
 1) Avec real service voir testing-with-moks-spies/with-real-service<br>
-  run ng test --codeCoverage=true --main ./src/app/9-testing/testing-with-mocks-spies/with-real-service/with-real-service.component.spec.ts
+  run ng test --code-coverage --main ./src/app/9-testing/testing-with-mocks-spies/with-real-service/with-real-service.component.spec.ts
  ![alt text](img/comp-with-real-service.png)
 
 2) Avec mock service voir testing-with-moks-spies/with-mock-service<br>
-  run ng test --codeCoverage=true --main ./src/app/9-testing/testing-with-mocks-spies/with-mock-service/with-mock-service.component.spec.ts
+  run ng test --code-coverage --main ./src/app/9-testing/testing-with-mocks-spies/with-mock-service/with-mock-service.component.spec.ts
  ![alt text](img/comp-with-real-service.png)
 3) avec spie voir testing-with-moks-spies/with-spies<br>
-  run ng test --codeCoverage=true --main ./src/app/9-testing/testing-with-mocks-spies/with-spies/with-spies.component.spec.ts
+  run ng test --code-coverage --main ./src/app/9-testing/testing-with-mocks-spies/with-spies/with-spies.component.spec.ts
  ![alt text](img/comp-with-real-service.png)
 
 
@@ -631,7 +630,7 @@ NB : à vous de continues tout les test de ces components..
  #### Maintenant on change un test qu'on a fait avec jasmine vanilla to ATB.
  
 ```
-import {TestBed, ComponentFixture} from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 ...
 describe('TodoItemComponent',() => {
   
@@ -641,7 +640,7 @@ describe('TodoItemComponent',() => {
   // cette fixture est un wrapper pour le component (class et template)
   let fixture: ComponentFixture<TodoItemComponent>;
   
-  beforeEach(() => {
+    beforeEach( ()=> {
   
     // Dans la beforeEach fonction de notre suite de tests, on configure un module de test à l'aide de la TestBed classe.
     // Cela crée un module angulaire de test qu'on peut l'utiliser pour instancier des composants, effectuer une injection de dépendance...
@@ -686,10 +685,38 @@ describe('TodoItemComponent',() => {
   it('Should only display the add comment action for users with the role global or super admin' , () => {
     expect(component.canDisplayAddComment).toBeFalsy();
   });
-  
-  
 });
 ```
+#### NB:
+
+Avec le TestBed , si on execute pour un file de specs avec ng test --main file.spec.ts, ca ne marche pas
+Pourquoi ? 
+Parce que le test est dedié d'un file de specs ,et ne passe pas par le file test.ts qui a le role de initiliser l'environment de test et aussi import zone pour les traitements async , il se trouve sur la rachine du projet test.ts
+Mais on peut fixer ce probleme par l'ajout et initialise d'environment et ajout de zone sur notre file de specs
+```
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+
+import 'zone.js/dist/zone-testing';
+import {
+  BrowserDynamicTestingModule,
+  platformBrowserDynamicTesting
+} from '@angular/platform-browser-dynamic/testing';
+
+describe('TodoItemComponent',() => {
+  
+  let appStateServ:AppstateService; 
+  let component:TodoItemComponent;
+
+    beforeAll(() => {
+        TestBed.resetTestEnvironment();
+        TestBed.initTestEnvironment(BrowserDynamicTestingModule,
+            platformBrowserDynamicTesting());
+    });
+    
+
+
+```
+
 <h2>On va souvent utiliser le TestBed d'angular , pourquoi ? </h2>
 
 * Il nous permet de tester l'interaction d'une directive ou d'un composant avec son template.
