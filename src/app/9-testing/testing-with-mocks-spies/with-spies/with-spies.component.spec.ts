@@ -1,6 +1,6 @@
 import {WithSpiesComponent} from './with-spies.component';
-
 import {AppStateService} from '../services/app-state.service';
+
 describe('WithSpiesComponent', () => {
     let component: WithSpiesComponent;
     let AppStateSer: AppStateService;
@@ -34,6 +34,4 @@ describe('WithSpiesComponent', () => {
     it('Should only display the add comment action for users with the role global or super admin', () => {
         expect(component.canDisplayAddComment).toBeFalsy();
     });
-
-
 });

@@ -105,19 +105,35 @@ describe('Counter',() => {
 * `it(String, Function)` :<strong>String</strong> est un nom ou un titre pour un spécification de test, <strong>Function</strong> définit une spécification de test individuelle, elle contient une ou plusieurs attentes (expects) de test.
 * `expect(actual)` : expect est prend une valeur, appelée le réel. Il est enchaîné avec une fonction Matcher, qui prend la valeur attendue (expect(counter.count).toEqual(1)).
 
-   Chaque Matcher implémente une comparaison booléenne entre la valeur réelle et la valeur expected. Il est responsable de signaler à Jasmine si expect est vraie ou fausse. Jasmine réussira ou échouera la spécification.
+#### Chaque Matcher implémente une comparaison booléenne entre la valeur réelle et la valeur expected. Il est responsable de signaler à Jasmine si expect est vraie ou fausse. Jasmine réussira ou échouera la spécification.
+#####Les Matcher principaux sont :
    
-<strong>Nb<strong>: 
-1) Désactiver sans commenter
+   * toBe : égalité stricte (type et valeur ====)
+   * toEqual : égalité non stricte (valeur ==)
+   * toContain : un Array contient un élément donné, ou une string contient une chaîne donnée
+   * toBeDefined : l’objet doit être défini
+   * toBeNull : la valeur doit être nulle
+   * toBeTruthy / toBeFalsy : la valeur est vraie / fausse (truthy / falsy)
+   * toHaveBeenCalled : une méthode doit avoir été appelée
+   * toHaveBeenCalledWith : une méthode doit avoir été appelée avec des paramètres d’une certaine valeur
+   * ...
+   
+##### Jasmine nous offre la possibilité de mocker des objets ou des méthodes avec spies :
+   * spyOn : mock de la méthode d’un objet
+   * createSpyObj : mock d’un objet dans son intégralité
+   ...
+   ils nous envoient une valeur que nous définissons afin de satisfaire les besoins de nos tests.
+   
+##### Désactiver ou se concentrer sans commenter..
+1) désactiver
 * on peut désactiver une list de spécifications de test sans les commenter on ajoute juste x au départ `xdescribe(String, Function)`
 * on peut désactiver une spécification de test sans les commenter on ajoute juste x au départ `xit(String, Function)`
 
-1) se concentrer sur des tests et ignore les autres
+2) se concentrer sur des tests et ignore les autres
 * on peut se concentrer sur une list de spécifications et ignore les autre on ajoute juste f au départ `fdescribe(String, Function)`
 * on peut se concentrer sur une spécification et ignore les autre on ajoute juste f au départ`fit(String, Function)`
 
-(2) Setup and Teardown (Configuration et démontage)
-
+##### Setup and Teardown (Configuration et démontage)
 Parfois, pour tester une fonctionnalité, nous devons effectuer une configuration,
 peut-être que cela crée des objets de test. De plus, nous devrons peut-être effectuer certaines activités de nettoyage après avoir terminé les tests.
 par exemple supprimer des fichier ...
@@ -130,90 +146,9 @@ par exemple supprimer des fichier ...
   
 * `afterEach` : Cette fonction est appelée après l'exécution de chaque spécification de test.
 
-
-#### Tout les mots clés de Jasmine
-```
-// Type definitions for jasminewd2 2.0
-// Project: https://github.com/angular/jasminewd
-// Definitions by: Sammy Jelin <https://github.com/sjelin>
-//                 George Kalpakas <https://github.com/gkalpak>
-// Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
-// TypeScript Version: 2.8
-
-/// <reference types="jasmine" />
-
-declare function it(expectation: string, assertion?: (done: DoneFn) => Promise<void>, timeout?: number): void;
-declare function fit(expectation: string, assertion?: (done: DoneFn) => Promise<void>, timeout?: number): void;
-declare function xit(expectation: string, assertion?: (done: DoneFn) => Promise<void>, timeout?: number): void;
-declare function beforeEach(action: (done: DoneFn) => Promise<void>, timeout?: number): void;
-declare function afterEach(action: (done: DoneFn) => Promise<void>, timeout?: number): void;
-declare function beforeAll(action: (done: DoneFn) => Promise<void>, timeout?: number): void;
-declare function afterAll(action: (done: DoneFn) => Promise<void>, timeout?: number): void;
-
-declare namespace jasmine {
-  interface Matchers<T> {
-    toBe(expected: any, expectationFailOutput?: any): Promise<void>;
-    toEqual(expected: any, expectationFailOutput?: any): Promise<void>;
-    toMatch(expected: string | RegExp | Promise<string | RegExp>, expectationFailOutput?: any): Promise<void>;
-    toBeDefined(expectationFailOutput?: any): Promise<void>;
-    toBeUndefined(expectationFailOutput?: any): Promise<void>;
-    toBeNull(expectationFailOutput?: any): Promise<void>;
-    toBeNaN(): Promise<void>;
-    toBeTruthy(expectationFailOutput?: any): Promise<void>;
-    toBeFalsy(expectationFailOutput?: any): Promise<void>;
-    toHaveBeenCalled(): Promise<void>;
-    toHaveBeenCalledWith(...params: any[]): Promise<void>;
-    toHaveBeenCalledTimes(expected: number | Promise<number>): Promise<void>;
-    toContain(expected: any, expectationFailOutput?: any): Promise<void>;
-    toBeLessThan(expected: number | Promise<number>, expectationFailOutput?: any): Promise<void>;
-    toBeLessThanOrEqual(expected: number | Promise<number>, expectationFailOutput?: any): Promise<void>;
-    toBeGreaterThan(expected: number | Promise<number>, expectationFailOutput?: any): Promise<void>;
-    toBeGreaterThanOrEqual(expected: number | Promise<number>, expectationFailOutput?: any): Promise<void>;
-    toBeCloseTo(expected: number | Promise<number>, precision?: any, expectationFailOutput?: any): Promise<void>;
-    toThrow(expected?: any): Promise<void>;
-    toThrowError(message?: string | RegExp | Promise<string | RegExp>): Promise<void>;
-    toThrowError(expected?: new (...args: any[]) => Error | Promise<new (...args: any[]) => Error>, message?: string | RegExp | Promise<string | RegExp>): Promise<void>;
-  }
-
-  interface ArrayLikeMatchers<T> extends Matchers<ArrayLike<T>> {
-    toBe(expected: Expected<ArrayLike<T>>, expectationFailOutput?: any): Promise<void>;
-    toEqual(expected: Expected<ArrayLike<T>>, expectationFailOutput?: any): Promise<void>;
-    toContain(expected: T, expectationFailOutput?: any): Promise<void>;
-    not: ArrayLikeMatchers<T>;
-  }
-
-  function addMatchers(matchers: AsyncCustomMatcherFactories): void;
-
-  interface Env {
-    addMatchers(matchers: AsyncCustomMatcherFactories): void;
-  }
-
-  interface Spec {
-    addMatchers(matchers: AsyncCustomMatcherFactories): void;
-  }
-
-  interface AsyncCustomMatcherFactories {
-    [index: string]: AsyncCustomMatcherFactory;
-  }
-
-  interface AsyncCustomMatcherFactory {
-    (util: MatchersUtil, customEqualityTesters: CustomEqualityTester[]): AsyncCustomMatcher;
-  }
-
-  interface AsyncCustomMatcher {
-    compare<T>(actual: T, expected: T): AsyncCustomMatcherResult;
-    compare(actual: any, expected: any): AsyncCustomMatcherResult;
-  }
-
-  interface AsyncCustomMatcherResult {
-    pass: boolean | Promise<boolean>;
-    message?: string;
-  }
-}
-
-```
-
 ### Karma
+Karma est notre moteur de tests. de notre projet, cree avec l’angular-cli.<br>
+pourquoi Karma?
 
 * L'exécution manuelle de tests Jasmine en actualisant un onglet de navigateur à plusieurs reprises dans différents navigateurs chaque fois que nous modifions du code peut devenir fastidieuse.
 
@@ -225,13 +160,15 @@ declare namespace jasmine {
 
 * Il n'est pas nécessaire de connaître les mécanismes internes du fonctionnement du Karma. Lorsque vous utilisez la CLI angular, elle gère la configuration pour nous, nous allons exécuter les tests en utilisant uniquement Jasmine.
 
+* Meme il nous permet d'ajouter plusieur plugins comme cucumber.. , aussi il vient avec des plugins prédefinit par exemple karma-istanbul, un tool de code coverage ..
+
 ### Angular cli
 
 Lors de la création de projets Angular à l'aide de la CLI Angular, la création par défaut et l'exécution de tests unitaires à l'aide de Jasmine et Karma sont effectuées par défaut. 
-Chaque fois que nous créons des fichiers à l'aide de l'interface CLI, ainsi que la création du fichier de code principal, il crée également un fichier de spécifications Jasmine simple nommé de la même manière que le fichier de code principal mais se terminant par .spec.ts.
+Chaque fois que nous créons des fichiers à l'aide de l'interface CLI, ainsi que la création du fichier de code principal, il crée également un fichier de spécifications Jasmine simple nommé de la même manière que le fichier de code principal mais se terminant par nomFile.spec.ts.
 
 Pour exécuter tous les tests dans notre application, nous tapons simplement `ng test` dans la racine de notre projet. 
-Cela exécute tous les tests de notre projet à Jasmine via Karma. 
+Cela exécute tous les tests de notre projet de Jasmine via Karma. 
 Il surveille les modifications apportées à nos fichiers de développement, regroupe tous les fichiers de développement et réexécute automatiquement les tests.
 
 <h4>Voila exemple , j'execute ng test sur la racine de notre app complet :D , on a beaucoup des problemes , c'est normale car j'ai pas creer les scenarios .. juste des tests basic qu'ils sont generer au moment de la creation des components , services , pipes.. avec angular cli..</4>
