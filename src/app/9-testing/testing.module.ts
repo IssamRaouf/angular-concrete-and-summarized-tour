@@ -4,12 +4,12 @@ import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {TestingRoutingModule} from './testing-routing.module';
-import {CurrencyToKMBPipe} from './simple-class-pipe/pipes/currreny-to-kmb.pipe';
-import { WithRealServiceComponent } from './testing-with-mocks-spies/with-real-service/with-real-service.component';
-import {AppStateService} from './testing-with-mocks-spies/services/app-state.service';
-import { WithMocksServiceComponent } from './testing-with-mocks-spies/with-mocks-service/with-mocks-service.component';
-import { WithSpiesComponent } from './testing-with-mocks-spies/with-spies/with-spies.component';
-import { TestBedComponent } from './test-bed/test-bed.component';
+import {CurrencyToKMBPipe} from './1-simple-class-pipe/pipes/currreny-to-kmb.pipe';
+import { WithRealServiceComponent } from './2-testing-with-mocks-spies/with-real-service/with-real-service.component';
+import {AppStateService} from './2-testing-with-mocks-spies/services/app-state.service';
+import { WithMocksServiceComponent } from './2-testing-with-mocks-spies/with-mocks-service/with-mocks-service.component';
+import { WithSpiesComponent } from './2-testing-with-mocks-spies/with-spies/with-spies.component';
+import { TestBedComponent } from './3-test-bed/test-bed.component';
 
 
 @NgModule({

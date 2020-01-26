@@ -557,22 +557,27 @@ NB : à vous de continues tout les test de ces components..
 
 
 
-### Test avec test bed 
+### Test avec TestBed 
 
- * Angular Test bed  (ATB) est un framework de test d'angular uniquement de niveau supérieur qui nous permet de tester facilement des comportements qui dépendent du framework angular.
+ * Angular Test bed (ATB) est un framework de test d'angular uniquement de niveau supérieur qui nous permet de tester facilement des comportements qui dépendent du framework angular.
 
- * On écrit toujours nos tests dans Jasmine et exécutons à l'aide de Karma, mais on a maintenant un moyen un peu plus simple de créer des composants,
+ * On écrit toujours nos tests dans Jasmine et exécute à l'aide de Karma, mais on a maintenant un moyen un peu plus simple de créer des composants,
  de gérer l'injection, de tester le comportement asynchrone et d'interagir avec notre application.
  
  #### Maintenant on change un test qu'on a fait avec jasmine vanilla to ATB.
  
 ```
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {By} from '@angular/platform-browser';
+import {DebugElement} from '@angular/core';
 ...
 describe('TodoItemComponent',() => {
   
   let appStateServ:AppstateService; 
   let component:TodoItemComponent;
+  
+  // on stocke une référence à un élément DOM dans notre elStateDescriptionComment variable.
+  let elStateDescriptionComment: DebugElement;
   
   // cette fixture est un wrapper pour le component (class et template)
   let fixture: ComponentFixture<TodoItemComponent>;
@@ -593,10 +598,20 @@ describe('TodoItemComponent',() => {
 
     // on recupére le reel component a partir de fixture par componentInstance
     component = fixture.componentInstance; 
+    
+    // fixture.debugElement (Nb:il y a aussi fixture.nativeElement..): c'est un wrapper à l' élément DOM de bas niveau qui représente la vue de notre composant.
+    // By  : on peut obtenir des références à d'autres nœuds enfants en l'interrogeant debugElement avec une By classe.
+    // la By classe nous permet d'interroger en utilisant un certain nombre de méthodes , ici on utilise class pour recupérer notre element
+    // une autre façon est de demander par un type de directive comme By.directive(MyDirective) ou  By.directive(MyComponent).
+    elStateDescriptionComment = fixture.debugElement.query(By.css('div.state-desc'));
 
     // on recupére notre dépandence à partir de TestBed par get(Type) , get(token Chaine de caractére ) ou get (InjectionToken) (chapitre DI)
     appStateServ = TestBed.get(AppstateService); 
-
+    
+    // fixture est un wrapper pour l'environnement de notre composant afin que nous puissions contrôler des choses comme la détection des modifications.
+    // detectChanges va déclenche un cycle de détection de changement pour le composant
+    // on peut aussi automatiser la détection à voir sur la doc https://angular.io/guide/testing#automatic-change-detection
+    fixture.detectChanges();
   });
   
   afterEach(() => {
@@ -608,27 +623,35 @@ describe('TodoItemComponent',() => {
    expect(component).toBeTruthy();
   });
   
-  it('Should display the add comment action for user has role Global admin', () => {
-    spyOnProperty(AppStateSer, 'userIsSuperAdmin').and.returnValue(true);
-    expect(component.canDisplayAddComment).toBeTruthy();
-  });
-  
-  it('Should display the add comment action for user has role Super admin', () => {
-    spyOnProperty(AppStateSer, 'userIsSuperAdmin').and.returnValue(true);
-    expect(component.canDisplayAddComment).toBeTruthy();
-  });
-  
-    
-  it('Should only display the add comment action for users with the role global or super admin' , () => {
-    expect(component.canDisplayAddComment).toBeFalsy();
-  });
+    it('Should display the add comment action for user has role Global admin', () => {
+        spyOnProperty(AppStateSer, 'userIsGlobalAdmin').and.returnValue(true);
+        fixture.detectChanges();
+        expect(elStateDescriptionComment.nativeElement.textContent.trim()).toEqual('');
+        expect(component.canDisplayAddComment).toBeTruthy();
+
+    });
+    it('Should display the add comment action for user has role Super admin', () => {
+        spyOnProperty(AppStateSer, 'userIsSuperAdmin').and.returnValue(true);
+        fixture.detectChanges();
+        expect(elStateDescriptionComment.nativeElement.textContent.trim()).toEqual('');
+        expect(component.canDisplayAddComment).toBeTruthy();
+    });
+
+
+    it('Should only display the add comment action for users with the role global or super admin', () => {
+        fixture.detectChanges();
+        expect(elStateDescriptionComment.nativeElement.textContent.trim()).toEqual('Cannot add comment..');
+        expect(component.canDisplayAddComment).toBeFalsy();
+    });
 });
+
 ```
 #### NB:
 
 Avec le TestBed , si on execute pour un file de specs avec ng test --main file.spec.ts, ca ne marche pas
 Pourquoi ? 
-Parce que le test est dedié d'un file de specs ,et ne passe pas par le file test.ts qui a le role de initiliser l'environment de test et aussi import zone pour les traitements async , il se trouve sur la rachine du projet test.ts
+Parce que le test est dedié d'un file de specs ,et ne passe pas par le file test.ts qui a le role de initiliser l'environment de TestBed et aussi import zone pour les traitements async , 
+il se trouve sur la rachine du projet test.ts,
 Mais on peut fixer ce probleme par l'ajout et initialise d'environment et ajout de zone sur notre file de specs
 ```
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
@@ -649,7 +672,7 @@ describe('TodoItemComponent',() => {
         TestBed.initTestEnvironment(BrowserDynamicTestingModule,
             platformBrowserDynamicTesting());
     });
-    
+    ...
 
 
 ```

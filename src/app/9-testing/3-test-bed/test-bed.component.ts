@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {AppStateService} from '../testing-with-mocks-spies/services/app-state.service';
+import {AppStateService} from '../2-testing-with-mocks-spies/services/app-state.service';
 
 @Component({
     selector: 'app-test-bed',
