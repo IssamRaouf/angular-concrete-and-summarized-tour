@@ -21,7 +21,7 @@ Lorsque nous parlons de tests dans Angular, nous parlons généralement de deux 
 
 * <strong>Tests unitaires</strong>
 
-   Ceci est parfois également appelé test isolé. C'est la pratique de tester de petits morceaux de code isolés. Si votre test utilise une ressource externe.
+   Ceci est parfois également appelé test isolé. C'est la pratique de tester de petits morceaux de code isolés. Si votre test utilise une ressource externe c'est pas un test unitaire..
 
 * <strong>Test fonctionel</strong>
     Ceci est défini comme le test de la fonctionnalité complète d'une application.
@@ -688,6 +688,71 @@ describe('TodoItemComponent',() => {
 * Il nous permet de tester en utilisant la NgModule configuration qu'on utilise dans notre application.
 
 * Il nous permet de tester l'interaction des utilisateurs via des clics et des champs de saisie.
+#### Exemple : 3-test-bed 
+
+### Test bed , async
+
+Tout va bien jusqu'à maintenant , mais on suppose qu'on veut tester des fonctionne asnyc (promisse ou obervable)
+
+On prend un exemple pour bien comprendre :
+
+````
+//  
+export class AppStateService 
+{
+  
+   // Notre function return maintenant Promise est pas boolean
+   public get userIsGlobalAdmin(): Promise<boolean> {
+    return new Promise.resolve(this.currentUser.role === 'ROLE_GLOBAL_ADMIN');
+   }
+   ...
+}
 
 
- 
+// Notre todo item component
+    
+    ...
+    public canDisplayAddComment: boolean;
+    
+    public ngOnInit() : void {
+     this.appState.userIsGlobalAdmin.then((state) => {
+        this.canDisplayAddComment = state;
+     });
+    }
+...
+
+// todo-item.component.spec.ts
+
+
+describe('TodoItemComponent',() => {
+   // ....   
+  
+    it('Should display the add comment action for user has role Global admin', () => {
+    
+     //  promesse résolue à true.
+     spyOnProperty(AppStateSer, 'userIsSuperAdmin').and.returnValue(Promise.resolve(true));
+     
+     // Lors des tests,on doit appeler nous-mêmes ngOnInitde de cycle de vie de component,
+     // Angular ne fera pas cela pour nous dans l'environnement de test.
+     component.ngOnInit(); 
+     
+     // déclenche un cycle de détection de changement pour le composant
+     fixture.detectChanges(); 
+     
+     expect(component.canDisplayAddComment).toBeTruthy();
+  });
+  //....
+  
+});
+````
+
+<h3>Il semble que tout va bien !! , malheuresement notre test est echoué</h3>
+Pourquoi ? <br>
+Parce que la fonction AppStateSer.userIsSuperAdmin n'a pas encore une valeur,
+et par la suite la canDisplayAddComment propriété n'a pas modifié
+
+#### Quelquels solutions pour resoudre ce probléme d'async  
+
+
+
+
