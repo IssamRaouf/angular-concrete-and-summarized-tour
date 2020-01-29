@@ -730,14 +730,15 @@ describe('TodoItemComponent',() => {
     it('Should display the add comment action for user has role Global admin', () => {
     
      //  promesse résolue à true.
-     spyOnProperty(AppStateSer, 'userIsSuperAdmin').and.returnValue(Promise.resolve(true));
-     
-     // Lors des tests,on doit appeler nous-mêmes ngOnInitde de cycle de vie de component,
-     // Angular ne fera pas cela pour nous dans l'environnement de test.
-     component.ngOnInit(); 
+     spyOn(AppStateSer, 'userIsSuperAdmin').and.returnValue(Promise.resolve(true));
+
      
      // déclenche un cycle de détection de changement pour le composant
-     fixture.detectChanges(); 
+     fixture.detectChanges();
+          
+     // Lors des tests,on doit appeler nous-mêmes ngOnInitde de cycle de vie de component,
+     // Angular ne fera pas cela pour nous dans l'environnement de test.
+     component.ngOnInit();  
      
      expect(component.canDisplayAddComment).toBeTruthy();
   });
@@ -748,11 +749,70 @@ describe('TodoItemComponent',() => {
 
 <h3>Il semble que tout va bien !! , malheuresement notre test est echoué</h3>
 Pourquoi ? <br>
-Parce que la fonction AppStateSer.userIsSuperAdmin n'a pas encore une valeur,
-et par la suite la canDisplayAddComment propriété n'a pas modifié
+Parce que la fonction AppStateSer.userIsSuperAdmin n'a pas encore une valeur (Promise),
+et par la suite la canDisplayAddComment propriété n'a pas modifié..
 
-#### Quelquels solutions pour resoudre ce probléme d'async  
+#### Quelquels solutions pour resoudre ce probléme d'async 
+##### Jasmine with done
 
+Jasmine a une manière  intégrée de gérer le code asynchrone et c'est par la `done fonction passée comme args sur le specs,
+Notre code maintenant devient : 
 
+```
+describe('TodoItemComponent',() => {
 
+  
+    it('Should display the add comment action for user has role Global admin', (done:DoneFn) => {
+    
+     cont spy = spyOn(AppStateSer, 'userIsSuperAdmin').and.returnValue(Promise.resolve(true));  
+     fixture.detectChanges(); 
+     
+     // En chaining spy avec calls.mostRecent(), renverra le contexte (le this) et les arguments de l'appel le plus récent..
+     spy.calls.mostRucent().returnValue().then(() => {
+          fixture.detectChanges(); 
+          component.ngOnInit(); 
+          expect(component.canDisplayAddComment).toBeTruthy();
+          
+          // Lorsque nous avons terminé nos tâches asynchrones, nous en informons Jasmine via le call de fonction done 
+          done();
+     });
+
+  });
+  //....
+  
+});
+
+```
+
+##### Angular async et whenStable ,fakeAsync et tick
+1.async et whenStable<br>
+Angular a une autre méthode pour tester le code asynchrone via les fonctions `async` et `wenStable.`.
+Notre code maintenant devient : 
+
+```
+describe('TodoItemComponent',() => {
+
+    // Cette asyncfonction exécute le code à l'intérieur de son corps dans une zone de test asynchrone spéciale . 
+    // Cela intercepte et garde une trace de toutes les promesses ou les observable créées dans son corps.  
+    it('Should display the add comment action for user has role Global admin', async(() => {
+    
+     cont spy = spyOn(AppStateSer, 'userIsSuperAdmin').and.returnValue(Promise.resolve(true));  
+     fixture.detectChanges(); 
+     
+     // Le fixture.whenStable () renvoie une promesse qui se résout lorsque JavaScript engine's task queue devient vide. 
+    // ici,JavaScript engine's task queue devient vide lorsques Promise userIsSuperAdmin est resolut
+      fixture.whenStable().then(() => { 
+          fixture.detectChanges(); 
+          component.ngOnInit(); 
+          expect(component.canDisplayAddComment).toBeTruthy();
+     });
+  }));
+  //....
+  
+});
+```
+2.fakeAsync et tick<br>
+1.async et whenStable<br>
+Angular a une autre méthode pour tester le code asynchrone via les fonctions `fakeAsync` et `tick`.
+Notre code maintenant devient : 
 
