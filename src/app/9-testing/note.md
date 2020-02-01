@@ -816,3 +816,29 @@ describe('TodoItemComponent',() => {
 Angular a une autre méthode pour tester le code asynchrone via les fonctions `fakeAsync` et `tick`.
 Notre code maintenant devient : 
 
+````
+describe('TodoItemComponent',() => {
+
+    //fakeAsync  c'est comme async function, sauf il ne suit pas les demandes XHR .
+    it('Should display the add comment action for user has role Global admin', fakeAsync(() => {
+    
+      cont spy = spyOn(AppStateSer, 'userIsSuperAdmin').and.returnValue(Promise.resolve(true));  
+      fixture.detectChanges(); 
+      
+      // on appel tick() l orsqu'il y a des activités asynchrones en attente qu'on veut terminer.
+      // La tick()fonction bloque l'exécution et simule le passage du temps jusqu'à ce que toutes les activités asynchrones en attente soient terminées.
+      // ici il attend la promisse d'userIsSuperAdmin soit résolue , puis laisse l'exécution passer à la ligne suivante.
+
+      tick();
+      
+      fixture.detectChanges(); 
+      component.ngOnInit(); 
+      expect(component.canDisplayAddComment).toBeTruthy();
+  }));
+  //....
+  
+});
+
+
+````
+

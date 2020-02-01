@@ -6,7 +6,7 @@ import {
     platformBrowserDynamicTesting
 } from '@angular/platform-browser-dynamic/testing';
 import 'zone.js/dist/zone-testing';
-import {AppStateService} from '../2-testing-with-mocks-spies/services/app-state.service';
+import {AppStateService} from '../services/app-state.service';
 import {By} from '@angular/platform-browser';
 import {DebugElement} from '@angular/core';
 

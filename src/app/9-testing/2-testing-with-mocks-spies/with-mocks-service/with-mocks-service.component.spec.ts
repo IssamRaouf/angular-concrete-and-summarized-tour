@@ -1,5 +1,5 @@
 import {WithMocksServiceComponent} from './with-mocks-service.component';
-import {AppStateService} from '../services/app-state.service';
+import {AppStateService} from '../../services/app-state.service';
 
 class MockAppStateService extends AppStateService {
     public isGlobalAdmin: boolean = false;

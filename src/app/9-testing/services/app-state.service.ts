@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {UserModel} from '../models/user.model';
+import {UserModel} from '../2-testing-with-mocks-spies/models/user.model';
 
 @Injectable()
 
@@ -20,5 +20,11 @@ export class AppStateService {
     public get userIsGlobalAdmin(): boolean {
         return this.currentUser.role === 'ROLE_GLOBAL_ADMIN';
     }
+
+    //
+    public  userIsGlobalAdminPromise(): Promise<boolean> {
+        return Promise.resolve(this.currentUser.role === 'ROLE_GLOBAL_ADMIN');
+    }
+
 
 }

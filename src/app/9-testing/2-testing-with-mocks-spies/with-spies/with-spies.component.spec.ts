@@ -1,5 +1,5 @@
 import {WithSpiesComponent} from './with-spies.component';
-import {AppStateService} from '../services/app-state.service';
+import {AppStateService} from '../../services/app-state.service';
 
 describe('WithSpiesComponent', () => {
     let component: WithSpiesComponent;
