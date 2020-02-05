@@ -366,7 +366,7 @@ describe('TodoItemComponent',() => {
   beforeEach(() => {
     appStateServ = new AppStateService();
     // le TodoItemComponent a besoin du AppStateService service pour fonctionner (Dependence).
-    // on inject la dependence de notre component
+    // on inject la dépendance de notre component
     component = new todoItemComponent(appStateServ);
 
   });
@@ -494,7 +494,7 @@ describe('TodoItemComponent',() => {
   beforeEach(() => {
     appStateServ = new AppStateService();
     // le TodoItemComponent a besoin du AppStateService service pour fonctionner (Dependence).
-    // on inject la dependence de notre component
+    // on inject la dépendance de notre component
     component = new todoItemComponent(appStateServ);
 
   });
@@ -841,4 +841,5 @@ describe('TodoItemComponent',() => {
 
 
 ````
+---> Exemple 4-testbed-async
 
