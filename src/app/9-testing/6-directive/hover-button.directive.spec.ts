@@ -2,7 +2,6 @@ import {HoverButtonDirective} from './hover-button.directive';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {BrowserDynamicTestingModule, platformBrowserDynamicTesting} from '@angular/platform-browser-dynamic/testing';
 import 'zone.js/dist/zone-testing';
-import {ComponentComponent} from '../5-component/component.component';
 import {By} from '@angular/platform-browser';
 import {Component, DebugElement} from '@angular/core';
 
