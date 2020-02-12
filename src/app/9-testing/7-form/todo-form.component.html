@@ -1,13 +1,10 @@
 <div class="container container-todo-form">
     <form [formGroup]="formTicket" class="form-container" novalidate>
         <mat-form-field>
-            <h2> Exemple de directive 'string only' essayez de entrer des numbers ou caractre speciale ... </h2>
-            <input matInput placeholder="Le nom de ticket" formControlName="name" appCaractereOnly>
+            <input matInput placeholder="Le nom de ticket" formControlName="name">
             <mat-error *ngIf="controls.name.hasError('required')">Champ obligatoire</mat-error>
             <mat-hint *ngIf="isRequired(controls.name)">required</mat-hint>
         </mat-form-field>
-
-
         <mat-form-field>
             <mat-select placeholder="type de ticket" formControlName="type">
                 <mat-option *ngFor="let option of typesAsSelect" [value]="option.val">{{option.text}}</mat-option>

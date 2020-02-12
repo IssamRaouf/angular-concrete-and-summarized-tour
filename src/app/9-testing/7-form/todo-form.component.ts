@@ -18,10 +18,11 @@ export class TodoFormComponent implements OnInit {
 
     ngOnInit() {
         this.formTicket = new FormGroup({
-            name: new FormControl('', Validators.required),
+            name: new FormControl('', [Validators.required]),
             type: new FormControl('', Validators.required),
-            description: new FormControl('', Validators.required),
+            description: new FormControl('', [Validators.required]),
         });
+
         this.typesAsSelect = this.enumToSelectList(TicketTypeEnum);
     }
 
