@@ -1,6 +1,6 @@
 import {WithSpiesComponent} from './with-spies.component';
+import {AppStateService} from '../../services/app-state.service';
 
-import {AppStateService} from '../services/app-state.service';
 describe('WithSpiesComponent', () => {
     let component: WithSpiesComponent;
     let AppStateSer: AppStateService;
@@ -21,13 +21,11 @@ describe('WithSpiesComponent', () => {
     });
 
     it('Should display the add comment action for user has role Global admin', () => {
-        // spyOnProperty parce que userIsSuperAdmin est un propriete de l'objet n'est pas une functione
         spyOnProperty(AppStateSer, 'userIsSuperAdmin').and.returnValue(true);
 
         expect(component.canDisplayAddComment).toBeTruthy();
     });
     it('Should display the add comment action for user has role Super admin', () => {
-        // spyOnProperty parce que userIsSuperAdmin est un propriete de l'objet n'est pas une functione
         spyOnProperty(AppStateSer, 'userIsSuperAdmin').and.returnValue(true);
         expect(component.canDisplayAddComment).toBeTruthy();
     });
@@ -36,6 +34,4 @@ describe('WithSpiesComponent', () => {
     it('Should only display the add comment action for users with the role global or super admin', () => {
         expect(component.canDisplayAddComment).toBeFalsy();
     });
-
-
 });

@@ -2,11 +2,11 @@ import {Component} from '@angular/core';
 import {AppStateService} from '../services/app-state.service';
 
 @Component({
-    selector: 'app-with-mocks-service',
-    templateUrl: './with-mocks-service.component.html',
-    styleUrls: ['./with-mocks-service.component.scss']
+    selector: 'app-test-bed',
+    templateUrl: './test-bed.component.html',
+    styleUrls: ['./test-bed.component.scss']
 })
-export class WithMocksServiceComponent {
+export class TestBedComponent {
 
     public constructor(private appStateServ: AppStateService) {
 
@@ -27,6 +27,4 @@ export class WithMocksServiceComponent {
     public get canDisplayCloseAction(): boolean {
         return this.appStateServ.userIsGlobalAdmin;
     }
-
-
 }

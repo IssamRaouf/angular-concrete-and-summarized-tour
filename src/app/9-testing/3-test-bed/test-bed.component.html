@@ -1,0 +1,7 @@
+<div class="container">
+    <button *ngIf="canDisplayAddComment">Add comment</button>
+    <div class="state-desc">
+        <span *ngIf="!canDisplayAddComment">Cannot add comment..</span>
+    </div>
+</div>
+

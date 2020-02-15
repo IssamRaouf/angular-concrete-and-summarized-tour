@@ -1,5 +1,5 @@
 import {WithRealServiceComponent} from './with-real-service.component';
-import {AppStateService} from '../services/app-state.service';
+import {AppStateService} from '../../services/app-state.service';
 import {UserModel} from '../models/user.model';
 
 describe('WithRealServiceComponent', () => {

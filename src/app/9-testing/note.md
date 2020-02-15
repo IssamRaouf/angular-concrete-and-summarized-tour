@@ -15,13 +15,13 @@ En voici quelques raisons :
 * Vous avez fait des erreurs dans le code qui font que le logiciel plante, ou pire, qu’il ne fonctionne pas comme il faut ! Vous imaginez si le logiciel de votre banque vous retirait à chaque fois le double de ce que vous payez ?
 
 * Ou encore plus insidieux, tout fonctionne bien, sauf dans des cas limites du logiciel. Par exemple, vous développez une calculatrice, elle fonctionne bien, sauf dans le cas où vous tentez de diviser quelque chose par zéro. Et là, boum 
-
+  ...
 #### Angular
 Lorsque nous parlons de tests dans Angular, nous parlons généralement de deux types de tests différents:
 
 * <strong>Tests unitaires</strong>
 
-   Ceci est parfois également appelé test isolé. C'est la pratique de tester de petits morceaux de code isolés. Si votre test utilise une ressource externe.
+   Ceci est parfois également appelé test isolé. C'est la pratique de tester de petits morceaux de code isolés. Si votre test utilise une ressource externe c'est pas un test unitaire..
 
 * <strong>Test fonctionel</strong>
     Ceci est défini comme le test de la fonctionnalité complète d'une application.
@@ -30,7 +30,7 @@ Lorsque nous parlons de tests dans Angular, nous parlons généralement de deux 
     Ceci est également appelé test de EndToEnd ou E2E.
 <hr/>
 
-Nous pouvons tester nos applications angulaires à partir de zéro en écrivant et en exécutant des fonctions JavaScript ou Typescript pures.
+Nous pouvons tester nos applications angulars à partir de zéro en écrivant et en exécutant des fonctions JavaScript ou Typescript pures.
 Mais il existe un certain nombre de bibliothèques et de frameworks de test que nous pouvons utiliser, 
 ce qui réduit le temps nécessaire pour écrire des tests.
 Deux de ces outils et framworks qui sont utilisés lors du test d'Angular sont Jasmine et Karma.
@@ -38,7 +38,7 @@ Deux de ces outils et framworks qui sont utilisés lors du test d'Angular sont J
 
 ### Jasmine
 
-* Jasmine est un cadre de test JavaScript qui prend en charge une pratique de développement logiciel appelée Behavior-Driven Development, ou BDD.
+* Jasmine est un framework de test JavaScript qui prend en charge une pratique de développement logiciel appelée Behavior-Driven Development, ou BDD.
 * Le BDD combine les techniques et principes des (TDD,DDD,OOP) .
 * Jasmine, et BDD en général, tente de décrire les tests dans un format lisible par l'homme afin que les personnes non techniques puissent comprendre ce qui est testé.
 même pour nous lecture les tests au format BDD, il est beaucoup plus facile de comprendre ce qui se passe sur les projets..
@@ -63,15 +63,14 @@ class Counter {
  
     counter.increaseItOnClick();
     if(counter.count === 1) {
-       return 'Test valid';
+       return true;
     } else {
-       return 'Test Fiald';
+       return false;
     }
  }
  
  const counter = new Counter();
- counter.increaseItOnClick();
- itIncreaseByOne(couner); // true : D
+ console.log('Should increase count by 1 after calling click',itIncreaseByOne(couner)); // Should increase count by 1 after calling click true :D
  
  
 // JASMINE spec , counter.spec.ts
@@ -106,19 +105,35 @@ describe('Counter',() => {
 * `it(String, Function)` :<strong>String</strong> est un nom ou un titre pour un spécification de test, <strong>Function</strong> définit une spécification de test individuelle, elle contient une ou plusieurs attentes (expects) de test.
 * `expect(actual)` : expect est prend une valeur, appelée le réel. Il est enchaîné avec une fonction Matcher, qui prend la valeur attendue (expect(counter.count).toEqual(1)).
 
-   Chaque Matcher implémente une comparaison booléenne entre la valeur réelle et la valeur expected. Il est responsable de signaler à Jasmine si expect est vraie ou fausse. Jasmine réussira ou échouera la spécification.
+#### Chaque Matcher implémente une comparaison booléenne entre la valeur réelle et la valeur expected. Il est responsable de signaler à Jasmine si expect est vraie ou fausse. Jasmine réussira ou échouera la spécification.
+#####Les Matcher principaux sont :
    
-<strong>Nb<strong>: 
-1) Désactiver sans commenter
+   * toBe : égalité stricte (type et valeur ====)
+   * toEqual : égalité non stricte (valeur ==)
+   * toContain : un Array contient un élément donné, ou une string contient une chaîne donnée
+   * toBeDefined : l’objet doit être défini
+   * toBeNull : la valeur doit être nulle
+   * toBeTruthy / toBeFalsy : la valeur est vraie / fausse (truthy / falsy)
+   * toHaveBeenCalled : une méthode doit avoir été appelée
+   * toHaveBeenCalledWith : une méthode doit avoir été appelée avec des paramètres d’une certaine valeur
+   * ...
+   
+##### Jasmine nous offre la possibilité de mocker des objets ou des méthodes avec spies :
+   * spyOn : mock de la méthode d’un objet
+   * createSpyObj : mock d’un objet dans son intégralité
+   ...
+   ils nous envoient une valeur que nous définissons afin de satisfaire les besoins de nos tests.
+   
+##### Désactiver ou se concentrer sans commenter..
+1) désactiver
 * on peut désactiver une list de spécifications de test sans les commenter on ajoute juste x au départ `xdescribe(String, Function)`
 * on peut désactiver une spécification de test sans les commenter on ajoute juste x au départ `xit(String, Function)`
 
-1) se concentrer sur des tests et ignore les autres
+2) se concentrer sur des tests et ignore les autres
 * on peut se concentrer sur une list de spécifications et ignore les autre on ajoute juste f au départ `fdescribe(String, Function)`
 * on peut se concentrer sur une spécification et ignore les autre on ajoute juste f au départ`fit(String, Function)`
 
-(2) Setup and Teardown (Configuration et démontage)
-
+##### Setup and Teardown (Configuration et démontage)
 Parfois, pour tester une fonctionnalité, nous devons effectuer une configuration,
 peut-être que cela crée des objets de test. De plus, nous devrons peut-être effectuer certaines activités de nettoyage après avoir terminé les tests.
 par exemple supprimer des fichier ...
@@ -131,90 +146,9 @@ par exemple supprimer des fichier ...
   
 * `afterEach` : Cette fonction est appelée après l'exécution de chaque spécification de test.
 
-
-#### Tout les mots clés de Jasmine
-```
-// Type definitions for jasminewd2 2.0
-// Project: https://github.com/angular/jasminewd
-// Definitions by: Sammy Jelin <https://github.com/sjelin>
-//                 George Kalpakas <https://github.com/gkalpak>
-// Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
-// TypeScript Version: 2.8
-
-/// <reference types="jasmine" />
-
-declare function it(expectation: string, assertion?: (done: DoneFn) => Promise<void>, timeout?: number): void;
-declare function fit(expectation: string, assertion?: (done: DoneFn) => Promise<void>, timeout?: number): void;
-declare function xit(expectation: string, assertion?: (done: DoneFn) => Promise<void>, timeout?: number): void;
-declare function beforeEach(action: (done: DoneFn) => Promise<void>, timeout?: number): void;
-declare function afterEach(action: (done: DoneFn) => Promise<void>, timeout?: number): void;
-declare function beforeAll(action: (done: DoneFn) => Promise<void>, timeout?: number): void;
-declare function afterAll(action: (done: DoneFn) => Promise<void>, timeout?: number): void;
-
-declare namespace jasmine {
-  interface Matchers<T> {
-    toBe(expected: any, expectationFailOutput?: any): Promise<void>;
-    toEqual(expected: any, expectationFailOutput?: any): Promise<void>;
-    toMatch(expected: string | RegExp | Promise<string | RegExp>, expectationFailOutput?: any): Promise<void>;
-    toBeDefined(expectationFailOutput?: any): Promise<void>;
-    toBeUndefined(expectationFailOutput?: any): Promise<void>;
-    toBeNull(expectationFailOutput?: any): Promise<void>;
-    toBeNaN(): Promise<void>;
-    toBeTruthy(expectationFailOutput?: any): Promise<void>;
-    toBeFalsy(expectationFailOutput?: any): Promise<void>;
-    toHaveBeenCalled(): Promise<void>;
-    toHaveBeenCalledWith(...params: any[]): Promise<void>;
-    toHaveBeenCalledTimes(expected: number | Promise<number>): Promise<void>;
-    toContain(expected: any, expectationFailOutput?: any): Promise<void>;
-    toBeLessThan(expected: number | Promise<number>, expectationFailOutput?: any): Promise<void>;
-    toBeLessThanOrEqual(expected: number | Promise<number>, expectationFailOutput?: any): Promise<void>;
-    toBeGreaterThan(expected: number | Promise<number>, expectationFailOutput?: any): Promise<void>;
-    toBeGreaterThanOrEqual(expected: number | Promise<number>, expectationFailOutput?: any): Promise<void>;
-    toBeCloseTo(expected: number | Promise<number>, precision?: any, expectationFailOutput?: any): Promise<void>;
-    toThrow(expected?: any): Promise<void>;
-    toThrowError(message?: string | RegExp | Promise<string | RegExp>): Promise<void>;
-    toThrowError(expected?: new (...args: any[]) => Error | Promise<new (...args: any[]) => Error>, message?: string | RegExp | Promise<string | RegExp>): Promise<void>;
-  }
-
-  interface ArrayLikeMatchers<T> extends Matchers<ArrayLike<T>> {
-    toBe(expected: Expected<ArrayLike<T>>, expectationFailOutput?: any): Promise<void>;
-    toEqual(expected: Expected<ArrayLike<T>>, expectationFailOutput?: any): Promise<void>;
-    toContain(expected: T, expectationFailOutput?: any): Promise<void>;
-    not: ArrayLikeMatchers<T>;
-  }
-
-  function addMatchers(matchers: AsyncCustomMatcherFactories): void;
-
-  interface Env {
-    addMatchers(matchers: AsyncCustomMatcherFactories): void;
-  }
-
-  interface Spec {
-    addMatchers(matchers: AsyncCustomMatcherFactories): void;
-  }
-
-  interface AsyncCustomMatcherFactories {
-    [index: string]: AsyncCustomMatcherFactory;
-  }
-
-  interface AsyncCustomMatcherFactory {
-    (util: MatchersUtil, customEqualityTesters: CustomEqualityTester[]): AsyncCustomMatcher;
-  }
-
-  interface AsyncCustomMatcher {
-    compare<T>(actual: T, expected: T): AsyncCustomMatcherResult;
-    compare(actual: any, expected: any): AsyncCustomMatcherResult;
-  }
-
-  interface AsyncCustomMatcherResult {
-    pass: boolean | Promise<boolean>;
-    message?: string;
-  }
-}
-
-```
-
 ### Karma
+Karma est notre moteur de tests. de notre projet, cree avec l’angular-cli.<br>
+pourquoi Karma?
 
 * L'exécution manuelle de tests Jasmine en actualisant un onglet de navigateur à plusieurs reprises dans différents navigateurs chaque fois que nous modifions du code peut devenir fastidieuse.
 
@@ -222,17 +156,19 @@ declare namespace jasmine {
 
 * Karma peut également surveiller les modifications apportées à vos fichiers de développement et réexécuter les tests automatiquement.
 
-* Karma nous permet d'exécuter des tests Jasmine dans le cadre d'une chaîne d'outils de développement qui nécessite que les tests soient exécutables et les résultats inspectables via la ligne de commande.
+* Karma nous permet d'exécuter des tests Jasmine dans le framework d'une chaîne d'outils de développement qui nécessite que les tests soient exécutables et les résultats inspectables via la ligne de commande.
 
-* Il n'est pas nécessaire de connaître les mécanismes internes du fonctionnement du Karma. Lorsque vous utilisez la CLI angulaire, elle gère la configuration pour nous, nous allons exécuter les tests en utilisant uniquement Jasmine.
+* Il n'est pas nécessaire de connaître les mécanismes internes du fonctionnement du Karma. Lorsque vous utilisez la CLI angular, elle gère la configuration pour nous, nous allons exécuter les tests en utilisant uniquement Jasmine.
+
+* Meme il nous permet d'ajouter plusieur plugins comme cucumber.. , aussi il vient avec des plugins prédefinit par exemple karma-istanbul, un tool de code coverage ..
 
 ### Angular cli
 
 Lors de la création de projets Angular à l'aide de la CLI Angular, la création par défaut et l'exécution de tests unitaires à l'aide de Jasmine et Karma sont effectuées par défaut. 
-Chaque fois que nous créons des fichiers à l'aide de l'interface CLI, ainsi que la création du fichier de code principal, il crée également un fichier de spécifications Jasmine simple nommé de la même manière que le fichier de code principal mais se terminant par .spec.ts.
+Chaque fois que nous créons des fichiers à l'aide de l'interface CLI, ainsi que la création du fichier de code principal, il crée également un fichier de spécifications Jasmine simple nommé de la même manière que le fichier de code principal mais se terminant par nomFile.spec.ts.
 
 Pour exécuter tous les tests dans notre application, nous tapons simplement `ng test` dans la racine de notre projet. 
-Cela exécute tous les tests de notre projet à Jasmine via Karma. 
+Cela exécute tous les tests de notre projet de Jasmine via Karma. 
 Il surveille les modifications apportées à nos fichiers de développement, regroupe tous les fichiers de développement et réexécute automatiquement les tests.
 
 <h4>Voila exemple , j'execute ng test sur la racine de notre app complet :D , on a beaucoup des problemes , c'est normale car j'ai pas creer les scenarios .. juste des tests basic qu'ils sont generer au moment de la creation des components , services , pipes.. avec angular cli..</4>
@@ -290,7 +226,7 @@ describe('Service UserRights', () => {
 
 ````
 
-* run `ng test --codeCoverage=true --main ./src/app/9-testing/simple-class-pipe/services/user-rights.service.spec.ts`
+* run `ng test --code-coverage --main ./src/app/9-testing/simple-class-pipe/services/user-rights.service.spec.ts`
 
 ![alt text](img/browser-simple-class.png)
 
@@ -430,7 +366,7 @@ describe('TodoItemComponent',() => {
   beforeEach(() => {
     appStateServ = new AppStateService();
     // le TodoItemComponent a besoin du AppStateService service pour fonctionner (Dependence).
-    // on inject la dependence de notre component
+    // on inject la dépendance de notre component
     component = new todoItemComponent(appStateServ);
 
   });
@@ -558,7 +494,7 @@ describe('TodoItemComponent',() => {
   beforeEach(() => {
     appStateServ = new AppStateService();
     // le TodoItemComponent a besoin du AppStateService service pour fonctionner (Dependence).
-    // on inject la dependence de notre component
+    // on inject la dépendance de notre component
     component = new todoItemComponent(appStateServ);
 
   });
@@ -601,21 +537,309 @@ describe('TodoItemComponent',() => {
   
 });
 
-
+à voir les mots clés de spies
 ````
+
+
+
 NB : à vous de continues tout les test de ces components..
 
 1) Avec real service voir testing-with-moks-spies/with-real-service<br>
-  run ng test --codeCoverage=true --main ./src/app/9-testing/testing-with-mocks-spies/with-real-service/with-real-service.component.spec.ts
+  run ng test --code-coverage --main ./src/app/9-testing/testing-with-mocks-spies/with-real-service/with-real-service.component.spec.ts
  ![alt text](img/comp-with-real-service.png)
 
 2) Avec mock service voir testing-with-moks-spies/with-mock-service<br>
-  run ng test --codeCoverage=true --main ./src/app/9-testing/testing-with-mocks-spies/with-mock-service/with-mock-service.component.spec.ts
+  run ng test --code-coverage --main ./src/app/9-testing/testing-with-mocks-spies/with-mock-service/with-mock-service.component.spec.ts
  ![alt text](img/comp-with-real-service.png)
 3) avec spie voir testing-with-moks-spies/with-spies<br>
-  run ng test --codeCoverage=true --main ./src/app/9-testing/testing-with-mocks-spies/with-spies/with-spies.component.spec.ts
+  run ng test --code-coverage --main ./src/app/9-testing/testing-with-mocks-spies/with-spies/with-spies.component.spec.ts
  ![alt text](img/comp-with-real-service.png)
 
 
 
-### Test avec test bed 
+### Test avec TestBed 
+
+ * Angular Test bed (ATB) est un framework de test d'angular uniquement de niveau supérieur qui nous permet de tester facilement des comportements qui dépendent du framework angular.
+
+ * On écrit toujours nos tests dans Jasmine et exécute à l'aide de Karma, mais on a maintenant un moyen un peu plus simple de créer des composants,
+ de gérer l'injection, de tester le comportement asynchrone et d'interagir avec notre application.
+ 
+ #### Maintenant on change un test qu'on a fait avec jasmine vanilla to ATB.
+ 
+```
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {By} from '@angular/platform-browser';
+import {DebugElement} from '@angular/core';
+...
+describe('TodoItemComponent',() => {
+  
+  let appStateServ:AppstateService; 
+  let component:TodoItemComponent;
+  
+  // on stocke une référence à un élément DOM dans notre elStateDescriptionComment variable.
+  let elStateDescriptionComment: DebugElement;
+  
+  // cette fixture est un wrapper pour le component (class et template)
+  let fixture: ComponentFixture<TodoItemComponent>;
+  
+    beforeEach( ()=> {
+  
+    // Dans la beforeEach fonction de notre suite de tests, on configure un module de test à l'aide de la TestBed classe.
+    // Cela crée un module angulaire de test qu'on peut l'utiliser pour instancier des composants, effectuer une injection de dépendance...
+    // on le configure exactement de la même manière qu'on a configuré un normal NgModule. 
+   
+    TestBed.configureTestingModule({
+          declarations: [TodoItemComponent],
+          providers: [AppstateService]
+    });
+    
+    // on crée un component fixture via le TestBed , cela va inject direct le service sur le constructeur de notre component
+    fixture = TestBed.createComponent(LoginComponent); 
+
+    // on recupére le reel component a partir de fixture par componentInstance
+    component = fixture.componentInstance; 
+    
+    // fixture.debugElement (Nb:il y a aussi fixture.nativeElement..): c'est un wrapper à l' élément DOM de bas niveau qui représente la vue de notre composant.
+    // By  : on peut obtenir des références à d'autres nœuds enfants en l'interrogeant debugElement avec une By classe.
+    // la By classe nous permet d'interroger en utilisant un certain nombre de méthodes , ici on utilise class pour recupérer notre element
+    // une autre façon est de demander par un type de directive comme By.directive(MyDirective) ou  By.directive(MyComponent).
+    elStateDescriptionComment = fixture.debugElement.query(By.css('div.state-desc'));
+
+    // on recupére notre dépandence à partir de TestBed par get(Type) , get(token Chaine de caractére ) ou get (InjectionToken) (chapitre DI)
+    appStateServ = TestBed.get(AppstateService); 
+    
+    // fixture est un wrapper pour l'environnement de notre composant afin que nous puissions contrôler des choses comme la détection des modifications.
+    // detectChanges va déclenche un cycle de détection de changement pour le composant
+    // on peut aussi automatiser la détection à voir sur la doc https://angular.io/guide/testing#automatic-change-detection
+    fixture.detectChanges();
+  });
+  
+  afterEach(() => {
+    appStateServ = null;
+    todoItemComponent = null;
+  });
+  
+  it('Should create',() => {
+   expect(component).toBeTruthy();
+  });
+  
+    it('Should display the add comment action for user has role Global admin', () => {
+        spyOnProperty(AppStateSer, 'userIsGlobalAdmin').and.returnValue(true);
+        fixture.detectChanges();
+        expect(elStateDescriptionComment.nativeElement.textContent.trim()).toEqual('');
+        expect(component.canDisplayAddComment).toBeTruthy();
+
+    });
+    it('Should display the add comment action for user has role Super admin', () => {
+        spyOnProperty(AppStateSer, 'userIsSuperAdmin').and.returnValue(true);
+        fixture.detectChanges();
+        expect(elStateDescriptionComment.nativeElement.textContent.trim()).toEqual('');
+        expect(component.canDisplayAddComment).toBeTruthy();
+    });
+
+
+    it('Should only display the add comment action for users with the role global or super admin', () => {
+        fixture.detectChanges();
+        expect(elStateDescriptionComment.nativeElement.textContent.trim()).toEqual('Cannot add comment..');
+        expect(component.canDisplayAddComment).toBeFalsy();
+    });
+});
+
+```
+#### NB:
+
+Avec le TestBed , si on execute pour un file de specs avec ng test --main file.spec.ts, ca ne marche pas
+Pourquoi ? 
+Parce que le test est dedié d'un file de specs ,et ne passe pas par le file test.ts qui a le role de initiliser l'environment de TestBed et aussi import zone pour les traitements async , 
+il se trouve sur la rachine du projet test.ts,
+Mais on peut fixer ce probleme par l'ajout et initialise d'environment et ajout de zone sur notre file de specs
+```
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+
+import 'zone.js/dist/zone-testing';
+import {
+  BrowserDynamicTestingModule,
+  platformBrowserDynamicTesting
+} from '@angular/platform-browser-dynamic/testing';
+
+describe('TodoItemComponent',() => {
+  
+  let appStateServ:AppstateService; 
+  let component:TodoItemComponent;
+
+    beforeAll(() => {
+        TestBed.resetTestEnvironment();
+        TestBed.initTestEnvironment(BrowserDynamicTestingModule,
+            platformBrowserDynamicTesting());
+    });
+    ...
+
+
+```
+
+<h2>On va souvent utiliser le TestBed d'angular , pourquoi ? </h2>
+
+* Il nous permet de tester l'interaction d'une directive ou d'un composant avec son template.
+
+* Il nous permet de tester facilement la détection des modifications.
+
+* Il nous permet de tester et d'utiliser le framework DI d'Angular.
+
+* Il nous permet de tester en utilisant la NgModule configuration qu'on utilise dans notre application.
+
+* Il nous permet de tester l'interaction des utilisateurs via des clics et des champs de saisie.
+#### Exemple : 3-test-bed 
+
+### Test bed , async
+
+Tout va bien jusqu'à maintenant , mais on suppose qu'on veut tester des fonctionne asnyc (promisse ou obervable)
+
+On prend un exemple pour bien comprendre :
+
+````
+//  
+export class AppStateService 
+{
+  
+   // Notre function return maintenant Promise est pas boolean
+   public get userIsGlobalAdmin(): Promise<boolean> {
+    return new Promise.resolve(this.currentUser.role === 'ROLE_GLOBAL_ADMIN');
+   }
+   ...
+}
+
+
+// Notre todo item component
+    
+    ...
+    public canDisplayAddComment: boolean;
+    
+    public ngOnInit() : void {
+     this.appState.userIsGlobalAdmin.then((state) => {
+        this.canDisplayAddComment = state;
+     });
+    }
+...
+
+// todo-item.component.spec.ts
+
+
+describe('TodoItemComponent',() => {
+   // ....   
+  
+    it('Should display the add comment action for user has role Global admin', () => {
+    
+     //  promesse résolue à true.
+     spyOn(AppStateSer, 'userIsSuperAdmin').and.returnValue(Promise.resolve(true));
+
+     
+     // déclenche un cycle de détection de changement pour le composant
+     fixture.detectChanges();
+          
+     // Lors des tests,on doit appeler nous-mêmes ngOnInitde de cycle de vie de component,
+     // Angular ne fera pas cela pour nous dans l'environnement de test.
+     component.ngOnInit();  
+     
+     expect(component.canDisplayAddComment).toBeTruthy();
+  });
+  //....
+  
+});
+````
+
+<h3>Il semble que tout va bien !! , malheuresement notre test est echoué</h3>
+Pourquoi ? <br>
+Parce que la fonction AppStateSer.userIsSuperAdmin n'a pas encore une valeur (Promise),
+et par la suite la canDisplayAddComment propriété n'a pas modifié..
+
+#### Quelquels solutions pour resoudre ce probléme d'async 
+##### Jasmine with done
+
+Jasmine a une manière  intégrée de gérer le code asynchrone et c'est par la `done fonction passée comme args sur le specs,
+Notre code maintenant devient : 
+
+```
+describe('TodoItemComponent',() => {
+
+  
+    it('Should display the add comment action for user has role Global admin', (done:DoneFn) => {
+    
+     cont spy = spyOn(AppStateSer, 'userIsSuperAdmin').and.returnValue(Promise.resolve(true));  
+     fixture.detectChanges(); 
+     
+     // En chaining spy avec calls.mostRecent(), renverra le contexte (le this) et les arguments de l'appel le plus récent..
+     spy.calls.mostRucent().returnValue().then(() => {
+          fixture.detectChanges(); 
+          component.ngOnInit(); 
+          expect(component.canDisplayAddComment).toBeTruthy();
+          
+          // Lorsque nous avons terminé nos tâches asynchrones, nous en informons Jasmine via le call de fonction done 
+          done();
+     });
+
+  });
+  //....
+  
+});
+
+```
+
+##### Angular async et whenStable ,fakeAsync et tick
+1.async et whenStable<br>
+Angular a une autre méthode pour tester le code asynchrone via les fonctions `async` et `wenStable.`.
+Notre code maintenant devient : 
+
+```
+describe('TodoItemComponent',() => {
+
+    // Cette asyncfonction exécute le code à l'intérieur de son corps dans une zone de test asynchrone spéciale . 
+    // Cela intercepte et garde une trace de toutes les promesses ou les observable créées dans son corps.  
+    it('Should display the add comment action for user has role Global admin', async(() => {
+    
+     cont spy = spyOn(AppStateSer, 'userIsSuperAdmin').and.returnValue(Promise.resolve(true));  
+     fixture.detectChanges(); 
+     
+     // Le fixture.whenStable () renvoie une promesse qui se résout lorsque JavaScript engine's task queue devient vide. 
+    // ici,JavaScript engine's task queue devient vide lorsques Promise userIsSuperAdmin est resolut
+      fixture.whenStable().then(() => { 
+          fixture.detectChanges(); 
+          component.ngOnInit(); 
+          expect(component.canDisplayAddComment).toBeTruthy();
+     });
+  }));
+  //....
+  
+});
+```
+2.fakeAsync et tick<br>
+1.async et whenStable<br>
+Angular a une autre méthode pour tester le code asynchrone via les fonctions `fakeAsync` et `tick`.
+Notre code maintenant devient : 
+
+````
+describe('TodoItemComponent',() => {
+
+    //fakeAsync  c'est comme async function, sauf il ne suit pas les demandes XHR .
+    it('Should display the add comment action for user has role Global admin', fakeAsync(() => {
+    
+      cont spy = spyOn(AppStateSer, 'userIsSuperAdmin').and.returnValue(Promise.resolve(true));  
+      fixture.detectChanges(); 
+      
+      // on appel tick() l orsqu'il y a des activités asynchrones en attente qu'on veut terminer.
+      // La tick()fonction bloque l'exécution et simule le passage du temps jusqu'à ce que toutes les activités asynchrones en attente soient terminées.
+      // ici il attend la promisse d'userIsSuperAdmin soit résolue , puis laisse l'exécution passer à la ligne suivante.
+
+      tick();
+      
+      fixture.detectChanges(); 
+      component.ngOnInit(); 
+      expect(component.canDisplayAddComment).toBeTruthy();
+  }));
+  //....
+  
+});
+
+
+````
+---> Exemple 4-testbed-async
+
