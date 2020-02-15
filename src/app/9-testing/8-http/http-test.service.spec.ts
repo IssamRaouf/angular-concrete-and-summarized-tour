@@ -36,8 +36,8 @@ describe('HttpTestService', () => {
     it('should be created', () => {
         expect(service).toBeTruthy();
     });
-
-    it('should return list todos', () => {
+    // Le Http est une activité asynchrone, nous utilisons donc l'une des méthodes de test asynchrones (done de jasmine)
+    it('should return list todos', (done: DoneFn) => {
         // Nous créons des fausses données avec lesquelles l'API doit répondre.
         const response = [
             {
@@ -53,6 +53,7 @@ describe('HttpTestService', () => {
             expect(firstTicket.id).toBe(response[0].id);
             expect(firstTicket.title).toBe(response[0].title);
             expect(firstTicket.completed).toBe(response[0].completed);
+            done();
         });
 
         // attend notre demande qui correspond à l'URL donnée et return sa mock.
