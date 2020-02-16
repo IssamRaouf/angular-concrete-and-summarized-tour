@@ -67,33 +67,99 @@
  ```
 #### Destructuring
 La destruction est une fonctionnalité utile de ES6. Elle permet 
-d’extraire facilement des valeurs d’objets et de tableaux.
-Grâce à la destruction des paramètres de fonction, nous avons maintenant une syntaxe intégrée pour fournir des paramètres facultatifs aux fonctions, 
-y compris leur attribuer des valeurs par défaut si aucun n’est fourni.
+L'affectation par décomposition (destructuring en anglais) est une expression JavaScript qui permet d'extraire (unpack en anglais) des données
+d'un tableau ou d'un objet grâce à une syntaxe dont la forme ressemble à la structure du tableau ou de l'objet.
+```
+1) Array
+      exp1: Destructuring simple d'un tableau 
+        const [a, b] = [11, 22, 33, 44,55];
+              console.log('a', a); // 11
+              console.log('b', b);// 22
+              
+      exp2: default value
+        const [a,b=10] = [11];
+              console.log('a', a); // 11
+              console.log('b', b);// 22
+            
+      exp3: Affecter le reste d'un tableau à une variable
+        const [a, b, ...c] = [11, 22, 33, 44,55];
+              console.log('a', a); // 11
+              console.log('b', b);// 22
+              console.log('c', c);// [33,44,55]
+      ...
+2) Object 
+      exp1: Destructuring simple d'un object
+        const {a, b} = {a:11, b:22, c:33, d:44,e:55};
+              console.log('a', a); // 11
+              console.log('b', b);// 22
+              
+       exp2: default value
+              const {a,b=10} =  {a:11};
+                    console.log('a', a); // 11
+                    console.log('b', b);// 22
+                  
+      exp3: Affecter le reste d'un object à une variable
+        const {a, b, ...c} =  {a:11, b:22, c:33, d:44,e:55};
+              console.log('a', a); // 11
+              console.log('b', b);// 22
+              console.log('c', c);// {c:33,d:44,:e55}
+              
+      exp4: change keys
+       const {a:aa, b:bb} =  {a:11, b:22, c:33, d:44,e:55};
+                    console.log('aa', aa); // 11
+                    console.log('bb', bb);// 22
+                    
+      exp5: Dustracting imbriquée avec objets et tableaux & change keys
+      const dev = {
+            name:'Issam Raouf',
+            job: 'lead dev',
+            stackTech:[
+                    {
+                     name:'Symfony',
+                    }
+            ]
+      };
+      const { fullName:name, stackTech: [{name:techLove}] } = dev;
+      console.log('fullName',fullName); // Issam Raouf
+      console.log('techLove',techLove); // Symfony
+
+      ...
+```
+
+
+
 ####  for-of
-* La  for–in boucle sert à boucler sur les propriétés de l'objet.
+L'instruction for...of permet de créer une boucle Array qui parcourt un objet itérable (ce qui inclut les objets Array, Map, Set, String, TypedArray, l'objet arguments, etc.) 
+et qui permet d'exécuter une ou plusieurs instructions pour la valeur de chaque propriété.
+```
+let list = [11, 22, 33];
 
-* La  for–of boucle sert à boucler sur les valeurs d'un tableau.
-
-* for–of n'est pas juste pour les tableaux. Il fonctionne également sur la plupart des objets de type tableau,
- y compris les nouveaux types Setet  Maptypes que nous couvrirons dans la prochaine leçon.
+for (let val of list) {
+  console.log(valeur); // 11 
+                       // 22
+                       // 33
+}
+```
 #### Map & set
 
 * Map et Set sont d'excellents ajouts à JavaScript dans ES6.
 
-* Nous n’avons plus à nous occuper de Map et de l’objet pauvre cousin , c’est son inconvénient.
 exmeple:
 
 ```
+// MAP
+// L'objet Map représente un dictionnaire, autrement dit une carte de clés/valeurs.
+// N'importe quelle valeur valable en JavaScript (que ce soit les objets ou les valeurs de types primitifs) peut être utilisée comme clé ou comme valeur.
+
 let map = new Map();
-map.set("A", 1);
-map.set("B", 2);
-map.set("C", 3);
+    map.set("A", 11);
+    map.set("B", 22);
+    map.set("C", 33);
 
 let map2 = new Map()
-  .set("A", 1)
-  .set("B", 2)
-  .set("C", 3);
+  .set("A", 11)
+  .set("B", 22)
+  .set("C", 33);
 
 let map3 = new Map([
   ["A", 1],
@@ -102,21 +168,24 @@ let map3 = new Map([
 ]);
 
 for (let [key, value] of map) {
-  console.log(key, value);
+  console.log(key, value); // A , 1
+                           // B , 22
+                           // C , 33
 }
 
-console.log(map.get("A"));
-console.log(map.has("A"));
-console.log(map.size);
+console.log(map.get("A")); // 11
+console.log(map.has("A")); // true
+console.log(map.size); // 3
 
 map.delete("A");
-console.log(map.size);
+console.log(map.size); // 2
 
 map.clear();
-console.log(map.size);
+console.log(map.size); //0
 
 
 // Set
+// L'objet Set permet de stocker des valeurs uniques, de n'importe quel type, que ce soit des valeurs d'un type primitif ou des objets.
 let set = new Set();
 set.add('APPLE');
 set.add('ORANGE');
@@ -152,14 +221,14 @@ for (let entry of set2) {
   console.log(entry);
 }
 ```
-#### Promisses
+#### Promise
 * Les promesses sont une solution bien plus propre à l'écriture de code asynchrone que les rappels.
 
 * Le code ainsi créé est plus facile à lire et est souvent écrit dans l’ordre exécuté par l’application.
 
 * Il peut donc être plus facile de tracer un code dans votre tête.
 
-* Avec le  catch gestionnaire, cela nous donne également un endroit unique où nous pouvons gérer les erreurs.
+* Avec le catch gestionnaire, cela nous donne également un endroit unique où nous pouvons gérer les erreurs.
 
 exemple:
 
@@ -207,13 +276,14 @@ Promise.resolve('done')
     .catch((err) => console.error(err));
 ```
 #### Class & interface
-* Dans ES6, nous avons maintenant une nouvelle façon d'écrire du code orienté objet avec la  classsyntaxe.
+* Dans ES6, nous avons maintenant une nouvelle façon d'écrire du code orienté objet avec la  class syntaxe.
 
-* Nous pouvons hériter des méthodes et propriétés d'une classe dans une autre en utilisant le extendsmot -  clé.
+* Nous pouvons hériter des méthodes et propriétés d'une classe dans une autre en utilisant le extends mot -  clé.
 
 * Sous le capot, nous utilisons toujours un héritage basé sur un prototype, mais la syntaxe est plus facile à comprendre et plus familière pour les développeurs venant d'autres langages.
 
-* Tapuscrit ajoute quelques fonctionnalités supplémentaires en haut des classes ES6, comme  modificateurs d'accès et  interfaces
+* TypeScript ajoute quelques fonctionnalités supplémentaires en haut des classes ES6, comme  modificateurs d'accès et  interfaces
+
 exemple:
 ```
 interface Human {
@@ -263,10 +333,8 @@ function Student(config) {
   }
 }
 
-
-
 @Student({
-  course: "angular3"
+  course: "angular8"
 })
 class Person {
   constructor(private firstName, private lastName) {
@@ -282,8 +350,7 @@ class Person {
 }
 
 let iraouf = new Person("issam", "Raouf");
-//noinspection TypeScriptUnresolvedFunction
-console.log(iraouf.course());
+console.log(iraouf.course()); // angular 8
 ```
 ### Modules
 * Avec les modules ES6, nous disposons enfin d’un mécanisme permettant à la langue de charger pour nous les fichiers dépendants.
