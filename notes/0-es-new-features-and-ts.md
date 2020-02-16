@@ -352,6 +352,38 @@ class Person {
 let iraouf = new Person("issam", "Raouf");
 console.log(iraouf.course()); // angular 8
 ```
+
+###Async/await
+
+<strong>Async</strong> Une fonction définie avec le mot clé async renvoie systématiquement une promesse : si une erreur est levée pendant l’exécution de la fonction, la promesse est rejetée, et si une valeur est retournée, la promesse est résolue avec cette valeur. Si une promesse est retournée, elle est inchangée.
+```
+async function fonctionAsynchroneOk() {
+ // équivaut à :
+ // return Promise.resolve('résultat');
+ return 'résultat';
+}
+fonctionAsynchroneOk().then(console.log) // log "résultat"
+
+async function fonctionAsynchroneKo() {
+ // équivaut à :
+ // return Promise.reject(new Error('erreur'));
+ throw new Error('erreur');
+}
+fonctionAsynchroneKo().catch(err => console.log(err.message)) // log "erreur"
+
+```
+<strong>Await</strong> La partie la plus intéressante est l’utilisation du mot clé await, qui ne peut être utilisé que dans une fonction async. Il permet d’attendre la résolution d’une promesse et retourner sa valeur.
+```
+async function getNombreAsynchrone1() {/* traitement asynchrone (e.g. appel d’une API HTTP) */}
+async function getNombreAsynchrone2() {/* traitement asynchrone (e.g. appel d’une API HTTP) */}
+
+async function getAdditionAsynchrone() {
+ const nombre1 = await getNombreAsynchrone1();
+ const nombre2 = await getNombreAsynchrone2();
+ return nombre1 + nombre2;
+}
+
+```
 ### Modules
 * Avec les modules ES6, nous disposons enfin d’un mécanisme permettant à la langue de charger pour nous les fichiers dépendants.
 * Ce n'est pas encore cuit dans les moteurs javascript. Donc, pour résoudre ce problème dans Angular,
@@ -372,7 +404,7 @@ console.log(utils.square(4));
 utils.cow();
 
 ```
-### Types Typecript
+### Types Typescript
 ####Types de base:
 * let decimal: number = 6;
 * let done: boolean = false;
@@ -442,3 +474,4 @@ let videoPost: Post<Video>;
 
 * Si vous utilisez des bibliothèques tierces déjà transpilées en javascript, typescript peut toujours effectuer une vérification de type en temps de transpile si nous incluons le fichier de définition de type pour la bibliothèque.
 
+...
