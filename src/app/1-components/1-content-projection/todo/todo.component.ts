@@ -28,11 +28,5 @@ export class TodoComponent implements OnInit {
         this.ticketListMock.unshift(ticket);
     }
 
-    public onLoad(event) {
-        console.log('onLoad', event);
-    }
 
-    public onError(event) {
-        console.log('onError', event);
-    }
 }

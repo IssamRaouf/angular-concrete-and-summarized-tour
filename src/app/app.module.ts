@@ -6,14 +6,14 @@ import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MaterialModule} from './MaterialModule';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {RoutingTestComponent} from './9-testing/9-routing-test/routing-test.component';
 import {MarkdownModule} from 'ngx-markdown';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {MarkdownDocsComponent} from './markdown-docs/markdown-docs.component';
 
 @NgModule({
     declarations: [
         AppComponent,
-        RoutingTestComponent
+        MarkdownDocsComponent
     ],
 
     imports: [
@@ -24,7 +24,8 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
         FormsModule,
         ReactiveFormsModule,
         HttpClientModule,
-        MarkdownModule.forRoot({loader: HttpClient})
+        MarkdownModule.forRoot({loader: HttpClient}),
+
 
     ],
     providers: [],
