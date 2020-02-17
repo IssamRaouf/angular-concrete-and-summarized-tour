@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {from, of} from 'rxjs';
-import {reject} from 'q';
+import { of} from 'rxjs';
 
 @Component({
     selector: 'app-todo',

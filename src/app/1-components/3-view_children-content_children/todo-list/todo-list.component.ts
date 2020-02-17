@@ -34,7 +34,7 @@ export class TodoListComponent implements OnInit, AfterViewInit, AfterContentIni
      * NB : ici ticketViewChild c'est pas une instance d'une Ticket class, c'est l'instance réelle de l'enfant TicketComponent
      *      qui existe dans cette vue des composants.
      */
-    @ViewChild(TicketComponent, {static: false}) ticketViewChild: TicketComponent;
+    @ViewChild(TicketComponent) ticketViewChild: TicketComponent;
 
 
     /**
@@ -54,12 +54,12 @@ export class TodoListComponent implements OnInit, AfterViewInit, AfterContentIni
      *  Angular stocke une référence à cette variable sur notre composant
      *  ...
      */
-    @ViewChild('header', {static: false}) headerRefElem: ElementRef;
+    @ViewChild('header') headerRefElem: ElementRef;
 
     /**
      * meme que @ViewChild mais il nous donne juste les components projecté par le component hote ici (TodoComponent)
      */
-    @ContentChild(TicketComponent, {static: false}) ticketContentChild: TicketComponent;
+    @ContentChild(TicketComponent) ticketContentChild: TicketComponent;
 
     /**
      * meme que @ViewChildren mais il nous donne juste les components projecté par le component hote ici (TodoComponent)

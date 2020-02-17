@@ -8,9 +8,11 @@ import { TicketComponent } from './ticket/ticket.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../../MaterialModule';
+import {MarkdownModule} from 'ngx-markdown';
+import {HttpClient} from '@angular/common/http';
 
 @NgModule({
-    imports: [CommonModule, MaterialModule, FormsModule, ReactiveFormsModule, ContentProjectionRoutingModule],
+    imports: [CommonModule, MaterialModule, FormsModule, ReactiveFormsModule, ContentProjectionRoutingModule, MarkdownModule.forChild()],
     declarations: [TodoComponent, TodoFormComponent, TodoListComponent, TicketComponent]
 })
 export class ContentProjectionModule {
