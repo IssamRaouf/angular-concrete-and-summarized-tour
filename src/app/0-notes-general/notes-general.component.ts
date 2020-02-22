@@ -8,9 +8,7 @@ import {Component, OnInit} from '@angular/core';
 export class NotesGeneralComponent implements OnInit {
 
     mapMds: Map<string, string> = new Map<string, string>([
-        ['1. Es6 & new features', '/assets/md/notes/0-es-new-features-and-ts.md'],
-        ['2. Angular files definition', '/assets/md/notes/00-angular-files-definition.md'],
-        ['3. Typescript ', '/assets/md/notes/1-Typescript.md'],
+        ['1. Es6 & new features', '/assets/md/notes/1-es-new-features-and-ts.md'],
         ['4. Component ', '/assets/md/notes/2-Composants.md'],
         ['5. Angular modules', '/assets/md/notes/3-Modules_Angulaires.md'],
         ['6. Event binding', '/assets/md/notes/4-Property_Event_Binding.md'],
