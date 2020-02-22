@@ -5,9 +5,10 @@
 #### const 
 * const permet de déclarer des variables qui ne changent pas dans le temps, qui sont immuables.
 * Le problème important avec const est que la variable est immuable, mais pas la valeur, ce que la variable pointe vers , on peut toujours modifier les propriétés de cet objet ultérieurement.
-
+---
 #### Template String (Littéraux de gabarits)
- Les littéraux de gabarits sont des littéraux de chaînes de caractères permettant d'intégrer des expressions. Avec eux, on peut utiliser des chaînes de caractères multi-lignes et des fonctionnalités d'interpolation.
+ Les littéraux de gabarits sont des littéraux de chaînes de caractères permettant d'intégrer des expressions.
+ Avec eux, on peut utiliser des chaînes de caractères multi-lignes et des fonctionnalités d'interpolation.
  ```Javascript
   // old
    const description = 'Le ticket N° : '+ ticket.id + 
@@ -18,7 +19,7 @@
                          
  ```
  ---
-#### Arrow functions (ECMAScript 2015)
+#### Arrow functions
  La nouvelle syntaxe de la grosse flèche dans ES6 est bien plus qu'un moyen légèrement plus 
  court d'écrire des fonctions anonymes.
  ```Javascript
@@ -62,51 +63,52 @@
    ticketsNumbersByStatus(tickets); // { 'In progress': 1, 'Review': 1, 'Done': 5 }
    
  ```
+ ---
 #### Destructuring
 La destruction est une fonctionnalité utile de ES6. Elle permet 
 L'affectation par décomposition (destructuring en anglais) est une expression JavaScript qui permet d'extraire (unpack en anglais) des données
 d'un tableau ou d'un objet grâce à une syntaxe dont la forme ressemble à la structure du tableau ou de l'objet.
 ```Javascript
-1) Array
-      exp1: Destructuring simple d'un tableau 
+//1) Array
+    //  exp1: Destructuring simple d'un tableau 
         const [a, b] = [11, 22, 33, 44,55];
               console.log('a', a); // 11
               console.log('b', b);// 22
               
-      exp2: default value
+   //   exp2: default value
         const [a,b=10] = [11];
               console.log('a', a); // 11
               console.log('b', b);// 22
             
-      exp3: Affecter le reste d'un tableau à une variable
+   //  exp3: Affecter le reste d'un tableau à une variable
         const [a, b, ...c] = [11, 22, 33, 44,55];
               console.log('a', a); // 11
               console.log('b', b);// 22
               console.log('c', c);// [33,44,55]
       ...
-2) Object 
-      exp1: Destructuring simple d'un object
+// 2) Object 
+     // exp1: Destructuring simple d'un object
         const {a, b} = {a:11, b:22, c:33, d:44,e:55};
               console.log('a', a); // 11
               console.log('b', b);// 22
               
-       exp2: default value
+      // exp2: default value
               const {a,b=10} =  {a:11};
                     console.log('a', a); // 11
                     console.log('b', b);// 22
                   
-      exp3: Affecter le reste d'un object à une variable
+    //  exp3: Affecter le reste d'un object à une variable
         const {a, b, ...c} =  {a:11, b:22, c:33, d:44,e:55};
               console.log('a', a); // 11
               console.log('b', b);// 22
               console.log('c', c);// {c:33,d:44,:e55}
               
-      exp4: change keys
+     // exp4: change keys
        const {a:aa, b:bb} =  {a:11, b:22, c:33, d:44,e:55};
                     console.log('aa', aa); // 11
                     console.log('bb', bb);// 22
                     
-      exp5: Dustracting imbriquée avec objets et tableaux & change keys
+     // exp5: Dustracting imbriquée avec objets et tableaux & change keys
       const dev = {
             name:'Issam Raouf',
             job: 'lead dev',
@@ -123,7 +125,7 @@ d'un tableau ou d'un objet grâce à une syntaxe dont la forme ressemble à la s
       ...
 ```
 
-
+---
 
 ####  for-of
 L'instruction for...of permet de créer une boucle Array qui parcourt un objet itérable (ce qui inclut les objets Array, Map, Set, String, TypedArray, l'objet arguments, etc.) 
@@ -137,6 +139,7 @@ for (let val of list) {
                        // 33
 }
 ```
+---
 #### Map & set
 
 * Map et Set sont d'excellents ajouts à JavaScript dans ES6.
@@ -146,7 +149,8 @@ exmeple:
 ```Javascript
 // MAP
 // L'objet Map représente un dictionnaire, autrement dit une carte de clés/valeurs.
-// N'importe quelle valeur valable en JavaScript (que ce soit les objets ou les valeurs de types primitifs) peut être utilisée comme clé ou comme valeur.
+// N'importe quelle valeur valable en JavaScript (que ce soit les objets ou les valeurs de types primitifs)
+// peut être utilisée comme clé ou comme valeur.
 
 let map = new Map();
     map.set("A", 11);
@@ -218,6 +222,7 @@ for (let entry of set2) {
   console.log(entry);
 }
 ```
+---
 #### Promise
 * Les promesses sont une solution bien plus propre à l'écriture de code asynchrone que les rappels.
 
@@ -231,7 +236,6 @@ exemple:
 
 ```Javascript
 // Via callbacks
-/*
  function doAsyncTask(cb) {
  setTimeout(() => {
  console.log("Async Task Calling Callback");
@@ -239,7 +243,7 @@ exemple:
  }, 1000);
  }
  doAsyncTask(() => console.log("Callback Called"));
- */
+
 
 
 
@@ -272,6 +276,7 @@ Promise.resolve('done')
     .then((val) => console.log(val))
     .catch((err) => console.error(err));
 ```
+---
 #### Class & interface
 * Dans ES6, nous avons maintenant une nouvelle façon d'écrire du code orienté objet avec la  class syntaxe.
 
@@ -287,7 +292,7 @@ interface Human {
   firstName: string;
   lastName: string;
   name?: Function;
-  isLate?(time: Date): Function;
+  isLate(time: Date)?: Function;
 }
 
 class Person implements Human {
@@ -316,15 +321,16 @@ class Student extends Person {
 let iraouf = new Student("Issam", "Raouf", "typescript");
 console.log(iraouf.whoAreYou());``
 ```
-```Javascript
+----
+
 ### Decorator 
-* Les décorateurs sont une nouvelle fonctionnalité de TypeScript et sont utilisés dans le code angulaire, mais ils ne doivent en aucun cas être effrayés.
+* Les décorateurs sont une nouvelle fonctionnalité de TypeScript et sont utilisés dans le code angulaire.
 
 * Avec les décorateurs, nous pouvons configurer et personnaliser nos classes au moment de la conception.
 
 * Ce ne sont que des fonctions qui peuvent être utilisées pour ajouter des méta-données, des propriétés ou des fonctions à la chose à laquelle elles sont attachées.
 
-```
+```Javascript
 function Student(config) {
   return function (target) {
     Object.defineProperty(target.prototype, 'course', { value: () => config.course })
@@ -350,11 +356,12 @@ class Person {
 let iraouf = new Person("issam", "Raouf");
 console.log(iraouf.course()); // angular 8
 ```
-
+---
 ###Async/await
 
-<strong>Async</strong> Une fonction définie avec le mot clé async renvoie systématiquement une promesse : si une erreur est levée pendant l’exécution de la fonction, la promesse est rejetée, et si une valeur est retournée, la promesse est résolue avec cette valeur. Si une promesse est retournée, elle est inchangée.
-```
+* <strong>Async</strong> Une fonction définie avec le mot clé async renvoie systématiquement une promesse 
+* si une erreur est levée pendant l’exécution de la fonction, la promesse est rejetée, et si une valeur est retournée, la promesse est résolue avec cette valeur.
+```Javascript
 async function fonctionAsynchroneOk() {
  // équivaut à :
  // return Promise.resolve('résultat');
@@ -382,11 +389,12 @@ async function getAdditionAsynchrone() {
 }
 
 ```
+---
 ### Modules
 * Avec les modules ES6, nous disposons enfin d’un mécanisme permettant à la langue de charger pour nous les fichiers dépendants.
 * Ce n'est pas encore cuit dans les moteurs javascript. Donc, pour résoudre ce problème dans Angular,
  nous utilisons toujours la syntaxe de chargement du module ES6, mais laissons le soin à TypeScript de le transpiler en CommonJS.
-```
+```Javascript
 // export
 
 export function square(x) {
@@ -402,6 +410,7 @@ console.log(utils.square(4));
 utils.cow();
 
 ```
+---
 ### Types Typescript
 ####Types de base:
 * let decimal: number = 6;
@@ -472,4 +481,4 @@ let videoPost: Post<Video>;
 
 * Si vous utilisez des bibliothèques tierces déjà transpilées en javascript, typescript peut toujours effectuer une vérification de type en temps de transpile si nous incluons le fichier de définition de type pour la bibliothèque.
 
-...
+ 
