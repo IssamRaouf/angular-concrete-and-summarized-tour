@@ -1,12 +1,12 @@
-### Let
+# Let
 * let est un ajout très important du langage javascript dans ES6.
 * Cependant, à moins que vous n'ayez une raison particulière d'utiliser var, toutes les variables que vous définissez désormais doivent être utilisées let.
 ---
-#### const 
+## const 
 * const permet de déclarer des variables qui ne changent pas dans le temps, qui sont immuables.
 * Le problème important avec const est que la variable est immuable, mais pas la valeur, ce que la variable pointe vers , on peut toujours modifier les propriétés de cet objet ultérieurement.
 ---
-#### Template String (Littéraux de gabarits)
+## Template String (Littéraux de gabarits)
  Les littéraux de gabarits sont des littéraux de chaînes de caractères permettant d'intégrer des expressions.
  Avec eux, on peut utiliser des chaînes de caractères multi-lignes et des fonctionnalités d'interpolation.
  ```Javascript
@@ -19,7 +19,7 @@
                          
  ```
  ---
-#### Arrow functions
+## Arrow functions
  La nouvelle syntaxe de la grosse flèche dans ES6 est bien plus qu'un moyen légèrement plus 
  court d'écrire des fonctions anonymes.
  ```Javascript
@@ -64,7 +64,7 @@
    
  ```
  ---
-#### Destructuring
+## Destructuring
 La destruction est une fonctionnalité utile de ES6. Elle permet 
 L'affectation par décomposition (destructuring en anglais) est une expression JavaScript qui permet d'extraire (unpack en anglais) des données
 d'un tableau ou d'un objet grâce à une syntaxe dont la forme ressemble à la structure du tableau ou de l'objet.
@@ -127,7 +127,7 @@ d'un tableau ou d'un objet grâce à une syntaxe dont la forme ressemble à la s
 
 ---
 
-####  for-of
+##  for-of
 L'instruction for...of permet de créer une boucle Array qui parcourt un objet itérable (ce qui inclut les objets Array, Map, Set, String, TypedArray, l'objet arguments, etc.) 
 et qui permet d'exécuter une ou plusieurs instructions pour la valeur de chaque propriété.
 ```Javascript
@@ -140,7 +140,7 @@ for (let val of list) {
 }
 ```
 ---
-#### Map & set
+## Map & set
 
 * Map et Set sont d'excellents ajouts à JavaScript dans ES6.
 
@@ -223,7 +223,7 @@ for (let entry of set2) {
 }
 ```
 ---
-#### Promise
+## Promise
 * Les promesses sont une solution bien plus propre à l'écriture de code asynchrone que les rappels.
 
 * Le code ainsi créé est plus facile à lire et est souvent écrit dans l’ordre exécuté par l’application.
@@ -277,7 +277,7 @@ Promise.resolve('done')
     .catch((err) => console.error(err));
 ```
 ---
-#### Class & interface
+## Class & interface
 * Dans ES6, nous avons maintenant une nouvelle façon d'écrire du code orienté objet avec la  class syntaxe.
 
 * Nous pouvons hériter des méthodes et propriétés d'une classe dans une autre en utilisant le extends mot -  clé.
@@ -323,7 +323,7 @@ console.log(iraouf.whoAreYou());``
 ```
 ----
 
-### Decorator 
+# Decorator 
 * Les décorateurs sont une nouvelle fonctionnalité de TypeScript et sont utilisés dans le code angulaire.
 
 * Avec les décorateurs, nous pouvons configurer et personnaliser nos classes au moment de la conception.
@@ -357,46 +357,48 @@ let iraouf = new Person("issam", "Raouf");
 console.log(iraouf.course()); // angular 8
 ```
 ---
-###Async/await
+# Async/await
 
-* <strong>Async</strong> Une fonction définie avec le mot clé async renvoie systématiquement une promesse 
-* si une erreur est levée pendant l’exécution de la fonction, la promesse est rejetée, et si une valeur est retournée, la promesse est résolue avec cette valeur.
-```Javascript
+* Async Une fonction définie avec le mot clé async renvoie systématiquement une promesse 
+si une erreur est levée pendant l’exécution de la fonction, la promesse est rejetée, et si une valeur est retournée, la promesse est résolue avec cette valeur.
+
+* Await La partie la plus intéressante est l’utilisation du mot clé await, qui ne peut être utilisé que dans une fonction async. Il permet d’attendre la résolution d’une promesse et retourner sa valeur.
+```javascript
 async function fonctionAsynchroneOk() {
  // équivaut à :
  // return Promise.resolve('résultat');
  return 'résultat';
 }
 fonctionAsynchroneOk().then(console.log) // log "résultat"
-
+```
+```javascript
 async function fonctionAsynchroneKo() {
  // équivaut à :
  // return Promise.reject(new Error('erreur'));
  throw new Error('erreur');
 }
 fonctionAsynchroneKo().catch(err => console.log(err.message)) // log "erreur"
-
 ```
-<strong>Await</strong> La partie la plus intéressante est l’utilisation du mot clé await, qui ne peut être utilisé que dans une fonction async. Il permet d’attendre la résolution d’une promesse et retourner sa valeur.
-```
+```javascript
 async function getNombreAsynchrone1() {/* traitement asynchrone (e.g. appel d’une API HTTP) */}
 async function getNombreAsynchrone2() {/* traitement asynchrone (e.g. appel d’une API HTTP) */}
-
+```
+```javascript
 async function getAdditionAsynchrone() {
- const nombre1 = await getNombreAsynchrone1();
+const nombre1 = await getNombreAsynchrone1();
  const nombre2 = await getNombreAsynchrone2();
  return nombre1 + nombre2;
 }
 
 ```
+````
 ---
-### Modules
-* Avec les modules ES6, nous disposons enfin d’un mécanisme permettant à la langue de charger pour nous les fichiers dépendants.
-* Ce n'est pas encore cuit dans les moteurs javascript. Donc, pour résoudre ce problème dans Angular,
- nous utilisons toujours la syntaxe de chargement du module ES6, mais laissons le soin à TypeScript de le transpiler en CommonJS.
-```Javascript
-// export
 
+# Modules
+* Avec les modules ES6, nous disposons enfin d’un mécanisme permettant à la langue de charger pour nous les fichiers dépendants.
+* Ce n'est pas encore cuit dans les moteurs javascript. Donc, pour résoudre ce problème dans Angular,nous utilisons toujours la syntaxe de chargement du module ES6, mais laissons le soin à TypeScript de le transpiler en CommonJS.
+ 
+```javascript
 export function square(x) {
     return Math.pow(x, 2)
 }
@@ -411,19 +413,34 @@ utils.cow();
 
 ```
 ---
-### Types Typescript
-####Types de base:
-* let decimal: number = 6;
-* let done: boolean = false;
-* let color: string = "blue";
-#### Tableaux
-* let list: number[] = [1, 2, 3];
-* générique : let list: Array<number> = [1, 2, 3];
+# Types Typescript
 
-#### Functions 
-* let fun: Function = () => console.log("Hello");
-#### Enum
 
+TypeScript est la version ES6 de JavaScript et quelques autres 
+fonctionnalités de TypeScript uniquement dont Angular a besoin
+pour fonctionner.
+
+* TypeScript est juste du JavaScript avec quelques fonctionnalités plus avancées. Le navigateur ne peut pas exécuter
+* TypeScript, nous devons donc tout d'abord le transpiler en JavaScript. 
+* La version la plus commune de JavaScript est actuellement ES5, nous avons donc transcrit TypeScript en JavaScript ES5.
+
+
+## Types de base:
+```javascript
+ let decimal: number = 6;
+ let done: boolean = false;
+ let color: string = "blue";
+
+```
+
+## Tableaux
+```javascript
+  let list: number[] = [1, 2, 3]; 
+  let list: Array<number> = [1, 2, 3];
+
+```
+## Enum
+```javascript
 enum Direction {
     Up,
     Down,
@@ -433,16 +450,20 @@ enum Direction {
 
 let go: Direction;
 go = Direction.Up;
-
-#### Assertion de type
-
-1) (<string>value) indique à TypeScript que nous croyons que le type de valeur est une chaîne.
-
-* let value: any = 'issam raouf';
-* let length: number = (<string>value).length;
-
-#### Génériques
 ```
+
+
+## Assertion de type
+
+* (<string>value) indique à TypeScript que nous croyons que le type de valeur est une chaîne.
+```
+ let value: any = 'issam raouf';
+ let length: number = (<string>value).length;
+```
+
+
+## Génériques
+```javascript
 // Probleme
 class AudioPost {
     content: Audio;
@@ -474,7 +495,7 @@ class Post<T> {
 let videoPost: Post<Video>;
 ```
 
-#### Resume Types :
+## Resume Types :
 * Avec la vérification de type de temps de transfert, TypeScript peut aider à détecter les bogues beaucoup plus tôt et plus rapidement que s'ils se manifestaient au moment de l'exécution.
 
 * L'utilisation de types est facultative mais fortement recommandée par l'équipe angulaire.
