@@ -1,5 +1,6 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
+import {NotesGeneralComponent} from './0-notes-general/notes-general.component';
 
 const routes: Routes = [
     {
@@ -63,8 +64,12 @@ const routes: Routes = [
         loadChildren: () => import('./9-testing/testing.module').then(mod => mod.TestingModule)
     },
     {
+        path: 'notes-general',
+        component: NotesGeneralComponent
+    },
+    {
         path: '',
-        redirectTo: 'content-projection',
+        redirectTo: 'notes-generale',
         pathMatch: 'full'
     },
 

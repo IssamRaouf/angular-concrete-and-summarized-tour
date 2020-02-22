@@ -1,17 +1,14 @@
-#### Let
+### Let
 * let est un ajout très important du langage javascript dans ES6.
-* Ce n'est pas un remplacement pour  var, var peut toujours être utilisé même dans ES6 et a la même sémantique que ES5.
-* Cependant, à moins que vous n'ayez une raison particulière d'utiliser var, 
- toutes les variables que vous définissez désormais doivent être utilisées let.
- 
+* Cependant, à moins que vous n'ayez une raison particulière d'utiliser var, toutes les variables que vous définissez désormais doivent être utilisées let.
+---
 #### const 
 * const permet de déclarer des variables qui ne changent pas dans le temps, qui sont immuables.
-* Le problème important avec const est que la variable est immuable, mais pas la valeur, ce que la variable pointe vers.
-* Cela signifie que si nous déclarons un objet comme étant une  const source de confusion, nous pouvons toujours modifier les propriétés de cet objet ultérieurement.
+* Le problème important avec const est que la variable est immuable, mais pas la valeur, ce que la variable pointe vers , on peut toujours modifier les propriétés de cet objet ultérieurement.
 
 #### Template String (Littéraux de gabarits)
  Les littéraux de gabarits sont des littéraux de chaînes de caractères permettant d'intégrer des expressions. Avec eux, on peut utiliser des chaînes de caractères multi-lignes et des fonctionnalités d'interpolation.
- ```
+ ```Javascript
   // old
    const description = 'Le ticket N° : '+ ticket.id + 
                         'est ' + ticket.status;
@@ -20,11 +17,11 @@
                          est ${ticket.status};`
                          
  ```
- 
+ ---
 #### Arrow functions (ECMAScript 2015)
  La nouvelle syntaxe de la grosse flèche dans ES6 est bien plus qu'un moyen légèrement plus 
  court d'écrire des fonctions anonymes.
- ```
+ ```Javascript
    // old
    function sayHello(name) {
     return `Hello ${name}`;
@@ -69,7 +66,7 @@
 La destruction est une fonctionnalité utile de ES6. Elle permet 
 L'affectation par décomposition (destructuring en anglais) est une expression JavaScript qui permet d'extraire (unpack en anglais) des données
 d'un tableau ou d'un objet grâce à une syntaxe dont la forme ressemble à la structure du tableau ou de l'objet.
-```
+```Javascript
 1) Array
       exp1: Destructuring simple d'un tableau 
         const [a, b] = [11, 22, 33, 44,55];
@@ -131,7 +128,7 @@ d'un tableau ou d'un objet grâce à une syntaxe dont la forme ressemble à la s
 ####  for-of
 L'instruction for...of permet de créer une boucle Array qui parcourt un objet itérable (ce qui inclut les objets Array, Map, Set, String, TypedArray, l'objet arguments, etc.) 
 et qui permet d'exécuter une ou plusieurs instructions pour la valeur de chaque propriété.
-```
+```Javascript
 let list = [11, 22, 33];
 
 for (let val of list) {
@@ -146,7 +143,7 @@ for (let val of list) {
 
 exmeple:
 
-```
+```Javascript
 // MAP
 // L'objet Map représente un dictionnaire, autrement dit une carte de clés/valeurs.
 // N'importe quelle valeur valable en JavaScript (que ce soit les objets ou les valeurs de types primitifs) peut être utilisée comme clé ou comme valeur.
@@ -232,7 +229,7 @@ for (let entry of set2) {
 
 exemple:
 
-```
+```Javascript
 // Via callbacks
 /*
  function doAsyncTask(cb) {
@@ -285,7 +282,7 @@ Promise.resolve('done')
 * TypeScript ajoute quelques fonctionnalités supplémentaires en haut des classes ES6, comme  modificateurs d'accès et  interfaces
 
 exemple:
-```
+```Javascript
 interface Human {
   firstName: string;
   lastName: string;
@@ -317,8 +314,9 @@ class Student extends Person {
 }
 
 let iraouf = new Student("Issam", "Raouf", "typescript");
-console.log(iraouf.whoAreYou());
+console.log(iraouf.whoAreYou());``
 ```
+```Javascript
 ### Decorator 
 * Les décorateurs sont une nouvelle fonctionnalité de TypeScript et sont utilisés dans le code angulaire, mais ils ne doivent en aucun cas être effrayés.
 

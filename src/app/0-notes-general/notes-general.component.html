@@ -1,0 +1,17 @@
+<div class="container container-todo my-2">
+    <mat-accordion>
+        <ng-container *ngFor="let md of mapMds | keyvalue; let i=index">
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <h3>{{md.key}}</h3>
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-divider></mat-divider>
+                <div markdown [src]="md.value"></div>
+            </mat-expansion-panel>
+        </ng-container>
+    </mat-accordion>
+</div>
+
+
