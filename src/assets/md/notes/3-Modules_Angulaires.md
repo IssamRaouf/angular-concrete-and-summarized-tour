@@ -3,13 +3,11 @@
  ou NgModules en abrégé. Chaque application nécessite au moins un module, 
  le module racine, que nous appelons AppModule par convention.
 NB
-```
 Nous utilisons le terme module pour deux concepts différents.
 En JavaScript, le terme module fait généralement référence au code existant dans un seul fichier.
 Un NgModule est un concept différent, il combine le code de différents fichiers dans un même paquet. 
 Un NgModule contient donc des fonctionnalités provenant de plusieurs fichiers, 
 un module se réfère à la fonctionnalité dans un seul fichier.
-```
 
 #### @NgModule a quelques paramètres:
 

@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
-import {NotesGeneralComponent} from './0-notes-general/notes-general.component';
+import {NotesGeneralComponent} from './notes-general/notes-general.component';
 
 const routes: Routes = [
     {

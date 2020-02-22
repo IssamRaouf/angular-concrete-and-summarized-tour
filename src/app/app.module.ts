@@ -9,7 +9,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MarkdownModule} from 'ngx-markdown';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {MarkdownDocsComponent} from './markdown-docs/markdown-docs.component';
-import { NotesGeneralComponent } from './0-notes-general/notes-general.component';
+import { NotesGeneralComponent } from './notes-general/notes-general.component';
 
 @NgModule({
     declarations: [

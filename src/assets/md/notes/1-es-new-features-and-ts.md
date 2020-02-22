@@ -415,7 +415,6 @@ utils.cow();
 ---
 # Types Typescript
 
-
 TypeScript est la version ES6 de JavaScript et quelques autres 
 fonctionnalités de TypeScript uniquement dont Angular a besoin
 pour fonctionner.
