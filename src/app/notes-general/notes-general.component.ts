@@ -11,15 +11,11 @@ export class NotesGeneralComponent implements OnInit {
         ['1. EcmaScript new features & Typescript', '/assets/md/notes/1-es-new-features-and-ts.md'],
         ['2. Component ', '/assets/md/notes/2-Composants.md'],
         ['3. Angular modules', '/assets/md/notes/3-Modules_Angulaires.md'],
-        ['4. Event binding', '/assets/md/notes/4-Property_Event_Binding.md'],
-        ['5. Domaine modeles', '/assets/md/notes/5-Domaine_Modeles.md'],
-        ['6. Architucture components', '/assets/md/notes/6-Architucture_components.md'],
-        ['7. input & output', '/assets/md/notes/7-Input_Output.md'],
-        ['8. Material design', '/assets/md/notes/8-material-design-setup-theming.md'],
+        ['4. Domaine modeles', '/assets/md/notes/4-Domaine_Modeles.md'],
+        ['5. input & output', '/assets/md/notes/5-Input_Output.md'],
+        ['7. Material design', '/assets/md/notes/6-material-design-setup-theming.md'],
 
     ]);
-
-
     constructor() {
     }
 
