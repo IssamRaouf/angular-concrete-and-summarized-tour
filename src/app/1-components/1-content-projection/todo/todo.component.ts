@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Ticket} from '../models/ticket.model';
 import {TicketTypeEnum} from '../enum/ticket-type.enum';
+import {MatBottomSheet, MatBottomSheetConfig} from '@angular/material';
+import {CodeDetailsComponent} from '../../../code-details/code-details.component';
 
 @Component({
     selector: 'app-todo',
@@ -11,7 +13,7 @@ export class TodoComponent implements OnInit {
     public ticketListMock: Array<Ticket> = [];
     private descriptionMock = 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut';
 
-    constructor() {
+    constructor(private matBottomSheet: MatBottomSheet) {
         this.ticketListMock = [
             new Ticket({name: 'Content projection', description: this.descriptionMock, type: TicketTypeEnum.DEV}),
             new Ticket({name: 'Filtre ticket', description: this.descriptionMock, type: TicketTypeEnum.DEV}),
@@ -26,6 +28,17 @@ export class TodoComponent implements OnInit {
 
     public addTicket(ticket: Ticket): void {
         this.ticketListMock.unshift(ticket);
+    }
+
+    public onAlert(): void {
+        alert('Alert button project on child component from parent');
+    }
+
+
+    public showCode(): void {
+        const config = new MatBottomSheetConfig();
+        config.panelClass = 'code-details';
+        this.matBottomSheet.open(CodeDetailsComponent, config);
     }
 
 

@@ -69,7 +69,7 @@ const routes: Routes = [
     },
     {
         path: '',
-        redirectTo: 'notes-generale',
+        redirectTo: 'notes-general',
         pathMatch: 'full'
     },
 

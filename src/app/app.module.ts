@@ -10,12 +10,14 @@ import {MarkdownModule} from 'ngx-markdown';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {MarkdownDocsComponent} from './markdown-docs/markdown-docs.component';
 import { NotesGeneralComponent } from './notes-general/notes-general.component';
+import { CodeDetailsComponent } from './code-details/code-details.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         MarkdownDocsComponent,
-        NotesGeneralComponent
+        NotesGeneralComponent,
+        CodeDetailsComponent
     ],
 
     imports: [
