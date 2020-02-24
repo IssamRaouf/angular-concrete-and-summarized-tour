@@ -4,6 +4,22 @@
 @import '~bootstrap/scss/bootstrap-grid';
 
 
-html, body { height: 100%; }
+html, body {
+  height: 100%;
+}
 
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background: $screen-container-background;}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background: $screen-container-background;
+}
+
+.code-details {
+  width: 1200px;
+}
+
+.btn-show-code {
+  background-color: black;
+  color: white;
+
+}

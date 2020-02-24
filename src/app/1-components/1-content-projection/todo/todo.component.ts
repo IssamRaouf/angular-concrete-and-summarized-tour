@@ -38,6 +38,7 @@ export class TodoComponent implements OnInit {
     public showCode(): void {
         const config = new MatBottomSheetConfig();
         config.panelClass = 'code-details';
+
         this.matBottomSheet.open(CodeDetailsComponent, config);
     }
 

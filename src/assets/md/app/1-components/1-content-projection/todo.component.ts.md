@@ -1,6 +1,5 @@
 
-
-
+```javascript
 import {Component, OnInit} from '@angular/core';
 import {Ticket} from '../models/ticket.model';
 import {TicketTypeEnum} from '../enum/ticket-type.enum';
@@ -47,3 +46,8 @@ export class TodoComponent implements OnInit {
 
 
 }
+
+
+
+```
+
