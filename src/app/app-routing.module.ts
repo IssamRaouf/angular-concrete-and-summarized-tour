@@ -2,6 +2,8 @@ import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {NotesGeneralComponent} from './notes-general/notes-general.component';
 
+// si mieux de stocker les route name sur un const pour qu'on puisse jouer et change comme on veut
+// on va voir ca sur le projet suivant vrai list todo :D
 const routes: Routes = [
     {
         path: 'content-projection',

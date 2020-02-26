@@ -36,15 +36,6 @@ export class TodoComponent implements OnInit {
         alert('Alert button project on child component from parent');
     }
 
-
-    public showCode(): void {
-        const config = new MatBottomSheetConfig();
-        config.panelClass = 'code-details';
-        config.data =
-        this.matBottomSheet.open(CodeDetailsComponent, config);
-    }
-
-
 }
 
 

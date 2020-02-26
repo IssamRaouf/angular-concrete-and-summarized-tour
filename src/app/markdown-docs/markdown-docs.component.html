@@ -1,6 +1,6 @@
 <div class="container container-todo my-2" *ngIf="srcMd">
-    <mat-accordion>
 
+    <mat-accordion>
         <mat-expansion-panel>
             <mat-expansion-panel-header>
                 <mat-panel-title>
@@ -8,10 +8,11 @@
                 </mat-panel-title>
             </mat-expansion-panel-header>
             <mat-divider></mat-divider>
-            <div markdown [src]="srcMd" (load)="onLoad($event)" (error)="onError($event)"></div>
+            <div markdown [src]="srcMd.noteGeneralFile"></div>
         </mat-expansion-panel>
     </mat-accordion>
 
+    <button mat-raised-button (click)="showCode()" class="btn-show-code mt-3">show code</button>
 </div>
 
 

@@ -1,10 +1,10 @@
-<div class="container-fluid">
+<div class="container-fluid container-code-example">
+    <h4> <small>Chemin du Module :</small>
+        {{data.moduleDir}}
+    </h4>
     <mat-tab-group>
-        <mat-tab label="todo.component.html">
-            <div markdown [src]="'/assets/md/app/1-components/1-content-projection/todo.component.html.md'"></div>
-        </mat-tab>
-        <mat-tab label="todo.component.ts">
-            <div markdown [src]="'/assets/md/app/1-components/1-content-projection/todo.component.ts.md'"></div>
+        <mat-tab *ngFor="let md of markdownList | keyvalue" label="{{md.key}}">
+            <div markdown [src]="md.value"></div>
         </mat-tab>
     </mat-tab-group>
 </div>

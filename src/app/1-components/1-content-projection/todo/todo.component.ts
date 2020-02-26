@@ -13,7 +13,7 @@ export class TodoComponent implements OnInit {
     public ticketListMock: Array<Ticket> = [];
     private descriptionMock = 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut';
 
-    constructor(private matBottomSheet: MatBottomSheet) {
+    constructor() {
         this.ticketListMock = [
             new Ticket({name: 'Content projection', description: this.descriptionMock, type: TicketTypeEnum.DEV}),
             new Ticket({name: 'Filtre ticket', description: this.descriptionMock, type: TicketTypeEnum.DEV}),
@@ -35,12 +35,6 @@ export class TodoComponent implements OnInit {
     }
 
 
-    public showCode(): void {
-        const config = new MatBottomSheetConfig();
-        config.panelClass = 'code-details';
-
-        this.matBottomSheet.open(CodeDetailsComponent, config);
-    }
 
 
 }
