@@ -12,7 +12,12 @@
         </mat-expansion-panel>
     </mat-accordion>
 
-    <button mat-raised-button (click)="showCode()" class="btn-show-code mt-3">show code</button>
+
+    <ng-container *ngIf="srcMd.mapExamplesCode">
+        <button mat-raised-button (click)="showCode()" class="btn-show-code mt-3">Afficher le code le plus important
+            pour cette chapitre
+        </button>
+    </ng-container>
 </div>
 
 

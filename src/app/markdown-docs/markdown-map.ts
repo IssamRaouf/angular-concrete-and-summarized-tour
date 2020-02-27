@@ -10,8 +10,11 @@ export class MarkdownMap {
                 noteGeneralFile: '/assets/md/app/1-components/1-content-projection/note.md',
                 moduleDir: 'src/app/1-components/1-content-projection',
                 mapExamplesCode: new Map<string, string>([
-                    ['todo.component.html', '/assets/md/app/1-components/1-content-projection/todo.component.html.md'],
-                    ['todo.component.ts', '/assets/md/app/1-components/1-content-projection/todo.component.ts.md']
+                    ['1. todo-form.component.html', '/assets/md/app/1-components/1-content-projection/todo-form.component.html.md'],
+                    ['2. todo-list.component.html', '/assets/md/app/1-components/1-content-projection/todo-list.component.html.md'],
+                    ['3. todo.component.html', '/assets/md/app/1-components/1-content-projection/todo.component.html.md'],
+                    ['4. todo.component.ts', '/assets/md/app/1-components/1-content-projection/todo.component.ts.md'],
+
                 ])
             })
         ],

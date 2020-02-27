@@ -1,0 +1,35 @@
+```html
+<div class="container container-todo-form">
+
+    <!--BEGIN  projection de contenu.-->
+    <ng-content></ng-content>
+    <!--END  projection de contenu.-->
+
+    <form [formGroup]="formTicket" class="form-container" novalidate>
+        <mat-form-field>
+            <input matInput placeholder="Le nom de ticket" formControlName="name">
+            <mat-error *ngIf="controls.name.hasError('required')">Champ obligatoire</mat-error>
+            <mat-hint *ngIf="isRequired(controls.name)">required</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-select placeholder="type de ticket" formControlName="type">
+                <mat-option *ngFor="let option of typesAsSelect" [value]="option.val">{{option.text}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="controls.type.hasError('required')">Champ obligatoire</mat-error>
+            <mat-hint *ngIf="isRequired(controls.type)">required</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field>
+            <textarea matInput placeholder="Description du ticket" formControlName="description"></textarea>
+            <mat-error *ngIf="controls.description.hasError('required')">Champ obligatoire</mat-error>
+            <mat-hint *ngIf="isRequired(controls.description)">required</mat-hint>
+        </mat-form-field>
+
+        <button type="submit" mat-raised-button color="primary" (click)="onSubmit()">Envoyer</button>
+    </form>
+</div>
+
+```
+
+

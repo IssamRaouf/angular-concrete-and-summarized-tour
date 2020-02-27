@@ -1,4 +1,4 @@
-### Intro `<ng-content></ng-content>`:
+### `<ng-content></ng-content>`:
 
 * Plutôt que d'essayer de prédire toutes les propriétés de configuration différentes pour prendre en charge tous les cas d'utilisation sur un component, nous pouvons utiliser la projection de contenu. 
 

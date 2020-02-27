@@ -2,18 +2,21 @@
 
 ```html
 <div class="container container-todo">
-    <button mat-raised-button (click)="showCode()">show code</button>
+
     <app-todo-form (sendTicket)="addTicket($event)">
         <!--BEGIN Projection de contenur exemple 1 -->
-        <h3 color="primary">Form simple pour ajouter des ticket (projection de contenu)</h3>
+        <h3>Form simple pour ajouter des ticket (projection de contenu)</h3>
         <p>Enjoy Projection de contenu</p>
         <!--BEGIN Projection de contenur exemple 1 -->
     </app-todo-form>
 
     <app-todo-list [ticketList]="ticketListMock">
-        <h3 color="primary"> Prejection de contenu par element tag</h3>
+        <!--BEGIN Projection de contenur exemple 2 -->
+        <h3> Prejection de contenu par element tag</h3>
         <button mat-raised-button class="hello-world" (click)="onAlert()">Button projet on child</button>
+        <!--BEGIN Projection de contenur exemple 2 -->
     </app-todo-list>
 </div>
+
 ```
 
