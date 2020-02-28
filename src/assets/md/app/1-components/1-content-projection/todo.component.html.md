@@ -1,3 +1,6 @@
+
+
+```html
 <div class="container container-todo">
 
     <app-todo-form (sendTicket)="addTicket($event)">
@@ -14,3 +17,6 @@
         <!--BEGIN Projection de contenur exemple 2 -->
     </app-todo-list>
 </div>
+
+```
+

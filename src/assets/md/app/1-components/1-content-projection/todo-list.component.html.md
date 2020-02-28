@@ -1,3 +1,5 @@
+
+```html
 <div class="container-todo-list">
     <!--BEGIN  projection de contenu by element tag-->
     <ng-content select="h3"></ng-content>
@@ -26,3 +28,7 @@
 
 
 </div>
+```
+
+
+

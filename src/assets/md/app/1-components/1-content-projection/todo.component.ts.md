@@ -1,3 +1,5 @@
+
+```javascript
 import {Component, OnInit} from '@angular/core';
 import {Ticket} from '../models/ticket.model';
 import {TicketTypeEnum} from '../enum/ticket-type.enum';
@@ -13,7 +15,7 @@ export class TodoComponent implements OnInit {
     public ticketListMock: Array<Ticket> = [];
     private descriptionMock = 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut';
 
-    constructor() {
+    constructor(private matBottomSheet: MatBottomSheet) {
         this.ticketListMock = [
             new Ticket({name: 'Content projection', description: this.descriptionMock, type: TicketTypeEnum.DEV}),
             new Ticket({name: 'Filtre ticket', description: this.descriptionMock, type: TicketTypeEnum.DEV}),
@@ -34,7 +36,9 @@ export class TodoComponent implements OnInit {
         alert('Alert button project on child component from parent');
     }
 
-
-
-
 }
+
+
+
+```
+

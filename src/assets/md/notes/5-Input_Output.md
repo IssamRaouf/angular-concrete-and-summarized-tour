@@ -1,9 +1,9 @@
 ### Intro
 
-* <strong>@Input</strong><br>
+* **@Input**
 Passer des données d'un parent à un enfant avec une liaison d'entrée
-exemple
-```
+
+```javascript
 export class MagieChildComponent {
   @Input() magie: Magie;
   @Input('master') masterName: string;
@@ -11,13 +11,12 @@ export class MagieChildComponent {
 in component father 
 <magie [magie]='magieIn' [master]="masterIn">
 ```
-* <strong>@Output</strong><br>
+* **@Output**
 Passer des données d'un enfant à un parent avec une liaison de sortie
-1) Comme pour les propriétés d'entrée, nous pouvons également créer des propriétés de sortie sur nos composants personnalisés à l'aide de l'annotation @Output.<br>
-2) Ces propriétés de sortie sont toujours des instances de la classe EventEmitter et nous produisons des événements en appelant la fonction emit. Tout ce que nous transmettons à la fonction emit est affiché sous forme de variable de modèle $event
+ 1. Comme pour les propriétés d'entrée, nous pouvons également créer des propriétés de sortie sur nos composants personnalisés à l'aide de l'annotation @Output.<br>
+ 2. Ces propriétés de sortie sont toujours des instances de la classe EventEmitter et nous produisons des événements en appelant la fonction emit. Tout ce que nous transmettons à la fonction emit est affiché sous forme de variable de modèle $event
 
-exemple:
-```
+```javascript
 export class MagieChildComponent {
   @Input() magie: Magie;
   @Input('master') masterName: string;

@@ -1,0 +1,10 @@
+
+.container-code-example {
+
+  ::ng-deep .mat-tab-body-wrapper {
+    height: 600px;
+    overflow: auto;
+    margin: 10px;
+  }
+
+}
