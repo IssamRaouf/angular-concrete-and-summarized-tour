@@ -1,3 +1,6 @@
+
+```javascript
+
 import {
     Component, OnInit, OnChanges, Input, SimpleChanges, DoCheck, AfterContentInit, AfterContentChecked,
     AfterViewInit, AfterViewChecked, OnDestroy
@@ -89,3 +92,5 @@ export class TodoListComponent implements OnInit, OnChanges, DoCheck, AfterConte
     }
 
 }
+
+```

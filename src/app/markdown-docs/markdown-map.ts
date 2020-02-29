@@ -18,8 +18,17 @@ export class MarkdownMap {
                 ])
             })
         ],
+        ['/lifecycle-hooks',
+            new MarkdownModel({
+                noteGeneralFile: '/assets/md/app/1-components/2-lifecycle-hooks/note.md',
+                moduleDir: 'src/app/1-components/2-lifecycle-hooks',
+                mapExamplesCode: new Map<string, string>([
+                    ['1. todo-form.component.html', '/assets/md/app/1-components/2-lifecycle-hooks/todo-list.component.html.md'],
+                    ['2. todo-list.component.html', '/assets/md/app/1-components/2-lifecycle-hooks/todo-list.component.ts.md'],
+                ])
+            })
+        ],
 
-        ['/lifecycle-hooks', new MarkdownModel({noteGeneralFile: '/assets/md/app/1-components/2-lifecycle-hooks/note.md'})],
         ['/directives-custom', new MarkdownModel({noteGeneralFile: '/assets/md/app/2-directives/2-custom-directives/note.md'})],
         ['/directives-important-exist', new MarkdownModel({noteGeneralFile: '/assets/md/app/2-directives/1-directives-important-exist/note.md'})],
         ['/view-content-child-children', new MarkdownModel({noteGeneralFile: '/assets/md/app/1-components/3-view_children-content_children/note.md'})],

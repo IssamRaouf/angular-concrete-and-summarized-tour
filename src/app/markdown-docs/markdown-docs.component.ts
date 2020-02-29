@@ -30,7 +30,6 @@ export class MarkdownDocsComponent implements OnInit {
     }
 
     public showCode(): void {
-        console.log('srcMd', this.mapRouteMarkdowns);
         const config = new MatBottomSheetConfig();
         config.panelClass = 'code-details';
         config.data = this.srcMd;
