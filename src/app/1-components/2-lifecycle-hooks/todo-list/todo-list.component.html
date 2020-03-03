@@ -1,7 +1,7 @@
 <div class="container-todo-list">
     <!-- BEGIN DETAILS HOOKS -->
     <div class="hooks-details" *ngIf="listDetailsHooks.length > 0">
-        <h2>DETAILS HOOKS</h2>
+        <h2>DETAILS HOOKS LOG</h2>
         <button (click)="clear()" mat-raised-button>Réinitialiser la list</button>
         <p *ngFor="let hook of listDetailsHooks">
             - N° {{hook.num}} , hook name :{{hook.name}}
