@@ -33,5 +33,5 @@ Appelé une fois après le premier *ngAfterContentChecked()*
 ### Exemples : 
 * voir console et la rebrique 'DETAILS HOOKS' 
 * Enjoy avec la form d'ajouter ticket pour voir details des hooks
-* voir todo-list.compnent.ts  & todo.component.ts 
+
 
