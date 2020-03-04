@@ -23,15 +23,26 @@ export class MarkdownMap {
                 noteGeneralFile: '/assets/md/app/1-components/2-lifecycle-hooks/note.md',
                 moduleDir: 'src/app/1-components/2-lifecycle-hooks',
                 mapExamplesCode: new Map<string, string>([
-                    ['1. todo-form.component.html', '/assets/md/app/1-components/2-lifecycle-hooks/todo-list.component.html.md'],
-                    ['2. todo-list.component.html', '/assets/md/app/1-components/2-lifecycle-hooks/todo-list.component.ts.md'],
+                    ['1. todo-list.component.html', '/assets/md/app/1-components/2-lifecycle-hooks/todo-list.component.html.md'],
+                    ['2. todo-list.component.ts', '/assets/md/app/1-components/2-lifecycle-hooks/todo-list.component.ts.md'],
+                ])
+            })
+        ],
+        ['/view-content-child-children',
+            new MarkdownModel({
+                noteGeneralFile: '/assets/md/app/1-components/3-view_children-content_children/note.md',
+                moduleDir: 'src/app/1-components/3-view_children-content_children',
+                mapExamplesCode: new Map<string, string>([
+                    ['1. todo.component.html', '/assets/md/app/1-components/3-view_children-content_children/todo.component.html.md'],
+                    ['2. todo.component.ts', '/assets/md/app/1-components/3-view_children-content_children/todo.component.ts.md'],
+                    ['3. todo-list.component.html', '/assets/md/app/1-components/3-view_children-content_children/todo-list.component.html.md'],
+                    ['4. todo-list.component.ts', '/assets/md/app/1-components/3-view_children-content_children/todo-list.component.ts.md'],
                 ])
             })
         ],
 
         ['/directives-custom', new MarkdownModel({noteGeneralFile: '/assets/md/app/2-directives/2-custom-directives/note.md'})],
         ['/directives-important-exist', new MarkdownModel({noteGeneralFile: '/assets/md/app/2-directives/1-directives-important-exist/note.md'})],
-        ['/view-content-child-children', new MarkdownModel({noteGeneralFile: '/assets/md/app/1-components/3-view_children-content_children/note.md'})],
         ['/reactive-programming', new MarkdownModel({noteGeneralFile: '/assets/md/app/3_reactive-programming-Rxjs/note.md'})],
         ['/pipes-custom', new MarkdownModel({noteGeneralFile: '/assets/md/app/4_pipes/2-pipes-custom/note.md'})],
         ['/pipes-important-exist', new MarkdownModel({noteGeneralFile: '/assets/md/app/4_pipes/1-pipes-important-exist/note.md'})],

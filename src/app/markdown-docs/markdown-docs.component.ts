@@ -16,6 +16,7 @@ export class MarkdownDocsComponent implements OnInit {
 
     public srcMd: MarkdownModel;
     public readonly mapRouteMarkdowns = MarkdownMap.mapRouteMarkdowns;
+    public expandedOnChangeRoute: boolean;
 
     constructor(private router: Router, private matBottomSheet: MatBottomSheet) {
 
@@ -24,6 +25,7 @@ export class MarkdownDocsComponent implements OnInit {
     ngOnInit(): void {
         this.router.events.pipe(filter(event => event instanceof NavigationEnd))
             .subscribe((event: NavigationEnd) => {
+                this.expandedOnChangeRoute = false;
                 this.srcMd = this.mapRouteMarkdowns.get(event.url);
             });
 
@@ -36,11 +38,4 @@ export class MarkdownDocsComponent implements OnInit {
         this.matBottomSheet.open(CodeDetailsComponent, config);
     }
 
-    public onLoad(event) {
-        console.log('onLoad', event);
-    }
-
-    public onError(event) {
-        console.log('onError', event);
-    }
 }

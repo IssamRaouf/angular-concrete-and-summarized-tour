@@ -1,3 +1,5 @@
+```html
+
 <div class="container container-todo">
 
     <app-todo-form (sendTicket)="addTicket($event)"></app-todo-form>
@@ -7,5 +9,9 @@
         <app-ticket [ticket]="ticketProjectToList" [name]="11111111"></app-ticket>
         <!--END Project app-ticket component dans le component app-todo-list  -->
     </app-todo-list>
-
+    
 </div>
+
+
+```
+
