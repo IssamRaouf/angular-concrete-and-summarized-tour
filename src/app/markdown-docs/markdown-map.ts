@@ -41,8 +41,17 @@ export class MarkdownMap {
             })
         ],
 
+        ['/directives-important-exist',
+            new MarkdownModel({
+                noteGeneralFile: '/assets/md/app/2-directives/1-directives-important-exist/note.md',
+                moduleDir: 'src/app/2-directives/1-directives-important-exist',
+                mapExamplesCode: new Map<string, string>([
+                    ['1. todo-list.component.html', '/assets/md/app/2-directives/1-directives-important-exist/todo-list.component.html.md'],
+                ])
+            })
+        ],
+
         ['/directives-custom', new MarkdownModel({noteGeneralFile: '/assets/md/app/2-directives/2-custom-directives/note.md'})],
-        ['/directives-important-exist', new MarkdownModel({noteGeneralFile: '/assets/md/app/2-directives/1-directives-important-exist/note.md'})],
         ['/reactive-programming', new MarkdownModel({noteGeneralFile: '/assets/md/app/3_reactive-programming-Rxjs/note.md'})],
         ['/pipes-custom', new MarkdownModel({noteGeneralFile: '/assets/md/app/4_pipes/2-pipes-custom/note.md'})],
         ['/pipes-important-exist', new MarkdownModel({noteGeneralFile: '/assets/md/app/4_pipes/1-pipes-important-exist/note.md'})],

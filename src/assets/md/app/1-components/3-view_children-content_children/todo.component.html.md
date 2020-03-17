@@ -5,12 +5,17 @@
     <app-todo-form (sendTicket)="addTicket($event)"></app-todo-form>
 
     <app-todo-list [ticketList]="ticketListMock">
+
         <!--BEGIN Project app-ticket component dans le component app-todo-list  -->
-        <app-ticket [ticket]="ticketProjectToList" [name]="11111111"></app-ticket>
+        
+        <app-ticket [ticket]="ticketProjectToList" [index]="6"></app-ticket>
+
         <!--END Project app-ticket component dans le component app-todo-list  -->
+
     </app-todo-list>
-    
+
 </div>
+
 
 
 ```

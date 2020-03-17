@@ -11,8 +11,9 @@
         <ng-template #ticketsShow>
 
             <div class="col-lg-4" *ngFor="let ticket of ticketList; let i = index">
-                <app-ticket [ticket]="ticket" [name]="i"></app-ticket>
+                <app-ticket [ticket]="ticket" [index]="i"></app-ticket>
             </div>
+            
             <!-- BEGIN Project un enfant app ticket a partir de compoent hot (TodoComponent) -->
             <div class="col-lg-4">
             <ng-content></ng-content>
@@ -22,6 +23,7 @@
         </ng-template>
     </div>
 </div>
+
 
 ```
 

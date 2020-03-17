@@ -53,12 +53,13 @@ export class TodoListComponent implements OnInit, AfterViewInit, AfterContentIni
     @ViewChild('header') headerRefElem: ElementRef;
 
     /**
-     * meme que @ViewChild mais il nous donne juste le premie components projecté par le component hote ici (TodoComponent)
+     * meme que @ViewChild mais il nous donne juste le premie components projecté par le component hote ici (projecté par TodoComponent)
      */
     @ContentChild(TicketComponent) ticketContentChild: TicketComponent;
 
     /**
-     * meme que @ViewChildren mais il nous donne juste list des components projecté par le component hote ici on a que un (TodoComponent)
+     * meme que @ViewChildren mais il nous donne juste list des components projecté par le component hote
+     * ici on a qu'un (projecté par TodoComponent)
      */
     @ContentChildren(TicketComponent) ticketContentChildren: QueryList<TicketComponent>;
 
