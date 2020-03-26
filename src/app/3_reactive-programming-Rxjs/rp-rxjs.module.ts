@@ -76,10 +76,11 @@ import {AsyncSubjectComponent} from './subjects/async-subject/async-subject.comp
 import {BehaviorSubjectComponent} from './subjects/behavior-subject/behavior-subject.component';
 import {ReplaySubjectComponent} from './subjects/replay-subject/replay-subject.component';
 import {SubjectComponent} from './subjects/subject/subject.component';
+import {MarkdownModule} from 'ngx-markdown';
 
 
 @NgModule({
-    imports: [CommonModule, MaterialModule, FormsModule, ReactiveFormsModule, RpRxjsRoutingModule],
+    imports: [CommonModule, MaterialModule, FormsModule, ReactiveFormsModule, RpRxjsRoutingModule, MarkdownModule],
     declarations: [TodoComponent, CreationComponent, PipeComponent, OperatorMixedComponent,
         CombinationComponent, CombinelatestComponent, ConcatComponent, StartwithComponent
         , EndwithComponent, MergeComponent, PairwiseComponent, RaceComponent, ForkjoinComponent, MergeallComponent, ZipComponent,

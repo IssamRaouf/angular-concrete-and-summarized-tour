@@ -1,49 +1,43 @@
-
 <p class="p-3">
     <strong>Description :</strong><br><br>
-    Ces opérateurs permettent la création d'un observable à partir de presque tout. <br>
-    Des génériques aux cas d'utilisation spécifiques, vous êtes libre et encouragé de tout transformer en flux.<br>
+    Ces opérateurs permettent la création d'un observable à partir de presque tout,des génériques aux cas d'utilisation
+    spécifiques, vous êtes libre et encouragé de tout transformer en flux.
 </p>
+<div class="container">
+<mat-accordion>
+    <!--BEGIN New Observable-->
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                <h2>Opérateur : new Observable</h2>
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-divider></mat-divider>
+
+            <div class="row">
+                <div class="col-7">
+                    <div [innerHTML]="demoNewObs | language : 'javascript'  | markdown"></div>
+                </div>
+                <div class="col-4">
+                    <h2>Result</h2>
+                    <p>{{observableCreateResult}} </p>
+                </div>
+            </div>
+    </mat-expansion-panel>
+    <!--END New Observable-->
+
+</mat-accordion>
+</div>
+
 <mat-list role="list">
 
-    <mat-list-item role="listitem" class="text-center">
-        <div class="col-2"><p><strong>Opérateur</strong></p></div>
-        <div class="col-4"><p><strong>Implementation</strong></p></div>
-        <div class="col-4">
-            <p><strong>Subscribre</strong></p>
-        </div>
-        <div class="col-2">
-            <p><strong>Result</strong></p>
-        </div>
+    <mat-list-item role="listitem" class="text-center ">
+
     </mat-list-item>
 
     <mat-divider></mat-divider>
 
-    <mat-list-item role="listitem">
-        <div class="col-2">
-            <p>new Observable</p>
-        </div>
-        <div class="col-4"><p>
-            <code>
-                {{"const obsCreate = new Observable((observer) => {
-                observer.next('Hello');
-                observer.next('from');
-                observer.next('Observable creation');
-                observer.complete();
-                });"}}
-            </code>
-            <p></div>
-        <div class="col-4">
-            <p><code>
-                {{" obsCreate.subscribe((res) => {
-                this.observableCreateResult += ` ${res}`;
-                });"}}
-            </code></p>
-        </div>
-        <div class="col-2">
-            <p>{{observableCreateResult}} </p>
-        </div>
-    </mat-list-item>
+
     <mat-divider></mat-divider>
 
     <mat-list-item role="listitem">
@@ -54,7 +48,7 @@
         <div class="col-4">
             <p><code>
                 {{"
-                observableOf.subscribe((res) => {
+                observableOf.subscribe((res) = > {
                     this.observableOfResult = res;
                 });
                 "}}
@@ -76,8 +70,8 @@
             <p>
                 <code>
                     {{"
-                    observableFrom.subscribe(res => {
-                        this.observableFromResult += ` ${res}`;
+                    observableFrom.subscribe(res = > {
+                        this.observableFromResult + = ` ${res}`;
                     });
                     "}}
                 </code>
@@ -88,7 +82,6 @@
         </div>
     </mat-list-item>
     <mat-divider></mat-divider>
-
 
 
     <mat-list-item role="listitem">
@@ -103,11 +96,11 @@
         <div class="col-4">
             <p><code>
                 {{"
-                obsFromEvent.subscribe((isClicked) => {
+                obsFromEvent.subscribe((isClicked) = > {
                     this.observableFromEventResult = 'Yes';
                 });
                 "}}
-            </code> </p>
+            </code></p>
         </div>
 
         <div class="col-2">
@@ -126,11 +119,10 @@
         </p></div>
 
 
-
         <div class="col-4"><p>
             <code>
                 {{"
-                obsInterval.subscribe((res) => {
+                obsInterval.subscribe((res) = > {
                     this.observableIntervalResult = res;
                 });
                 "}}
@@ -153,7 +145,7 @@
         <div class="col-4"><p>
             <code>
                 {{"
-                obsTimer.subscribe(res => this.observableTimerResult += res);
+                obsTimer.subscribe(res = > this.observableTimerResult + = res);
                 "}}
             </code>
         </p></div>
@@ -176,7 +168,7 @@
         <div class="col-4"><p>
             <code>
                 {{"
-                obsRange.subscribe(res => this.observableRangeResult = res);
+                obsRange.subscribe(res = > this.observableRangeResult = res);
                 "}}
             </code>
         </p></div>
