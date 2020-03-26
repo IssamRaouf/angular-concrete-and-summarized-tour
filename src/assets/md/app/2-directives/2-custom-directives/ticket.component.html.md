@@ -1,3 +1,5 @@
+
+```html
 <mat-card [appTicketInteractiveElement]="{element:'.title'}">
     <mat-card-header>
         <mat-card-title class="title">{{ticket.name |titlecase}}</mat-card-title>
@@ -14,4 +16,8 @@
         </button>
     </mat-card-actions>
 </mat-card>
+
+
+```
+
 

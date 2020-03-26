@@ -50,8 +50,19 @@ export class MarkdownMap {
                 ])
             })
         ],
+        ['/directives-custom',
+            new MarkdownModel({
+                noteGeneralFile: '/assets/md/app/2-directives/2-custom-directives/note.md',
+                moduleDir: 'src/app/2-directives/2-custom-directives',
+                mapExamplesCode: new Map<string, string>([
+                    ['1. todo-form.component.html', '/assets/md/app/2-directives/2-custom-directives/todo-form.component.html.md'],
+                    ['2. caractere-only.directive.ts', '/assets/md/app/2-directives/2-custom-directives/caractere-only.directive.ts.md'],
+                    ['3. ticket.component.html', '/assets/md/app/2-directives/2-custom-directives/ticket.component.html.md'],
+                    ['4. ticket-Interactive-element.directive.ts', '/assets/md/app/2-directives/2-custom-directives/ticket-Interactive-element.directive.ts.md'],
+                ])
+            })
+        ],
 
-        ['/directives-custom', new MarkdownModel({noteGeneralFile: '/assets/md/app/2-directives/2-custom-directives/note.md'})],
         ['/reactive-programming', new MarkdownModel({noteGeneralFile: '/assets/md/app/3_reactive-programming-Rxjs/note.md'})],
         ['/pipes-custom', new MarkdownModel({noteGeneralFile: '/assets/md/app/4_pipes/2-pipes-custom/note.md'})],
         ['/pipes-important-exist', new MarkdownModel({noteGeneralFile: '/assets/md/app/4_pipes/1-pipes-important-exist/note.md'})],

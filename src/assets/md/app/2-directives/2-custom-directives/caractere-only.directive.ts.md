@@ -1,3 +1,6 @@
+
+```javascript
+
 import {Directive, ElementRef, HostListener} from '@angular/core';
 
 /**
@@ -10,7 +13,7 @@ export class CaractereOnlyDirective {
     /**
      * Autoriser caractere
      */
-    private regex: RegExp = new RegExp(/^[a-zA-Z\s]+$/);
+    private regex: RegExp = new RegExp(/^[A-Za-z]+$/);
 
     constructor(public el: ElementRef) {
     }
@@ -28,3 +31,5 @@ export class CaractereOnlyDirective {
         }
     }
 }
+
+```
