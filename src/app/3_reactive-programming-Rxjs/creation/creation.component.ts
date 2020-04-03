@@ -1,6 +1,7 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 
 import {from, of, fromEvent, interval, Observable, timer, range} from 'rxjs';
+import {Demos} from './demos';
 
 @Component({
     selector: 'app-creation',
@@ -17,19 +18,13 @@ export class CreationComponent implements OnInit {
     public observableTimerResult = 0;
     public observableRangeResult;
 
-    public demoNewObs = `
-    // Implementation
-        const obsCreate = new Observable((observer) => {
-             observer.next('Hello');
-             observer.next(' from');
-             observer.next(' Observable creation');
-             observer.complete();
-        }); 
-    // Subscribre
-        obsCreate.subscribe((res) => {
-         this.observableCreateResult += res;
-        });`;
 
+    public readonly demos = Demos;
+
+
+    obsInterval: Observable<number>;
+    obsTimer: Observable<number>;
+    obsRange: Observable<number>;
     @ViewChild('btnFromEvent', {static: true}) btnFEvent: ElementRef;
 
     constructor() {
@@ -68,19 +63,30 @@ export class CreationComponent implements OnInit {
         });
 
         // 5) interval
-        const obsInterval = interval(2000);
-        obsInterval.subscribe((res) => {
-            this.observableIntervalResult = res;
-        });
+        this.obsInterval = interval(2000);
+
 
         // 6) timer
-        const obsTimer = timer(1000, 5000);
-        obsTimer.subscribe(res => this.observableTimerResult += res);
+        this.obsTimer = timer(1000, 5000);
+
 
         // 7) Range
-        const obsRange = range(11, 33);
-        obsRange.subscribe(res => this.observableRangeResult = res);
+        this.obsRange = range(11, 33);
+
 
     }
 
+    public startInterval(): void {
+        this.obsInterval.subscribe((res) => {
+            this.observableIntervalResult = res;
+        });
+    }
+
+    public startTimer(): void {
+        this.obsTimer.subscribe(res => this.observableTimerResult += res);
+    }
+
+    public startRange(): void {
+        this.obsRange.subscribe(res => this.observableRangeResult = res);
+    }
 }
