@@ -1,7 +1,8 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 
 import {from, of, fromEvent, interval, Observable, timer, range} from 'rxjs';
-import {Demos} from './demos';
+import {Demos} from '../demos';
+
 
 @Component({
     selector: 'app-creation',
@@ -57,8 +58,9 @@ export class CreationComponent implements OnInit {
         });
 
         // 4) fromEvent
+
         const obsFromEvent = fromEvent(this.btnFEvent.nativeElement, 'click');
-        obsFromEvent.subscribe((isClicked) => {
+        obsFromEvent.subscribe(() => {
             this.observableFromEventResult = 'Yes';
         });
 

@@ -1,28 +1,7 @@
 <h1>mergeAll</h1>
 <p>
-    Collectez et abonnez-vous à tous les observables.
+    Collectez et abonnez-vous à tous les observables.<br><br>
+    <strong>Chemin du component : src/app/3_reactive-programming-Rxjs/operator-mixed/combination/mergeAll</strong>
 </p>
 <h3>Exemple code</h3>
-<div class="row">
-    <div class="col">
-        <p>
-            <code>
-                {{"const obserTr = val => of(val).pipe(map(val => val * 3));"}}
-                {{"const obser = of(1, 2, 3, 4);"}}
-                {{"obser.pipe("}}
-                {{"map(val => obserTr(val)),"}}
-                {{"mergeAll()"}}
-                {{").subscribe(res => console.log('result: ', res));"}}
-
-
-            </code>
-        </p>
-    </div>
-    <mat-divider [vertical]="true"></mat-divider>
-    <div class="col">
-        result : 3<br>
-        result : 6<br>
-        result : 9 <br>
-        result : 12<br>
-    </div>
-</div>
+<div [innerHTML]="demos.demoMergeAll | language: 'javascript' |markdown"></div>

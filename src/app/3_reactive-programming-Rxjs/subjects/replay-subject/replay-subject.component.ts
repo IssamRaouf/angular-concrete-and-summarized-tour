@@ -16,11 +16,11 @@ export class ReplaySubjectComponent implements OnInit {
         const source = new ReplaySubject();
         source.next(1000);
         source.next(2000);
-        source.subscribe(res => console.log('Result Subs 1:', res));
+     //   source.subscribe(res => console.log('Result Subs 1:', res));
         source.next(4000);
-        source.subscribe(res => console.log('Result Subs 2:', res));
+     //   source.subscribe(res => console.log('Result Subs 2:', res));
         source.next(8000);
-        source.subscribe(res => console.log('Result Subs 3:', res));
+     //   source.subscribe(res => console.log('Result Subs 3:', res));
 
 
     }

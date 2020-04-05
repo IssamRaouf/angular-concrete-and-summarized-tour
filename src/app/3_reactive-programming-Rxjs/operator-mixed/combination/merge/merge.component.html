@@ -1,29 +1,7 @@
 <h1>Merge</h1>
 <p>
-    Transformez plusieurs Observables en un seul observable
+    Transformez plusieurs Observables en un seul observable.<br><br>
 </p>
 <h3>Exemple code</h3>
-<div class="row">
-    <div class="col">
-        <p>
-            <code>
-                {{"const interval1 = interval(1000).pipe(take(3), map(val => `interval First ${val}`));"}}<br>
-                {{"const interval2 = interval(2000).pipe(take(3), map(val => `interval tow ${val}`));"}}<br>
-                {{"merge(interval1, interval2, interval3).subscribe(result => console.log('merge result is ', result));"}}<br>
 
-            </code>
-        </p>
-    </div>
-    <mat-divider [vertical]="true"></mat-divider>
-    <div class="col">
-           interval First 0<br>
-           interval tow 0<br>
-           interval theree 0<br>
-           interval First 1<br>
-           interval tow 1<br>
-           interval First 2<br>
-           interval theree 1<br>
-           interval tow 2<br>
-           interval theree 2<br>
-    </div>
-</div>
+<div [innerHTML]="demos.demoMerge| language:'javascript' | markdown"></div>

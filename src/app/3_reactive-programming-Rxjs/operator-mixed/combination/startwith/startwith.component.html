@@ -1,32 +1,13 @@
 <h1>startWith</h1>
 <p>
-    Émettre les valeurs de données en premier.
+    Émettre les valeurs de données en premier.<br><br>
+    <strong>Chemin du component : src/app/3_reactive-programming-Rxjs/operator-mixed/combination/startWith</strong>
+
 </p>
 <h3>Exemple balabla :</h3>
 <p>
     <strong> observable1</strong> va émettre : 1 ,puis 2 , puis 3 <br><br>
-    <strong>observable1.pipe(startWith(88888)); </strong>=> result<br><br>
-    88888<br>
-    1 <br>
-    2 <br>
-    3 <br>
-
-
 </p>
+<div [innerHTML]="demos.demoStartWithBlabla| language: 'javascript' | markdown"></div>
 <h3>Exemple code</h3>
-<div class="row">
-    <div class="col">
-        <p>
-            <code>
-                {{" const obser = of('Issam', 'Raouf');"}}<br>
-                {{" obser.pipe(startWith('Hello')).subscribe( res => console.log('res endWith', res));"}}<br>
-            </code>
-        </p>
-    </div>
-    <mat-divider [vertical]="true"></mat-divider>
-    <div class="col">
-        Hello <br>
-        Issam <br>
-        Raouf <br>
-    </div>
-</div>
+<div [innerHTML]="demos.demoStartWith| language: 'javascript' | markdown"></div>

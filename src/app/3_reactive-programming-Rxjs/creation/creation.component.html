@@ -1,8 +1,10 @@
 <p class="p-3">
     <strong>Description :</strong><br><br>
     Ces opérateurs permettent la création d'un observable à partir de presque tout,des génériques aux cas d'utilisation
-    spécifiques, vous êtes libre et encouragé de tout transformer en flux.
+    spécifiques, vous êtes libre et encouragé de tout transformer en flux.<br><br>
+    <strong>Chemin du components : src/app/3_reactive-programming-Rxjs/creation</strong>
 </p>
+
 <div class="container pb-4">
     <mat-accordion>
 
@@ -84,7 +86,7 @@
                     <div [innerHTML]="demos.demoFromEvent | language : 'javascript'  | markdown"></div>
                 </div>
                 <div class="col-4">
-                    <button mat-raised-button #btnFromEvent> cliquer et voir result</button>
+                    <button #btnFromEvent> cliquer et voir result</button>
                     <h4>Result</h4>
                     <p>{{observableFromEventResult}} </p>
                 </div>

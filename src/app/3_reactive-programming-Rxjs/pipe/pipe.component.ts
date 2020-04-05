@@ -1,15 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Demos} from '../demos';
 
 @Component({
-  selector: 'app-pipe',
-  templateUrl: './pipe.component.html',
-  styleUrls: ['./pipe.component.scss']
+    selector: 'app-pipe',
+    templateUrl: './pipe.component.html',
+    styleUrls: ['./pipe.component.scss']
 })
 export class PipeComponent implements OnInit {
 
-  constructor() { }
+    public readonly demos = Demos;
 
-  ngOnInit() {
-  }
+    constructor() {
+    }
+
+    ngOnInit() {
+    }
 
 }
