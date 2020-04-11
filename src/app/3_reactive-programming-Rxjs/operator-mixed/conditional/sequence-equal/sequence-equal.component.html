@@ -1,27 +1,8 @@
-
-
 <h1>sequenceEqual</h1>
 <p>
-    Compare la séquence émise à la séquence attendue pour la correspondance
+    Compare la séquence émise à la séquence attendue pour la correspondance.<br><br>
+    <strong>Chemin du component : src/app/3_reactive-programming-Rxjs/operator-mixed/conditional/sequence-equal</strong>
 </p>
 
 <h3>Exemple code</h3>
-<div class="row">
-    <div class="col">
-        <p>
-            <code>
-                {{"const observ = from([99, 33, 44]);"}}<br>
-                {{"of([1, 2, 3], [4, 5, 6], [99, 33, 44]).pipe("}}<br>
-                {{"switchMap(arr => from(arr).pipe(sequenceEqual(observ)))"}}<br>
-                {{").subscribe(res => console.log('Result : ', res));"}}<br>
-
-            </code>
-        </p>
-    </div>
-    <mat-divider [vertical]="true"></mat-divider>
-    <div class="col">
-        Result : false<br>
-        Result : false<br>
-        Result : true<br>
-    </div>
-</div>
+<div [innerHTML]="demos.demoSequenceEqual|language:'javascript' | markdown"></div>

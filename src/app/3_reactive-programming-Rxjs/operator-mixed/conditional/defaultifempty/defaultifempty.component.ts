@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {of} from 'rxjs';
 import {defaultIfEmpty} from 'rxjs/operators';
+import {Demos} from '../../../demos';
 
 @Component({
     selector: 'app-defaultifempty',
@@ -8,6 +9,7 @@ import {defaultIfEmpty} from 'rxjs/operators';
     styleUrls: ['./defaultifempty.component.scss']
 })
 export class DefaultifemptyComponent implements OnInit {
+    public demos = Demos;
 
     constructor() {
 
@@ -16,7 +18,7 @@ export class DefaultifemptyComponent implements OnInit {
 
     ngOnInit() {
         const observ = of().pipe(defaultIfEmpty('hello world'));
-       // observ.subscribe(res => console.log('Result is :', res));
+        // observ.subscribe(res => console.log('Result is :', res));
     }
 
 }

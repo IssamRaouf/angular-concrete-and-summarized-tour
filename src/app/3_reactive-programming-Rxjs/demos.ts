@@ -1,5 +1,5 @@
-import {interval, of} from 'rxjs';
-import {map, take} from 'rxjs/operators';
+import {from, interval, of, throwError} from 'rxjs';
+import {catchError, defaultIfEmpty, map, retry, switchMap, take} from 'rxjs/operators';
 
 export class Demos {
     /**
@@ -380,6 +380,95 @@ data => console.log(data)
             Result :   ["obser1 : 1", "obser2 : 1", "obser3 : 1", "obser4 : 1"]
             Result :   ["obser1 : 2", "obser2 : 2", "obser3 : 2", "obser4 : 2"]
    `;
+
+    /**
+     * defaultifempty
+     */
+    public static readonly demoDefaultIfEmpty = `
+    // Implementation
+           const observ = of().pipe(defaultIfEmpty('hello world'));
+           observ.subscribe(res => console.log('Result is :', res));
+
+    //  Results
+           Result is : Hello world
+   `;
+
+    /**
+     * every
+     */
+    public static readonly demoEvery = `
+    // Implementation
+         const observ = of(4, 8, 9, 3).pipe(
+                         every(val => val % 2 === 0)
+                    ).subscribe(res => console.log('Result : ', res));
+
+    //  Results
+           Result is : false
+   `;
+
+    /**
+     * sequenceequal
+     */
+    public static readonly demoSequenceEqual = `
+    // Implementation
+
+         const observ = from([99, 33, 44]);
+         of([1, 2, 3], [4, 5, 6], [99, 33, 44])
+                        .pipe(
+                              switchMap(arr => from(arr)
+                                            .pipe(
+                                                 sequenceEqual(observ)
+                                             )
+                              ) 
+                        ).subscribe(res => console.log('Result : ', res));
+
+    //  Results
+          Result : false
+          Result : false
+          Result : true
+   `;
+    /**
+     * catchError
+     */
+    public static readonly demoCatchError = `
+    // Implementation
+        const errorTh = throwError('ERROR 404!');
+        const obser = errorTh.pipe(catchError(error => of('Error '+error)));
+
+    //  Results
+           Result : Error, ERROR 404
+   `;
+
+    /**
+     * Retry
+     */
+    public static readonly demoRetry = `
+    // Implementation
+            
+
+    //  Results
+            Result : 0
+            Result : 1
+            Result : 2
+            Result : 3
+            Result : 4
+
+           // NB: on va déclencher un erreur et on change la variable checkIn pour le laisse réussir la deuxieme fois..
+
+            Result : 0
+            Result : 1
+            Result : 2
+            Result : 3
+            Result : 4
+            Result : 5
+            Result : 6
+            Result : 7
+            Result : 8
+            Result : 9`;
+
+
+
+
 
 
 }

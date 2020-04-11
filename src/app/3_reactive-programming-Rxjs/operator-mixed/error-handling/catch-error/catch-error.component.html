@@ -1,26 +1,9 @@
-
-
-
 <h1>catchError</h1>
 <p>
-    Traiter gracieusement les erreurs dans une séquence observable
+    Traiter gracieusement les erreurs dans une séquence observable<br><br>
+    <strong>Chemin du component : src/app/3_reactive-programming-Rxjs/operator-mixed/error-handling/catch-error</strong>
+
 </p>
 
 <h3>Exemple code</h3>
-<div class="row">
-    <div class="col">
-        <p>
-            <code>
-                {{"const errorTh = throwError('ERROR 404!');"}}<br>
-                {{"const obser = errorTh.pipe(catchError(error => of(`Error, ${error}`)));"}}<br>
-                {{"obser.subscribe( res => console.log('Result : ', res));"}}<br>
-
-            </code>
-        </p>
-    </div>
-    <mat-divider [vertical]="true"></mat-divider>
-    <div class="col">
-        Result : Error, ERROR 404
-    </div>
-</div>
-
+<div [innerHTML]="demos.demoCatchError |language:'javascript' |markdown"></div>

@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {throwError, of, interval} from 'rxjs';
 import {retry, switchMap, take} from 'rxjs/operators';
+import {Demos} from '../../../demos';
 
 @Component({
     selector: 'app-retry',
@@ -8,6 +9,7 @@ import {retry, switchMap, take} from 'rxjs/operators';
     styleUrls: ['./retry.component.scss']
 })
 export class RetryComponent implements OnInit {
+    public demos = Demos;
 
     constructor() {
     }
@@ -27,10 +29,10 @@ export class RetryComponent implements OnInit {
             retry(1)
         );
 
-     /*   observIn.subscribe({
-            next: val => console.log(val),
-            error: val => console.log(`${val}: Retried 2 times then quit!`)
-        });*/
+        /*   observIn.subscribe({
+               next: val => console.log(val),
+               error: val => console.log(`${val}: Retried 2 times then quit!`)
+           });*/
 
     }
 
