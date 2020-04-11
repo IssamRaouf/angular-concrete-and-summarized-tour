@@ -4,22 +4,4 @@
 
 </p>
 <h3>Exemple code</h3>
-<div class="row">
-    <div class="col">
-        <p>
-            <code>
-                {{"const obser1 = interval(1000).pipe(map(val => `obser1 : ${val}`), take(3));"}}<br>
-                {{"const obser2 = interval(2000).pipe(map(val => `obser2 : ${val}`), take(3));"}}<br>
-                {{"const obser3 = interval(3000).pipe(map(val => `obser3 : ${val}`), take(3));"}}<br>
-                {{"const obser4 = interval(6000).pipe(map(val => `obser4 : ${val}`), take(3));"}}<br>
-                {{"zip(obser1, obser2, obser3, obser4).subscribe(res => console.log('Result : ', res));"}}
-            </code>
-        </p>
-    </div>
-    <mat-divider [vertical]="true"></mat-divider>
-    <div class="col">
-        Result :   ["obser1 : 0", "obser2 : 0", "obser3 : 0", "obser4 : 0"]<br>
-        Result :   ["obser1 : 1", "obser2 : 1", "obser3 : 1", "obser4 : 1"]<br>
-        Result :   ["obser1 : 2", "obser2 : 2", "obser3 : 2", "obser4 : 2"]<br>
-    </div>
-</div>
+<div [innerHTML]="demos.demoZip| language: 'javascript' | markdown"></div>

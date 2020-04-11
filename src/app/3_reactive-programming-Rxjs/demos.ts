@@ -1,3 +1,6 @@
+import {interval, of} from 'rxjs';
+import {map, take} from 'rxjs/operators';
+
 export class Demos {
     /**
      * new observable
@@ -307,5 +310,76 @@ data => console.log(data)
          result : 6
          result : 9
          result : 12`;
+
+    /**
+     * pairewisel
+     */
+    public static readonly demoPairewise = `
+    // Implementation
+       const observ = of( {name: 'issam raouf', job: 'Lead developer'},
+                          {name: 'khalil boukhari', job: 'full stack developer'},
+                          {name: 'Fouzi ben tounssi', job: 'Architect technique'}
+                         ).pipe(
+                                 pairwise()
+                         ).subscribe(res => console.log('result: ', res))
+    //  Results
+         result : [{name: 'issam raouf', job: 'Lead developer'},{name: 'khalil boukhari', job: 'full stack developer'}]
+         result : [{name: 'khalil boukhari', job: 'full stack developer'},{name: 'Fouzi ben tounssi', job: 'Architect technique'}]
+   `;
+
+
+    /**
+     * race
+     */
+    public static readonly demoRace = `
+    // Implementation
+        const obser1 = interval(2000).pipe(take(3), mapTo('First obser1, emet chaque 2 seconde'));
+        const obser2 = interval(1000).pipe(take(3), mapTo('First obser2, emet chaque 1 seconde'));
+        const obser3 = interval(3000).pipe(take(3), mapTo('First obser3, emet chaque 3 seconde'));
+
+        race(obser1, obser2, obser3).subscribe(res => console.log('race result is :', res));
+
+    //  Results
+        race result is : First obser2, emet chaque 1 seconde
+        race result is : First obser2, emet chaque 1 seconde
+        race result is : First obser2, emet chaque 1 seconde
+   `;
+
+    /**
+     * forkjoin
+     */
+    public static readonly demoforkjoin = `
+    // Implementation
+         const obser1 = of('Hello');
+         const obser2 = of('2018', '2008', '2004');
+         const obser3 = of( {name: 'issam raouf', job: 'Lead developer'},
+                            {name: 'khalil boukhari', job: 'full stack developer'},
+                            {name: 'Fouzi ben tounssi', job: 'Architect technique'}
+                            );
+         forkJoin([obser1, obser2, obser3]).subscribe(res => console.log('ForkJoin res is ', res));
+
+    //  Results
+        ['Hello','2004',{name: 'Fouzi ben tounssi', job: 'Architect technique'}]
+   `;
+
+
+    /**
+     * zip
+     */
+    public static readonly demoZip = `
+    // Implementation
+         const obser1 = interval(1000).pipe(map(val => 'obser1 :'+val), take(3));
+         const obser2 = interval(2000).pipe(map(val => 'obser2 :' +val), take(3));
+         const obser3 = interval(3000).pipe(map(val => 'obser3 :' +val), take(3));
+         const obser4 = interval(6000).pipe(map(val => 'obser4 :' +val), take(3));
+
+      zip(obser1, obser2, obser3, obser4).subscribe(res => console.log('Result : ', res));
+
+    //  Results
+            Result :   ["obser1 : 0", "obser2 : 0", "obser3 : 0", "obser4 : 0"]
+            Result :   ["obser1 : 1", "obser2 : 1", "obser3 : 1", "obser4 : 1"]
+            Result :   ["obser1 : 2", "obser2 : 2", "obser3 : 2", "obser4 : 2"]
+   `;
+
 
 }
