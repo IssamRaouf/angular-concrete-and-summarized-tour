@@ -1,5 +1,5 @@
-import {from, interval, of, throwError} from 'rxjs';
-import {catchError, defaultIfEmpty, map, retry, switchMap, take} from 'rxjs/operators';
+import {ConnectableObservable, from, fromEvent, interval, of, throwError, timer} from 'rxjs';
+import {audit, catchError, debounce, defaultIfEmpty, map, mapTo, publish, retry, share, switchMap, take, tap} from 'rxjs/operators';
 
 export class Demos {
     /**
@@ -444,7 +444,23 @@ data => console.log(data)
      */
     public static readonly demoRetry = `
     // Implementation
-            
+            const observ = interval(1000).pipe(take(10));
+            let checkIn = false;
+            const observIn = observ.pipe(
+                switchMap(val => {
+                    if (val > 4 && checkIn === false) {
+                        checkIn = true;
+                        return throwError('Error!');
+                    }
+                    return of(val);
+                }),
+                retry(1)
+            );
+
+            observIn.subscribe(
+                 result => console.log(result),
+                 error => console.log(error +'Retried 2 times then quit!')
+                 );
 
     //  Results
             Result : 0
@@ -467,8 +483,103 @@ data => console.log(data)
             Result : 9`;
 
 
+    /**
+     * Publish
+     */
+    public static readonly demoPublish = `
+    // Implementation
+            observ: ConnectableObservable<string>;
+            //...
+            const source = interval(1000).pipe(take(5));
+            this.observ = source.pipe(
+                   // Les effets secondaires seront exécutés une fois meme au va l'abonner 100 fois...
+                  // Pour bien comprendre faire meme exmple sans publish et ConnectableObservable ,
+                 // à chaque subscribe il va declanche Augmentation le number de la vue..
+                tap(() => console.log('Augmenter le number de vue d\'un ticket (Par exemple... )')),
+                map(val =>'Result :'+val),
+                publish()
+            ) as ConnectableObservable<string>;
 
+            const subscribeOne = this.observ.subscribe(val =>
+                console.log('subscribeOne :' + val)
+            );
+            const subscribeTwo = this.observ.subscribe(val =>
+                console.log('subscribeTwo :'+ val)
+            );
 
+    //  Results
+         Augmenter le number de vue d'un ticket (Par exemple... )
+         subscribeOne , Result : 0
+         subscribeTwo , Result : 0
+         Augmenter le number de vue d'un ticket (Par exemple... )
+         subscribeOne , Result : 1
+         subscribeTwo , Result : 1
+         Augmenter le number de vue d'un ticket (Par exemple... )
+         subscribeOne , Result : 2
+         subscribeTwo , Result : 2
+         Augmenter le number de vue d'un ticket (Par exemple... )
+         subscribeOne , Result : 3
+         subscribeTwo , Result : 3
+         Augmenter le number de vue d'un ticket (Par exemple... )
+         subscribeOne , Result : 4
+         subscribeTwo , Result : 4
+           `;
+
+    /**
+     * Share
+     */
+    public static readonly demoShare = `
+    // Implementation
+        const source = timer(1000);
+        const observ = source.pipe(
+            tap(() => console.log('TRAITEMENT UNE SEULE FOIS, MÊME S\'IL Y A MULTI SUBSCRIBE (Partage source..)')),
+            mapTo('Result : Hello ')
+        );
+        const sharedObserv = observ.pipe(share());
+
+        const subscribeOne = sharedObserv.subscribe(val => console.log('subscribeOne ', val));
+        const subscribeTow = sharedObserv.subscribe(val => console.log('subscribeTow ', val));
+    //  Results
+        TRAITEMENT UNE SEULE FOIS, MÊME S'IL Y A MULTI SUBSCRIBE (Partage source..)
+        subscribeOne Result : Hello
+        subscribeTow Result : Hello
+           `;
+
+    /**
+     * audit
+     */
+    public static readonly demoAudit = `
+    // Implementation
+         const source = fromEvent(document, 'click');
+         const result = source.pipe(audit(ev => interval(3000)));
+         result.subscribe(element => {
+              console.log(element);
+          });
+    //  Results
+        Result  (aller au component , enlever le commentaire et voir résultat sur la console)
+           `;
+    /**
+     * auditTime
+     */
+    public static readonly demoAuditTime = `
+    // Implementation
+         const source = fromEvent(document, 'click');
+        const result = source.pipe(auditTime(1000));
+        result.subscribe(res => console.log('Result : ', res));
+    //  Results
+        Result  (aller au component , enlever le commentaire et voir résultat sur la console)
+           `;
+    /**
+     * debounce
+     */
+    public static readonly demoDebounce = `
+    // Implementation
+             const source = fromEvent(document, 'click');
+             const result = source.pipe(debounce(() => timer(1000)));
+             result.subscribe(element => console.log('element :', element));
+    //  Results
+        Result  (aller au component , enlever le commentaire et voir résultat sur la console)
+           `;
 
 
 }

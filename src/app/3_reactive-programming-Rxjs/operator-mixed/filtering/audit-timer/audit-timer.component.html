@@ -1,22 +1,10 @@
 <h1>AuditTimer</h1>
 <p>
-    Ignore les valeurs source pour la durée, en millisecondes,
-    puis émet la valeur la plus récente de l'observable source, puis répète ce processus.
+    Ignore les valeurs source pour une durée, en millisecondes,
+    puis émet la valeur la plus récente de l'observable source, puis répète ce processus.<br><br>
+    <strong>Chemin du component : src/app/3_reactive-programming-Rxjs/operator-mixed/filtering/audit-timer</strong>
 </p>
 
 <h3>Exemple code</h3>
-<div class="row">
-    <div class="col">
-        <p>
-            <code>
-                {{"const source = fromEvent(document, 'click');"}}<br>
-                {{"const result = source.pipe(auditTime(1000));"}}<br>
-                {{"result.subscribe(res => console.log('Result : ', res));"}}<br>
-            </code>
-        </p>
-    </div>
-    <mat-divider [vertical]="true"></mat-divider>
-    <div class="col">
-        Result (enlever le commentaire et voir résultat sur la console)
-    </div>
-</div>
+<div [innerHTML]="demos.demoAuditTime|language:'javascript'|markdown"></div>
+

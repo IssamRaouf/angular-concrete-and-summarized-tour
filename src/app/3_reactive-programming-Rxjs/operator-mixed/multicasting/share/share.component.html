@@ -1,36 +1,8 @@
 <h1>Share</h1>
 <p>
-    Partager la source(observable) entre plusieurs abonnés.
+    Partager la source(observable) entre plusieurs abonnés.<br><br>
+    <strong>Chemin du component : src/app/3_reactive-programming-Rxjs/operator-mixed/multicasting/share</strong>
+
 </p>
-
 <h3>Exemple code</h3>
-<div class="row">
-    <div class="col">
-        <p>
-
-            <code>
-                {{"const source = timer(1000);"}}<br>
-                {{"const observ = source.pipe("}}<br>
-                {{"tap(() => console.log('RAITEMENT UNE SEULE FOIS, MÊME S\'IL Y A MULTI SUBSCRIBE (Partage source..)')),"}}
-                <br>
-                {{"mapTo('Result : Hello ')"}}<br>
-                {{");"}}<br>
-                {{"const sharedObserv = observ.pipe(share());"}}<br>
-                {{"const subscribeOne = sharedObserv.subscribe(val => console.log('subscribeOne ', val));"}}<br>
-                {{"const subscribeTow = sharedObserv.subscribe(val => console.log('subscribeTow ', val));"}}<br>
-                {{");"}}<br>
-
-            </code>
-        </p>
-    </div>
-    <mat-divider [vertical]="true"></mat-divider>
-    <div class="col">
-        RAITEMENT UNE SEULE FOIS, MÊME S'IL Y A MULTI SUBSCRIBE (Partage source..)<br>
-        subscribeOne Result : Hello<br>
-        subscribeTow Result : Hello<br>
-    </div>
-</div>
-
-
-
-
+<div [innerHTML]="demos.demoShare |language:'javascript' |markdown"></div>
