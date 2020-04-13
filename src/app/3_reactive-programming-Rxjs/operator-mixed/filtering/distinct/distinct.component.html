@@ -1,22 +1,11 @@
 <h1>Distinct</h1>
 <p>Renvoie un observable qui émet tous les éléments émis par l'observateur source qui sont distincts par comparaison des
-    éléments précédents.</p>
+    éléments précédents.<br><br>
+
+    <strong>Chemin du component : src/app/3_reactive-programming-Rxjs/operator-mixed/filtering/distinct</strong>
+
+</p>
 
 <h3>Exemple code</h3>
+<div [innerHTML]="demos.demoDistinct|language:'javascript'|markdown"></div>
 
-<div class="row">
-    <div class="col">
-        <p>
-            <code>
-                {{"const arrObjects = [{id: 12, note: 20}, {id: 13, note: 33}, {id: 12, note: 20}];"}}<br>
-                {{"const source = from(arrObjects).pipe(distinct(item => item.id));"}}<br>
-                {{"source.subscribe(result => console.log('Result : ', result));"}}<br>
-            </code>
-        </p>
-    </div>
-    <mat-divider [vertical]="true"></mat-divider>
-    <div class="col">
-        Result:   {{"{id: 12, note: 20}"}}<br>
-        Result:   {{"{id: 13, note: 33}"}}<br>
-    </div>
-</div>

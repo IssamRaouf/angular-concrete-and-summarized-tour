@@ -1,5 +1,19 @@
 import {ConnectableObservable, from, fromEvent, interval, of, throwError, timer} from 'rxjs';
-import {audit, catchError, debounce, defaultIfEmpty, map, mapTo, publish, retry, share, switchMap, take, tap} from 'rxjs/operators';
+import {
+    audit,
+    catchError,
+    debounce,
+    defaultIfEmpty,
+    distinctUntilChanged, filter, find, first, last,
+    map,
+    mapTo,
+    publish,
+    retry, sample,
+    share, skipUntil, skipWhile,
+    switchMap,
+    take,
+    tap
+} from 'rxjs/operators';
 
 export class Demos {
     /**
@@ -579,6 +593,195 @@ data => console.log(data)
              result.subscribe(element => console.log('element :', element));
     //  Results
         Result  (aller au component , enlever le commentaire et voir résultat sur la console)
+           `;
+
+    /**
+     * debounceTime
+     */
+    public static readonly demoDebounceTime = `
+    // Implementation
+                 const clicks = fromEvent(document, 'click');
+                 const result = clicks.pipe(debounceTime(1000));
+                 result.subscribe(x => console.log(x));
+    //  Results
+        Result  (aller au component , enlever le commentaire et voir résultat sur la console)
+           `;
+
+    /**
+     * Distinct
+     */
+    public static readonly demoDistinct = `
+    // Implementation
+       /*
+        simple exemple
+            source = of(1,5,3,4,5,2,3);
+             const result = source.pipe(distinct());
+             // OUTPUT 1 , 5 , 3, 4 , 2
+
+        */
+
+        const arrObjects = [{id: 12, note: 20}, {id: 13, note: 33}, {id: 12, note: 20}];
+
+        const source = from(arrObjects).pipe(distinct(item => item.id));
+
+        source.subscribe(result => console.log('Result : ', result));
+
+    //  Results
+              Result:   {{"{id: 12, note: 20}"}}
+               Result:   {{"{id: 13, note: 33}"}}
+           `;
+    /**
+     * DistinctUntilChanged
+     */
+    public static readonly demoDistinctUntilChanged = `
+    // Implementation
+       /*
+        const source = of(1, 2, 2, 3, 4, 4, 4, 6, 2, 1, 4);
+        const result = source.pipe(distinctUntilChanged());
+        // OUTPUT
+        1,2,3,4,6,2,1,4
+     */
+    const source = from([{id: 13, note: 20, name: 'Issam'}, {id: 13, note: 20, name: 'Issam'}, {id: 13, note: 20, name: 'Soufiane'},
+        {id: 13, note: 20, name: 'Issam'}, {id: 13, note: 20, name: 'Raouf'}]);
+    const result = source.pipe(distinctUntilChanged((perv, curr) => perv.name === curr.name));
+    result.subscribe(result => console.log('Result : ', result));
+
+    //  Results
+                Result :  {{"{id: 13, note: 20, name: 'Issam'}"}}
+                Result :  {{"{id: 13, note: 20, name: 'Soufiane'}"}}
+                Result :  {{"{id: 13, note: 20, name: 'Issam'}"}}
+                Result :  {{"{id: 13, note: 20, name: 'Raouf'}"}}
+           `;
+
+    /**
+     * distinctUntilKeyChanged
+     */
+    public static readonly demoDistinctUntilKeyChanged = `
+    // Implementation
+        const source = of({age: 4, name: 'Foo'}, {age: 7, name: 'Bar'}, {age: 5, name: 'Foo'}, {age: 6, name: 'Foo'});
+        const result = source.pipe(distinctUntilKeyChanged('name'));
+        result.subscribe(res => console.log('Result : ', res));
+            /*
+            exemple 2
+                       const source = of({age: 4, name: 'Foo1'}, {age: 7, name: 'Bar'}, {age: 5, name: 'Foo2'}, {age: 6, name: 'Foo3'});
+
+                       const result = source.pipe(distinctUntilKeyChanged('name',
+                       (namePerv: string, nameCurr: string) => namePerv.substring(0, 3) === nameCurr.substring(0, 3)));
+                        result.subscribe(res => console.log('Result : ', res));
+             // OUTPUT
+                Result :  {{"{age: 4, name: 'Foo1'}"}}
+                Result :  {{"{age: 7, name: 'Bar'}"}}
+                Result :  {{"{age: 5, name: 'Foo2'}"}}
+
+             */
+    //  Results
+
+        Result :  {{"{age: 4, name: 'Foo'}"}}
+        Result :  {{"{age: 7, name: 'Bar'}"}}
+        Result :  {{"{age: 5, name: 'Foo'}"}}
+           `;
+
+    /**
+     * Filter
+     */
+    public static readonly demoFilter = `
+    // Implementation
+            const source = of(1, 2, 3, 4, 5, 6);
+            const result = source.pipe(filter(num => num % 2 === 0));
+
+            result.subscribe(res => console.log('Result : ', res));
+    //  Results
+
+            Result : 2
+            Result : 4
+            Result : 6
+           `;
+    /**
+     * find
+     */
+    public static readonly demoFind = `
+    // Implementation
+             const source = of(1, 2, 3, 4, 5, 6);
+             const result = source.pipe(find(num => num % 2 === 0));
+             result.subscribe(res => console.log('Result : ', res));
+    //  Results
+            Result : 2
+           `;
+
+
+    /**
+     * first
+     */
+    public static readonly demoFirst = `
+    // Implementation
+        const source = of(1, 2, 3, 4, 5, 6);
+        const result = source.pipe(first(num => num  === 7, 'nothing'));
+        result.subscribe(res => console.log('Result : ', res));
+    //  Results
+            Result : nothing (aucun item egale 7 , default)
+           `;
+    /**
+     * last
+     */
+    public static readonly demoLast = `
+    // Implementation
+             const source = of(1, 2, 3, 4, 5, 6);
+             const result = source.pipe(last(num => num % 2 === 0));
+             result.subscribe(res => console.log('Result : ', res));
+    //  Results
+            Result : 6
+           `;
+
+    /**
+     * sample
+     */
+    public static readonly demoSample = `
+    // Implementation
+           const source = interval(1000).pipe(take(10));
+           const result = source.pipe(sample(interval(2000)));
+           result.subscribe(res => console.log('Result :', res));
+    //  Results
+            Result : 1
+            Result : 3
+            Result : 5
+            Result : 7
+            Result : 9
+           `;
+    /**
+     * Skip
+     */
+    public static readonly demoSkip = `
+    // Implementation
+            const source = interval(1000).pipe(take(5));
+            const result = source.pipe(skip(3));
+            result.subscribe(result => console.log('Result : ', result));
+     //  Results
+            Result : 2
+            Result : 4
+           `;
+    /**
+     * SkipUntil
+     */
+    public static readonly demoSkipUntil = `
+    // Implementation
+             const source = interval(1000).pipe(take(10));
+             const result = source.pipe(skipUntil(timer(6000)));
+             result.subscribe(res => console.log('Result : ', res));
+     //  Results
+            Result : 6
+            Result : 7
+            Result : 8
+            Result : 9
+           `;
+
+    public static readonly demoSkipWhile = `
+    // Implementation
+                const source = interval(1000).pipe(take(10));
+                const result = source.pipe(skipWhile(item => item < 7));
+                result.subscribe(res => console.log('Result : ', res));
+     //  Results
+            Result : 8
+            Result : 9
            `;
 
 

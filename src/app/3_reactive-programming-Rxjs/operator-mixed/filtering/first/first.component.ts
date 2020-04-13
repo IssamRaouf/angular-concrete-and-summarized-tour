@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {of} from 'rxjs';
 import {find, first} from 'rxjs/operators';
+import {Demos} from '../../../demos';
 
 @Component({
   selector: 'app-first',
@@ -8,7 +9,7 @@ import {find, first} from 'rxjs/operators';
   styleUrls: ['./first.component.scss']
 })
 export class FirstComponent implements OnInit {
-
+  public demos = Demos;
   constructor() { }
 
   ngOnInit() {
