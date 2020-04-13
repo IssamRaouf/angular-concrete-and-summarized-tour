@@ -1,30 +1,9 @@
-
 <h1>ForkJoin</h1>
 <p>
-    Lorsque tous les éléments observables sont terminés, émettez la dernière valeur émise de chacun.
+    Lorsque tous les éléments observables sont terminés, émettez la dernière valeur émise de chacun.<br><br>
+    <strong>Chemin du component : src/app/3_reactive-programming-Rxjs/operator-mixed/combination/forkjoin</strong>
 </p>
 
 <h3>Exemple code</h3>
-<div class="row">
-    <div class="col">
-        <p>
-            <code>
-               {{"const obser = of('Issam', 'Raouf', 'Hello');"}}
-                {{"const obser1 = of('99', '1000', '2000');"}}
-                {{"const obser3 = of({name: 'issam raouf', job: 'Lead developer'},"}}
-                {{"{name: 'khalil boukhari', job: 'full stack developer'},"}}
-                {{"{name: 'Fouzi ben tounssi', job: 'Architect technique'});"}}
 
-                {{"forkJoin([obser1, obser, obser3]).subscribe(res => console.log('ForkJoin res is ', res));"}}
-
-            </code>
-        </p>
-    </div>
-    <mat-divider [vertical]="true"></mat-divider>
-    <div class="col">
-        {{"['2000',"}}<br>
-        {{" 'Hello',"}}<br>
-        {{"{name: 'Fouzi ben tounssi', job: 'Architect technique'}"}}<br>
-        {{"]"}}
-    </div>
-</div>
+<div [innerHTML]="demos.demoforkjoin | language:'javascript' |markdown"></div>

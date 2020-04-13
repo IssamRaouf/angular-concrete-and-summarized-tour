@@ -1,21 +1,10 @@
 <h1>Skip</h1>
-<p>Renvoie un observable qui ignore les premiers éléments de comptage émis par l'observable source.</p>
+<p>Renvoie un observable qui ignore les premiers éléments de comptage émis par l'observable source.<br><br>
+
+    <strong>Chemin du component :
+        src/app/3_reactive-programming-Rxjs/operator-mixed/filtering/skip</strong>
+
+</p>
 
 <h3>Exemple code</h3>
-
-<div class="row">
-    <div class="col">
-        <p>
-            <code>
-                {{"const source = interval(1000).pipe(take(5));"}}<br>
-                {{"const result = source.pipe(skip(3));"}}<br>
-                {{"result.subscribe(result => console.log('Result : ', result));"}}<br>
-            </code>
-        </p>
-    </div>
-    <mat-divider [vertical]="true"></mat-divider>
-    <div class="col">
-        Result : 3<br>
-        Result : 4<br>
-    </div>
-</div>
+<div [innerHTML]="demos.demoSkip|language:'javascript'|markdown"></div>

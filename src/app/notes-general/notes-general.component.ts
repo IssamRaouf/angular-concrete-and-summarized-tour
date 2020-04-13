@@ -16,10 +16,12 @@ export class NotesGeneralComponent implements OnInit {
         ['7. Material design', '/assets/md/notes/6-material-design-setup-theming.md'],
 
     ]);
+
     constructor() {
     }
 
     ngOnInit(): void {
+
     }
 
 }

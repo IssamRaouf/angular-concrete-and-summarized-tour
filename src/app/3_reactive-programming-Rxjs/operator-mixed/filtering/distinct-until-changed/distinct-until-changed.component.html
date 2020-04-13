@@ -1,26 +1,10 @@
 <h1>DistinctUntilChanged</h1>
 <p>Renvoie un observable qui émet tous les éléments émis par l'observateur source qui sont distincts par comparaison de
-    l'élément précédent.</p>
+    l'élément précédent.<br><br>
+
+    <strong>Chemin du component : src/app/3_reactive-programming-Rxjs/operator-mixed/filtering/distinct-until-changed</strong>
+
+</p>
 
 <h3>Exemple code</h3>
-
-<div class="row">
-    <div class="col">
-        <p>
-            <code>
-                {{" const source = from([{id: 13, note: 20, name: 'Issam'}, {id: 13, note: 20, name: 'Issam'}, {id: 13, note: 20, name: 'Soufiane'},"}}
-                <br>
-                {{" {id: 13, note: 20, name: 'Issam'}, {id: 13, note: 20, name: 'Raouf'}]);"}}<br>
-                {{" const result = source.pipe(distinctUntilChanged((perv, curr) => perv.name === curr.name));"}}<br>
-                {{"result.subscribe(result => console.log('Result : ', result));"}}<br>
-            </code>
-        </p>
-    </div>
-    <mat-divider [vertical]="true"></mat-divider>
-    <div class="col">
-        Result :  {{"{id: 13, note: 20, name: 'Issam'}"}}<br>
-        Result :  {{"{id: 13, note: 20, name: 'Soufiane'}"}}<br>
-        Result :  {{"{id: 13, note: 20, name: 'Issam'}"}}<br>
-        Result :  {{"{id: 13, note: 20, name: 'Raouf'}"}}<br>
-    </div>
-</div>
+<div [innerHTML]="demos.demoDistinctUntilChanged|language:'javascript'|markdown"></div>

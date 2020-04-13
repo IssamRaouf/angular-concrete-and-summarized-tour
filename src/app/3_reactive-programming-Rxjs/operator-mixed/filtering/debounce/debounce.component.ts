@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {of, timer} from 'rxjs';
+import {fromEvent, timer} from 'rxjs';
 import {debounce} from 'rxjs/operators';
+import {Demos} from '../../../demos';
 
 @Component({
     selector: 'app-debounce',
@@ -8,16 +9,15 @@ import {debounce} from 'rxjs/operators';
     styleUrls: ['./debounce.component.scss']
 })
 export class DebounceComponent implements OnInit {
+    public demos = Demos;
 
     constructor() {
     }
 
     ngOnInit() {
-
-        const source = of('HELLO', 'WORLD', 'GOODBYE', 'WORLD');
+        const source = fromEvent(document, 'click');
         const result = source.pipe(debounce(() => timer(1000)));
-      //  result.subscribe(res => console.log('RESULT :', res));
-
+        // result.subscribe(element => console.log('element :', element));
     }
 
 }

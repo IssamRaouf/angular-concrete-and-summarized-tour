@@ -1,28 +1,7 @@
 <h1>Pairwise</h1>
 <p>
-    Émettre les valeurs précédentes et actuelles sous forme de tableau.
+    Émettre les valeurs précédentes et actuelles sous forme de tableau.<br><br>
+    <strong>Chemin du component : src/app/3_reactive-programming-Rxjs/operator-mixed/combination/pairwise</strong>
 </p>
 <h3>Exemple code</h3>
-<div class="row">
-    <div class="col">
-        <p>
-            <code>
-                {{"const observ = of({name: 'issam raouf', job: 'Lead developer'},"}}
-                {{"{name: 'khalil boukhari', job: 'full stack developer'},"}}
-                {{"{name: 'Fouzi ben tounssi', job: 'Architect technique'}"}}
-                {{").pipe("}}
-                {{"pairwise()"}}
-                {{");"}}
-
-            </code>
-        </p>
-    </div>
-    <mat-divider [vertical]="true"></mat-divider>
-    <div class="col">
-        {{"[{name: 'issam raouf', job: 'Lead developer'},"}}
-        {{"{name: 'khalil boukhari', job: 'full stack developer'}]}"}}<br><br><br>
-        {{"[{name: 'khalil boukhari', job: 'full stack developer'},"}}
-        {{"{name: 'Fouzi ben tounssi', job: 'Architect technique'}]"}}
-
-    </div>
-</div>
+<div [innerHTML]="demos.demoPairewise | language:'javascript' | markdown"></div>

@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {of} from 'rxjs';
 import {pairwise} from 'rxjs/operators';
+import {Demos} from '../../../demos';
 
 @Component({
     selector: 'app-pairwise',
@@ -8,6 +9,7 @@ import {pairwise} from 'rxjs/operators';
     styleUrls: ['./pairwise.component.scss']
 })
 export class PairwiseComponent implements OnInit {
+    public demos = Demos;
 
     constructor() {
     }
@@ -19,8 +21,8 @@ export class PairwiseComponent implements OnInit {
         ).pipe(
             pairwise()
         );
-       //  enlever le commentaire et voir résultat sur la console
-      //  observ.subscribe(res => console.log('pairwise res is ', res));
+        //  enlever le commentaire et voir résultat sur la console
+         // observ.subscribe(res => console.log('pairwise res is ', res));
     }
 
 }

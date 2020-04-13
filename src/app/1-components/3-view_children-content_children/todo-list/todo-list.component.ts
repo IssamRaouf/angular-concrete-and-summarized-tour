@@ -23,46 +23,43 @@ export class TodoListComponent implements OnInit, AfterViewInit, AfterContentIni
     @Input() ticketList: Array<Ticket>;
 
     /**
-     * Un @ViewChild décorateur signifie, recherchez dans ce modèle de composants, sa vue, ces components enfant.
+     * @ViewChild(Selector)
+     * Un @ViewChild décorateur signifie recherchez dans ce modèle de composants, sa vue, ces components enfant.
      * S'il y a une liste des (TicketComponent) , il nous donnera simplement le premier.
-     *
-     * @ViewChild(Selector,{Read,Static})
      * - Selector : le sélecteur de l'élément à interroger. Cela peut être un type de directive ou un nom. ici TicketComponent
-     * - Read : lit un jeton différent des éléments interrogés.
-     * - Static : Ceci est nouveau dans Angular 8 et indique si les résultats de la requête doivent être résolus avant l'exécution de
-     *           la détection des modifications.
-     * NB : ici ticketViewChild c'est pas une instance d'une Ticket class, c'est l'instance réelle de l'enfant TicketComponent
+     * NB : ici ticketViewChild c'est pas une nouvelle instance d'une TicketComponent, c'est l'instance réelle de l'enfant TicketComponent
      *      qui existe dans cette vue des composants.
      */
     @ViewChild(TicketComponent) ticketViewChild: TicketComponent;
 
 
     /**
-     *  Un @ViewViewChildrenChild décorateur signifie, recherchez dans ce modèle de composants, sa vue, ces components enfant.
-     * @ViewChildrenChild(Selector)
+     * @ViewChildren(Selector)
+     *  Un @ViewChildren décorateur signifie, recherchez dans ce modèle de composants, sa vue, ces components enfant.
      * Nous utilisons le  @ViewChildren décorateur qui correspond à tous ceux TikcetComponents et les stocke
-     * dans une QueryList,appelée ticketViewChildren.
-     * NB : ici ticketViewChildren c'est pas une instance des Tickets classes, c'est l'instance réelle des l'enfants TicketsComponents
-     *     qui existent dans cette vue des composants.
+     * dans un @var  ticketViewChildren de type QueryList.
+     * NB : ici ticketViewChildren ne sont pas des nouvelles instances des TicketComponent,
+     * ce sont les instance réelles des l'enfants TicketsComponents   qui existent dans cette vue des composants.
      */
 
     @ViewChildren(TicketComponent) ticketViewChildren: QueryList<TicketComponent>;
 
 
     /**
-     *  nous pouvons également passer le nom d'une variable locale de modèle et faire en sorte que
+     *  Nous pouvons également passer le nom d'une variable locale de modèle et faire en sorte que
      *  Angular stocke une référence à cette variable sur notre composant
      *  ...
      */
     @ViewChild('header') headerRefElem: ElementRef;
 
     /**
-     * meme que @ViewChild mais il nous donne juste les components projecté par le component hote ici (TodoComponent)
+     * meme que @ViewChild mais il nous donne juste le premie components projecté par le component hote ici (projecté par TodoComponent)
      */
     @ContentChild(TicketComponent) ticketContentChild: TicketComponent;
 
     /**
-     * meme que @ViewChildren mais il nous donne juste les components projecté par le component hote ici (TodoComponent)
+     * meme que @ViewChildren mais il nous donne juste list des components projecté par le component hote
+     * ici on a qu'un (projecté par TodoComponent)
      */
     @ContentChildren(TicketComponent) ticketContentChildren: QueryList<TicketComponent>;
 
@@ -84,13 +81,42 @@ export class TodoListComponent implements OnInit, AfterViewInit, AfterContentIni
 
 
         // @ContentChild ticketContentChild
+        // ..
+        // comme ca on recoit undefined
         console.log(`constructor - ticketViewChild is ${this.ticketContentChild}`);
 
         // @ContentChildren content childrenb
+        // ..
+        // comme ca on recoit undefined
         console.log(`constructor - ticketContentChildren is ${this.ticketContentChildren}`);
     }
 
     ngOnInit(): void {
+        // @viewChild
+        // meme blabla sur le hook onInit
+        // comme ca on recoit undefined
+        console.log(`ngOnInit - ticketViewChild is ${this.ticketViewChild}`);
+
+        // @viewChildren
+        // ..
+        // comme ca on recoit undefined
+        console.log(`ngOnInit - ticketViewChildren is ${this.ticketViewChildren}`);
+
+        // @viewChild  headerRefElem
+        // ..
+        // comme ca on recoit undefined
+        console.log(`ngOnInit - headerRefElem is ${this.headerRefElem}`);
+
+
+        // @ContentChild ticketContentChild
+        // ..
+        // comme ca on recoit undefined
+        console.log(`ngOnInit - ticketViewChild is ${this.ticketContentChild}`);
+
+        // @ContentChildren content childrenb
+        // ..
+        // comme ca on recoit undefined
+        console.log(`ngOnInit - ticketContentChildren is ${this.ticketContentChildren}`);
     }
 
     ngAfterViewInit(): void {

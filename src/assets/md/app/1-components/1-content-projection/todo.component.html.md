@@ -4,19 +4,27 @@
 <div class="container container-todo">
 
     <app-todo-form (sendTicket)="addTicket($event)">
-        <!--BEGIN Projection de contenur exemple 1 -->
-        <h3>Form simple pour ajouter des ticket (projection de contenu)</h3>
-        <p>Enjoy Projection de contenu</p>
-        <!--BEGIN Projection de contenur exemple 1 -->
+
+        <!--BEGIN Projection de contenur simple -->
+        <h3>Form simple pour ajouter des ticket (project sur le component child app-todo-form)</h3>
+        <p>Enjoy Projection de contenu (project sur le component child app-todo-form)</p>
+        <!--END Projection de contenur simple  -->
+
     </app-todo-form>
 
     <app-todo-list [ticketList]="ticketListMock">
-        <!--BEGIN Projection de contenur exemple 2 -->
-        <h3> Prejection de contenu par element tag</h3>
-        <button mat-raised-button class="hello-world" (click)="onAlert()">Button projet on child</button>
-        <!--BEGIN Projection de contenur exemple 2 -->
+
+        <!--BEGIN Projection de contenur par tag h3 -->
+        <h3> Prejection de contenu par element tag (project sur le component child app-todo-list)</h3>
+        <!--END Projection de contenur par tag h3 -->
+
+        <!--BEGIN Projection de contenur  par class -->
+        <button mat-raised-button class="hello-world" (click)="onAlert()">Button projet sur child app-todo-list</button>
+        <!--END Projection de contenur  par class -->
+
     </app-todo-list>
 </div>
+
 
 ```
 

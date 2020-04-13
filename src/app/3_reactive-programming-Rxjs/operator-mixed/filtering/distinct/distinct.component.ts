@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {from} from 'rxjs';
 import {distinct} from 'rxjs/operators';
+import {Demos} from '../../../demos';
 
 @Component({
     selector: 'app-distinct',
@@ -8,7 +9,7 @@ import {distinct} from 'rxjs/operators';
     styleUrls: ['./distinct.component.scss']
 })
 export class DistinctComponent implements OnInit {
-
+    public demos = Demos;
     constructor() {
     }
 

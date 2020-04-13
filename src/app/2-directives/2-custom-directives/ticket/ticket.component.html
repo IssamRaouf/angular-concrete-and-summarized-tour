@@ -1,9 +1,3 @@
-<h5> 1) (on construct) backgroud & color ont changé par le directive 'TicketInteractiveElementDirective'</h5>
-<h5> 2) HostListner -> Change le button style on 'mouserover' & 'mouseout' par le directive 'TicketInteractiveElementDirective'</h5>
-<h5> 3) HostBinding -> change border color on on 'mouserover' & 'mouseout' par le directive 'TicketInteractiveElementDirective'  </h5>
-<h5> 4) Nous pouvons configurer nos directives avec des liaisons de propriétés d'entrée standard @Input.
-    pour changer un element précis.. ,changer font-size du titre</h5>
-
 <mat-card [appTicketInteractiveElement]="{element:'.title'}">
     <mat-card-header>
         <mat-card-title class="title">{{ticket.name |titlecase}}</mat-card-title>

@@ -1,7 +1,7 @@
 <div class="container container-todo my-2" *ngIf="srcMd">
 
     <mat-accordion>
-        <mat-expansion-panel>
+        <mat-expansion-panel [(expanded)]="expandedOnChangeRoute">
             <mat-expansion-panel-header>
                 <mat-panel-title>
                     <h1>Lisez-moi d'abord</h1>

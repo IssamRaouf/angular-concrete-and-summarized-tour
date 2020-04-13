@@ -1,56 +1,10 @@
-
-
-
-
-
 <h1>Retry</h1>
 <p>
-    Réessayez une séquence observable un nombre spécifique de fois en cas d'erreur.
+    Réessayez une séquence observable un nombre spécifique de fois en cas d'erreur.<br><br>
+    <strong>Chemin du component : src/app/3_reactive-programming-Rxjs/operator-mixed/error-handling/retry</strong>
 </p>
 
 <h3>Exemple code</h3>
-<div class="row">
-    <div class="col">
-        <p>
-            <code>
-               {{"const observ = interval(1000).pipe(take(10));"}}<br>
-                {{"let checkIn = false;"}}<br>
-                {{"const observIn = observ.pipe("}}<br>
-                {{" switchMap(val => {"}}<br>
-                {{"if (val > 4 && checkIn === false) {"}}<br>
-                {{"checkIn = true;"}}<br>
-                {{"return throwError('Error!');"}}<br>
-                {{"}"}}<br>
-                {{"return of(val);"}}<br>
-                {{"}),"}}<br>
-                {{"retry(1)"}}<br>
-                {{");"}}<br>
-                {{"observIn.subscribe({"}}<br>
-                {{"next: val => console.log(val),"}}<br>
-                {{"error: val => console.log(`${val}: Retried 2 times then quit!`)"}}<br>
-                {{"});"}}<br>
-            </code>
-        </p>
-    </div>
-    <mat-divider [vertical]="true"></mat-divider>
-    <div class="col">
-        Result : 0<br>
-        Result : 1<br>
-        Result : 2<br>
-        Result : 3<br>
-        Result : 4<br>
-        <strong> NB: on va déclencher un erreur et on change la variable checkIn pour le laisse réussir la deuxieme fois..</strong><br>
-        Result : 0<br>
-        Result : 1<br>
-        Result : 2<br>
-        Result : 3<br>
-        Result : 4<br>
-        Result : 5<br>
-        Result : 6<br>
-        Result : 7<br>
-        Result : 8<br>
-        Result : 9<br>
 
-    </div>
-</div>
+<div [innerHTML]="demos.demoRetry |language:'javascript' |markdown"></div>
 

@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {of} from 'rxjs';
 import {distinctUntilKeyChanged} from 'rxjs/operators';
+import {Demos} from '../../../demos';
 
 @Component({
     selector: 'app-distinct-until-key-changed',
@@ -8,6 +9,7 @@ import {distinctUntilKeyChanged} from 'rxjs/operators';
     styleUrls: ['./distinct-until-key-changed.component.scss']
 })
 export class DistinctUntilKeyChangedComponent implements OnInit {
+    public demos = Demos;
 
     constructor() {
     }
@@ -16,7 +18,7 @@ export class DistinctUntilKeyChangedComponent implements OnInit {
 
         const source = of({age: 4, name: 'Foo'}, {age: 7, name: 'Bar'}, {age: 5, name: 'Foo'}, {age: 6, name: 'Foo'});
         const result = source.pipe(distinctUntilKeyChanged('name'));
-       // result.subscribe(res => console.log('Result : ', res));
+        // result.subscribe(res => console.log('Result : ', res));
         /*
         exemple 2
                 const source = of({age: 4, name: 'Foo1'}, {age: 7, name: 'Bar'}, {age: 5, name: 'Foo2'}, {age: 6, name: 'Foo3'});

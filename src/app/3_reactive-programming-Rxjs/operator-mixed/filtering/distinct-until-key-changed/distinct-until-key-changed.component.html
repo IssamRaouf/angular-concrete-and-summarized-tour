@@ -2,26 +2,12 @@
 <p>Renvoie un observable qui émet tous les éléments émis par l'observateur source qui sont distincts par comparaison de
     l'élément précédent,
     à l'aide d'une propriété accessible à l'aide de la clé fournie pour vérifier si les deux éléments sont
-    distincts.</p>
+    distincts.<br><br>
+
+    <strong>Chemin du component :
+        src/app/3_reactive-programming-Rxjs/operator-mixed/filtering/distinct-until-key-changed</strong>
+
+</p>
 
 <h3>Exemple code</h3>
-
-<div class="row">
-    <div class="col">
-        <p>
-            <code>
-                {{"const source = of({age: 4, name: 'Foo'}, {age: 7, name: 'Bar'}, {age: 5, name: 'Foo'}, {age: 6, name: 'Foo'});"}}
-                <br>
-                {{"const result = source.pipe(distinctUntilKeyChanged('name'));"}}<br>
-                {{"result.subscribe(res => console.log('Result : ', res));"}}<br>
-
-            </code>
-        </p>
-    </div>
-    <mat-divider [vertical]="true"></mat-divider>
-    <div class="col">
-        Result :  {{"{age: 4, name: 'Foo'}"}}<br>
-        Result :  {{"{age: 7, name: 'Bar'}"}}<br>
-        Result :  {{"{age: 5, name: 'Foo'}"}}<br>
-    </div>
-</div>
+<div [innerHTML]="demos.demoDistinctUntilKeyChanged|language:'javascript'|markdown"></div>

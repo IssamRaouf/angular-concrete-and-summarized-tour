@@ -1,24 +1,11 @@
 <h1>Sample</h1>
-<p>Émet la dernière valeur émise par la source Observable à chaque fois qu'un autre Observable, le notifiant, émet</p>
+<p>Émet la dernière valeur émise par la source Observable à chaque fois qu'un autre Observable, le notifiant, émet<br><br>
+
+    <strong>Chemin du component :
+        src/app/3_reactive-programming-Rxjs/operator-mixed/filtering/sample</strong>
+
+</p>
 
 <h3>Exemple code</h3>
+<div [innerHTML]="demos.demoSample|language:'javascript'|markdown"></div>
 
-<div class="row">
-    <div class="col">
-        <p>
-            <code>
-
-                {{"const source = interval(1000).pipe(take(10));"}}<br>
-                {{"const result = source.pipe(sample(interval(2000)));"}}<br>
-                {{"result.subscribe(res => console.log('Result :', res));"}}<br>
-            </code>
-        </p>
-    </div>
-    <mat-divider [vertical]="true"></mat-divider>
-    <div class="col">
-        Result : 1<br>
-        Result : 3<br>
-        Result : 5<br>
-        Result : 7<br>
-    </div>
-</div>

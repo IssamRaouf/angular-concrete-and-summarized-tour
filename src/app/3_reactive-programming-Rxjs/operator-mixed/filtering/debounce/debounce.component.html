@@ -1,22 +1,10 @@
 <h1>Debounce</h1>
 <p>
     N'émet une valeur de la source Observable qu'après un laps de temps déterminé par un autre observable,
-    sans émission d'une autre source.
+    sans émission d'une autre source..<br><br>
+    <strong>Chemin du component : src/app/3_reactive-programming-Rxjs/operator-mixed/filtering/debounce</strong>
 </p>
 
 <h3>Exemple code</h3>
-<div class="row">
-    <div class="col">
-        <p>
-            <code>
-                {{"const source = of('HELLO', 'WORLD', 'GOODBYE', 'WORLD');"}}<br>
-                {{"const result = source.pipe(debounce(() => timer(1000)));"}}<br>
-                {{"result.subscribe(res => console.log('RESULT :', res));"}}<br>
-            </code>
-        </p>
-    </div>
-    <mat-divider [vertical]="true"></mat-divider>
-    <div class="col">
-        Result (enlever le commentaire et voir résultat sur la console)
-    </div>
-</div>
+<div [innerHTML]="demos.demoDebounce|language:'javascript'|markdown"></div>
+

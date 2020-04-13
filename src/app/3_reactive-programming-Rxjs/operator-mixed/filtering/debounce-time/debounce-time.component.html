@@ -1,22 +1,10 @@
 <h1>DebounceTime</h1>
 <p>
-    Émet une valeur de la source Observable uniquement après une période donnée sans autre émission source.
+    Émet une valeur de la source Observable uniquement après une période donnée sans autre émission source.<br><br>
+    <strong>Chemin du component : src/app/3_reactive-programming-Rxjs/operator-mixed/filtering/debounce-time</strong>
+
 </p>
 
 <h3>Exemple code</h3>
-<div class="row">
-    <div class="col">
-        <p>
-            <code>
-                {{"const source = interval(1000).pipe(map(val => `Time : ${val + 1} second`), take(10));"}}<br>
-                {{" const result = source.pipe(debounceTime(2000));"}}<br>
-                {{"result.subscribe(res => console.log('Result: ', res));"}}<br>
+<div [innerHTML]="demos.demoDebounceTime|language:'javascript'|markdown"></div>
 
-            </code>
-        </p>
-    </div>
-    <mat-divider [vertical]="true"></mat-divider>
-    <div class="col">
-        Result (enlever le commentaire et voir résultat sur la console)
-    </div>
-</div>

@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {of, concat} from 'rxjs';
+import {Demos} from '../../../demos';
 
 @Component({
     selector: 'app-concat',
@@ -7,6 +8,7 @@ import {of, concat} from 'rxjs';
     styleUrls: ['./concat.component.scss']
 })
 export class ConcatComponent implements OnInit {
+    public readonly demos = Demos;
 
     constructor() {
     }

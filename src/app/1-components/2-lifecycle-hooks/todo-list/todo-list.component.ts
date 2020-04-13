@@ -70,7 +70,7 @@ export class TodoListComponent implements OnInit, OnChanges, DoCheck, AfterConte
      */
     private setListDetailsHooks(name: string, details: object = {}): void {
         this.counter++;
-        const obj = {num: this.counter, name: name};
+        const obj = {num: this.counter, name};
 
         if (Object.keys(details).length > 0) {
             obj['details'] = details;

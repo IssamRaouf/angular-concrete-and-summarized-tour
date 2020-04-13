@@ -1,0 +1,51 @@
+```html
+
+<div class="container-todo-list">
+    <!-- BEGIN DETAILS HOOKS -->
+    <div class="hooks-details" *ngIf="listDetailsHooks.length > 0">
+        <h2>DETAILS HOOKS</h2>
+        <button (click)="clear()" mat-raised-button>Réinitialiser la list</button>
+        <p *ngFor="let hook of listDetailsHooks">
+            - N° {{hook.num}} , hook name :{{hook.name}}
+
+            <!-- BEGIN DETAILS HOOKS for obj ng Onchanges  -->
+            <ng-container *ngIf="hook.details" class="marginLeft">
+                <br><strong class="marginLeft">Details:</strong><br>
+                <div *ngFor="let item of hook.details|keyvalue">
+                    <div class="marginLeft">
+                        - <strong>{{item.key |uppercase}}</strong>
+                        <div *ngFor="let subItem of item.value | keyvalue" class="marginLeft">
+                            * <strong>{{ subItem.key }}</strong> : {{ subItem.value| json}}
+                            <div *ngIf="isArray(subItem.value)"><strong>* length : {{ subItem.value.length }}</strong>
+                            </div>
+                        </div>
+                    </div>
+                    <br><br>
+                </div>
+            </ng-container>
+            <!-- END DETAILS HOOKS for obj ng Onchanges  -->
+
+        </p>
+    </div>
+    <!-- END DETAILS HOOKS -->
+    <div class="row">
+
+
+        <ng-template *ngIf="ticketList.length == 0; else ticketsShow;">
+            <div class="alert alert-info"> aucune Ticket n'existe, pouvez-vous l'ajouter !</div>
+        </ng-template>
+
+        <ng-template #ticketsShow>
+            <div class="col-lg-4" *ngFor="let ticket of ticketList">
+                <app-ticket [ticket]="ticket"></app-ticket>
+            </div>
+
+        </ng-template>
+
+    </div>
+
+
+</div>
+
+
+```

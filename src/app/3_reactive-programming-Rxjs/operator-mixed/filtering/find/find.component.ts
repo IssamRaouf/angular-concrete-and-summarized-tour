@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {of} from 'rxjs';
 import {filter, find} from 'rxjs/operators';
+import {Demos} from '../../../demos';
 
 @Component({
   selector: 'app-find',
@@ -8,7 +9,7 @@ import {filter, find} from 'rxjs/operators';
   styleUrls: ['./find.component.scss']
 })
 export class FindComponent implements OnInit {
-
+  public demos = Demos;
   constructor() { }
 
   ngOnInit() {

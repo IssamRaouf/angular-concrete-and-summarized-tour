@@ -1,189 +1,166 @@
-
 <p class="p-3">
     <strong>Description :</strong><br><br>
-    Ces opérateurs permettent la création d'un observable à partir de presque tout. <br>
-    Des génériques aux cas d'utilisation spécifiques, vous êtes libre et encouragé de tout transformer en flux.<br>
+    Ces opérateurs permettent la création d'un observable à partir de presque tout,des génériques aux cas d'utilisation
+    spécifiques, vous êtes libre et encouragé de tout transformer en flux.<br><br>
+    <strong>Chemin du components : src/app/3_reactive-programming-Rxjs/creation</strong>
 </p>
-<mat-list role="list">
 
-    <mat-list-item role="listitem" class="text-center">
-        <div class="col-2"><p><strong>Opérateur</strong></p></div>
-        <div class="col-4"><p><strong>Implementation</strong></p></div>
-        <div class="col-4">
-            <p><strong>Subscribre</strong></p>
-        </div>
-        <div class="col-2">
-            <p><strong>Result</strong></p>
-        </div>
-    </mat-list-item>
+<div class="container pb-4">
+    <mat-accordion>
 
-    <mat-divider></mat-divider>
+        <!--BEGIN New Observable-->
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <h4>Opérateur : new Observable</h4>
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-divider></mat-divider>
 
-    <mat-list-item role="listitem">
-        <div class="col-2">
-            <p>new Observable</p>
-        </div>
-        <div class="col-4"><p>
-            <code>
-                {{"const obsCreate = new Observable((observer) => {
-                observer.next('Hello');
-                observer.next('from');
-                observer.next('Observable creation');
-                observer.complete();
-                });"}}
-            </code>
-            <p></div>
-        <div class="col-4">
-            <p><code>
-                {{" obsCreate.subscribe((res) => {
-                this.observableCreateResult += ` ${res}`;
-                });"}}
-            </code></p>
-        </div>
-        <div class="col-2">
-            <p>{{observableCreateResult}} </p>
-        </div>
-    </mat-list-item>
-    <mat-divider></mat-divider>
-
-    <mat-list-item role="listitem">
-        <div class="col-2"><p>of</p></div>
-        <div class="col-4"><p><code>
-            {{"  const observableOf = of('Hello form obervable of');"}}
-        </code></p></div>
-        <div class="col-4">
-            <p><code>
-                {{"
-                observableOf.subscribe((res) => {
-                    this.observableOfResult = res;
-                });
-                "}}
-            </code></p>
-        </div>
-        <div class="col-2">
-            <p>{{observableOfResult}} </p>
-        </div>
-    </mat-list-item>
-    <mat-divider></mat-divider>
+            <div class="row">
+                <div class="col-7">
+                    <div [innerHTML]="demos.demoNewObs | language : 'javascript'  | markdown"></div>
+                </div>
+                <div class="col-4">
+                    <h4>Result</h4>
+                    <p>{{observableCreateResult}} </p>
+                </div>
+            </div>
+        </mat-expansion-panel>
+        <!--END New Observable-->
 
 
-    <mat-list-item role="listitem">
-        <div class="col-2"><p>from</p></div>
-        <div class="col-4"><p><code>
-            {{"const observableFrom = from(['Symfony and', 'Angular', 'these', 'are', 'my', 'loves']);"}}</code></p>
-        </div>
-        <div class="col-4">
-            <p>
-                <code>
-                    {{"
-                    observableFrom.subscribe(res => {
-                        this.observableFromResult += ` ${res}`;
-                    });
-                    "}}
-                </code>
-            </p>
-        </div>
-        <div class="col-2">
-            <p>{{observableFromResult}} </p>
-        </div>
-    </mat-list-item>
-    <mat-divider></mat-divider>
+        <!--BEGIN of-->
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <h4>Opérateur : of</h4>
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-divider></mat-divider>
 
+            <div class="row">
+                <div class="col-7">
+                    <div [innerHTML]="demos.demoOf | language : 'javascript'  | markdown"></div>
+                </div>
+                <div class="col-4">
+                    <h4>Result</h4>
+                    <p>{{observableOfResult}} </p>
+                </div>
+            </div>
+        </mat-expansion-panel>
+        <!--END of-->
 
+        <!--BEGIN from-->
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <h4>Opérateur : from</h4>
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-divider></mat-divider>
 
-    <mat-list-item role="listitem">
-        <div class="col-2"><p>fromEvent</p></div>
-        <div class="col-4"><p>
-            <code>
-                {{"
-                const obsFromEvent = fromEvent(document, 'click');
-                "}}
-            </code><br><br>
-        </p></div>
-        <div class="col-4">
-            <p><code>
-                {{"
-                obsFromEvent.subscribe((isClicked) => {
-                    this.observableFromEventResult = 'Yes';
-                });
-                "}}
-            </code> </p>
-        </div>
+            <div class="row">
+                <div class="col-7">
+                    <div [innerHTML]="demos.demoFrom | language : 'javascript'  | markdown"></div>
+                </div>
+                <div class="col-4">
+                    <h4>Result</h4>
+                    <p>{{observableFromResult}} </p>
+                </div>
+            </div>
+        </mat-expansion-panel>
+        <!--END from-->
 
-        <div class="col-2">
-            <button #btnFromEvent> cliquer et voir result</button>
-            <p>{{observableFromEventResult}} </p>
-        </div>
-    </mat-list-item>
-    <mat-divider></mat-divider>
+        <!--BEGIN fromEvent-->
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <h4>Opérateur : fromEvent</h4>
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-divider></mat-divider>
 
-    <mat-list-item role="listitem">
-        <div class="col-2"><p>interval</p></div>
-        <div class="col-4"><p>
-            <code>
-                {{" const obsInterval = interval(2000);"}}
-            </code>
-        </p></div>
+            <div class="row">
+                <div class="col-7">
+                    <div [innerHTML]="demos.demoFromEvent | language : 'javascript'  | markdown"></div>
+                </div>
+                <div class="col-4">
+                    <button #btnFromEvent> cliquer et voir result</button>
+                    <h4>Result</h4>
+                    <p>{{observableFromEventResult}} </p>
+                </div>
+            </div>
+        </mat-expansion-panel>
+        <!--END fromEvent-->
 
+        <!--BEGIN Interval-->
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <h4>Opérateur : Interval</h4>
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-divider></mat-divider>
 
+            <div class="row">
+                <div class="col-7">
+                    <div [innerHTML]="demos.demoInterval | language : 'javascript'  | markdown"></div>
+                </div>
+                <div class="col-4">
+                    <button mat-raised-button (click)="startInterval()"> start interval</button>
+                    <h4>Result</h4>
+                    <p>{{observableIntervalResult}} </p>
+                </div>
+            </div>
+        </mat-expansion-panel>
+        <!--END Interval-->
 
-        <div class="col-4"><p>
-            <code>
-                {{"
-                obsInterval.subscribe((res) => {
-                    this.observableIntervalResult = res;
-                });
-                "}}
-            </code>
-        </p></div>
-        <div class="col-2">
-            <p>{{observableIntervalResult}} </p>
-        </div>
-    </mat-list-item>
-    <mat-divider></mat-divider>
+        <!--BEGIN timer-->
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <h4>Opérateur : timer</h4>
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-divider></mat-divider>
 
-    <mat-list-item role="listitem">
-        <div class="col-2"><p>timer</p></div>
-        <div class="col-4"><p>
-            <code>
-                {{"  const obsTimer = timer(1000, 5000);"}}
-            </code>
-        </p></div>
+            <div class="row">
+                <div class="col-7">
 
-        <div class="col-4"><p>
-            <code>
-                {{"
-                obsTimer.subscribe(res => this.observableTimerResult += res);
-                "}}
-            </code>
-        </p></div>
-        <div class="col-2">
-            <p>{{observableTimerResult}} </p>
-        </div>
-    </mat-list-item>
-    <mat-divider></mat-divider>
+                    <div [innerHTML]="demos.demoTimer | language : 'javascript'  | markdown"></div>
+                </div>
+                <div class="col-4">
+                    <button mat-raised-button (click)="startTimer()"> start timer</button>
+                    <h4>Result</h4>
+                    <p>{{observableTimerResult}} </p>
+                </div>
+            </div>
+        </mat-expansion-panel>
+        <!--END timer-->
 
-    <mat-list-item role="listitem">
-        <div class="col-2"><p>
-            range
-        </p></div>
-        <div class="col-4"><p>
-            <code>
-                {{"  const obsRange = range(11, 33);"}}
-            </code>
-        </p></div>
+        <!--BEGIN range-->
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <h4>Opérateur : range</h4>
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-divider></mat-divider>
 
-        <div class="col-4"><p>
-            <code>
-                {{"
-                obsRange.subscribe(res => this.observableRangeResult = res);
-                "}}
-            </code>
-        </p></div>
-        <div class="col-2">
-            <p>{{observableRangeResult}} </p>
-        </div>
-    </mat-list-item>
+            <div class="row">
+                <div class="col-7">
 
+                    <div [innerHTML]="demos.demoRange | language : 'javascript'  | markdown"></div>
+                </div>
+                <div class="col-4">
+                    <button mat-raised-button (click)="startRange()"> start range</button>
+                    <h4>Result</h4>
+                    <p>{{observableRangeResult}} </p>
+                </div>
+            </div>
+        </mat-expansion-panel>
+        <!--END range-->
+    </mat-accordion>
+</div>
 
-</mat-list>

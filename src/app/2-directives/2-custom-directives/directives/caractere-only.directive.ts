@@ -10,14 +10,14 @@ export class CaractereOnlyDirective {
     /**
      * Autoriser caractere
      */
-    private regex: RegExp = new RegExp(/^[A-Za-z]+$/);
+    private regex: RegExp = new RegExp(/^[a-zA-Z\s]+$/);
 
     constructor(public el: ElementRef) {
     }
 
     /**
      * on recevoir l'event pour chaque keydown
-     * on va verfier s'il ne pas caractere on'empêche la saisie de caractere
+     * on va vérifier s'il ne pas caractere spécial , si le cas on va empêcher la saisie..
      */
     @HostListener('keydown', ['$event'])
     public onKeyDown(event: KeyboardEvent): void {

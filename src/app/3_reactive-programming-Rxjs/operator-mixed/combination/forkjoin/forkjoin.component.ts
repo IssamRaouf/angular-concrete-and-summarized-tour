@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {forkJoin, of} from 'rxjs';
+import {Demos} from '../../../demos';
 
 @Component({
     selector: 'app-forkjoin',
@@ -7,13 +8,14 @@ import {forkJoin, of} from 'rxjs';
     styleUrls: ['./forkjoin.component.scss']
 })
 export class ForkjoinComponent implements OnInit {
+    public demos = Demos;
 
     constructor() {
     }
 
     ngOnInit() {
-        const obser1 = of('Issam', 'Raouf', 'Hello');
-        const obser2 = of('99', '1000', '2000');
+        const obser1 = of('Hello');
+        const obser2 = of('2017', '2008', '2004');
         const obser3 = of({name: 'issam raouf', job: 'Lead developer'},
             {name: 'khalil boukhari', job: 'full stack developer'},
             {name: 'Fouzi ben tounssi', job: 'Architect technique'});

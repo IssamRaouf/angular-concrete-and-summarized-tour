@@ -11,6 +11,13 @@
   .mat-drawer-container {
     height: 100vh;
   }
+  .mat-expansion-panel-spacing {
+    margin: 0 !important;
+  }
+  .mat-expansion-panel {
+    border-radius: 0;
+  }
+
   .icon-menu {
     margin-right: 10px;
   }
