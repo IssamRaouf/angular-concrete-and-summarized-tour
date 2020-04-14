@@ -11,8 +11,8 @@ import {
     retry, sample,
     share, skipUntil, skipWhile,
     switchMap,
-    take,
-    tap
+    take, takeLast, takeUntil, takeWhile,
+    tap, throttle
 } from 'rxjs/operators';
 
 export class Demos {
@@ -282,21 +282,23 @@ data => console.log(data)
      */
     public static readonly demoMerge = `
     // Implementation
-    const interval1 = interval(1000).pipe(
-                                     take(3),
-                                     map(val => 'interval First' +val)
-     const interval2 = interval(2000).pipe(
-                                     take(3),
-                                     map(val => 'interval tow' +val)
-                                     );                                     );
-                                     );
-     const interval3 = interval(3000).pipe(
-                                     take(3),
-                                     map(val => 'interval three' +val)
-                                     );      
-     merge(interval1, interval2, interval3).subscribe(
-            result => console.log('merge result is ', result)
-     );
+         const interval1 = interval(1000).pipe(
+                    take(3),
+                        map(val => 'interval First' + val) const interval2 = interval(2000).
+                            pipe(
+                                take(3),
+                                map(val => 'interval tow' + val)
+                            );
+                        );
+                    );
+        const interval3 = interval(3000)
+                             .pipe(
+                                take(3),
+                                map(val => 'interval three' + val)
+                            );
+        merge(interval1, interval2, interval3).subscribe(
+                result => console.log('merge result is ', result)
+        );
     //  Results
       interval First 0
       interval First 1
@@ -773,7 +775,9 @@ data => console.log(data)
             Result : 8
             Result : 9
            `;
-
+    /**
+     * skipWhile
+     */
     public static readonly demoSkipWhile = `
     // Implementation
                 const source = interval(1000).pipe(take(10));
@@ -781,6 +785,97 @@ data => console.log(data)
                 result.subscribe(res => console.log('Result : ', res));
      //  Results
             Result : 8
+            Result : 9
+           `;
+    /**
+     * take
+     */
+    public static readonly demoTake = `
+    // Implementation
+         const source = interval(1000).pipe(take(2));
+         source.subscribe(res => console.log('Result :', res));
+     //  Results
+            Result : 0
+            Result : 1
+           `;
+    /**
+     * takeLast
+     */
+    public static readonly demoTakeLast = `
+    // Implementation
+
+       const source = of('Issam', 'Soufiane', 'Raouf', 'Ramouda');
+       const result = source.pipe(takeLast(2));
+       result.subscribe(res => console.log('Result : ', res));
+
+     //  Results
+            Result : Raouf
+            Result : Ramouda
+           `;
+    /**
+     * takeUntil
+     */
+    public static readonly demoTakeUntil = `
+    // Implementation
+
+          const source = interval(1000).pipe(takeUntil(timer(5000)));
+          source.subscribe(res => console.log('Result : ', res));
+
+     //  Results
+            Result : 0
+            Result : 1
+            Result : 2
+            Result : 3
+            Result : 4
+           `;
+    /**
+     * TakeWhile
+     */
+    public static readonly demoTakeWhile = `
+
+     // Implementation
+         const source = of(1, 2, 3, 4, 5, 6);
+         const result = source.pipe(takeWhile(val => val < 5));
+         result.subscribe(res => console.log('Result', res));
+
+     //  Results
+            Result : 1
+            Result : 2
+            Result : 3
+            Result : 4
+           `;
+    /**
+     * Throttle
+     */
+    public static readonly demoThrottle = `
+
+     // Implementation
+         const source = interval(1000).pipe(take(10));
+         const result = source.pipe(throttle((val) => interval(2000)));
+         result.subscribe(res => console.log('Result :', res));
+
+     //  Results
+            Result : 0
+            Result : 1
+            Result : 3
+            Result : 6
+            Result : 9
+           `;
+
+    /**
+     * ThrottleTime
+     */
+    public static readonly demoThrottleTime = `
+
+     // Implementation
+          const source = interval(1000).pipe(take(10));
+          const result = source.pipe(throttleTime(2000));
+          result.subscribe(res => console.log('Result :', res));
+     //  Results
+            Result : 0
+            Result : 1
+            Result : 3
+            Result : 6
             Result : 9
            `;
 
