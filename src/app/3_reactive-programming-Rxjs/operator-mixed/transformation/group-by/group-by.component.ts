@@ -26,15 +26,13 @@ export class GroupByComponent implements OnInit {
             groupBy(person => person.age, person => person.fullName),
             mergeMap(group => {
                 return zip(
-                    of(group.key),
-                    group.pipe(toArray())).pipe(
-                    map(([keyIn, values]) => {
-                        return {key: keyIn, values};
-                    })
+                    of(group.key), group.pipe(toArray())
+                ).pipe(
+                    map(([age, users]) => ({age, users}))
                 );
             })
         );
-       // result.subscribe(res => console.log('Result ', res));
+      //  result.subscribe(res => console.log('Result ', res));
     }
 
 }

@@ -6,13 +6,13 @@ import {
     defaultIfEmpty,
     distinctUntilChanged, filter, find, first, last,
     map,
-    mapTo,
-    publish,
-    retry, sample,
+    mapTo, mergeMap,
+    publish, reduce,
+    retry, sample, scan,
     share, skipUntil, skipWhile,
     switchMap,
     take, takeLast, takeUntil, takeWhile,
-    tap, throttle
+    tap, throttle, toArray
 } from 'rxjs/operators';
 
 export class Demos {
@@ -629,8 +629,8 @@ data => console.log(data)
         source.subscribe(result => console.log('Result : ', result));
 
     //  Results
-              Result:   {{"{id: 12, note: 20}"}}
-               Result:   {{"{id: 13, note: 33}"}}
+              Result:   {id: 12, note: 20}"}}
+               Result:   {id: 13, note: 33}"}}
            `;
     /**
      * DistinctUntilChanged
@@ -649,10 +649,10 @@ data => console.log(data)
     result.subscribe(result => console.log('Result : ', result));
 
     //  Results
-                Result :  {{"{id: 13, note: 20, name: 'Issam'}"}}
-                Result :  {{"{id: 13, note: 20, name: 'Soufiane'}"}}
-                Result :  {{"{id: 13, note: 20, name: 'Issam'}"}}
-                Result :  {{"{id: 13, note: 20, name: 'Raouf'}"}}
+                Result :  {id: 13, note: 20, name: 'Issam'}"}}
+                Result :  {id: 13, note: 20, name: 'Soufiane'}"}}
+                Result :  {id: 13, note: 20, name: 'Issam'}"}}
+                Result :  {id: 13, note: 20, name: 'Raouf'}"}}
            `;
 
     /**
@@ -671,16 +671,16 @@ data => console.log(data)
                        (namePerv: string, nameCurr: string) => namePerv.substring(0, 3) === nameCurr.substring(0, 3)));
                         result.subscribe(res => console.log('Result : ', res));
              // OUTPUT
-                Result :  {{"{age: 4, name: 'Foo1'}"}}
-                Result :  {{"{age: 7, name: 'Bar'}"}}
-                Result :  {{"{age: 5, name: 'Foo2'}"}}
+                Result :  {age: 4, name: 'Foo1'}"}}
+                Result :  {age: 7, name: 'Bar'}"}}
+                Result :  {age: 5, name: 'Foo2'}"}}
 
              */
     //  Results
 
-        Result :  {{"{age: 4, name: 'Foo'}"}}
-        Result :  {{"{age: 7, name: 'Bar'}"}}
-        Result :  {{"{age: 5, name: 'Foo'}"}}
+        Result :  {age: 4, name: 'Foo'}"}}
+        Result :  {age: 7, name: 'Bar'}"}}
+        Result :  {age: 5, name: 'Foo'}"}}
            `;
 
     /**
@@ -877,6 +877,225 @@ data => console.log(data)
             Result : 3
             Result : 6
             Result : 9
+           `;
+
+    /**
+     * Buffer
+     */
+    public static readonly demoBuffer = `
+     // Implementation
+        const fermetureNotifier = fromEvent(document, 'click');
+        const source = interval(1000);
+        const result = source.pipe(buffer(fermetureNotifier));
+        result.subscribe(res => console.log('Result :', res));
+     //  Results
+            Result :  [0, 1]
+            Result :  [2, 3, 4]
+            Result :  [5, 6, 7, 8]
+           `;
+    /**
+     * bufferCount
+     */
+    public static readonly demoBufferCount = `
+     // Implementation
+        const source = interval(1000).pipe(take(10));
+        const result = source.pipe(bufferCount(2));
+        result.subscribe(res => console.log('Result : ', res));
+     //  Results
+            Result :  [0, 1]
+            Result :  [2, 3]
+            Result :  [4, 5]
+            Result :  [6, 7]
+            Result :  [8, 9]
+           `;
+    /**
+     * concatMap
+     */
+    public static readonly demoConcatMap = `
+     // Implementation
+       const source = of(2000, 4000, 6000);
+        const result = source.pipe(concatMap(val => of('Delay of :' + val).pipe(delay(val))));
+        result.subscribe(res => console.log('Result', res));
+     //  Results
+        Result : Delay of : 2000 ms
+        Result : Delay of : 4000 ms
+        Result : Delay of : 6000 ms
+           `;
+    /**
+     * gourpBy
+     */
+    public static readonly demoGroupBy = `
+     // Implementation
+          const persons = [
+            {fullName: 'Issam Raouf', age: 26},
+            {fullName: 'Soufiane Ramouda', age: 26},
+            {fullName: 'Fouzi ben tounssi', age: 33},
+            {fullName: 'khalil khalil', age: 33},
+            {fullName: 'Mohamed Mohamed', age: 47}
+        ];
+
+        const source = from(persons);
+        const result = source.pipe(
+            groupBy(person => person.age, person => person.fullName),
+            mergeMap(group => {
+                return zip(
+                    of(group.key), group.pipe(toArray())
+                ).pipe(
+                    map(([age, users]) => ({age, users}))
+                );
+            })
+        );
+       result.subscribe(res => console.log('Result ', res));
+     //  Results
+        Result : {age:26 , users:['Issam Raouf', 'Soufiane Ramouda']}
+        Result : {age:33 , users:['Fouzi ben tounssi', 'khalil khalil']}
+        Result : {age:47 , users:['Mohamed Mohamed']}
+           `;
+    /**
+     * Map
+     */
+    public static readonly demoMap = `
+     // Implementation
+        const source = of(1, 2, 3, 4);
+        const result = source.pipe(map(val => val * 10));
+        result.subscribe(res => console.log('Result ', res));
+     //  Results
+        Result  : 10
+        Result  : 20
+        Result  : 30
+        Result  : 40
+           `;
+    /**
+     * Map
+     */
+    public static readonly demoMapTo = `
+     // Implementation
+        const source = fromEvent(document, 'click');
+        const result = source.pipe(mapTo('click In'));
+        result.subscribe(res => console.log('Result ', res));
+     //  Results
+        chaque clique
+        Result  : click In
+           `;
+    /**
+     * MergeMap
+     */
+    public static readonly demoMergeMap = `
+     // Implementation
+        const sourceOne = of('Symfony', 'Angular', 'Drupal8', 'Reactjs');
+        const sourceTow = of('Issam Raouf', 'Soufiane Ramouda', 'Fouzi ben tounsi', 'Khalil khalil');
+        const result = sourceOne.pipe(mergeMap(tech =>
+        sourceTow.pipe(
+            map(name => ({tech, name}))
+            )
+        ));
+        result.subscribe(res => console.log('Result :', res));
+     //  Results
+        Result : {tech: 'Symfony', name: 'Issam Raouf'}
+        Result : {tech: 'Symfony', name: 'Soufiane Ramouda'}
+        Result : {tech: 'Symfony', name: 'Fouzi ben tounsi'}
+        Result : {tech: 'Symfony', name: 'Khalil khalil'}
+        Result : {tech: 'Angular', name: 'Issam Raouf'}
+        Result : {tech: 'Angular', name: 'Soufiane Ramouda'}
+        Result : {tech: 'Angular', name: 'Fouzi ben tounsi'}
+        Result : {tech: 'Angular', name: 'Khalil khalil'}
+        Result : {tech: 'Drupal8', name: 'Issam Raouf'}
+        Result : {tech: 'Drupal8', name: 'Soufiane Ramouda'}
+        Result : {tech: 'Drupal8', name: 'Fouzi ben tounsi'}
+        Result : {tech: 'Drupal8', name: 'Khalil khalil'}
+        Result : {tech: 'Reactjs', name: 'Issam Raouf'}
+        Result : {tech: 'Reactjs', name: 'Soufiane Ramouda'}
+        Result : {tech: 'Reactjs', name: 'Fouzi ben tounsi'}
+        Result : {tech: 'Reactjs', name: 'Khalil khalil'}
+           `;
+    /**
+     * Partition
+     */
+    public static readonly demoPartition = `
+     // Implementation
+           const source = of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+           const [even, odd] = source.pipe(partition(val => val % 2 === 0));
+           const result = merge(even.pipe(map(val => val+ ' est even)), odd.pipe(map(val => val+ ' est odd')));
+           result.subscribe(res => console.log('Result :', res));
+     //  Results
+         Result : 2 is even
+         Result : 4 is even
+         Result : 6 is even
+         Result : 8 is even
+         Result : 10 is even
+         Result : 1 is odd
+         Result : 3 is odd
+         Result : 5 is odd
+         Result : 7 is odd
+         Result : 9 is odd
+           `;
+    /**
+     * pluck
+     */
+    public static readonly demoPulck = `
+     // Implementation
+        const source = from([
+            {name: 'issam raouf', age: 26}, {name: 'Ramouda Soufiane', age: 28},
+            {name: 'Fouzi ben tounssi', age: 36}, {name: 'Khalil khalil', age: 22}
+        ]);
+        const result = source.pipe(pluck('name'));
+        result.subscribe(res => console.log('Result ', res));
+     //  Results
+            Result issam raouf
+            Result Ramouda Soufiane
+            Result Fouzi ben tounssi
+            Result Khalil khalil
+           `;
+    /**
+     * Reduce
+     */
+    public static readonly demoReduce = `
+     // Implementation
+        const source = of(3, 7, 9);
+        const result = source.pipe(reduce((accu, curVal) => accu + curVal, 0));
+        result.subscribe(res => console.log('Result :', res));
+     //  Results
+             Result : 19
+           `;
+
+    /**
+     * Scan
+     */
+    public static readonly demoScan = `
+     // Implementation
+        const source = of(3, 7, 9);
+        const result = source.pipe(scan((accu, curVal) => accu + curVal, 0));
+        result.subscribe(res => console.log('Result :', res));
+     //  Results
+            Result : 3
+            Result : 10
+            Result : 19
+           `;
+
+    /**
+     * SwitchMap
+     */
+    public static readonly demoSwitchMap = `
+     // Implementation
+       const source = of(26, 44, 66);
+       const result = source.pipe(switchMap(age => of({age})));
+       result.subscribe(res => console.log('Result :', res));
+     //  Results
+            Result : age: 26}
+            Result : age: 44}
+            Result : age: 66}
+           `;
+
+    /**
+     * SwitchMap
+     */
+    public static readonly demoToArray = `
+     // Implementation
+    const source = of(2, 4, 6, 8, 10);
+    const result = source.pipe(toArray());
+    result.subscribe(res => console.log('Result :', res));
+     //  Results
+         Result : [2, 4, 6, 8, 10]
            `;
 
 
