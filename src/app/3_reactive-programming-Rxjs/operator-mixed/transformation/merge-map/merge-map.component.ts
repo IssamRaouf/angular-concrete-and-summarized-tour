@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {of} from 'rxjs';
 import {map, mergeMap} from 'rxjs/operators';
+import {Demos} from '../../../demos';
 
 @Component({
     selector: 'app-merge-map',
@@ -8,6 +9,7 @@ import {map, mergeMap} from 'rxjs/operators';
     styleUrls: ['./merge-map.component.scss']
 })
 export class MergeMapComponent implements OnInit {
+    public demos = Demos;
 
     constructor() {
     }
@@ -19,7 +21,7 @@ export class MergeMapComponent implements OnInit {
             map(name => ({tech, name}))
             )
         ));
-       // result.subscribe(res => console.log('Result :', res));
+        // result.subscribe(res => console.log('Result :', res));
     }
 
 }

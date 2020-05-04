@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {of} from 'rxjs';
 import {concatMap, delay} from 'rxjs/operators';
+import {Demos} from '../../../demos';
 
 @Component({
     selector: 'app-concat-map',
@@ -8,6 +9,7 @@ import {concatMap, delay} from 'rxjs/operators';
     styleUrls: ['./concat-map.component.scss']
 })
 export class ConcatMapComponent implements OnInit {
+    public demos = Demos;
 
     constructor() {
     }

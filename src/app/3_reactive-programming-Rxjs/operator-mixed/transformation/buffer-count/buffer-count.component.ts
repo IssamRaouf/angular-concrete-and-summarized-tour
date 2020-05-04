@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {interval} from 'rxjs';
 import {bufferCount, take} from 'rxjs/operators';
+import {Demos} from '../../../demos';
 
 @Component({
     selector: 'app-buffer-count',
@@ -8,6 +9,7 @@ import {bufferCount, take} from 'rxjs/operators';
     styleUrls: ['./buffer-count.component.scss']
 })
 export class BufferCountComponent implements OnInit {
+    public demos = Demos;
 
     constructor() {
     }

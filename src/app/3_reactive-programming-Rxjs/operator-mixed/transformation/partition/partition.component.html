@@ -1,36 +1,12 @@
 <h1>Partition</h1>
 <p>
-    Divise la source Observable en deux, une avec des valeurs satisfaisant un prédicat et une autre avec des valeurs ne satisfaisant pas le prédicat.
+    Divise la source Observable en deux, une avec des valeurs satisfaisant un prédicat et une autre avec des valeurs ne
+    satisfaisant pas le prédicat.
+    <strong>Chemin du component :
+        src/app/3_reactive-programming-Rxjs/operator-mixed/transformation/partition</strong>
 </p>
-
 <h3>Exemple code</h3>
-<div class="row">
-    <div class="col">
-        <p>
-
-            <code>
-                {{"const source = of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);"}}<br>
-                {{"const [even, odd] = source.pipe(partition(val => val % 2 === 0));"}}<br>
-                {{"const result = merge(even.pipe(map(val => `${val} is even`)), odd.pipe(map(val => `${val} is odd`)));"}}<br>
-                {{"result.subscribe(res => console.log('Result :', res));"}}<br>
-            </code>
-        </p>
-    </div>
-    <mat-divider [vertical]="true"></mat-divider>
-    <div class="col">
-        Result : 2 is even<br>
-        Result : 4 is even<br>
-        Result : 6 is even<br>
-        Result : 8 is even<br>
-        Result : 10 is even<br>
-        Result : 1 is odd<br>
-        Result : 3 is odd<br>
-        Result : 5 is odd<br>
-        Result : 7 is odd<br>
-        Result : 9 is odd<br>
-    </div>
-</div>
-
+<div [innerHTML]="demos.demoPartition |language:'javascript' |markdown"></div>
 
 
 

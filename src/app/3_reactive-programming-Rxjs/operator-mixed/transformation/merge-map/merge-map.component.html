@@ -1,45 +1,8 @@
 <h1>MergeMap</h1>
 <p>
     Renvoie chaque valeur source à un observable qui est fusionné dans la sortie observable.
+    <strong>Chemin du component :
+        src/app/3_reactive-programming-Rxjs/operator-mixed/transformation/merge-map</strong>
 </p>
-
 <h3>Exemple code</h3>
-<div class="row">
-    <div class="col">
-        <p>
-
-            <code>
-                {{" const sourceOne = of('Symfony', 'Angular', 'Drupal8', 'Reactjs');"}}<br>
-                {{" const sourceTow = of('Issam Raouf', 'Soufiane Ramouda', 'Fouzi ben tounsi', 'Khalil khalil');"}}<br>
-                {{" const result = sourceOne.pipe(mergeMap(tech => sourceTow.pipe("}}<br>
-                {{"  map(name => ({tech, name}))"}}<br>
-                {{"  )"}}<br>
-                {{"  ));"}}<br>
-                {{"  result.subscribe(res => console.log('Result :', res));"}}<br>
-            </code>
-        </p>
-    </div>
-    <mat-divider [vertical]="true"></mat-divider>
-    <div class="col">
-        {{"Result : {tech: 'Symfony', name: 'Issam Raouf'}"}}<br>
-        {{"Result : {tech: 'Symfony', name: 'Soufiane Ramouda'}"}}<br>
-        {{" Result : {tech: 'Symfony', name: 'Fouzi ben tounsi'}"}}<br>
-        {{"Result : {tech: 'Symfony', name: 'Khalil khalil'}"}}<br>
-        {{"Result : {tech: 'Angular', name: 'Issam Raouf'}"}}<br>
-        {{"Result : {tech: 'Angular', name: 'Soufiane Ramouda'}"}}<br>
-        {{"Result : {tech: 'Angular', name: 'Fouzi ben tounsi'}"}}<br>
-        {{"Result : {tech: 'Angular', name: 'Khalil khalil'}"}}<br>
-        {{"Result : {tech: 'Drupal8', name: 'Issam Raouf'}"}}<br>
-        {{"Result : {tech: 'Drupal8', name: 'Soufiane Ramouda'}"}}<br>
-        {{"Result : {tech: 'Drupal8', name: 'Fouzi ben tounsi'}"}}<br>
-        {{"Result : {tech: 'Drupal8', name: 'Khalil khalil'}"}}<br>
-        {{"Result : {tech: 'Reactjs', name: 'Issam Raouf'}"}}<br>
-        {{"Result : {tech: 'Reactjs', name: 'Soufiane Ramouda'}"}}<br>
-        {{"Result : {tech: 'Reactjs', name: 'Fouzi ben tounsi'}"}}<br>
-        {{"Result : {tech: 'Reactjs', name: 'Khalil khalil'}"}}<br>
-    </div>
-</div>
-
-
-
-
+<div [innerHTML]="demos.demoMergeMap |language:'javascript' |markdown"></div>

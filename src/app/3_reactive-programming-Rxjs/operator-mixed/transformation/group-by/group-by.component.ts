@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {from, of, zip} from 'rxjs';
 import {groupBy, map, mergeMap, toArray} from 'rxjs/operators';
+import {Demos} from '../../../demos';
 
 @Component({
     selector: 'app-group-by',
@@ -8,7 +9,7 @@ import {groupBy, map, mergeMap, toArray} from 'rxjs/operators';
     styleUrls: ['./group-by.component.scss']
 })
 export class GroupByComponent implements OnInit {
-
+    public demos = Demos;
     constructor() {
     }
 

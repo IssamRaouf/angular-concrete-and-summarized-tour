@@ -909,6 +909,19 @@ data => console.log(data)
             Result :  [8, 9]
            `;
     /**
+     * bufferTime
+     */
+    public static readonly demoBufferTime = `
+     // Implementation
+        const source = interval(500).pipe(take(10));
+        const result = source.pipe(bufferTime(2000));
+        result.subscribe(res => console.log('Result : ', res));
+     //  Results
+            Result :  [0, 1, 2]
+            Result :  [3, 4, 5, 6]
+            Result :  [7, 8, 9]
+           `;
+    /**
      * concatMap
      */
     public static readonly demoConcatMap = `

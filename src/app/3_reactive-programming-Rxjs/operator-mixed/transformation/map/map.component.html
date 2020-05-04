@@ -1,29 +1,9 @@
 <h1>Map</h1>
 <p>
-    Applique une fonction de projet donnée à chaque valeur émise par l'observable source et émet les valeurs résultantes sous la forme d'un observable.
+    Applique une fonction de projeté donnée à chaque valeur émise par l'observable source et émet les valeurs résultantes
+    sous la forme d'un observable.
+    <strong>Chemin du component :
+        src/app/3_reactive-programming-Rxjs/operator-mixed/transformation/map</strong>
 </p>
-
 <h3>Exemple code</h3>
-<div class="row">
-    <div class="col">
-        <p>
-
-            <code>
-                {{" const source = of(1, 2, 3, 4);"}}<br>
-                {{" const result = source.pipe(map(val => val * 10));"}}<br>
-                {{"result.subscribe(res => console.log('Result ', res));"}}<br>
-            </code>
-        </p>
-    </div>
-    <mat-divider [vertical]="true"></mat-divider>
-    <div class="col">
-        Result  : 10<br>
-        Result  : 20<br>
-        Result  : 30<br>
-        Result  : 40<br>
-    </div>
-</div>
-
-
-
-
+<div [innerHTML]="demos.demoMap |language:'javascript' |markdown"></div>

@@ -2,25 +2,11 @@
 <p>
     Projette chaque valeur source sur un observable qui est fusionnée dans la sortie Observable,
     en émettant des valeurs uniquement à partir du dernier observable projeté.
+    <strong>Chemin du component : src/app/3_reactive-programming-Rxjs/operator-mixed/transformation/switch-map</strong>
 </p>
 <h3>Exemple code</h3>
-<div class="row">
-    <div class="col">
-        <p>
-            <code>
-                {{"const source = of(26, 44, 66);"}}<br>
-                {{"const result = source.pipe(switchMap(age => of({age)));"}}<br>
-                {{"result.subscribe(res => console.log('Result :', res));"}}<br>
-            </code>
-        </p>
-    </div>
-    <mat-divider [vertical]="true"></mat-divider>
-    <div class="col">
-        Result : {{"{age: 26}"}}<br>
-        Result : {{"{age: 44}"}}<br>
-        Result : {{"{age: 66}"}}<br>
-    </div>
-</div>
+<div [innerHTML]="demos.demoSwitchMap |language:'javascript' |markdown"></div>
+
 
 
 

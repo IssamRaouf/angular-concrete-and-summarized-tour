@@ -1,29 +1,10 @@
 <h1>BufferCount</h1>
 <p>
-    Met en mémoire tampon les valeurs observables source jusqu'à ce que la taille atteigne la valeur bufferSize maximale donnée.
+    Met en mémoire tampon les valeurs observables source jusqu'à ce que la taille atteigne la valeur bufferSize maximale
+    donnée.
+    <strong>Chemin du component :
+        src/app/3_reactive-programming-Rxjs/operator-mixed/transformation/buffer-count</strong>
 </p>
-
 <h3>Exemple code</h3>
-<div class="row">
-    <div class="col">
-        <p>
-
-            <code>
-                {{"const source = interval(1000).pipe(take(10));"}}<br>
-                {{"const result = source.pipe(bufferCount(2));"}}<br>
-                {{"result.subscribe(res => console.log('Result : ', res));"}}<br>
-
-            </code>
-        </p>
-    </div>
-    <mat-divider [vertical]="true"></mat-divider>
-    <div class="col">
-        Result :  [0, 1]<br>
-        Result :  [2, 3]<br>
-        Result :  [4, 5]<br>
-        Result :  [6, 7]<br>
-        Result :  [8, 9]<br>
-    </div>
-</div>
-
+<div [innerHTML]="demos.demoBufferCount |language:'javascript' |markdown"></div>
 

@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {of} from 'rxjs';
 import {reduce} from 'rxjs/operators';
+import {Demos} from '../../../demos';
 
 @Component({
     selector: 'app-reduce',
@@ -8,7 +9,7 @@ import {reduce} from 'rxjs/operators';
     styleUrls: ['./reduce.component.scss']
 })
 export class ReduceComponent implements OnInit {
-
+    public demos= Demos;
     constructor() {
     }
 

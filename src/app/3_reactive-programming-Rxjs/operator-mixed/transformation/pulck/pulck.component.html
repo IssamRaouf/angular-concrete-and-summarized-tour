@@ -1,32 +1,8 @@
 <h1>Pulck</h1>
 <p>
     Mappe chaque valeur source (un objet) à sa propriété imbriquée spécifiée.
+    <strong>Chemin du component :
+        src/app/3_reactive-programming-Rxjs/operator-mixed/transformation/pulck</strong>
 </p>
-
 <h3>Exemple code</h3>
-<div class="row">
-    <div class="col">
-        <p>
-
-            <code>
-                {{"const source = from(["}}<br>
-                {{"{name: 'issam raouf', age: 26}, {name: 'Ramouda Soufiane', age: 28},"}}<br>
-                {{"{name: 'Fouzi ben tounssi', age: 36}, {name: 'Khalil khalil', age: 22}"}}<br>
-                {{"]);"}}<br>
-                {{"const result = source.pipe(pluck('name'));"}}<br>
-                {{"result.subscribe(res => console.log('Result ', res));"}}<br>
-            </code>
-        </p>
-    </div>
-    <mat-divider [vertical]="true"></mat-divider>
-    <div class="col">
-        Result issam raouf<br>
-        Result Ramouda Soufiane<br>
-        Result Fouzi ben tounssi<br>
-        Result Khalil khalil<br>
-    </div>
-</div>
-
-
-
-
+<div [innerHTML]="demos.demoPulck |language:'javascript' |markdown"></div>
