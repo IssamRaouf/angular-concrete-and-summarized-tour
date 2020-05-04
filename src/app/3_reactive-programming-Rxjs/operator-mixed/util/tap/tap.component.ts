@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {of} from 'rxjs';
 import {map, tap} from 'rxjs/operators';
+import {Demos} from '../../../demos';
 
 @Component({
     selector: 'app-tap',
@@ -8,6 +9,7 @@ import {map, tap} from 'rxjs/operators';
     styleUrls: ['./tap.component.scss']
 })
 export class TapComponent implements OnInit {
+    public demos = Demos;
 
     constructor() {
     }
@@ -19,7 +21,7 @@ export class TapComponent implements OnInit {
             map(val => val * 10),
             tap(val => console.log(`Element after map ${val}`))
         );
-      //  result.subscribe(res => console.log('Result', res));
+        //  result.subscribe(res => console.log('Result', res));
     }
 
 }

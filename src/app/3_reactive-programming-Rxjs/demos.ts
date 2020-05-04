@@ -1,13 +1,13 @@
-import {ConnectableObservable, from, fromEvent, interval, of, throwError, timer} from 'rxjs';
+import {ConnectableObservable, from, fromEvent, interval, merge, of, throwError, timer} from 'rxjs';
 import {
     audit,
     catchError,
     debounce,
-    defaultIfEmpty,
-    distinctUntilChanged, filter, find, first, last,
+    defaultIfEmpty, delay, delayWhen,
+    distinctUntilChanged, filter, finalize, find, first, last,
     map,
     mapTo, mergeMap,
-    publish, reduce,
+    publish, reduce, repeat,
     retry, sample, scan,
     share, skipUntil, skipWhile,
     switchMap,
@@ -26,7 +26,7 @@ export class Demos {
              observer.next(' from');
              observer.next(' Observable creation');
              observer.complete();
-        }); 
+        });
     // Subscribre
         obsCreate.subscribe((res) => {
          this.observableCreateResult += res;
@@ -114,29 +114,29 @@ export class Demos {
      */
 
     public static readonly demoWithoutPipe = `
-// Implementation
-  const result =  of(1,2,3,4,5)
-                    .map(value => value *2 )
-                    .filter(value => value > 4)
-// Subscribre
-result.subscribe(
-    data => console.log(data)
-); // 6 , 8 , 10 
+        // Implementation
+          const result =  of(1,2,3,4,5)
+                            .map(value => value *2 )
+                            .filter(value => value > 4)
+        // Subscribre
+        result.subscribe(
+            data => console.log(data)
+        ); // 6 , 8 , 10
     `;
     /**
      * with pipe
      */
 
     public static readonly demoWithPipe = `
-// Implementation
- const result =  of(1,2,3,4,5).pipe(
-         map(value => value *2 ),
-         filter(value => value > 4)
-);
-// Subscribre
-result.subscribe(
-data => console.log(data)
-); // 6 , 8 , 10
+        // Implementation
+         const result =  of(1,2,3,4,5).pipe(
+                 map(value => value *2 ),
+                 filter(value => value > 4)
+        );
+        // Subscribre
+        result.subscribe(
+        data => console.log(data)
+        ); // 6 , 8 , 10
 `;
 
     /**
@@ -148,13 +148,12 @@ data => console.log(data)
     combineLatest(observable1,observable2).subscribe(
         result => console.log(result)
     );
-    
+
     // Results
-    
-    //    seconde 0 => [1,11]
-    //    seconde 1 => [8,11]
-    //    secondes 3 => [8,13]
-    //    secondes 6 => [8,18]  (Résultat final aprés les deux 'observable' ont fini (observables émettent complete func)`;
+        seconde 0 => [1,11]
+        seconde 1 => [8,11]
+        secondes 3 => [8,13]
+        secondes 6 => [8,18]  (Résultat final aprés les deux 'observable' ont fini (observables émettent complete func)`;
     /**
      * combineLatest
      */
@@ -166,7 +165,7 @@ data => console.log(data)
                                  map(res => 'Observable One Val: ' + res})
                                  );
      const Observable2 = timer(1000, 3000).pipe(
-                                take(5), 
+                                take(5),
                                 map(res => 'Observable Tow Val: ' +res})
                                 );
     combineLatest(Observable1, Observable2).subscribe(
@@ -179,9 +178,7 @@ data => console.log(data)
         ["Observable One Val: 2", "Observable Tow Val: 1"]
         ["Observable One Val: 2", "Observable Tow Val: 2"]
         ["Observable One Val: 2", "Observable Tow Val: 3"]
-        ["Observable One Val: 2", "Observable Tow Val: 4"] Résultat final aprés les deux 'observable' 
-                                                           ont fini  (observables émettent complete func)
-    `;
+        ["Observable One Val: 2", "Observable Tow Val: 4"] Résultat final aprés les deux 'observable' ont fini  (observables émettent complete func)`;
 
     /**
      * concat blabla
@@ -193,13 +190,13 @@ data => console.log(data)
         );
       //  Results
        1
-       2 
-       3 
+       2
+       3
        8
-       13 
-       19 
-       33 
-       44 
+       13
+       19
+       33
+       44
        99`;
 
     /**
@@ -215,13 +212,13 @@ data => console.log(data)
         );
        //  Results
        11
-       22 
-       Issam 
-       33 
-       77 
+       22
+       Issam
+       33
+       77
        Raouf
-       99 
-       88 
+       99
+       88
        Issam Raouf(Résultat final aprés le 'obser3' a fini)`;
 
 
@@ -249,8 +246,8 @@ data => console.log(data)
         ).subscribe( res => console.log('res startWith', res));
         );
        //  Results
-       Hello 
-       Issam 
+       Hello
+       Issam
        Raouf `;
 
     /**
@@ -260,9 +257,9 @@ data => console.log(data)
      // Implementation
         observable1.pipe(endWidth(999));
        //  Results
-       1 
-       2 
-       3 
+       1
+       2
+       3
        999;`;
 
     /**
@@ -435,7 +432,7 @@ data => console.log(data)
                                             .pipe(
                                                  sequenceEqual(observ)
                                              )
-                              ) 
+                              )
                         ).subscribe(res => console.log('Result : ', res));
 
     //  Results
@@ -1100,7 +1097,7 @@ data => console.log(data)
            `;
 
     /**
-     * SwitchMap
+     * toArray
      */
     public static readonly demoToArray = `
      // Implementation
@@ -1109,6 +1106,97 @@ data => console.log(data)
     result.subscribe(res => console.log('Result :', res));
      //  Results
          Result : [2, 4, 6, 8, 10]
+           `;
+    /**
+     * delay
+     */
+    public static readonly demoDelay = `
+     // Implementation
+    const source = of(1);
+    const result = merge(
+        source.pipe(mapTo('Hello'), delay(100)),
+        source.pipe(mapTo(' World'), delay(200)),
+        source.pipe(mapTo(' Goodbye'), delay(300)),
+        source.pipe(mapTo(' World'), delay(400)),
+    );
+    result.subscribe(res => console.log('Result', res));
+     //  Results
+            Result : Hello
+            Result : World
+            Result : Goodbye
+            Result : World
+           `;
+    /**
+     * delayWhen
+     */
+    public static readonly demoDelayWhen = `
+     // Implementation
+        const source = interval(1000).pipe(take(5));
+        const result = source.pipe(delayWhen(() => timer(5000)));
+        result.subscribe(val => console.log(val));
+     //  Results
+            Result : 0
+            Result : 1
+            Result : 2
+            Result : 3
+            Result : 4
+           `;
+    /**
+     * Finalize
+     */
+    public static readonly demoFinalize = `
+     // Implementation
+          const source = interval(1000);
+          const result = source.pipe(take(5),
+            finalize(() => console.log('Sequence complete'))
+          );
+         result.subscribe(res => console.log('Result', res));
+     //  Results
+        Result : 0
+        Result : 1
+        Result : 2
+        Result : 3
+        Result : 4
+        Sequence complete
+           `;
+    /**
+     * Repeat
+     */
+    public static readonly demoRepeat = `
+     // Implementation
+           const source = of('Issam', 'Raouf');
+           const result = source.pipe(repeat(2));
+          result.subscribe(res => console.log('Result :', res));
+     //  Results
+         Result : Issam
+         Result : Raouf
+         Result : Issam
+         Result : Raouf
+           `;
+    /**
+     * Tap
+     */
+    public static readonly demoTap = `
+     // Implementation
+        const source = of(1, 2, 3);
+        const result = source.pipe(
+            tap(val => console.log(\`Element before map ${val}\`)),
+            map(val => val * 10),
+            tap(val => console.log(\`Element after map ${val}\`))
+        );
+         result.subscribe(res => console.log('Result', res));
+     //  Results
+        Element before map 1
+        Result : 10
+        Element after map 10
+
+        Element before map 2
+        Result : 20
+        Element after map 20
+
+        Element before map 3
+        Result : 30
+        Element after map 30
            `;
 
 

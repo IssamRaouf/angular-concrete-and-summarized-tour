@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {merge, of} from 'rxjs';
 import {delay, mapTo} from 'rxjs/operators';
+import {Demos} from '../../../demos';
 
 @Component({
     selector: 'app-delay',
@@ -8,6 +9,7 @@ import {delay, mapTo} from 'rxjs/operators';
     styleUrls: ['./delay.component.scss']
 })
 export class DelayComponent implements OnInit {
+    public demos = Demos;
 
     constructor() {
     }
@@ -20,7 +22,7 @@ export class DelayComponent implements OnInit {
             source.pipe(mapTo(' Goodbye'), delay(300)),
             source.pipe(mapTo(' World'), delay(400)),
         );
-  //      result.subscribe(res => console.log('Result', res));
+        //      result.subscribe(res => console.log('Result', res));
 
 
     }
