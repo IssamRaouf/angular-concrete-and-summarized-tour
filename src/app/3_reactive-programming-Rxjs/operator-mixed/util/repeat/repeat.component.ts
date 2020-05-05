@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {of} from 'rxjs';
 import {repeat} from 'rxjs/operators';
+import {Demos} from '../../../demos';
 
 @Component({
     selector: 'app-repeat',
@@ -8,7 +9,7 @@ import {repeat} from 'rxjs/operators';
     styleUrls: ['./repeat.component.scss']
 })
 export class RepeatComponent implements OnInit {
-
+    public demos = Demos;
     constructor() {
     }
 

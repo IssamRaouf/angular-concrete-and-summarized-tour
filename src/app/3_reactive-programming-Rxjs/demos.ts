@@ -1180,9 +1180,9 @@ export class Demos {
      // Implementation
         const source = of(1, 2, 3);
         const result = source.pipe(
-            tap(val => console.log(\`Element before map ${val}\`)),
+            tap(val => console.log('Element before map '+val)),
             map(val => val * 10),
-            tap(val => console.log(\`Element after map ${val}\`))
+            tap(val => console.log('Element after map '+val))
         );
          result.subscribe(res => console.log('Result', res));
      //  Results
