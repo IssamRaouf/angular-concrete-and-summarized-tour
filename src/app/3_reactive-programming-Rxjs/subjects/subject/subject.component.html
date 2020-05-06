@@ -1,30 +1,11 @@
 <h1>Subject</h1>
 <p>
     Un Subject est un type spécial d'Observable qui permet de multidiffuser des valeurs à de nombreux observateurs. Les
-    Subjects sont comme EventEmitters.
+    Subjects sont comme EventEmitters.<br><br>
+    <strong>Chemin du component : src/app/3_reactive-programming-Rxjs/operator-mixed/subjects/subject</strong>
 </p>
 <h3>Exemple code</h3>
-<div class="row">
-    <div class="col">
-        <p>
-            <code>
-                {{"const sub = new Subject();"}}<br>
-                {{"sub.next(1);"}}<br>
-                {{"sub.subscribe(res => console.log('Result sub 1;', res));"}}<br>
-                {{"sub.next(2);"}}<br>
-                {{"sub.subscribe(res => console.log('Result sub 2:', res));"}}<br>
-                {{"sub.next(3);"}}<br>
-            </code>
-        </p>
-    </div>
-    <mat-divider [vertical]="true"></mat-divider>
-    <div class="col">
-        Result sub 1: 2<br>
-        Result sub 1: 3<br>
-        Result sub 2: 3<br>
-    </div>
-</div>
-
+<div [innerHTML]="demos.demoSubject | language: 'javascript' |markdown"></div>
 
 
 

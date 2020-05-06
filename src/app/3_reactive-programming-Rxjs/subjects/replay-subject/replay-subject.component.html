@@ -1,44 +1,13 @@
-
 <h1>ReplaySubject</h1>
 <p>
     Une variante de Subject qui "rejoue" ou émet d'anciennes valeurs à de nouveaux abonnés.
-    Il met en mémoire tampon un nombre défini de valeurs et émettra ces valeurs immédiatement à tous les nouveaux abonnés
-    en plus d'émettre de nouvelles valeurs aux abonnés existants.
-
+    Il met en mémoire tampon un nombre défini de valeurs et émettra ces valeurs immédiatement à tous les nouveaux
+    abonnés
+    en plus d'émettre de nouvelles valeurs aux abonnés existants.<br><br>
+    <strong>Chemin du component : src/app/3_reactive-programming-Rxjs/operator-mixed/subjects/replay-subject</strong>
 </p>
 <h3>Exemple code</h3>
-<div class="row">
-    <div class="col">
-        <p>
-            <code>
-                {{"const source = new ReplaySubject();"}}<br>
-                {{"source.next(1000);"}}<br>
-                {{"source.next(2000);"}}<br>
-                {{"source.subscribe(res => console.log('Result Subs 1:', res));"}}<br>
-                {{"source.next(4000);"}}<br>
-                {{"source.subscribe(res => console.log('Result Subs 2:', res));"}}<br>
-                {{"source.next(8000);"}}<br>
-                {{"source.subscribe(res => console.log('Result Subs 3:', res));"}}<br>
-            </code>
-        </p>
-    </div>
-    <mat-divider [vertical]="true"></mat-divider>
-    <div class="col">
-         Result Subs 1: 1000<br>
-         Result Subs 1: 2000<br>
-         Result Subs 1: 4000<br>
-         Result Subs 2: 1000<br>
-         Result Subs 2: 2000<br>
-         Result Subs 2: 4000<br>
-         Result Subs 1: 8000<br>
-         Result Subs 2: 8000<br>
-         Result Subs 3: 1000<br>
-         Result Subs 3: 2000<br>
-         Result Subs 3: 4000<br>
-         Result Subs 3: 8000<br>
-    </div>
-</div>
-
+<div [innerHTML]="demos.demoReplaySubject | language: 'javascript' |markdown"></div>
 
 
 

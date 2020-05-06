@@ -1,30 +1,9 @@
 <h1>BehaviorSubject</h1>
 <p>
-    Une variante de Subject qui nécessite une valeur initiale et émet sa valeur actuelle chaque fois qu'il est abonné.
+    Une variante de Subject qui nécessite une valeur initiale et émet sa valeur actuelle chaque fois qu'il est abonné.<br><br>
+    <strong>Chemin du component : src/app/3_reactive-programming-Rxjs/operator-mixed/subjects/behavior-subject</strong>
 </p>
-
 <h3>Exemple code</h3>
-<div class="row">
-    <div class="col">
-        <p>
-            <code>
-                {{"const source = new BehaviorSubject(123);"}}<br>
-                {{"source.subscribe(res => console.log('Result subs 1:', res));"}}<br>
-                {{"source.subscribe(res => console.log('Result subs 2:', res));"}}<br>
-                {{"source.next(333);"}}<br>
-                {{"source.complete();"}}<br>
-            </code>
-        </p>
-    </div>
-    <mat-divider [vertical]="true"></mat-divider>
-    <div class="col">
-        Result subs 1: 123<br>
-        Result subs 2: 123<br>
-        Result subs 1: 333<br>
-        Result subs 2: 333<br>
-    </div>
-</div>
-
-
+<div [innerHTML]="demos.demoBehaviorSubject | language: 'javascript' |markdown"></div>
 
 

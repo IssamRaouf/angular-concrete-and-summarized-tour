@@ -1,4 +1,4 @@
-import {ConnectableObservable, from, fromEvent, interval, merge, of, throwError, timer} from 'rxjs';
+import {ConnectableObservable, from, fromEvent, interval, merge, of, ReplaySubject, Subject, throwError, timer} from 'rxjs';
 import {
     audit,
     catchError,
@@ -1198,6 +1198,82 @@ export class Demos {
         Result : 30
         Element after map 30
            `;
+    /**
+     * AsyncSubject
+     */
+    public static readonly demoAsyncSubject = `
+     // Implementation
+          const source = new AsyncSubject();
+          source.subscribe(res => console.log('Result subs 1', res));
+          source.next(333);
+          source.subscribe(res => console.log('Result subs 2', res));
+          source.next(444);
+          source.complete();
+     //  Results
+            Result subs 1 : 444
+            Result subs 2 : 444
+           `;
 
+    /**
+     * BehaviorSubject
+     */
+    public static readonly demoBehaviorSubject = `
+     // Implementation
+         const source = new BehaviorSubject(123);
+         source.subscribe(res => console.log('Result subs 1:', res));
+         source.subscribe(res => console.log('Result subs 2:', res));
+         source.next(333);
+     //  Results
+            Result subs 1: 123
+            Result subs 2: 123
+            Result subs 1: 333
+            Result subs 2: 333
+           `;
+    /**
+     * ReplaySubject
+     */
+    public static readonly demoReplaySubject = `
+     // Implementation
+            const source = new ReplaySubject();
+            source.next(1000);
+            source.next(2000);
+            source.subscribe(res => console.log('Result Subs 1:', res));
+            source.next(4000);
+            source.subscribe(res => console.log('Result Subs 2:', res));
+            source.next(8000);
+            source.subscribe(res => console.log('Result Subs 3:', res));
+     //  Results
+            Result Subs 1: 1000
+            Result Subs 1: 2000
+            Result Subs 1: 4000
+
+            Result Subs 2: 1000
+            Result Subs 2: 2000
+            Result Subs 2: 4000
+
+            Result Subs 1: 8000
+            Result Subs 2: 8000
+
+            Result Subs 3: 1000
+            Result Subs 3: 2000
+            Result Subs 3: 4000
+            Result Subs 3: 8000
+           `;
+    /**
+     * Subject
+     */
+    public static readonly demoSubject = `
+     // Implementation
+         const sub = new Subject();
+         sub.next(1);
+         sub.subscribe(res => console.log('Result sub 1;', res));
+         sub.next(2);
+         sub.subscribe(res => console.log('Result sub 2:', res));
+         sub.next(3);
+     //  Results
+            Result sub 1: 2
+            Result sub 1: 3
+            Result sub 2: 3
+           `;
 
 }
