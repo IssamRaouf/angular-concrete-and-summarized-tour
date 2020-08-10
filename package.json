@@ -1,6 +1,6 @@
 {
-  "name": "angular-revision",
-  "version": "0.0.0",
+  "name": "angular-concrete-and-summarized-tour",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

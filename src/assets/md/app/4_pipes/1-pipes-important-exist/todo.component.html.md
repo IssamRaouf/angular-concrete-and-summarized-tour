@@ -1,0 +1,304 @@
+```html
+
+<div class="container container-todo">
+    <h1>Pipe integré</h1>
+    <div class="row p-1">
+
+        <mat-card class="col-3 m-auto">
+            <mat-card-header>
+                <mat-card-title>Title case</mat-card-title>
+                <mat-card-subtitle>Transforme le texte en casse de titre. Met en majuscule la première lettre de chaque
+                    mot.
+                </mat-card-subtitle>
+            </mat-card-header>
+            <mat-divider></mat-divider>
+            <mat-card-content>
+                <mat-list role="list">
+                    <mat-list-item role="listitem">
+                        <strong>{{titleCase}}</strong>
+                    </mat-list-item>
+                    <mat-list-item role="listitem">
+                        <strong>Result:</strong>&nbsp;&nbsp; {{'issam raouf' | titlecase}}</mat-list-item>
+                </mat-list>
+            </mat-card-content>
+        </mat-card>
+
+        <mat-card class="col-3 m-auto">
+            <mat-card-header>
+                <mat-card-title>Upper case</mat-card-title>
+                <mat-card-subtitle>Transforme le texte en majuscule.</mat-card-subtitle>
+            </mat-card-header>
+            <mat-divider></mat-divider>
+            <mat-card-content>
+                <mat-list role="list">
+                    <mat-list-item role="listitem">
+                        <strong>{{upperCase}}</strong>
+                    </mat-list-item>
+                    <mat-list-item role="listitem">
+                        <strong>Result:</strong>&nbsp;&nbsp; {{'issam raouf' | uppercase}}</mat-list-item>
+                </mat-list>
+            </mat-card-content>
+        </mat-card>
+
+        <mat-card class="col-3 m-auto">
+            <mat-card-header>
+                <mat-card-title>Lower case</mat-card-title>
+                <mat-card-subtitle>Transforme le texte en minuscules.</mat-card-subtitle>
+            </mat-card-header>
+            <mat-divider></mat-divider>
+            <mat-card-content>
+                <mat-list role="list">
+                    <mat-list-item role="listitem">
+                        <strong>{{lowerCase}}</strong>
+                    </mat-list-item>
+                    <mat-list-item role="listitem">
+                        <strong>Result:</strong>&nbsp;&nbsp; {{'ISSAM RAOUF' | lowercase}}</mat-list-item>
+                </mat-list>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <div class="row p-1">
+
+        <mat-card class="col-3 m-auto">
+            <mat-card-header>
+                <mat-card-title>I18nSelectPipe</mat-card-title>
+                <mat-card-subtitle>Sélecteur générique qui affiche la chaîne qui correspond à la valeur actuelle.<br>
+                    <strong>inviteMap:</strong>{{"{male: 'Invite-le.', female: 'Invite-la.', other: 'Invite-les.'}"}}
+                </mat-card-subtitle>
+            </mat-card-header>
+            <mat-divider></mat-divider>
+            <mat-card-content>
+                <mat-list role="list">
+                    <mat-list-item role="listitem">
+                        <strong>{{i18NSelect}}</strong>
+                    </mat-list-item>
+                    <mat-list-item role="listitem">
+                        <strong>Result:</strong>&nbsp;&nbsp; {{'other' | i18nSelect:inviteMap}}</mat-list-item>
+                </mat-list>
+            </mat-card-content>
+        </mat-card>
+        <mat-card class="col-3 m-auto">
+            <mat-card-header>
+                <mat-card-title>I18nPluralPipe</mat-card-title>
+                <mat-card-subtitle>Mappe une valeur à une chaîne qui pluralise la valeur selon les règles locales.
+                </mat-card-subtitle>
+            </mat-card-header>
+            <mat-divider></mat-divider>
+            <mat-card-content>
+                <mat-list role="list">
+                    <mat-list-item role="listitem">
+                        <strong>{{i18NPlural}}</strong>
+                    </mat-list-item>
+                    <mat-list-item role="listitem">
+                        <strong>Result:</strong>&nbsp; {{ 2 | i18nPlural: messageMapping }}</mat-list-item>
+                </mat-list>
+            </mat-card-content>
+        </mat-card>
+
+        <mat-card class="col-3 m-auto">
+            <mat-card-header>
+                <mat-card-title>Json</mat-card-title>
+                <mat-card-subtitle>inverse une valeur dans sa représentation au format JSON. Utile pour le débogage.
+                </mat-card-subtitle>
+            </mat-card-header>
+            <mat-divider></mat-divider>
+            <mat-card-content>
+                <mat-list role="list">
+                    <mat-list-item role="listitem">
+                        <strong>{{json}}</strong>
+                    </mat-list-item>
+                    <mat-list-item role="listitem">
+                        <strong>Result:</strong>{{inviteMap | json}}</mat-list-item>
+                </mat-list>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <div class="row p-1">
+
+        <mat-card class="col-3 m-auto">
+            <mat-card-header>
+                <mat-card-title>number</mat-card-title>
+                <mat-card-subtitle>transforme un nombre en une chaîne, formatée selon les règles de paramètres régionaux
+                    qui déterminent la taille et le séparateur du groupe.<br>
+                    <strong>numberFt = 8.718281828459045</strong>
+                </mat-card-subtitle>
+            </mat-card-header>
+            <mat-divider></mat-divider>
+            <mat-card-content>
+                <mat-list role="list">
+                    <mat-list-item role="listitem">
+                        <strong>{{decimalPipe}}</strong>
+                    </mat-list-item>
+                    <mat-list-item role="listitem">
+                        <strong>Result:</strong>&nbsp;&nbsp; {{numberFt | number:'1.1-6'}}</mat-list-item>
+                </mat-list>
+            </mat-card-content>
+        </mat-card>
+        <mat-card class="col-3 m-auto">
+            <mat-card-header>
+                <mat-card-title>Currency</mat-card-title>
+                <mat-card-subtitle>transforme un nombre en une chaîne, formatée selon les règles de paramètres régionaux
+                    qui déterminent la taille type currency.. et le séparateur du groupe.<br>
+                    <strong>numberFt = 8.718281828459045</strong>
+                </mat-card-subtitle>
+            </mat-card-header>
+            <mat-divider></mat-divider>
+            <mat-card-content>
+                <mat-list role="list">
+                    <mat-list-item role="listitem">
+                        <strong>{{currencyPipe}}</strong>
+                    </mat-list-item>
+                    <mat-list-item role="listitem">
+                        <strong>Result:</strong>&nbsp;&nbsp; {{numberFt | currency:'EUR'}}</mat-list-item>
+                </mat-list>
+            </mat-card-content>
+        </mat-card>
+
+        <mat-card class="col-3 m-auto">
+            <mat-card-header>
+                <mat-card-title>Percent</mat-card-title>
+                <mat-card-subtitle>transforme un nombre en une chaîne, formatée selon les règles de paramètres régionaux
+                    qui déterminent la taille et le séparateur du groupe.<br>
+                    <strong>aPer = 0.759;</strong>
+                </mat-card-subtitle>
+            </mat-card-header>
+            <mat-divider></mat-divider>
+            <mat-card-content>
+                <mat-list role="list">
+                    <mat-list-item role="listitem">
+                        <strong>{{percentPipe}}</strong>
+                    </mat-list-item>
+                    <mat-list-item role="listitem">
+                        <strong>Result:</strong>&nbsp;&nbsp; {{aPer | percent}}</mat-list-item>
+                </mat-list>
+            </mat-card-content>
+        </mat-card>
+
+    </div>
+    <div class="row p-1">
+        <mat-card class="col-3 m-auto card-lg">
+            <mat-card-header>
+                <mat-card-title>Async</mat-card-title>
+                <mat-card-subtitle>Décompresse une valeur d'une primitive asynchrone.</mat-card-subtitle>
+            </mat-card-header>
+            <mat-divider></mat-divider>
+            <mat-card-content>
+                <mat-list role="list">
+                    <mat-list-item role="listitem">
+                        <strong>{{AsyncPipeObserv}}</strong>
+                    </mat-list-item>
+                    <mat-list-item role="listitem">
+                        <strong>Result:</strong>&nbsp;&nbsp; {{sourceObserv| async}}
+                    </mat-list-item>
+                    <mat-list-item role="listitem">
+                        <strong>{{AsyncPipePromisse}}</strong>
+                    </mat-list-item>
+                    <mat-list-item role="listitem">
+                        <strong>Result:</strong>&nbsp;&nbsp; {{sourcePromi| async}}
+                    </mat-list-item>
+                </mat-list>
+            </mat-card-content>
+        </mat-card>
+
+        <mat-card class="col-3 m-auto card-lg">
+            <mat-card-header>
+                <mat-card-title>keyvalue</mat-card-title>
+                <mat-card-subtitle>Transforme l'objet ou Map en un tableau de paires de valeurs clés.
+                </mat-card-subtitle>
+            </mat-card-header>
+            <mat-divider></mat-divider>
+            <mat-card-content>
+                <mat-list role="list">
+                    <mat-list-item role="listitem">
+                        <strong>{{keyValuePipeObj}}</strong>
+                    </mat-list-item>
+                    <mat-list-item role="listitem">
+                        <strong>Result:</strong>&nbsp;&nbsp;<br>
+                        <div *ngFor="let item of obj | keyvalue">
+                            {{item.key}}:{{item.value}}
+                        </div>
+                        <br>
+                    </mat-list-item>
+                    <mat-list-item role="listitem">
+                        <strong>{{keyValuePipeMap}}</strong>
+                    </mat-list-item>
+                    <mat-list-item role="listitem">
+                        <strong>Result:</strong>&nbsp;&nbsp; <br>
+                        <div *ngFor="let item of map | keyvalue">
+                            {{item.key}}:{{item.value}}
+                        </div>
+                        <br>
+                    </mat-list-item>
+                </mat-list>
+            </mat-card-content>
+        </mat-card>
+
+        <mat-card class="col-3 m-auto card-lg">
+            <mat-card-header>
+                <mat-card-title>slice</mat-card-title>
+                <mat-card-subtitle>Crée un nouveau tableau ou chaîne contenant un sous-ensemble (tranche) des
+                    éléments.
+                </mat-card-subtitle>
+            </mat-card-header>
+            <mat-divider></mat-divider>
+            <mat-card-content>
+                <mat-list role="list">
+                    <mat-list-item role="listitem">
+                        <strong>{{slicePipe}}</strong>
+                    </mat-list-item>
+                    <mat-list-item role="listitem" *ngFor="let item of collection | slice:0:3">
+                        <strong>Result:</strong>&nbsp;&nbsp;{{item}}
+
+                    </mat-list-item>
+                </mat-list>
+            </mat-card-content>
+        </mat-card>
+
+    </div>
+
+    <div class="row p-1">
+
+        <mat-card class="col-8 m-auto card-lg">
+            <mat-card-header>
+                <mat-card-title>Date pipe</mat-card-title>
+                <mat-card-subtitle>Formate une valeur de date selon les règles locales..<br>
+                </mat-card-subtitle>
+            </mat-card-header>
+            <mat-divider></mat-divider>
+            <mat-card-content>
+                <mat-list role="list">
+                    <mat-list-item role="listitem">
+                        <strong>{{datePipeSimple}}</strong>
+                    </mat-list-item>
+                    <mat-list-item role="listitem">
+                        <strong>Result:</strong>&nbsp;&nbsp; {{dateNow |date}}
+                    </mat-list-item>
+
+                    <mat-list-item role="listitem">
+                        <strong>{{datePipeFullDate}}</strong>
+                    </mat-list-item>
+                    <mat-list-item role="listitem">
+                        <strong>Result:</strong>&nbsp;&nbsp; {{dateNow |date:'fullDate'}}
+                    </mat-list-item>
+
+
+                    <mat-list-item role="listitem">
+                        <strong>{{datePipeMedium}}</strong>
+                    </mat-list-item>
+                    <mat-list-item role="listitem">
+                        <strong>Result:</strong>&nbsp;&nbsp; {{dateNow |date:'medium'}}
+                    </mat-list-item>
+
+                    <mat-list-item role="listitem">
+                        <strong>{{datePipeFormat}}</strong>
+                    </mat-list-item>
+                    <mat-list-item role="listitem">
+                        <strong>Result:</strong>&nbsp;&nbsp; {{dateNow |date:'dd/M/y h:m:s'}}
+                    </mat-list-item>
+                </mat-list>
+            </mat-card-content>
+        </mat-card>
+
+    </div>
+</div>
+```

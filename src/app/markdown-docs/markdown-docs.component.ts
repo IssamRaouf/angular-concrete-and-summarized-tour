@@ -25,8 +25,9 @@ export class MarkdownDocsComponent implements OnInit {
     ngOnInit(): void {
         this.router.events.pipe(filter(event => event instanceof NavigationEnd))
             .subscribe((event: NavigationEnd) => {
-                this.expandedOnChangeRoute = false;
                 this.srcMd = this.mapRouteMarkdowns.get(event.url);
+                this.expandedOnChangeRoute = this.srcMd.expandedNoteGeneral;
+
             });
 
     }

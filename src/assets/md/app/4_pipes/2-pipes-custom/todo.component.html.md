@@ -1,14 +1,16 @@
+```html
 <div class="container container-todo">
-    <div class="d-flex flex-row justify-content-md-start p-2">
+    <div class="row">
         <mat-form-field>
             <mat-label>by Field</mat-label>
             <mat-select [formControl]="byField">
+
                 <mat-option *ngFor="let type of fields" [value]="type">
                     {{type}}
                 </mat-option>
             </mat-select>
         </mat-form-field>
-        <mat-form-field class="ml-5">
+        <mat-form-field>
             <input matInput
                    placeholder="Search by {{(byField.valueChanges | async) ?(byField.valueChanges | async) : 'name'}}"
                    [formControl]="likeTerm">
@@ -20,3 +22,6 @@
             [ticketList]="ticketListMook | appfilterTickets:(byField.valueChanges | async):(likeTerm.valueChanges|async)">
     </app-todo-list>
 </div>
+
+
+```

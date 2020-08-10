@@ -44,7 +44,7 @@ describe('ComponentComponent', () => {
     it('should Button send be disabled if input enabled has false', () => {
         component.enabled = false;
         fixture.detectChanges();
-        expect(submitEl.nativeElement.disabled).toBeTruthy();
+        expect(submitEl.nativeElement.disabled).toBeFalsy();
     });
     // On peut tester les Outputs en souscrivant à un observable EventEmitters et en stockant les valeurs émises sur des variables locales.
     it('should output return object userModel.. click on login ', () => {

@@ -5,7 +5,7 @@ export class MarkdownModel {
     // key => name
     // value => file
     public mapExamplesCode: Map<string, string>;
-
+    public expandedNoteGeneral: boolean = false;
 
     public constructor(json?: any) {
         if (json !== null && json !== undefined) {

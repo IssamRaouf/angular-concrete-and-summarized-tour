@@ -3,52 +3,52 @@
  Angular a son propre (design pattern) DI, 
  qui est généralement utilisé dans la conception d'applications angulaires pour augmenter leur efficacité et leur modularité.
 
-* Qu'est-ce qu'une dépendance? Lorsque le module A d'une condidat a besoin du module B pour fonctionner,
+* Qu'est-ce qu'une dépendance? Lorsque le module A a besoin du module B pour fonctionner,
 le module B est une dépendance du module A.
 
-#Exemple Generale de DI
+# Exemple Generale de DI
 
-```
+```javascript
 
 class MailerProvider {
-           ...
-           const apiKeyMailer:string;
+           // ...
+           private apiKeyMailer:string;
            
-           constructor(privare apiKeyMailer:string) {
-                     this.apiKeyMailer = apiKeyMailer;
-            }
-           public send(recipant:string,message?:string,...) {
-             
-               ...
+           constructor(private apiKeyMailer: string) {
+               this.apiKeyMailer = apiKeyMailer;
+            
            }
-   }
-class Application {
-       public mailerProvider:MailerProvider;
-       
-       // inject on construct ,we can inject with setter or ..
-       constructor(public mailerProvider:MailerProvider) {
-            this.mailerProvider = mailerProvider;
+            
+           public send(recipantMail:string, message?: string) {
+            
+              // send mailer
+           }
+}
+   
+class Inscription {
+   
+       // injecter sur la construction, nous pouvons injecter avec setter.
+       constructor(private mailerProvider: MailerProvider) {
+           
        }
        
        
-       public subscribe(condidat:condidatModel) {
-        ...
-        this.mailerProvider.send(condidat.email,'hello world',..);
+       public subscribe(applicant: applicantModel) {
+         // do somethings
+        this.mailerProvider.send(applicant.email,'Message mail ...');
        }
        
 }
-   const condidatModel = new condidatModel(data);
+   const applicantModel = new applicantModel(data);
    
    const mailerProvider = new MailerProvider('apiKeyMailer9087773737373');
    
-   // inject mailerProvider object on construct class Application
+   const inscription = new Inscription(mailerProvider);
    
-   const condidat = new Application(mailerProvider);
+   inscription.subscribe(applicantModel);
    
-   condidat.subscribe(condidatModel);
-   
-    Ici Applications a besoin de SendMailer pour pouvoir envoyer notification (mail) aprés la souscription..
-    donc la cla`ss SendMailer est une dépendance de la class Application..
+   // Ici Inscription a besoin de SendMailer pour pouvoir envoyer notification (mail) aprés la souscription..
+   // donc la class SendMailer est une dépendance de la class Inscription..
     
 ```
 
@@ -56,7 +56,7 @@ class Application {
 ## Le framework Angular se compose de 4 concepts travaillant ensemble:
 
 <strong>Token (Jeton)</strong><br>
-Cela identifie de façon unique quelque chose que nous voulons injecter. Une dépendance de notre code.
+Cela identifie de façon unique quelque chose que nous voulons injecter (class ,key(value) ...). Une dépendance de notre code.
 
 <strong>Dependancy (Dépendance)</strong><br>
 
@@ -66,7 +66,7 @@ Le code réel que nous voulons injecter.
 Il s'agit d'une correspondance entre un jeton et une ou liste de dépendances .
 
 <strong>Injector (Injecteur)</strong><br>
-c'est une fonction qui, lorsque nous lui donne un jeton ,nous renvoie une ou list de dependances.
+c'est une fonction qui lorsque nous lui donne un jeton ,nous renvoie une ou list de dependances.
 
 
 ## DI angular en profondeur bas niveau  (In Depth) 

@@ -64,11 +64,53 @@ export class MarkdownMap {
         ],
 
         ['/reactive-programming', new MarkdownModel({noteGeneralFile: '/assets/md/app/3_reactive-programming-Rxjs/note.md'})],
-        ['/pipes-custom', new MarkdownModel({noteGeneralFile: '/assets/md/app/4_pipes/2-pipes-custom/note.md'})],
-        ['/pipes-important-exist', new MarkdownModel({noteGeneralFile: '/assets/md/app/4_pipes/1-pipes-important-exist/note.md'})],
-        ['/template-driven-form', new MarkdownModel({noteGeneralFile: '/assets/md/app/5-forms/2-template-driven-form/note.md'})],
-        ['/reactive-forms', new MarkdownModel({noteGeneralFile: '/assets/md/app/5-forms/1-reactive-form/note.md'})],
-        ['/dependency-injection', new MarkdownModel({noteGeneralFile: '/assets/md/app/6-dependency-injection-providers/note.md'})],
+
+        ['/pipes-important-exist', new MarkdownModel({
+            noteGeneralFile: '/assets/md/app/4_pipes/1-pipes-important-exist/note.md',
+            moduleDir: 'src/app/4_pipes/1-pipes-important-exist',
+            mapExamplesCode: new Map<string, string>([
+                ['1. todo.component.html', '/assets/md/app/4_pipes/1-pipes-important-exist/todo.component.html.md'],
+            ])
+        })],
+
+
+        ['/pipes-custom', new MarkdownModel({
+            noteGeneralFile: '/assets/md/app/4_pipes/1-pipes-important-exist/note.md',
+            moduleDir: 'src/app/4_pipes/2-pipes-custom',
+            mapExamplesCode: new Map<string, string>([
+                ['1. todo.component.html', '/assets/md/app/4_pipes/2-pipes-custom/todo.component.html.md'],
+                ['2. filter-tickets-pipes.ts', '/assets/md/app/4_pipes/2-pipes-custom/filter-tickets-pipes.ts.md'],
+                ['3. ticket.component.html', '/assets/md/app/4_pipes/2-pipes-custom/ticket.component.html.md'],
+                ['4. currencyToKMB-pipe.ts', '/assets/md/app/4_pipes/2-pipes-custom/currencyToKMB-pipe.ts.md'],
+            ])
+        })],
+
+
+        ['/template-driven-form', new MarkdownModel({
+            noteGeneralFile: '/assets/md/app/5-forms/2-template-driven-form/note.md',
+            moduleDir: 'src/app/5-forms/2-template-driven-form',
+            mapExamplesCode: new Map<string, string>([
+                ['1. todo-form.component.html', '/assets/md/app/5-forms/2-template-driven-form/todo-form.component.html.md'],
+                ['2. todo-form.component.ts', '/assets/md/app/5-forms/2-template-driven-form/todo-form.component.ts.md'],
+
+            ])
+        })],
+        ['/reactive-forms', new MarkdownModel({
+            noteGeneralFile: '/assets/md/app/5-forms/1-reactive-form/note.md',
+            moduleDir: 'src/app/5-forms/1-reactive-form',
+            mapExamplesCode: new Map<string, string>([
+                ['1. todo-form.component.html', '/assets/md/app/5-forms/1-reactive-form/todo-form.component.html.md'],
+                ['2. todo-form.component.ts', '/assets/md/app/5-forms/1-reactive-form/todo-form.component.ts.md'],
+
+            ])
+        })],
+
+
+        ['/dependency-injection', new MarkdownModel({
+            noteGeneralFile: '/assets/md/app/6-dependency-injection-providers/note.md',
+            expandedNoteGeneral: true
+        })],
+
         ['/http-module', new MarkdownModel({noteGeneralFile: '/assets/md/app/7-http/note.md'})],
         ['/routing', new MarkdownModel({noteGeneralFile: '/assets/md/app/8-routing/note.md'})],
         ['/testing', new MarkdownModel({noteGeneralFile: '/assets/md/app/9-testing/note.md'})],
