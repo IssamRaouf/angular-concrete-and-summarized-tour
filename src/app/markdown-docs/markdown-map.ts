@@ -111,7 +111,23 @@ export class MarkdownMap {
             expandedNoteGeneral: true
         })],
 
-        ['/http-module', new MarkdownModel({noteGeneralFile: '/assets/md/app/7-http/note.md'})],
+        ['/http-module', new MarkdownModel({
+            noteGeneralFile: '/assets/md/app/7-http/note.md',
+            moduleDir: 'src/app/7-http',
+            mapExamplesCode: new Map<string, string>([
+                ['1. todo-rest.service.ts', '/assets/md/app/7-http/todo-rest.service.ts.md'],
+                ['2. todo.component.html', '/assets/md/app/7-http/todo.component.html.md'],
+                ['3. todo.component.ts', '/assets/md/app/7-http/todo.component.ts.md'],
+                ['4. todo-form.component.html', '/assets/md/app/7-http/todo-form.component.html.md'],
+                ['5. todo-form.component.ts', '/assets/md/app/7-http/todo-form.component.ts.md'],
+                ['6. todo-list.component.html', '/assets/md/app/7-http/todo-list.component.html.md'],
+                ['7. todo-list.component.ts', '/assets/md/app/7-http/todo-list.component.ts.md'],
+                ['8. ticket.component.html', '/assets/md/app/7-http/ticket.component.html.md'],
+                ['9. ticket.component.ts', '/assets/md/app/7-http/ticket.component.ts.md']
+            ])
+        })],
+
+
         ['/routing', new MarkdownModel({noteGeneralFile: '/assets/md/app/8-routing/note.md'})],
         ['/testing', new MarkdownModel({noteGeneralFile: '/assets/md/app/9-testing/note.md'})],
     ]);
