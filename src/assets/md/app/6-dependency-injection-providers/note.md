@@ -412,7 +412,7 @@ export class TodoComponent implements OnInit {
 * Si nous voulons qu'une instance distincte d'une dépendance soit partagée entre chaque instance d'un composant et seulement ses enfants de vue, nous la configurons sur la viewProviderspropriété des composants 
 
 
-#### Pourquoi cette DI , je vous donne les intérets les plus importants:
+#### Pourquoi cette DI 
 * Flexible / plus facile à réutiliser **#** Difficile à réutiliser par exemple dans d'autres configurations,..
 * Plus facile à tester **#** un couplage serré trés difficile à tester,..
 * Plus facile à maintenir **#** un couplage serré trés difficile à maintenir,..
