@@ -37,7 +37,7 @@ on peut ajouter plusieurs directive(router-outlet) dans notre application angula
   Cela peut être utilisé pour afficher une vue «Introuvable» ou rediriger vers une vue spécifique si aucune correspondance n'est trouvée.
 
 1) Pour Application, (Module de routage racine (RouterModule.forRoot(routes)) )
-````
+````javascript
 // app-routing.module.ts
     
     const routes: Routes = [
@@ -78,7 +78,7 @@ on peut ajouter plusieurs directive(router-outlet) dans notre application angula
 
 
 1) Pour Module (RouterModule.forChild(routes)) 
-````
+````javascript
 // todo-routing.module.ts
 
 const routes: Routes = [
@@ -164,7 +164,7 @@ public goToListUsers() : void {
 
 ````
 #### Route child
-```
+```javascript
 // todo-routing.module.ts
 
 const routes: Routes = [
@@ -229,26 +229,25 @@ et sur la base de cette logique, il autorise ou refuse à l'utilisateur l'accès
 * Il est couramment utilisé pour vérifier si un utilisateur est connecté et dispose de l'autorisation avant d'accéder à une page.
 * On peut ajouter un garde-route en implémentant l'interface CanActivate ou... disponible à partir du package @angular/router`:
 
-1) CanActivate: 
+1) **CanActivate** : 
 Interface qu'une classe peut implémenter pour être un gardien décidant si une <strong>Route</strong> peut être activée. 
 Si tous les gardes on dit tous les gardes car chaque route peut avoir multi garde ) retournent vrai, la navigation continuera.
 Si un garde retourne faux, la navigation sera annulée,et on peut redirect vers ce qu'on veut.
 
-1) CanActivateChild: 
+1) **CanActivateChild** : 
 Interface qu'une classe peut implémenter pour être un gardien décidant si une <strong>Route ENFANT</strong> peut être activée. 
 Si tous les gardes (on dit tous les gardes car chaque route peut avoir multi garde ) retournent vrai, la navigation continuera. 
 Si un garde retourne faux, la navigation sera annulée,et on peut redirect vers ce qu'on veut.
 
 
-3) CanDeactive:
+3) **CanDeactive** :
 Interface qu'une classe peut implémenter pour être un gardien décidant si une route peut être désactivée. 
 Si tous les gardes retournent vrai, la navigation continuera. 
 Si un garde retourne faux, la navigation sera annulée. 
 utilisateur peut avoir rempli une forme et tente de quitter ce composant sans enregistrer son travail. 
 Le gardien CanDeactivate nous donne la possibilité d'avertir l'utilisateur qu'il n'a pas enregistré son travail et lui donne la possibilité d'annuler la navigation.
 
-4) CanLoad:
-
+4) **CanLoad** : 
 Le CanLoad Guard empêche le chargement du module (lazy-loading).
 on utilise généralement cette garde lorsque nous ne voulons pas qu'un utilisateur non autorisé navigue vers l'une des routes du module
 il l'arrête ,meme il empeche le telechargement de code source de ce module.

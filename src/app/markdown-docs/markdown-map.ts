@@ -128,7 +128,19 @@ export class MarkdownMap {
         })],
 
 
-        ['/routing', new MarkdownModel({noteGeneralFile: '/assets/md/app/8-routing/note.md'})],
+        ['/routing', new MarkdownModel({
+            noteGeneralFile: '/assets/md/app/8-routing/note.md',
+            moduleDir: 'src/app/8-routing',
+            mapExamplesCode: new Map<string, string>([
+                ['1. routing-routing.module.ts', '/assets/md/app/8-routing/routing-routing.module.ts.md'],
+                ['2. todoRest.service.ts', '/assets/md/app/8-routing/todoRest.service.ts.md'],
+                ['3. details-todo.resolve.ts', '/assets/md/app/8-routing/details-todo.resolve.ts.md'],
+                ['4. user-rights.service.ts', '/assets/md/app/8-routing/user-rights.service.ts.md'],
+                ['5. dashboard.guard.ts', '/assets/md/app/8-routing/dashboard.guard.ts.md'],
+                ['6. only-admin.guard.ts', '/assets/md/app/8-routing/only-admin.guard.ts.md'],
+                ['7. form-todo.guard.ts', '/assets/md/app/8-routing/form-todo.guard.ts.md'],
+            ])
+        })],
         ['/testing', new MarkdownModel({noteGeneralFile: '/assets/md/app/9-testing/note.md'})],
     ]);
 

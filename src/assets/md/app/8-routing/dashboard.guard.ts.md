@@ -1,5 +1,6 @@
+````javascript
 import {ActivatedRouteSnapshot, CanActivate, CanActivateChild, Router, RouterStateSnapshot} from '@angular/router';
-import {UserRightsService} from '../services/user-rights.service';
+import {UserRightsService} from './user-rights.service';
 import {Injectable} from '@angular/core';
 
 @Injectable()
@@ -20,3 +21,5 @@ export class DashboardGuard implements CanActivateChild {
         return true;
     }
 }
+````
+
