@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {from} from 'rxjs';
 import {pluck} from 'rxjs/operators';
+import {Demos} from '../../../demos';
 
 @Component({
     selector: 'app-pulck',
@@ -8,7 +9,7 @@ import {pluck} from 'rxjs/operators';
     styleUrls: ['./pulck.component.scss']
 })
 export class PulckComponent implements OnInit {
-
+    public demos = Demos;
     constructor() {
     }
 

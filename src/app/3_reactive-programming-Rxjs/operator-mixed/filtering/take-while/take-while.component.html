@@ -1,24 +1,11 @@
 <h1>TakeWhile</h1>
 
-<p>Emet les valeurs émises par la source Observable tant que chaque valeur satisfait le prédicat donné, puis se termine dès que ce prédicat n'est pas satisfait.</p>
+<p>Emet les valeurs émises par la source Observable tant que chaque valeur satisfait le prédicat donné, puis se termine
+    dès que ce prédicat n'est pas satisfait.<br><br>
+
+    <strong>Chemin du component :
+        src/app/3_reactive-programming-Rxjs/operator-mixed/filtering/take-while</strong>
+</p>
 
 <h3>Exemple code</h3>
-
-<div class="row">
-    <div class="col">
-        <p>
-            <code>
-                {{"const source = of(1, 2, 3, 4, 5, 6);"}}<br>
-                {{"const result = source.pipe(takeWhile(val => val < 5));"}}<br>
-                {{"result.subscribe(res => console.log('Result', res));"}}<br>
-            </code>
-        </p>
-    </div>
-    <mat-divider [vertical]="true"></mat-divider>
-    <div class="col">
-        Result : 1<br>
-        Result : 2<br>
-        Result : 3<br>
-        Result : 4<br>
-    </div>
-</div>
+<div [innerHTML]="demos.demoTakeWhile|language:'javascript'|markdown"></div>

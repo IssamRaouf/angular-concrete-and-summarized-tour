@@ -20,16 +20,16 @@ xdescribe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'angular-revision'`, () => {
+  it(`should have as title 'Tour concrete et résumé de ANGULAR'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('angular-revision');
+    expect(app.title).toEqual('Tour concrete et résumé de ANGULAR');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('angular-revision app is running!');
+    expect(compiled.querySelector('.content span').textContent).toContain('Tour concrete et résumé de ANGULAR app is running!');
   });
 });

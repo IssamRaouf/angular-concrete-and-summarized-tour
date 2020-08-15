@@ -1,15 +1,14 @@
 <div class="container container-todo">
-    <div class="row">
+    <div class="d-flex flex-row justify-content-md-start p-2">
         <mat-form-field>
             <mat-label>by Field</mat-label>
             <mat-select [formControl]="byField">
-
                 <mat-option *ngFor="let type of fields" [value]="type">
                     {{type}}
                 </mat-option>
             </mat-select>
         </mat-form-field>
-        <mat-form-field>
+        <mat-form-field class="ml-5">
             <input matInput
                    placeholder="Search by {{(byField.valueChanges | async) ?(byField.valueChanges | async) : 'name'}}"
                    [formControl]="likeTerm">

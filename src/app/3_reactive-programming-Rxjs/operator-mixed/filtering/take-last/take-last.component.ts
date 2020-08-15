@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {of} from 'rxjs';
 import {takeLast} from 'rxjs/operators';
+import {Demos} from '../../../demos';
 
 @Component({
     selector: 'app-take-last',
@@ -8,6 +9,7 @@ import {takeLast} from 'rxjs/operators';
     styleUrls: ['./take-last.component.scss']
 })
 export class TakeLastComponent implements OnInit {
+    public demos = Demos;
 
     constructor() {
     }

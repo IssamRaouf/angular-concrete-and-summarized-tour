@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {fromEvent} from 'rxjs';
 import {mapTo} from 'rxjs/operators';
+import {Demos} from '../../../demos';
 
 @Component({
     selector: 'app-map-to',
@@ -8,6 +9,7 @@ import {mapTo} from 'rxjs/operators';
     styleUrls: ['./map-to.component.scss']
 })
 export class MapToComponent implements OnInit {
+    public demos = Demos;
 
     constructor() {
     }
@@ -15,7 +17,7 @@ export class MapToComponent implements OnInit {
     ngOnInit() {
         const source = fromEvent(document, 'click');
         const result = source.pipe(mapTo('click In'));
-       // result.subscribe(res => console.log('Result ', res));
+        // result.subscribe(res => console.log('Result ', res));
 
     }
 

@@ -1,34 +1,9 @@
-
-
 <h1>Delay</h1>
 <p>
-    Retarde l’émission d’objets de la source Observable selon un délai donné ou jusqu’à une date donnée.
+    Retarde l’émission d’objets de la source Observable selon un délai donné ou jusqu’à une date donnée.<br><br>
+    <strong>Chemin du component : src/app/3_reactive-programming-Rxjs/operator-mixed/util/delay</strong>
 </p>
 <h3>Exemple code</h3>
-<div class="row">
-    <div class="col">
-        <p>
-            <code>
-                {{"const source = of(1);"}}<br>
-                {{"const result = merge("}}<br>
-                {{"source.pipe(mapTo('Hello'), delay(100)),"}}<br>
-                {{"source.pipe(mapTo(' World'), delay(200)),"}}<br>
-                {{"source.pipe(mapTo(' Goodbye'), delay(300)),"}}<br>
-                {{"source.pipe(mapTo(' World'), delay(400)),"}}<br>
-                {{");"}}<br>
-                {{"result.subscribe(res => console.log('Result', res));"}}<br>
-            </code>
-        </p>
-    </div>
-    <mat-divider [vertical]="true"></mat-divider>
-    <div class="col">
-        Result : Hello <br>
-        Result : World <br>
-        Result : Goodbye <br>
-        Result : World <br>
-    </div>
-</div>
-
-
+<div [innerHTML]="demos.demoDelay |language:'javascript' |markdown"></div>
 
 

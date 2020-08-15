@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {interval} from 'rxjs';
 import {take, throttle} from 'rxjs/operators';
+import {Demos} from '../../../demos';
 
 @Component({
     selector: 'app-throttle',
@@ -8,6 +9,7 @@ import {take, throttle} from 'rxjs/operators';
     styleUrls: ['./throttle.component.scss']
 })
 export class ThrottleComponent implements OnInit {
+    public demos = Demos;
 
     constructor() {
     }

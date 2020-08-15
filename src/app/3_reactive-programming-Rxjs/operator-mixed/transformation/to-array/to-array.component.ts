@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {of} from 'rxjs';
 import {toArray} from 'rxjs/operators';
+import {Demos} from '../../../demos';
 
 @Component({
     selector: 'app-to-array',
@@ -8,6 +9,7 @@ import {toArray} from 'rxjs/operators';
     styleUrls: ['./to-array.component.scss']
 })
 export class ToArrayComponent implements OnInit {
+    public demos = Demos;
 
     constructor() {
     }
@@ -15,7 +17,7 @@ export class ToArrayComponent implements OnInit {
     ngOnInit() {
         const source = of(2, 4, 6, 8, 10);
         const result = source.pipe(toArray());
-       // result.subscribe(res => console.log('Result :', res));
+        // result.subscribe(res => console.log('Result :', res));
     }
 
 }

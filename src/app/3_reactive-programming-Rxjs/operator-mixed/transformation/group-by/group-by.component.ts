@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {from, of, zip} from 'rxjs';
 import {groupBy, map, mergeMap, toArray} from 'rxjs/operators';
+import {Demos} from '../../../demos';
 
 @Component({
     selector: 'app-group-by',
@@ -8,7 +9,7 @@ import {groupBy, map, mergeMap, toArray} from 'rxjs/operators';
     styleUrls: ['./group-by.component.scss']
 })
 export class GroupByComponent implements OnInit {
-
+    public demos = Demos;
     constructor() {
     }
 
@@ -26,15 +27,13 @@ export class GroupByComponent implements OnInit {
             groupBy(person => person.age, person => person.fullName),
             mergeMap(group => {
                 return zip(
-                    of(group.key),
-                    group.pipe(toArray())).pipe(
-                    map(([keyIn, values]) => {
-                        return {key: keyIn, values};
-                    })
+                    of(group.key), group.pipe(toArray())
+                ).pipe(
+                    map(([age, users]) => ({age, users}))
                 );
             })
         );
-       // result.subscribe(res => console.log('Result ', res));
+      //  result.subscribe(res => console.log('Result ', res));
     }
 
 }

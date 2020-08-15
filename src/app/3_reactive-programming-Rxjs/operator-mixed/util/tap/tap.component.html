@@ -1,31 +1,7 @@
 <h1>Tap</h1>
 <p>
-    Effectuez de manière transparente des actions ou des effets secondaires, tels que la journalisation...
+    Effectuez de manière transparente des actions ou des effets secondaires, tels que la journalisation...<br><br>
+    <strong>Chemin du component : src/app/3_reactive-programming-Rxjs/operator-mixed/util/tap</strong>
 </p>
 <h3>Exemple code</h3>
-<div class="row">
-    <div class="col">
-        <p>
-            <code>
-                {{"const source = of(1, 2, 3);"}}<br>
-                {{"const result = source.pipe("}}<br>
-                {{"tap(val => console.log(`Element before map ${val}`)),"}}<br>
-                {{"map(val => val * 10),"}}<br>
-                {{"tap(val => console.log(`Element after map ${val}`))"}}<br>
-                {{");"}}<br>
-                {{"result.subscribe(res => console.log('Result', res));"}}<br>
-            </code>
-        </p>
-    </div>
-    <mat-divider [vertical]="true"></mat-divider>
-    <div class="col">
-        voir les taps sur le console <br>
-        Result : 10 <br>
-        Result : 20 <br>
-        Result : 30 <br>
-    </div>
-</div>
-
-
-
-
+<div [innerHTML]="demos.demoTap|language:'javascript' |markdown"></div>

@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {of} from 'rxjs';
 import {takeWhile} from 'rxjs/operators';
+import {Demos} from '../../../demos';
 
 @Component({
     selector: 'app-take-while',
@@ -8,6 +9,7 @@ import {takeWhile} from 'rxjs/operators';
     styleUrls: ['./take-while.component.scss']
 })
 export class TakeWhileComponent implements OnInit {
+    public demos = Demos;
 
     constructor() {
     }
@@ -15,7 +17,7 @@ export class TakeWhileComponent implements OnInit {
     ngOnInit() {
         const source = of(1, 2, 3, 4, 5, 6);
         const result = source.pipe(takeWhile(val => val < 5));
-       // result.subscribe(res => console.log('Result', res));
+        // result.subscribe(res => console.log('Result', res));
     }
 
 }

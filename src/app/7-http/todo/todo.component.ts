@@ -49,6 +49,7 @@ export class TodoComponent implements OnInit {
         this.todoRestServ.getListUsers().subscribe(
             (list: Array<UserModel>) => {
                 this.usersListMock = list;
+                // juste pour voir loading :D
                 setTimeout(() => this.isLoading = false, 800);
             });
     }

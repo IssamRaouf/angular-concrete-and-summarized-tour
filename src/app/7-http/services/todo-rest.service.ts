@@ -1,5 +1,5 @@
 /**
- * pour le debutant je vais ecrire un simple code..(no refactoring no ...)
+ * pour qu'il soit claire cette chapitre je vais ecrire un simple code..(no refactoring no ...)
  * j'utilise fake https://jsonplaceholder.typicode.com
  */
 

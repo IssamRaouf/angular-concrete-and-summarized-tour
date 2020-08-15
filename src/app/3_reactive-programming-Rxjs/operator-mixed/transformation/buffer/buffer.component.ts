@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {fromEvent, interval} from 'rxjs';
 import {buffer} from 'rxjs/operators';
+import {Demos} from '../../../demos';
 
 @Component({
     selector: 'app-buffer',
@@ -8,6 +9,7 @@ import {buffer} from 'rxjs/operators';
     styleUrls: ['./buffer.component.scss']
 })
 export class BufferComponent implements OnInit {
+    public demos = Demos;
 
     constructor() {
     }
@@ -16,7 +18,7 @@ export class BufferComponent implements OnInit {
         const fermetureNotifier = fromEvent(document, 'click');
         const source = interval(1000);
         const result = source.pipe(buffer(fermetureNotifier));
-      //  result.subscribe(res => console.log('Result :', res));
+        //  result.subscribe(res => console.log('Result :', res));
 
 
     }

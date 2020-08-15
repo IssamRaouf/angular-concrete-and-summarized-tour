@@ -11,9 +11,9 @@
 Le Router-Outlet est une directive disponible dans la bibliothèque de routeurs où le routeur insère le composant qui est mis en correspondance en fonction de l'URL du navigateur actuel. 
 on peut ajouter plusieurs directive(router-outlet) dans notre application angulaire, ce qui nous permet de mettre en œuvre des scénarios de routage avancés.
 
-```
+```html
 <router-outlet></router-outlet>
-Tout composant qui est mis en correspondance par le routeur le rendra comme un frère de router-outlet
+// Tout composant qui est mis en correspondance par le routeur le rendra comme un frère de router-outlet
 ```
 
 #### Routes et path
@@ -22,11 +22,12 @@ Tout composant qui est mis en correspondance par le routeur le rendra comme un f
 
 * Le chemin fait référence à la partie de l'URL qui détermine une vue unique qui doit être affichée, et le composant fait référence au composant angulaire qui doit être associé à un chemin.
 * Sur la base d'une définition d'Route que nous fournissons  (via des méthodes statiques):
-    ```
-     RouterModule.forRoot(routes) ou
+    ```javascript
+     RouterModule.forRoot(routes) 
+     // ou
      RouterModule.forChild(routes),
     ```
-    le routeur est capable de diriger l'utilisateur vers une vue spécifique.
+* le routeur est capable de diriger l'utilisateur vers une vue spécifique.
     
 * Chaque route mappe un chemin URL vers un composant.
 
@@ -36,7 +37,7 @@ Tout composant qui est mis en correspondance par le routeur le rendra comme un f
   Cela peut être utilisé pour afficher une vue «Introuvable» ou rediriger vers une vue spécifique si aucune correspondance n'est trouvée.
 
 1) Pour Application, (Module de routage racine (RouterModule.forRoot(routes)) )
-````
+````javascript
 // app-routing.module.ts
     
     const routes: Routes = [
@@ -77,7 +78,7 @@ Tout composant qui est mis en correspondance par le routeur le rendra comme un f
 
 
 1) Pour Module (RouterModule.forChild(routes)) 
-````
+````javascript
 // todo-routing.module.ts
 
 const routes: Routes = [
@@ -112,16 +113,16 @@ Le routeur angulaire vous permet d'accéder aux paramètres de route de différe
 * par ActivatedRoute service,
 * ...
 
-````
-  1) // app-routing.module.ts
-    ...
+````javascript
+  // 1)  app-routing.module.ts
+   // ...
     
     { path:'todo-item/:id', component:ItemTodoComponent}
     
-  2) // Redirection vers  todo-item/999
+ // 2)  Redirection vers  todo-item/999
   
-  3) // item-todo.component.ts
-       ...
+ // 3)  item-todo.component.ts
+       // ...
        private idTodo:number;
        
 
@@ -139,14 +140,14 @@ Le routeur angulaire vous permet d'accéder aux paramètres de route de différe
 Le routeur angulaire fournit la directive routerLink pour créer des liens de navigation. 
 Cette directive prend le chemin d'accès associé au composant vers lequel naviguer. 
 
-```
+```html
 <a [routerLink]="['/todo-list']">List</a>
 
 <a [routerLink]="['/todo-item', { id: idTodo}]">List</a>
 ```
 
 2) Router
-````
+````javascript
 // todoListCompoent
     
 public construct(private router:Router) {
@@ -163,21 +164,7 @@ public goToListUsers() : void {
 
 ````
 #### Route child
-* Lorsque certains Routes peuvent uniquement être accessibles et affichés dans d'autres Routes,
-il peut être approprié de les créer en tant qu'Routes enfants (route childs)
-
-* children => Contient tous les routes enfants activés sous la route actuel.
-
-* <h5> Où les composants de ces routes enfants seront-ils affichés? </h5>
-Tout comme on a une `<router-outlet> </router-outlet>` pour le composant d'application racine (app.component.html) 
-on va mettre une `<router-outlet> </router-outlet>` à l'intérieur du composant DashboardTodosComponent.
-Les composants correspondant aux routes enfants de 'dashboard' route seront placés au 
-au dessous de `<router-outlet> </router-outlet>` qui se trouve dans DashboardTodosComponent.
-
-Exemple : 
-
-
-```
+```javascript
 // todo-routing.module.ts
 
 const routes: Routes = [
@@ -217,11 +204,22 @@ const routes: Routes = [
 
 // dashboard-todos.component.html
  <h1>Dashboard</h1> 
- ... blabla
+// ... blabla
  <router-outlet></router-outlet> // ;)
 
 
 ```
+
+* Lorsque certains Routes peuvent uniquement être accessibles et affichés dans d'autres Routes,
+il peut être approprié de les créer en tant qu'Routes enfants (route childs)
+
+* children => Contient tous les routes enfants activés sous la route actuel.
+
+* <h5> Où les composants de ces routes enfants seront-ils affichés? </h5>
+Tout comme on a une **<router-outlet> </router-outlet>** pour le composant d'application racine (app.component.html) 
+on va mettre une **<router-outlet> </router-outlet>** à l'intérieur du composant DashboardTodosComponent (parent).
+Les composants correspondant aux routes enfants de 'dashboard' route seront placés au 
+au dessous de **<router-outlet> </router-outlet>** qui se trouve dans DashboardTodosComponent (parent).
 
 
 ### Guard Route
@@ -231,32 +229,31 @@ et sur la base de cette logique, il autorise ou refuse à l'utilisateur l'accès
 * Il est couramment utilisé pour vérifier si un utilisateur est connecté et dispose de l'autorisation avant d'accéder à une page.
 * On peut ajouter un garde-route en implémentant l'interface CanActivate ou... disponible à partir du package @angular/router`:
 
-1) CanActivate: 
+1) **CanActivate** : 
 Interface qu'une classe peut implémenter pour être un gardien décidant si une <strong>Route</strong> peut être activée. 
 Si tous les gardes on dit tous les gardes car chaque route peut avoir multi garde ) retournent vrai, la navigation continuera.
 Si un garde retourne faux, la navigation sera annulée,et on peut redirect vers ce qu'on veut.
 
-1) CanActivateChild: 
+1) **CanActivateChild** : 
 Interface qu'une classe peut implémenter pour être un gardien décidant si une <strong>Route ENFANT</strong> peut être activée. 
 Si tous les gardes (on dit tous les gardes car chaque route peut avoir multi garde ) retournent vrai, la navigation continuera. 
 Si un garde retourne faux, la navigation sera annulée,et on peut redirect vers ce qu'on veut.
 
 
-3) CanDeactive:
+3) **CanDeactive** :
 Interface qu'une classe peut implémenter pour être un gardien décidant si une route peut être désactivée. 
 Si tous les gardes retournent vrai, la navigation continuera. 
 Si un garde retourne faux, la navigation sera annulée. 
 utilisateur peut avoir rempli une forme et tente de quitter ce composant sans enregistrer son travail. 
 Le gardien CanDeactivate nous donne la possibilité d'avertir l'utilisateur qu'il n'a pas enregistré son travail et lui donne la possibilité d'annuler la navigation.
 
-4) CanLoad:
-
+4) **CanLoad** : 
 Le CanLoad Guard empêche le chargement du module (lazy-loading).
 on utilise généralement cette garde lorsque nous ne voulons pas qu'un utilisateur non autorisé navigue vers l'une des routes du module
 il l'arrête ,meme il empeche le telechargement de code source de ce module.
 
 Exemple : (CanActivate) (on va voir les autres sur le code de cette chapitre)
-````
+````javascript
 // service only-super-admin.guard.ts
 class OnlySuperAdminGuard implements CanActivate {
     // appState c'est notre propre service 
@@ -264,7 +261,7 @@ class OnlySuperAdminGuard implements CanActivate {
 
   canActivate() {
       if(!this.appState.currentUser.isSuperAdmin()) {
-        this.router.navigate(['/dashboard']); // exmp
+        this.router.navigate(['/dashboard']); 
         return false;
       }
       return true;
@@ -291,7 +288,7 @@ const routes: Array<Route> = [
 
 #### Route Resolve
 
-* L'angulaire rend le composant angulaire lorsque nous naviguons vers un route.
+* le composant angulaire lorsque nous naviguons vers un route.
 Le composant envoie alors une requête HTTP au serveur principal pour récupérer les données afin de les afficher à l'utilisateur.
 Nous le faisons généralement dans ngOnInit (Life cycle hook)
 
@@ -302,7 +299,8 @@ Nous le faisons généralement dans ngOnInit (Life cycle hook)
 et comme ca le composant est rendu avec les données.
 
 Exemple :
-````
+
+````javascript
 // Service todo-list.resolve.ts 
 @Injectable()
 export class todoListResolve implements Resolve<Array<Ticket> {
@@ -357,10 +355,8 @@ Pour les grandes applications avec de nombreux Routes, envisagez le chargement p
 Le chargement paresseux permet de réduire la taille initiale des Bundles, ce qui contribue à réduire les temps de chargement.
 ...
 
-<h3>J'ai appliqué ca sur ce projet :D enjoy</h3>
-par exemple Exemple: voir 1-component/content-projection/content-projection.module , content-projection.routing.mdoule.ts
-et app-routing.module.ts
-
-
-
-### Exemple all module routing (routing-routing.module.ts , todo-form ...)
+##### J'ai appliqué ca sur ce projet :D enjoy
+  * 1-component/content-projection/content-projection.module 
+  * 1-component/content-projection/content-projection.routing.mdoule.ts
+  * app-routing.module.ts
+  * ..

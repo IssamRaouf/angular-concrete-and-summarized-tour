@@ -1,0 +1,23 @@
+```html
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>{{ticket.name |titlecase}}</mat-card-title>
+        <mat-card-subtitle color="primary">{{ticket.type | titlecase}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <p> {{ticket.price | appCurrencyToKMB}}$</p>
+        <p [hidden]="ticket.hideDesc">
+            {{ticket.description}}
+        </p>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-raised-button color="primary"
+                (click)="ticket.toggleDesc()">{{ ticket.hideDesc ? 'Afficher' : 'Cacher'}} description
+        </button>
+    </mat-card-actions>
+</mat-card>
+
+
+
+```

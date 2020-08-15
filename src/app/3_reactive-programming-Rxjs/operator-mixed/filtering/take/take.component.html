@@ -1,21 +1,10 @@
 <h1>Take</h1>
 
-<p>N'émet que les premières valeurs de comptage émises par la source Observable.!</p>
+<p>N'émet que les premières valeurs de comptage émises par la source Observable.!<br><br>
+
+    <strong>Chemin du component :
+        src/app/3_reactive-programming-Rxjs/operator-mixed/filtering/take</strong>
+</p>
 
 <h3>Exemple code</h3>
-
-<div class="row">
-    <div class="col">
-        <p>
-            <code>
-                {{"const source = interval(1000).pipe(take(2));"}}<br>
-                {{"source.subscribe(res => console.log('Result :', res));"}}<br>
-            </code>
-        </p>
-    </div>
-    <mat-divider [vertical]="true"></mat-divider>
-    <div class="col">
-        Result : 0<br>
-        Result : 1<br>
-    </div>
-</div>
+<div [innerHTML]="demos.demoTake|language:'javascript'|markdown"></div>

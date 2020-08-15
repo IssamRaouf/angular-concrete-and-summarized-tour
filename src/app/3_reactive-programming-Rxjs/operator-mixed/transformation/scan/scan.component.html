@@ -1,26 +1,11 @@
 <h1>Scan</h1>
 <p>
-    Applique une fonction d'accumulation sur l'observable source et renvoie chaque résultat intermédiaire avec une valeur de départ facultative.
+    Applique une fonction d'accumulation sur l'observable source et renvoie chaque résultat intermédiaire avec une valeur de départ facultative.<br><br>
+    <strong>Chemin du component : src/app/3_reactive-programming-Rxjs/operator-mixed/transformation/scan</strong>
 </p>
 <h3>Exemple code</h3>
-<div class="row">
-    <div class="col">
-        <p>
+<div [innerHTML]="demos.demoScan |language:'javascript' |markdown"></div>
 
-            <code>
-                {{" const source = of(3, 7, 9);"}}<br>
-                {{"const result = source.pipe(scan((accu, curVal) => accu + curVal, 0));"}}<br>
-                {{"result.subscribe(res => console.log('Result :', res));"}}<br>
-            </code>
-        </p>
-    </div>
-    <mat-divider [vertical]="true"></mat-divider>
-    <div class="col">
-        Result : 3<br>
-        Result : 10<br>
-        Result : 19<br>
-    </div>
-</div>
 
 
 

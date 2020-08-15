@@ -1,27 +1,11 @@
 <h1>MapTo</h1>
 <p>
-    Émet la valeur constante donnée sur la sortie Observable à chaque fois que la source Observable émet une valeur.
+    Émet la valeur constante donnée sur la sortie Observable à chaque fois que la source Observable émet une valeur.<br><br>
+    <strong>Chemin du component :
+        src/app/3_reactive-programming-Rxjs/operator-mixed/transformation/map-to</strong>
 </p>
-
 <h3>Exemple code</h3>
-<div class="row">
-    <div class="col">
-        <p>
-
-            <code>
-                {{" const source = fromEvent(document, 'click');"}}<br>
-                {{" const result = source.pipe(mapTo('click In'));"}}<br>
-                {{" result.subscribe(res => console.log('Result ', res));"}}<br>
-            </code>
-        </p>
-    </div>
-    <mat-divider [vertical]="true"></mat-divider>
-    <div class="col">
-        chaque clique<br>
-        Result  : click In<br>
-    </div>
-</div>
-
+<div [innerHTML]="demos.demoMapTo |language:'javascript' |markdown"></div>
 
 
 

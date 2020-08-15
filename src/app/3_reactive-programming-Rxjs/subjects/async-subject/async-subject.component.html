@@ -1,29 +1,10 @@
 <h1>AsyncSubject</h1>
 <p>
-    Une variante de Subject qui n'émet une valeur qu'à la fin. Il émettra sa dernière valeur à tous ses observateurs une fois terminé.
+    Une variante de Subject qui n'émet une valeur qu'à la fin. Il émettra sa dernière valeur à tous ses observateurs une
+    fois terminé.<br><br>
+    <strong>Chemin du component : src/app/3_reactive-programming-Rxjs/operator-mixed/subjects/async-subject</strong>
 </p>
-
 <h3>Exemple code</h3>
-<div class="row">
-    <div class="col">
-        <p>
-            <code>
-                {{"const source = new AsyncSubject();"}}<br>
-                {{"source.subscribe(res => console.log('Result subs 1', res));"}}<br>
-                {{"source.next(333);"}}<br>
-                {{"source.subscribe(res => console.log('Result subs 2', res));"}}<br>
-                {{"source.next(444);"}}<br>
-                {{"source.complete();"}}<br>
-            </code>
-        </p>
-    </div>
-    <mat-divider [vertical]="true"></mat-divider>
-    <div class="col">
-        Result subs 1 : 444 <br>
-        Result subs 2 : 444 <br>
-    </div>
-</div>
-
-
+<div [innerHTML]="demos.demoAsyncSubject | language: 'javascript' |markdown"></div>
 
 
