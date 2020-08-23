@@ -1,29 +1,11 @@
-### Intro
-
-#### General  :
-(Description d'openclassrooms)
-
-Faire un test, c’est vérifier qu’une partie de son logiciel fonctionne comme attendu.
-Si vous avez déjà développé, vous savez que la transformation d’une idée ou d'un besoin en code informatique peut être complexe et sujette à erreur ou interprétation.
-
-En voici quelques raisons :
-
-* Le besoin peut avoir été mal ou vaguement défini, que ce soit votre besoin ou celui d’un client. En conséquence, vous ne le développez pas comme il le faut.
-
-* De la même façon, le besoin peut avoir été mal compris. Résultat : le logiciel ne correspond pas à ce qui est attendu.
-
-* Vous avez fait des erreurs dans le code qui font que le logiciel plante, ou pire, qu’il ne fonctionne pas comme il faut ! Vous imaginez si le logiciel de votre banque vous retirait à chaque fois le double de ce que vous payez ?
-
-* Ou encore plus insidieux, tout fonctionne bien, sauf dans des cas limites du logiciel. Par exemple, vous développez une calculatrice, elle fonctionne bien, sauf dans le cas où vous tentez de diviser quelque chose par zéro. Et là, boum 
-  ...
 #### Angular
 Lorsque nous parlons de tests dans Angular, nous parlons généralement de deux types de tests différents:
 
-* <strong>Tests unitaires</strong>
+* **Tests unitaires**
 
    Ceci est parfois également appelé test isolé. C'est la pratique de tester de petits morceaux de code isolés. Si votre test utilise une ressource externe c'est pas un test unitaire..
 
-* <strong>Test fonctionel</strong>
+* **Test fonctionel**
     Ceci est défini comme le test de la fonctionnalité complète d'une application.
     Dans la pratique avec les applications Web, cela signifie interagir avec votre application car elle s'exécute dans un navigateur comme un utilisateur interagirait avec elle dans la vie réelle, 
     c'est-à-dire via des clics sur une page.
@@ -45,7 +27,7 @@ même pour nous lecture les tests au format BDD, il est beaucoup plus facile de 
 
 Exemple : 
 
-```
+```javascript
 class Counter {
     //   ...
     public count = 0;
@@ -57,23 +39,26 @@ class Counter {
     
 }
 
-// pure TYPESCRIPT counter.test.ts 
+```
 
- public function itIncreaseByOne(counter:Counter) : string {
- 
-    counter.increaseItOnClick();
-    if(counter.count === 1) {
-       return true;
-    } else {
-       return false;
-    }
+* pure TYPESCRIPT counter.test.ts 
+
+```javascript
+ public  itIncreaseByOne(counter:Counter) : boolean {
+    counter.count = 0;
+    counter.increaseItOnClick();  
+    return counter.count === 1 ;
+  
  }
+ 
  
  const counter = new Counter();
  console.log('Should increase count by 1 after calling click',itIncreaseByOne(couner)); // Should increase count by 1 after calling click true :D
- 
- 
-// JASMINE spec , counter.spec.ts
+```
+*  JASMINE spec , counter.spec.ts
+
+```javascript
+
 describe('Counter',() => {
 
     beforeAll(() => {
@@ -88,6 +73,7 @@ describe('Counter',() => {
     
     it('Should increase count by 1 after calling click', () => {
       let counter = new Counter();
+      counter.count = 0;
       counter.increaseItOnClick();
       expect(counter.count).toEqual(1); // true :D
     });
@@ -95,20 +81,21 @@ describe('Counter',() => {
     
     it(...)
     it(...)
-    ...
+   // ...
 });
 
 ```
-#### Quelques mots clés de Jasmine 
-(1)
-* `describe(String, Function)` : <strong>String</strong> est un nom ou un titre pour une suite de spécifications , <string>Function</strong> définit la suite de tests , une list de spécifications de test individuelles (it).
-* `it(String, Function)` :<strong>String</strong> est un nom ou un titre pour un spécification de test, <strong>Function</strong> définit une spécification de test individuelle, elle contient une ou plusieurs attentes (expects) de test.
-* `expect(actual)` : expect est prend une valeur, appelée le réel. Il est enchaîné avec une fonction Matcher, qui prend la valeur attendue (expect(counter.count).toEqual(1)).
+
+#### jasmine functions:
+
+* **describe(String, Function)** : **String** est un nom ou un titre pour une suite de spécifications , **Function** définit la suite de tests , une list de spécifications de test individuelles (it).
+* **it(String, Function)** :**String** est un nom ou un titre pour un spécification de test, **Function** définit une spécification de test individuelle, elle contient une ou plusieurs attentes (expects) de test.
+* **expect(actual)** : expect est prend une valeur, appelée le réel. Il est enchaîné avec une fonction Matcher, qui prend la valeur attendue (expect(counter.count).toEqual(1)).
 
 #### Chaque Matcher implémente une comparaison booléenne entre la valeur réelle et la valeur expected. Il est responsable de signaler à Jasmine si expect est vraie ou fausse. Jasmine réussira ou échouera la spécification.
-#####Les Matcher principaux sont :
+##### Les Matcher principaux sont :
    
-   * toBe : égalité stricte (type et valeur ====)
+   * toBe : égalité stricte (type et valeur ===)
    * toEqual : égalité non stricte (valeur ==)
    * toContain : un Array contient un élément donné, ou une string contient une chaîne donnée
    * toBeDefined : l’objet doit être défini
@@ -126,14 +113,15 @@ describe('Counter',() => {
    
 ##### Désactiver ou se concentrer sans commenter..
 1) désactiver
-* on peut désactiver une list de spécifications de test sans les commenter on ajoute juste x au départ `xdescribe(String, Function)`
-* on peut désactiver une spécification de test sans les commenter on ajoute juste x au départ `xit(String, Function)`
+* on peut désactiver une list de spécifications de test sans les commenter on ajoute juste x au départ **xdescribe(String, Function)**
+* on peut désactiver une spécification de test sans les commenter on ajoute juste x au départ **xit(String, Function)**
 
 2) se concentrer sur des tests et ignore les autres
-* on peut se concentrer sur une list de spécifications et ignore les autre on ajoute juste f au départ `fdescribe(String, Function)`
-* on peut se concentrer sur une spécification et ignore les autre on ajoute juste f au départ`fit(String, Function)`
+* on peut se concentrer sur une list de spécifications et ignore les autre on ajoute juste f au départ **fdescribe(String, Function)**
+* on peut se concentrer sur une spécification et ignore les autre on ajoute juste f au départ **fit(String, Function)**
 
 ##### Setup and Teardown (Configuration et démontage)
+
 Parfois, pour tester une fonctionnalité, nous devons effectuer une configuration,
 peut-être que cela crée des objets de test. De plus, nous devrons peut-être effectuer certaines activités de nettoyage après avoir terminé les tests.
 par exemple supprimer des fichier ...
@@ -151,8 +139,6 @@ Karma est notre moteur de tests. de notre projet, cree avec l’angular-cli.<br>
 pourquoi Karma?
 
 * L'exécution manuelle de tests Jasmine en actualisant un onglet de navigateur à plusieurs reprises dans différents navigateurs chaque fois que nous modifions du code peut devenir fastidieuse.
-
-* Karma est un outil qui nous permet de générer des navigateurs et d'exécuter des tests Jasmine à l'intérieur de tous à partir de la ligne de commande. Les résultats des tests sont également affichés sur la ligne de commande.
 
 * Karma peut également surveiller les modifications apportées à vos fichiers de développement et réexécuter les tests automatiquement.
 
@@ -172,22 +158,20 @@ Cela exécute tous les tests de notre projet de Jasmine via Karma.
 Il surveille les modifications apportées à nos fichiers de développement, regroupe tous les fichiers de développement et réexécute automatiquement les tests.
 
 <h4>Voila exemple , j'execute ng test sur la racine de notre app complet :D , on a beaucoup des problemes , c'est normale car j'ai pas creer les scenarios .. juste des tests basic qu'ils sont generer au moment de la creation des components , services , pipes.. avec angular cli..</4>
-![alt text](img/ng-test-exp.png)
 
-
-
+<br>
+<img src="assets/md/app/9-testing/img/ng-test-exp.png" width="100%"/>
+<br>
 
 ### test only Jasmine and karma
 
-<h3>NB</h3>
- ng test execute tout les tests sur notre app.
- ng test --main ./notre.spec.ts execute juste les tests de ce fichier.
- 
-#### les option de ng test: https://angular.io/cli/test
-
+#### NB
+ * ng test execute tout les tests sur notre app.
+ * ng test --main ./notre.spec.ts **execute juste les tests de ce fichier.**
+ * pour les options de ng test voir https://angular.io/cli/test
 
 #### test simple class services/user-rights.service.ts
-````
+````javascript
 // user-rights.service.ts
 export class UserRightsService {
     public get isAuthenticated(): boolean {
@@ -226,17 +210,15 @@ describe('Service UserRights', () => {
 
 ````
 
-* run `ng test --code-coverage --main ./src/app/9-testing/simple-class-pipe/services/user-rights.service.spec.ts`
+run **ng test --code-coverage --main ./src/app/9-testing/simple-class-pipe/services/user-rights.service.spec.ts**
 
-![alt text](img/browser-simple-class.png)
-
-![alt text](img/cli-simple-class.png)
-
+<img src="assets/md/app/9-testing/img/browser-simple-class.png" width="100%"/>
+<img src="assets/md/app/9-testing/img/cli-simple-class.png" width="100%"/>
 
 #### test pipe  pipe/currency-to-kmb.pipe.ts
 
 
-````
+```javascript
 // currency-to-kmb.pipe.ts
 import {Pipe, PipeTransform} from '@angular/core';
 
@@ -290,49 +272,48 @@ describe('Pipe CurrencyToKMB', () => {
 });
 
 
-````
+```
 
-![alt text](img/browser-pipe.png)
+<img src="assets/md/app/9-testing/img/browser-pipe.png" width="100%"/>
+<img src="assets/md/app/9-testing/img/cli-pipe.png" width="100%"/>
 
-![alt text](img/cli-pipe.png)
 
 
 ### Teste avec mooks and spies
-<h4>On prend un exemple au départ pour bien expliquer </h4>
+**On prend un exemple :**
   On suppose qu'on a  un todo item avec multi actions, 
-  il y a des actions pour tout les utilisateurs authentifiés sur notre application et d'autre actions pour le super Admin ou global admin.
+  Il y a des actions pour tout les utilisateurs authentifiés  et d'autres par les super admin et global admin
 
 #### test avec le real AppStateService
-````
+
+```javascript
 //  Apérs la login on va stocker notre utilisateur corrant sur localStorage pour la suite des interactions avec l'application
 
 //  
 export class AppStateService 
 {
-  
-   // On peut le faire mieux que ca 1000 fois , mais on veut le probleme pour l'expliquer.. :D
+    
    
    public get currentUser(): UserModel {
        retrun new UserModel(JSON.parse(localStorage.getItem('currentUser'));
    }
-   // on peut créer autre service pour UserRights mais on le laisse simple a ce stade là
+   // on peut créer autre service pour UserRights ...
    public get userIsSuperAdmin(): boolean {
     return this.currentUser.role === 'ROLE_SUPER_ADMIN';
    }
-   // on peut créer autre service pour UserRights mais on le laisse simple a ce stade là
+   // on peut créer autre service pour UserRights ..
    public get userIsGlobalAdmin(): boolean {
     return this.currentUser.role === 'ROLE_GLOBAL_ADMIN';
    }
    
-   ...
+   // ...
 }
 
-
-// Notre todo item component
+// Notre todoItemComponent
 
 export class TodoItemComponent {
 
-    ...
+   // ...
     
     public constructor(private appStateServ:AppStateService) {
     
@@ -373,7 +354,7 @@ describe('TodoItemComponent',() => {
   
   afterEach(() => {
     appStateServ = null;
-    todoItemComponent = null;
+    component = null;
     localStorage.removeItem('currentUser');
   });
   
@@ -403,9 +384,7 @@ describe('TodoItemComponent',() => {
    expect(component.canDisplayAddComment).toBeFalsy();
   });
   
-  .... Notre objectif est de voir comment et pourquoi le Mock et spies
-  // pas de faire tout les specs
-  
+  // ...
 });
 
 
@@ -413,14 +392,16 @@ describe('TodoItemComponent',() => {
 
 * Pour tester todoItemComponent, on a besoin de connaitre le fonctionnement interne du AppStateService.
 * Ce n'est pas trés isolé , il s'agit d'un couplage serré et nos tests sont tres fragiles.
-* On suppose que demain on change la facon de stockage de notre currentUser , on va le mettre sur IndexDB ou bien sur un cookie ,comme ca notre test de todoItemComponent serait interrompu et tout notres specs sont échouees :),
+* On suppose que demain on change la facon de stockage de notre currentUser , on va le mettre sur IndexDB ou bien sur un cookie ,
+  comme ca notre test de todoItemComponent serait interrompu et tout notres specs sont échouees :),
 * Alors comment on va resoudre ca ?!
  1) On ne doit pas avoir des soucis par rapport AppStateService (autrement on s'en fout , c'est le role de son class de test app-state.serice.spec ...)
  2) On utilise des mocks and spies :D  
 // show me the code :D
 
 #### test avec Mock AppStateService
-````
+#### mock AppStateService
+```javascript
 // todo-item.component.spec.ts
 
 class MockAppStateService {
@@ -449,7 +430,7 @@ describe('TodoItemComponent',() => {
   
   afterEach(() => {
     mockAppStateService = null;
-    todoItemComponent = null;
+    component = null;
   });
   
   it('Should create',() => {
@@ -471,10 +452,12 @@ describe('TodoItemComponent',() => {
    // on fait rien par default super et global sur le mock sont false 
    expect(component.canDisplayAddComment).toBeFalsy();
   });
-  ...
+//  ...
 });
 
-````
+
+```
+
 * Comme ca notre test de component TodoItem ne depend pas au vrai AppStateService,
 * Notre code de test est moins fragile, et sera toujours valide et fonctione come prévu.. 
 
@@ -483,9 +466,7 @@ describe('TodoItemComponent',() => {
 Spy est une fonctionnalité de Jasmine qui nous permet de prendre une classe, 
 une fonction ou un objet existant et de le mocking de manière à pouvoir contrôler ce qui est renvoyé par les appels de fonction.
 
-````
-
-
+```javascript
 describe('TodoItemComponent',() => {
   
   let appStateServ; 
@@ -501,7 +482,7 @@ describe('TodoItemComponent',() => {
   
   afterEach(() => {
     appStateServ = null;
-    todoItemComponent = null;
+    component = null;
   });
   
   it('Should create',() => {
@@ -511,12 +492,14 @@ describe('TodoItemComponent',() => {
   it('Should display the add comment action for user has role Global admin', () => {
 
     
-    // on crée un spy sur notre service appStateServ afin que la propriete isGloablAdmin est appelée, elle retourne true.
+    // on crée un spy sur notre service appStateServ afin que la propriete isGloablAdmin quand elle est appelée, elle retourne true.
     // on utilise spyOnProperty parce que userIsSuperAdmin est un propriete de l'objet n'est pas une functione
-    spyOnProperty(AppStateSer, 'userIsSuperAdmin').and.returnValue(true);
-    
+        
     // si isGloablAdmin est un fonctionne 
     // spyOn(appStateServ,'isGloablAdmin').and.returnValue(true);
+    
+    spyOnProperty(AppStateSer, 'userIsSuperAdmin').and.returnValue(true);
+
     expect(component.canDisplayAddComment).toBeTruthy();
   });
   
@@ -537,23 +520,29 @@ describe('TodoItemComponent',() => {
   
 });
 
-à voir les mots clés de spies
-````
+// **à vous de continues tout les test de ces components..**
+
+```
 
 
 
-NB : à vous de continues tout les test de ces components..
+1) Avec real service voir **testing-with-moks-spies/with-real-service**
 
-1) Avec real service voir testing-with-moks-spies/with-real-service<br>
-  run ng test --code-coverage --main ./src/app/9-testing/testing-with-mocks-spies/with-real-service/with-real-service.component.spec.ts
- ![alt text](img/comp-with-real-service.png)
+  **run ng test --code-coverage --main ./src/app/9-testing/testing-with-mocks-spies/with-real-service/with-real-service.component.spec.ts**
+  
+<img src="assets/md/app/9-testing/img/comp-with-real-service.png" width="100%"/>
 
-2) Avec mock service voir testing-with-moks-spies/with-mock-service<br>
-  run ng test --code-coverage --main ./src/app/9-testing/testing-with-mocks-spies/with-mock-service/with-mock-service.component.spec.ts
- ![alt text](img/comp-with-real-service.png)
-3) avec spie voir testing-with-moks-spies/with-spies<br>
-  run ng test --code-coverage --main ./src/app/9-testing/testing-with-mocks-spies/with-spies/with-spies.component.spec.ts
- ![alt text](img/comp-with-real-service.png)
+2) Avec mock service voir **testing-with-moks-spies/with-mock-service**
+
+  **run ng test --code-coverage --main ./src/app/9-testing/testing-with-mocks-spies/with-mock-service/with-mock-service.component.spec.ts**
+  
+  <img src="assets/md/app/9-testing/img/comp-with-mock-service.png" width="100%"/>
+  
+3) avec spie voir **testing-with-moks-spies/with-spies**
+
+  **run ng test --code-coverage --main ./src/app/9-testing/testing-with-mocks-spies/with-spies/with-spies.component.spec.ts**
+  
+  <img src="assets/md/app/9-testing/img/comp-with-spies.png" width="100%"/>
 
 
 
@@ -566,7 +555,7 @@ NB : à vous de continues tout les test de ces components..
  
  #### Maintenant on change un test qu'on a fait avec jasmine vanilla to ATB.
  
-```
+```javascript
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {DebugElement} from '@angular/core';
@@ -600,9 +589,10 @@ describe('TodoItemComponent',() => {
     component = fixture.componentInstance; 
     
     // fixture.debugElement (Nb:il y a aussi fixture.nativeElement..): c'est un wrapper à l' élément DOM de bas niveau qui représente la vue de notre composant.
-    // By  : on peut obtenir des références à d'autres nœuds enfants en l'interrogeant debugElement avec une By classe.
+    // By  : on peut obtenir des références à d'autres noeuds enfants en l'interrogeant debugElement avec une By classe.
     // la By classe nous permet d'interroger en utilisant un certain nombre de méthodes , ici on utilise class pour recupérer notre element
     // une autre façon est de demander par un type de directive comme By.directive(MyDirective) ou  By.directive(MyComponent).
+    
     elStateDescriptionComment = fixture.debugElement.query(By.css('div.state-desc'));
 
     // on recupére notre dépandence à partir de TestBed par get(Type) , get(token Chaine de caractére ) ou get (InjectionToken) (chapitre DI)
@@ -616,7 +606,7 @@ describe('TodoItemComponent',() => {
   
   afterEach(() => {
     appStateServ = null;
-    todoItemComponent = null;
+    component = null;
   });
   
   it('Should create',() => {
@@ -653,7 +643,8 @@ Pourquoi ?
 Parce que le test est dedié d'un file de specs ,et ne passe pas par le file test.ts qui a le role de initiliser l'environment de TestBed et aussi import zone pour les traitements async , 
 il se trouve sur la rachine du projet test.ts,
 Mais on peut fixer ce probleme par l'ajout et initialise d'environment et ajout de zone sur notre file de specs
-```
+
+```javascript
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import 'zone.js/dist/zone-testing';
@@ -688,6 +679,7 @@ describe('TodoItemComponent',() => {
 * Il nous permet de tester en utilisant la NgModule configuration qu'on utilise dans notre application.
 
 * Il nous permet de tester l'interaction des utilisateurs via des clics et des champs de saisie.
+
 #### Exemple : 3-test-bed 
 
 ### Test bed , async
@@ -753,12 +745,12 @@ Parce que la fonction AppStateSer.userIsSuperAdmin n'a pas encore une valeur (Pr
 et par la suite la canDisplayAddComment propriété n'a pas modifié..
 
 #### Quelquels solutions pour resoudre ce probléme d'async 
-##### Jasmine with done
+##### Jasmine avec **DoneFn**
 
 Jasmine a une manière  intégrée de gérer le code asynchrone et c'est par la `done fonction passée comme args sur le specs,
 Notre code maintenant devient : 
 
-```
+```javascript
 describe('TodoItemComponent',() => {
 
   
@@ -784,15 +776,17 @@ describe('TodoItemComponent',() => {
 
 ```
 
-##### Angular async et whenStable ,fakeAsync et tick
-1.async et whenStable<br>
-Angular a une autre méthode pour tester le code asynchrone via les fonctions `async` et `wenStable.`.
+##### Angular **async** et **whenStable** , **fakeAsync** et **tick**
+* **1.async et whenStable**
+
+Angular a une autre méthode pour tester le code asynchrone via les fonctions **async** et **wenStable.**.
 Notre code maintenant devient : 
 
-```
+```javascript
+
 describe('TodoItemComponent',() => {
 
-    // Cette asyncfonction exécute le code à l'intérieur de son corps dans une zone de test asynchrone spéciale . 
+    // Cette asyncf onction exécute le code à l'intérieur de son corps dans une zone de test asynchrone spéciale . 
     // Cela intercepte et garde une trace de toutes les promesses ou les observable créées dans son corps.  
     it('Should display the add comment action for user has role Global admin', async(() => {
     
@@ -811,12 +805,13 @@ describe('TodoItemComponent',() => {
   
 });
 ```
-2.fakeAsync et tick<br>
-1.async et whenStable<br>
-Angular a une autre méthode pour tester le code asynchrone via les fonctions `fakeAsync` et `tick`.
+* **2.fakeAsync et tick**
+
+Angular a une autre méthode pour tester le code asynchrone via les fonctions **fakeAsync** et **tick**.
 Notre code maintenant devient : 
 
-````
+```javascript
+
 describe('TodoItemComponent',() => {
 
     //fakeAsync  c'est comme async function, sauf il ne suit pas les demandes XHR .
@@ -840,6 +835,5 @@ describe('TodoItemComponent',() => {
 });
 
 
-````
----> Exemple 4-testbed-async
+```
 
