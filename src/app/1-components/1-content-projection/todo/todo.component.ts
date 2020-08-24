@@ -1,15 +1,16 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {Ticket} from '../models/ticket.model';
 import {TicketTypeEnum} from '../enum/ticket-type.enum';
-import {MatBottomSheet, MatBottomSheetConfig} from '@angular/material';
-import {CodeDetailsComponent} from '../../../code-details/code-details.component';
+import {IntroJsHelperService} from '../../../services/intro-js-helper.service';
+import {Step} from 'intro.js';
+
 
 @Component({
     selector: 'app-todo',
     templateUrl: './todo.component.html',
     styleUrls: ['./todo.component.scss']
 })
-export class TodoComponent implements OnInit {
+export class TodoComponent implements OnInit, AfterViewInit {
     public ticketListMock: Array<Ticket> = [];
     private descriptionMock = 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut';
 
@@ -24,6 +25,28 @@ export class TodoComponent implements OnInit {
     }
 
     ngOnInit() {
+
+    }
+
+    public ngAfterViewInit(): void {
+        const steps: Array<Step> = [
+            {
+                intro: 'This is a tooltip.',
+            },
+            {
+                element: document.querySelector('#read-me-first'),
+                intro: 'This is a tooltip.',
+            },
+            {
+                element: document.querySelector('#exmple-in'),
+                intro: 'This is a tooltip.'
+            },
+            {
+                element: document.querySelector('#demo'),
+                intro: 'This is a tooltip.'
+            }
+        ];
+        IntroJsHelperService.introJsInit(steps);
     }
 
     public addTicket(ticket: Ticket): void {
@@ -33,8 +56,6 @@ export class TodoComponent implements OnInit {
     public onAlert(): void {
         alert('Alert button project on child component from parent');
     }
-
-
 
 
 }

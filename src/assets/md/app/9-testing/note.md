@@ -688,8 +688,9 @@ Tout va bien jusqu'à maintenant , mais on suppose qu'on veut tester des fonctio
 
 On prend un exemple pour bien comprendre :
 
-````
-//  
+```javascript
+
+
 export class AppStateService 
 {
   
@@ -701,9 +702,9 @@ export class AppStateService
 }
 
 
-// Notre todo item component
+// Notre todoItemComponent
     
-    ...
+  //  ...
     public canDisplayAddComment: boolean;
     
     public ngOnInit() : void {
@@ -711,7 +712,7 @@ export class AppStateService
         this.canDisplayAddComment = state;
      });
     }
-...
+//...
 
 // todo-item.component.spec.ts
 
@@ -737,9 +738,9 @@ describe('TodoItemComponent',() => {
   //....
   
 });
-````
+```
 
-<h3>Il semble que tout va bien !! , malheuresement notre test est echoué</h3>
+<h3>Il semble que tout va bien !! , malheuresement notre test a echoué</h3>
 Pourquoi ? <br>
 Parce que la fonction AppStateSer.userIsSuperAdmin n'a pas encore une valeur (Promise),
 et par la suite la canDisplayAddComment propriété n'a pas modifié..
@@ -751,12 +752,13 @@ Jasmine a une manière  intégrée de gérer le code asynchrone et c'est par la 
 Notre code maintenant devient : 
 
 ```javascript
+
 describe('TodoItemComponent',() => {
 
   
     it('Should display the add comment action for user has role Global admin', (done:DoneFn) => {
     
-     cont spy = spyOn(AppStateSer, 'userIsSuperAdmin').and.returnValue(Promise.resolve(true));  
+     const spy = spyOn(AppStateSer, 'userIsSuperAdmin').and.returnValue(Promise.resolve(true));  
      fixture.detectChanges(); 
      
      // En chaining spy avec calls.mostRecent(), renverra le contexte (le this) et les arguments de l'appel le plus récent..
@@ -781,6 +783,7 @@ describe('TodoItemComponent',() => {
 
 Angular a une autre méthode pour tester le code asynchrone via les fonctions **async** et **wenStable.**.
 Notre code maintenant devient : 
+
 
 ```javascript
 
@@ -833,7 +836,6 @@ describe('TodoItemComponent',() => {
   //....
   
 });
-
 
 ```
 

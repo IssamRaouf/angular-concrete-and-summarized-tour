@@ -1,4 +1,5 @@
-<div class="container container-todo my-2" *ngIf="srcMd">
+<div class="container container-todo my-2" [hidden]="!srcMd">
+
 
     <mat-accordion>
         <mat-expansion-panel [(expanded)]="expandedOnChangeRoute">
@@ -8,16 +9,17 @@
                 </mat-panel-title>
             </mat-expansion-panel-header>
             <mat-divider></mat-divider>
-            <div markdown [src]="srcMd.noteGeneralFile"></div>
+            <div markdown [src]="srcMd?.noteGeneralFile" ></div>
         </mat-expansion-panel>
     </mat-accordion>
 
-
-    <ng-container *ngIf="srcMd.mapExamplesCode">
-        <button mat-raised-button (click)="showCode()" class="btn-show-code mt-3">Afficher le code le plus important
-            pour cette chapitre
-        </button>
-    </ng-container>
+    <div id="exmple-in">
+        <ng-container *ngIf="srcMd?.mapExamplesCode">
+            <button mat-raised-button (click)="showCode()" class="btn-show-code mt-3">Afficher le code le plus important
+                pour cette chapitre
+            </button>
+        </ng-container>
+    </div>
 </div>
 
 
