@@ -16,9 +16,9 @@ export class GroupByComponent implements OnInit {
     ngOnInit() {
         const persons = [
             {fullName: 'Issam Raouf', age: 26},
-            {fullName: 'Soufiane Ramouda', age: 26},
-            {fullName: 'Fouzi ben tounssi', age: 33},
-            {fullName: 'khalil khalil', age: 33},
+            {fullName: 'MMMM MMM', age: 26},
+            {fullName: 'RRRR RRRRR', age: 33},
+            {fullName: 'LLLLL LLLL', age: 33},
             {fullName: 'Mohamed Mohamed', age: 47}
         ];
 
