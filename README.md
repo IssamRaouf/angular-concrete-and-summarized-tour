@@ -1,6 +1,6 @@
 
 ## Project requirements
-![alt text](requirements.png)
+![alt text](requirements.jpg)
 
 ### Install & Enjoy
 * git clone
