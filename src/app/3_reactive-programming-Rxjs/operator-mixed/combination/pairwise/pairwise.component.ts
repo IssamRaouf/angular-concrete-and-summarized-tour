@@ -16,8 +16,8 @@ export class PairwiseComponent implements OnInit {
 
     ngOnInit() {
         const observ = of({name: 'issam raouf', job: 'Lead developer'},
-            {name: 'khalil boukhari', job: 'full stack developer'},
-            {name: 'Fouzi ben tounssi', job: 'Architect technique'}
+            {name: 'YYYY YYYY', job: 'full stack developer'},
+            {name: 'XXXX XXXX', job: 'Architect technique'}
         ).pipe(
             pairwise()
         );

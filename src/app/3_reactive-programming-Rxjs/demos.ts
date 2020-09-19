@@ -330,14 +330,14 @@ export class Demos {
     public static readonly demoPairewise = `
     // Implementation
        const observ = of( {name: 'issam raouf', job: 'Lead developer'},
-                          {name: 'khalil boukhari', job: 'full stack developer'},
-                          {name: 'Fouzi ben tounssi', job: 'Architect technique'}
+                          {name: 'XXXXX XXXXX', job: 'full stack developer'},
+                          {name: 'YYYYY YYYYY', job: 'Architect technique'}
                          ).pipe(
                                  pairwise()
                          ).subscribe(res => console.log('result: ', res))
     //  Results
-         result : [{name: 'issam raouf', job: 'Lead developer'},{name: 'khalil boukhari', job: 'full stack developer'}]
-         result : [{name: 'khalil boukhari', job: 'full stack developer'},{name: 'Fouzi ben tounssi', job: 'Architect technique'}]
+         result : [{name: 'issam raouf', job: 'Lead developer'},{name: 'XXXX XXXX', job: 'full stack developer'}]
+         result : [{name: 'XXXX XXXX', job: 'full stack developer'},{name: 'YYYYY YYYYY', job: 'Architect technique'}]
    `;
 
 
@@ -366,13 +366,13 @@ export class Demos {
          const obser1 = of('Hello');
          const obser2 = of('2018', '2008', '2004');
          const obser3 = of( {name: 'issam raouf', job: 'Lead developer'},
-                            {name: 'khalil boukhari', job: 'full stack developer'},
-                            {name: 'Fouzi ben tounssi', job: 'Architect technique'}
+                            {name: 'XXXX XXXX', job: 'full stack developer'},
+                            {name: 'YYYYY YYYYY', job: 'Architect technique'}
                             );
          forkJoin([obser1, obser2, obser3]).subscribe(res => console.log('ForkJoin res is ', res));
 
     //  Results
-        ['Hello','2004',{name: 'Fouzi ben tounssi', job: 'Architect technique'}]
+        ['Hello','2004',{name: 'YYYYY YYYYY', job: 'Architect technique'}]
    `;
 
 
@@ -939,7 +939,7 @@ export class Demos {
           const persons = [
             {fullName: 'Issam Raouf', age: 26},
             {fullName: 'Soufiane Ramouda', age: 26},
-            {fullName: 'Fouzi ben tounssi', age: 33},
+            {fullName: 'YYYYY YYYYY', age: 33},
             {fullName: 'khalil khalil', age: 33},
             {fullName: 'Mohamed Mohamed', age: 47}
         ];
@@ -958,7 +958,7 @@ export class Demos {
        result.subscribe(res => console.log('Result ', res));
      //  Results
         Result : {age:26 , users:['Issam Raouf', 'Soufiane Ramouda']}
-        Result : {age:33 , users:['Fouzi ben tounssi', 'khalil khalil']}
+        Result : {age:33 , users:['YYYYY YYYYY', 'khalil khalil']}
         Result : {age:47 , users:['Mohamed Mohamed']}
            `;
     /**
@@ -1046,14 +1046,14 @@ export class Demos {
      // Implementation
         const source = from([
             {name: 'issam raouf', age: 26}, {name: 'Ramouda Soufiane', age: 28},
-            {name: 'Fouzi ben tounssi', age: 36}, {name: 'Khalil khalil', age: 22}
+            {name: 'YYYYY YYYYY', age: 36}, {name: 'Khalil khalil', age: 22}
         ]);
         const result = source.pipe(pluck('name'));
         result.subscribe(res => console.log('Result ', res));
      //  Results
             Result issam raouf
             Result Ramouda Soufiane
-            Result Fouzi ben tounssi
+            Result YYYYY YYYYY
             Result Khalil khalil
            `;
     /**

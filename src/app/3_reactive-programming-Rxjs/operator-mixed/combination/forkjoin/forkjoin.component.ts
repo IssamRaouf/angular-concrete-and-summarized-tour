@@ -17,8 +17,8 @@ export class ForkjoinComponent implements OnInit {
         const obser1 = of('Hello');
         const obser2 = of('2017', '2008', '2004');
         const obser3 = of({name: 'issam raouf', job: 'Lead developer'},
-            {name: 'khalil boukhari', job: 'full stack developer'},
-            {name: 'Fouzi ben tounssi', job: 'Architect technique'});
+            {name: 'YYYYY YYYYY', job: 'full stack developer'},
+            {name: 'XXXXX XXXXX', job: 'Architect technique'});
         // enlever le commentaire et voir résultat sur la console
         // forkJoin([obser1, obser2, obser3]).subscribe(res => console.log('ForkJoin res is ', res));
 
