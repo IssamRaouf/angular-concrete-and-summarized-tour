@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {Ticket} from '../models/ticket.model';
 import {TicketTypeEnum} from '../enum/ticket-type.enum';
-import {MatBottomSheet, MatBottomSheetConfig} from '@angular/material';
-import {CodeDetailsComponent} from '../../../code-details/code-details.component';
+
+
 
 @Component({
     selector: 'app-todo',
@@ -24,7 +24,9 @@ export class TodoComponent implements OnInit {
     }
 
     ngOnInit() {
+
     }
+
 
     public addTicket(ticket: Ticket): void {
         this.ticketListMock.unshift(ticket);
@@ -33,8 +35,4 @@ export class TodoComponent implements OnInit {
     public onAlert(): void {
         alert('Alert button project on child component from parent');
     }
-
-
-
-
 }

@@ -1,5 +1,4 @@
 <div class="app-container">
-
     <mat-toolbar color="primary">
         <mat-toolbar-row>
             <button mat-icon-button class="icon-menu" (click)="sidenav.toggle()">
@@ -62,7 +61,7 @@
                     <mat-list role="list">
                         <mat-list-item role="listitem"><a routerLink="./directives-important-exist"
                                                           routerLinkActive="active" (click)="sidenav.toggle()">Directives
-                            importantes existent</a></mat-list-item>
+                            built-in</a></mat-list-item>
                         <mat-list-item role="listitem"><a routerLink="./directives-custom" routerLinkActive="active"
                                                           (click)="sidenav.toggle()">Directives personnalisées</a>
                         </mat-list-item>
@@ -195,8 +194,11 @@
 
         <!-- BEGIN sidenav content -->
         <mat-sidenav-content>
+
             <app-markdown-docs></app-markdown-docs>
-            <router-outlet></router-outlet>
+            <div id="demo">
+                <router-outlet></router-outlet>
+            </div>
         </mat-sidenav-content>
         <!-- END sidenav content -->
 
