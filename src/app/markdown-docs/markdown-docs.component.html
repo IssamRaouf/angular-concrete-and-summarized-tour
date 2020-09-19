@@ -1,19 +1,18 @@
 <div class="container container-todo my-2" [hidden]="!srcMd">
-
-
-    <mat-accordion>
-        <mat-expansion-panel [(expanded)]="expandedOnChangeRoute">
-            <mat-expansion-panel-header>
-                <mat-panel-title>
-                    <h1>Lisez-moi d'abord</h1>
-                </mat-panel-title>
-            </mat-expansion-panel-header>
-            <mat-divider></mat-divider>
-            <div markdown [src]="srcMd?.noteGeneralFile" ></div>
-        </mat-expansion-panel>
-    </mat-accordion>
-
-    <div id="exmple-in">
+    <div id="readme-first">
+        <mat-accordion>
+            <mat-expansion-panel [(expanded)]="expandedOnChangeRoute">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <h1>Lisez-moi d'abord</h1>
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-divider></mat-divider>
+                <div markdown [src]="srcMd?.noteGeneralFile"></div>
+            </mat-expansion-panel>
+        </mat-accordion>
+    </div>
+    <div id="exemple-code">
         <ng-container *ngIf="srcMd?.mapExamplesCode">
             <button mat-raised-button (click)="showCode()" class="btn-show-code mt-3">Afficher le code le plus important
                 pour cette chapitre
