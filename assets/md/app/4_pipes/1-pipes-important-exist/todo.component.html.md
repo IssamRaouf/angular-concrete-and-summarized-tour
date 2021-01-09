@@ -63,7 +63,7 @@
             <mat-card-header>
                 <mat-card-title>I18nSelectPipe</mat-card-title>
                 <mat-card-subtitle>Sélecteur générique qui affiche la chaîne qui correspond à la valeur actuelle.<br>
-                    <strong>inviteMap:</strong>{{"{male: 'Invite-le.', female: 'Invite-la.', other: 'Invite-les.'}"}}
+                    <strong>inviteMap:</strong> {{ "male: 'Invite-le.', female: 'Invite-la.', other: 'Invite-les.'" }}
                 </mat-card-subtitle>
             </mat-card-header>
             <mat-divider></mat-divider>
