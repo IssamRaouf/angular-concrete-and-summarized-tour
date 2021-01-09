@@ -1,0 +1,15 @@
+@import "variables";
+
+
+@mixin formHorizontal($field-width:100%) {
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+  }
+  .form-container > * {
+    width: $field-width;
+    margin-bottom: 5px;
+  }
+
+}

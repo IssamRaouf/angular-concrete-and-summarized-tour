@@ -1,0 +1,21 @@
+@import '~@angular/material/theming';
+@import 'variables';
+
+@include mat-core();
+
+
+
+$my-app-primary: mat-palette($mat-purple);
+$my-app-accent: mat-palette($mat-pink, A200, A100, A400);
+$my-app-warn: mat-palette($mat-red);
+
+
+
+// Create the theme object (a Sass map containing all of the palettes).
+$my-app-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($my-app-theme);
+

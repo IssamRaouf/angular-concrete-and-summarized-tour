@@ -1,0 +1,17 @@
+````html
+<div class="container container-todo">
+
+    <div class="row py-5 my-5" *ngIf='isLoading ;  else list'>
+        <h1> veuillez patienter, la liste est en cours de chargement..</h1>
+    </div>
+    <ng-template #list>
+
+        <app-todo-form (sendTicket)="addTicket($event)" [usersList]="usersListMock"
+                       [editTicket]="ticketToEdit"
+                       (sendEditedTicket)="onEdit($event)">
+        </app-todo-form>
+        <app-todo-list [usersList]="usersListMock" [ticketList]="ticketListMock"
+                       (editTicketSend)="editTicket($event)"></app-todo-list>
+    </ng-template>
+</div>
+````
