@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { ForkjoinComponent } from './forkjoin.component';
 
@@ -6,7 +6,7 @@ xdescribe('ForkjoinComponent', () => {
   let component: ForkjoinComponent;
   let fixture: ComponentFixture<ForkjoinComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ ForkjoinComponent ]
     })

@@ -1,4 +1,4 @@
-import {async, ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 
 import {TestbedAsyncComponent} from './testbed-async.component';
 import {
@@ -56,7 +56,7 @@ describe('TestbedAsyncComponent', () => {
 
     });
 
-    it('Should display the add comment action for user has role Global admin (Async & whenStable)', async(() => {
+    it('Should display the add comment action for user has role Global admin (Async & whenStable)', waitForAsync(() => {
 
         spyOn(AppStateSer, 'userIsGlobalAdminPromise').and.returnValue(Promise.resolve(true));
         component.ngOnInit();

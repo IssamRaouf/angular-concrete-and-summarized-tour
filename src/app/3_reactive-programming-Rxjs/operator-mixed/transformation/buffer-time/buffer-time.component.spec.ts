@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { BufferTimeComponent } from './buffer-time.component';
 
@@ -6,7 +6,7 @@ xdescribe('BufferTimeComponent', () => {
   let component: BufferTimeComponent;
   let fixture: ComponentFixture<BufferTimeComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ BufferTimeComponent ]
     })

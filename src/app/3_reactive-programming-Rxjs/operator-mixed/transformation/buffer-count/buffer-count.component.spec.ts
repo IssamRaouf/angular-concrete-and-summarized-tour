@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { BufferCountComponent } from './buffer-count.component';
 
@@ -6,7 +6,7 @@ xdescribe('BufferCountComponent', () => {
   let component: BufferCountComponent;
   let fixture: ComponentFixture<BufferCountComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ BufferCountComponent ]
     })

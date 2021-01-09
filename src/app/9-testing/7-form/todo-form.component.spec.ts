@@ -1,4 +1,4 @@
-import {async, ComponentFixture, TestBed, tick} from '@angular/core/testing';
+import { ComponentFixture, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import {TodoFormComponent} from './todo-form.component';
 import {
     BrowserDynamicTestingModule,

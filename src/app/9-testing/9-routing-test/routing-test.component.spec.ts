@@ -1,4 +1,4 @@
-import {async, ComponentFixture, fakeAsync, TestBed} from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, waitForAsync } from '@angular/core/testing';
 import {RoutingTestComponent} from './routing-test.component';
 import {Component} from '@angular/core';
 import {Router, Routes} from '@angular/router';

@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { TakeWhileComponent } from './take-while.component';
 
@@ -6,7 +6,7 @@ xdescribe('TakeWhileComponent', () => {
   let component: TakeWhileComponent;
   let fixture: ComponentFixture<TakeWhileComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ TakeWhileComponent ]
     })

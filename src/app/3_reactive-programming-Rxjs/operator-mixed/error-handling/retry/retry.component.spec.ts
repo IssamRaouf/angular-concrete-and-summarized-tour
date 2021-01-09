@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { RetryComponent } from './retry.component';
 
@@ -6,7 +6,7 @@ xdescribe('RetryComponent', () => {
   let component: RetryComponent;
   let fixture: ComponentFixture<RetryComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ RetryComponent ]
     })

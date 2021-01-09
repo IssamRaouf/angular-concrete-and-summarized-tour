@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { GroupByComponent } from './group-by.component';
 
@@ -6,7 +6,7 @@ xdescribe('GroupByComponent', () => {
   let component: GroupByComponent;
   let fixture: ComponentFixture<GroupByComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ GroupByComponent ]
     })

@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { ReduceComponent } from './reduce.component';
 
@@ -6,7 +6,7 @@ xdescribe('ReduceComponent', () => {
   let component: ReduceComponent;
   let fixture: ComponentFixture<ReduceComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ ReduceComponent ]
     })

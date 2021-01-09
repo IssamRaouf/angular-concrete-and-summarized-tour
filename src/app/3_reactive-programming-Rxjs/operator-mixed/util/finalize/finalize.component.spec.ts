@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { FinalizeComponent } from './finalize.component';
 
@@ -6,7 +6,7 @@ xdescribe('FinalizeComponent', () => {
   let component: FinalizeComponent;
   let fixture: ComponentFixture<FinalizeComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ FinalizeComponent ]
     })

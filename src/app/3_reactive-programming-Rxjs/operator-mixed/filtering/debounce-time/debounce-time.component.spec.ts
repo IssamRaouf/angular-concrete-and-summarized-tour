@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { DebounceTimeComponent } from './debounce-time.component';
 
@@ -6,7 +6,7 @@ xdescribe('DebounceTimeComponent', () => {
   let component: DebounceTimeComponent;
   let fixture: ComponentFixture<DebounceTimeComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ DebounceTimeComponent ]
     })

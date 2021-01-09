@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { ToArrayComponent } from './to-array.component';
 
@@ -6,7 +6,7 @@ xdescribe('ToArrayComponent', () => {
   let component: ToArrayComponent;
   let fixture: ComponentFixture<ToArrayComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ ToArrayComponent ]
     })

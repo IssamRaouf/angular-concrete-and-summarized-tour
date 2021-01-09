@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { TakeUntilComponent } from './take-until.component';
 
@@ -6,7 +6,7 @@ xdescribe('TakeUntilComponent', () => {
   let component: TakeUntilComponent;
   let fixture: ComponentFixture<TakeUntilComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ TakeUntilComponent ]
     })

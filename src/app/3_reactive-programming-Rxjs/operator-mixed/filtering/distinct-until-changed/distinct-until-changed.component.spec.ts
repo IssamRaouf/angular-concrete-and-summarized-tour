@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { DistinctUntilChangedComponent } from './distinct-until-changed.component';
 
@@ -6,7 +6,7 @@ xdescribe('DistinctUntilChangedComponent', () => {
   let component: DistinctUntilChangedComponent;
   let fixture: ComponentFixture<DistinctUntilChangedComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ DistinctUntilChangedComponent ]
     })

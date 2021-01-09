@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { PartitionComponent } from './partition.component';
 
@@ -6,7 +6,7 @@ xdescribe('PartitionComponent', () => {
   let component: PartitionComponent;
   let fixture: ComponentFixture<PartitionComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ PartitionComponent ]
     })

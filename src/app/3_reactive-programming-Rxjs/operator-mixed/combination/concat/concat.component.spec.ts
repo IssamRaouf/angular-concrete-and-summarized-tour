@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { ConcatComponent } from './concat.component';
 
@@ -6,7 +6,7 @@ describe('ConcatComponent', () => {
   let component: ConcatComponent;
   let fixture: ComponentFixture<ConcatComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ ConcatComponent ]
     })

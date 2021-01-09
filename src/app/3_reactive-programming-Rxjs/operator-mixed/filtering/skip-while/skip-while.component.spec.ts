@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { SkipWhileComponent } from './skip-while.component';
 
@@ -6,7 +6,7 @@ xdescribe('SkipWhileComponent', () => {
   let component: SkipWhileComponent;
   let fixture: ComponentFixture<SkipWhileComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ SkipWhileComponent ]
     })
