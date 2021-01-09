@@ -50,8 +50,8 @@ describe('RoutingTestComponent', () => {
         });
 
         fixture = TestBed.createComponent(RoutingTestComponent);
-        router = TestBed.get(Router); // get router service
-        location = TestBed.get(Location); // get location service
+        router = TestBed.inject(Router); // get router service
+        location = TestBed.inject(Location); // get location service
         router.initialNavigation(); //Ceci configure l'écouteur de changement d'emplacement et effectue la navigation initiale.
     });
     // Le router est une activité asynchrone, nous utilisons donc l'une des méthodes de test asynchrones (done de jasmine)

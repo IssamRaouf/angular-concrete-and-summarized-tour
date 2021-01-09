@@ -25,8 +25,8 @@ describe('HttpTestService', () => {
             providers: [HttpTestService]
         });
 
-        service = TestBed.get(HttpTestService);
-        httpTestingController = TestBed.get(HttpTestingController);
+        service = TestBed.inject(HttpTestService);
+        httpTestingController = TestBed.inject(HttpTestingController);
     });
     afterEach(() => {
         // Après chaque test, assurez-vous qu'il n'y a plus de demandes en attente.

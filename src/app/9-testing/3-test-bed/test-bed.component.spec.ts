@@ -30,7 +30,7 @@ describe('TestBedComponent', () => {
         });
         fixture = TestBed.createComponent(TestBedComponent);
         component = fixture.componentInstance;
-        AppStateSer = TestBed.get(AppStateService);
+        AppStateSer = TestBed.inject(AppStateService);
         elStateDescriptionComment = fixture.debugElement.query(By.css('div.state-desc'));
         fixture.detectChanges();
 

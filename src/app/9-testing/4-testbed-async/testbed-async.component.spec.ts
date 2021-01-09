@@ -27,7 +27,7 @@ describe('TestbedAsyncComponent', () => {
         });
         fixture = TestBed.createComponent(TestbedAsyncComponent);
         component = fixture.componentInstance;
-        AppStateSer = TestBed.get(AppStateService);
+        AppStateSer = TestBed.inject(AppStateService);
         fixture.detectChanges();
 
     });

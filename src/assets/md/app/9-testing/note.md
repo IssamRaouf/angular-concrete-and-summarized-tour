@@ -595,8 +595,8 @@ describe('TodoItemComponent',() => {
     
     elStateDescriptionComment = fixture.debugElement.query(By.css('div.state-desc'));
 
-    // on recupére notre dépandence à partir de TestBed par get(Type) , get(token Chaine de caractére ) ou get (InjectionToken) (chapitre DI)
-    appStateServ = TestBed.get(AppstateService); 
+    // on recupére notre dépandence à partir de TestBed par inject(Type) , inject(token Chaine de caractére ) ou inject (InjectionToken) (chapitre DI)
+    appStateServ = TestBed.inject(AppstateService); 
     
     // fixture est un wrapper pour l'environnement de notre composant afin que nous puissions contrôler des choses comme la détection des modifications.
     // detectChanges va déclenche un cycle de détection de changement pour le composant
