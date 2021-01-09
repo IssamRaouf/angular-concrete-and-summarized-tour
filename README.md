@@ -6,7 +6,7 @@ Un tour concrète de tous les parties importantes d'angular, profitez de la lect
 ### Development
 
 -  NodeJS >= 10.15.3
--  Angular & @angular-cli = 9.0.2
+-  Angular & @angular-cli = 11.0.6
 
 ## Project setup 
 
