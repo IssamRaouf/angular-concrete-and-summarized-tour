@@ -1,5 +1,5 @@
 # Angular concrete and summarized tour 
-Un tour concrete de tout les parties important de angular, Profitez de la lecture et du changement pour mieux comprendre :D
+Un tour concrète de tous les parties importantes d'angular, profitez de la lecture et du changement pour mieux comprendre :D
 ![alt text](capture.png)
 ## Project requirements
 
