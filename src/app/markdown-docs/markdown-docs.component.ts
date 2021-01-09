@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {filter} from 'rxjs/operators';
-import {MatBottomSheet, MatBottomSheetConfig} from '@angular/material';
+import { MatBottomSheet, MatBottomSheetConfig } from '@angular/material/bottom-sheet';
 import {CodeDetailsComponent} from '../code-details/code-details.component';
 import {MarkdownModel} from './markdown.model';
 import {MarkdownMap} from './markdown-map';
